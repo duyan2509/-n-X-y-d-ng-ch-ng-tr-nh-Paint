@@ -17,6 +17,7 @@ namespace UI
     public partial class Form1 : Form
     {
         private Rectangle normalBounds;
+        
         public Form1()
         {
             InitializeComponent();
@@ -121,5 +122,7 @@ namespace UI
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+       
     }
 }
