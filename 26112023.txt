@@ -1,0 +1,31 @@
+resize
+chọn đối tượng
+xoay đối tượng
+import hình: tạo khung -> fill hình vào hcn
+ctrlC,Z,V
+
+
+draw_space:
+zoom in-out
+
+Tool:
+	Fill
+	Tẩy
+	Văn bản
+	Pen
+	Brush - Combobox
+Shape:
+	.....
+Màu:
+	... 
+	màu đang chọn
+
+biến Global của 1trang
+	pen
+	color
+	độ đậm
+
+
+hoàn thành draw_space
+làm 2 shape HCN, Hình tròn
+đủ tool 
