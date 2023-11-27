@@ -37,3 +37,4 @@ C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.csproj.CoreCompil
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.csproj.CopyComplete
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.exe
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.pdb
+C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\bin\Debug\Guna.UI2.dll
