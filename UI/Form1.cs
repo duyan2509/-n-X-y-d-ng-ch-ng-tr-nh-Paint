@@ -260,7 +260,7 @@ namespace UI
             blackButton.BorderRadius = 20;
             blackButton.ImageSize = new Size(20, 20);
             blackButton.Animated = true;
-            blackButton.Click += handleClickCircleButton;
+            //blackButton.Click += ;
             blackButton.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(blackButton);
 
@@ -271,7 +271,7 @@ namespace UI
             greenButton.BorderRadius = 20;
             greenButton.ImageSize = new Size(20, 20);
             greenButton.Animated = true;
-            greenButton.Click += handleClickCircleButton;
+            //greenButton.Click += ;
             greenButton.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(greenButton);
 
@@ -282,7 +282,7 @@ namespace UI
             redButton.BorderRadius = 20;
             redButton.ImageSize = new Size(20, 20);
             redButton.Animated = true;
-            redButton.Click += handleClickCircleButton;
+            //redButton.Click += ;
             redButton.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(redButton);
 
@@ -293,7 +293,7 @@ namespace UI
             yellowButton.BorderRadius = 20;
             yellowButton.ImageSize = new Size(20, 20);
             yellowButton.Animated = true;
-            yellowButton.Click += handleClickCircleButton;
+            //yellowButton.Click += ;
             yellowButton.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(yellowButton);
 
@@ -304,7 +304,7 @@ namespace UI
             blueButton.BorderRadius = 20;
             blueButton.ImageSize = new Size(20, 20);
             blueButton.Animated = true;
-            blueButton.Click += handleClickCircleButton;
+            //blueButton.Click += ;
             blueButton.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(blueButton);
 
@@ -315,7 +315,7 @@ namespace UI
             pickColorButton.BorderRadius = 20;
             pickColorButton.ImageSize = new Size(15, 15);
             pickColorButton.Animated = true;
-            pickColorButton.Click += handleClickCircleButton;
+            //pickColorButton.Click += ;
             pickColorButton.Image = Properties.Resources.icons8_plus_48;
 
             pickColorButton.Cursor = Cursors.Hand;
