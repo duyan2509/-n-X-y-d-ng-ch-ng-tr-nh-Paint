@@ -38,3 +38,15 @@ C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.csproj.CopyComple
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.exe
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.pdb
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\bin\Debug\Guna.UI2.dll
+G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\bin\Debug\UI.exe.config
+G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\bin\Debug\UI.exe
+G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\bin\Debug\UI.pdb
+G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\bin\Debug\Guna.UI2.dll
+G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.csproj.AssemblyReference.cache
+G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.Form1.resources
+G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.Properties.Resources.resources
+G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.csproj.GenerateResource.cache
+G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.csproj.CoreCompileInputs.cache
+G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.csproj.CopyComplete
+G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.exe
+G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.pdb

@@ -166,5 +166,51 @@
   <ItemGroup>
     <None Include="Resources\icons8-plus-481.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-triangle-48-blue.png" />
+    <None Include="Resources\icons8-triangle-48-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-right-triangle-48-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-right-triangle-48-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-star-48-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-star-48-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-arrow-48-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-arrow-48-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-hexagon-48-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-hexagon-48-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-half-circle-48-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-ellipse-48-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-ellipse-48-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-rounded-square-48-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-rounded-square-48-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-half-circle-48-white.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

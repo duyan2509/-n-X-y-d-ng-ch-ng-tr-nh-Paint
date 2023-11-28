@@ -219,7 +219,7 @@ namespace UI
             //Add shape panel
             Panel shapePanel = new Panel();
             shapePanel.Location = new Point(70, 250);
-            shapePanel.Size = new Size(140, 180);
+            shapePanel.Size = new Size(140, 520);
                 // Hinh chu nhat
             Guna2Button rectangleButton = new Guna2Button();
             rectangleButton.Size = new Size(45, 45);
@@ -246,8 +246,95 @@ namespace UI
             circleButton.Click += handleClickCircleButton;
             circleButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(circleButton);
-            
-            
+                // Hinh Tam Giac Can
+            Guna2Button triangleButton = new Guna2Button();
+            triangleButton.Size = new Size(45, 45);
+            triangleButton.Location = new Point(0, 60);
+            triangleButton.Image = Properties.Resources.icons8_triangle_48_white;
+            triangleButton.ImageSize = new Size(20, 20);
+            triangleButton.BorderRadius = 20;
+            triangleButton.Animated = true;
+            triangleButton.Click += handleClickCircleButton;
+            triangleButton.Cursor = Cursors.Hand;
+            shapePanel.Controls.Add(triangleButton);
+                // Hinh Tam Giac Vuong 
+            Guna2Button right_triangleButton = new Guna2Button();
+            right_triangleButton.Size = new Size(45, 45);
+            right_triangleButton.Location = new Point(60, 60);
+            right_triangleButton.Image = Properties.Resources.icons8_right_triangle_48_white;
+            right_triangleButton.ImageSize = new Size(20, 20);
+            right_triangleButton.BorderRadius = 20;
+            right_triangleButton.Animated = true;
+            right_triangleButton.Click += handleClickCircleButton;
+            right_triangleButton.Cursor = Cursors.Hand;
+            shapePanel.Controls.Add(right_triangleButton);
+                // Hinh Vuong
+            Guna2Button squareButton = new Guna2Button();
+            squareButton.Size = new Size(45, 45);
+            squareButton.Location = new Point(0, 120);
+            squareButton.Image = Properties.Resources.icons8_rounded_square_48_white;
+            squareButton.ImageSize = new Size(20, 20);
+            squareButton.BorderRadius = 20;
+            squareButton.Animated = true;
+            squareButton.Click += handleClickCircleButton;
+            squareButton.Cursor = Cursors.Hand;
+            shapePanel.Controls.Add(squareButton);
+                // Hinh Luc Giac
+            Guna2Button hexagonButton = new Guna2Button();
+            hexagonButton.Size = new Size(45, 45);
+            hexagonButton.Location = new Point(60, 180);
+            hexagonButton.Image = Properties.Resources.icons8_hexagon_48_white;
+            hexagonButton.ImageSize = new Size(20, 20);
+            hexagonButton.BorderRadius = 20;
+            hexagonButton.Animated = true;
+            hexagonButton.Click += handleClickCircleButton;
+            hexagonButton.Cursor = Cursors.Hand;
+            shapePanel.Controls.Add(hexagonButton);
+                // Hinh Mui Ten
+            Guna2Button arrowButton = new Guna2Button();
+            arrowButton.Size = new Size(45, 45);
+            arrowButton.Location = new Point(60, 120);
+            arrowButton.Image = Properties.Resources.icons8_arrow_48_white;
+            arrowButton.ImageSize = new Size(20, 20);
+            arrowButton.BorderRadius = 20;
+            arrowButton.Animated = true;
+            arrowButton.Click += handleClickCircleButton;
+            arrowButton.Cursor = Cursors.Hand;
+            shapePanel.Controls.Add(arrowButton);
+                // Hinh Sao 5 Canh
+            Guna2Button starButton = new Guna2Button();
+            starButton.Size = new Size(45, 45);
+            starButton.Location = new Point(0, 180);
+            starButton.Image = Properties.Resources.icons8_star_48_white;
+            starButton.ImageSize = new Size(20, 20);
+            starButton.BorderRadius = 20;
+            starButton.Animated = true;
+            starButton.Click += handleClickCircleButton;
+            starButton.Cursor = Cursors.Hand;
+            shapePanel.Controls.Add(starButton);
+                // Hinh Elip
+            Guna2Button ellipseButton = new Guna2Button();
+            ellipseButton.Size = new Size(45, 45);
+            ellipseButton.Location = new Point(0, 240);
+            ellipseButton.Image = Properties.Resources.icons8_ellipse_48_white;
+            ellipseButton.ImageSize = new Size(20, 20);
+            ellipseButton.BorderRadius = 20;
+            ellipseButton.Animated = true;
+            ellipseButton.Click += handleClickCircleButton;
+            ellipseButton.Cursor = Cursors.Hand;
+            shapePanel.Controls.Add(ellipseButton);
+                // Hinh Duong Cung
+            Guna2Button arcButton = new Guna2Button();
+            arcButton.Size = new Size(45, 45);
+            arcButton.Location = new Point(60, 240);
+            arcButton.Image = Properties.Resources.icons8_half_circle_48_white;
+            arcButton.ImageSize = new Size(20, 20);
+            arcButton.BorderRadius = 20;
+            arcButton.Animated = true;
+            arcButton.Click += handleClickCircleButton;
+            arcButton.Cursor = Cursors.Hand;
+            shapePanel.Controls.Add(arcButton);
+
             //Add color panel
             Panel colorPanel = new Panel();
             colorPanel.Location = new Point(0, 50);
