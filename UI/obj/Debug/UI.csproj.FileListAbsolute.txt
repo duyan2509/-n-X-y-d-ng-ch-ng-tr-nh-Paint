@@ -19,7 +19,6 @@ C:\Users\Admin\source\repos\DoAnPaint\UI\obj\Debug\UI.csproj.CoreCompileInputs.c
 C:\Users\Admin\source\repos\DoAnPaint\UI\obj\Debug\UI.csproj.CopyComplete
 C:\Users\Admin\source\repos\DoAnPaint\UI\obj\Debug\UI.exe
 C:\Users\Admin\source\repos\DoAnPaint\UI\obj\Debug\UI.pdb
-C:\Users\Admin\source\repos\DoAnPaint\UI\obj\Debug\UI.Form1.resources
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\bin\Debug\UI.exe.config
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\bin\Debug\UI.exe
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\bin\Debug\UI.pdb
@@ -50,3 +49,5 @@ G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.csproj.CoreCompileIn
 G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.csproj.CopyComplete
 G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.exe
 G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.pdb
+C:\Users\Admin\Source\Repos\DoAnPaint\UI\bin\Debug\Guna.UI2.dll
+C:\Users\Admin\Source\Repos\DoAnPaint\UI\obj\Debug\UI.Form1.resources

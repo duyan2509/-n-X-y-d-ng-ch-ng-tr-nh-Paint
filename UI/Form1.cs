@@ -12,24 +12,34 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
+//py: first point
+//cX: xFirst
+//cY: yFirst
+//--> py
+//x: xMove
+//y: yMove
+//sX: xMove-xFirst
+//sY = yMove - yFirst
 namespace UI
-{   
-    
+{
+
     public partial class Form1 : Form
     {
-      
+
         private Rectangle normalBounds;
+        private List<DrawObject> a=new List<DrawObject>();// mỗi  tab 1 phần tử
+
         public Form1()
         {
             InitializeComponent();
             normalBounds = this.Bounds;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, normalBounds.Width, normalBounds.Height, 20, 20));
             initialPanel();
-
+            initialPictureBox();
+            initDrawObject();
         }
 
         //delete border
-
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -107,8 +117,11 @@ namespace UI
 
             tcMain.Pages.Add(kryptonPage);
             tcMain.SelectedPage = kryptonPage;
+            initDrawObject();
             initialPanel();
+            initialPictureBox();
         }
+
 
         private void btClose1_Click(object sender, EventArgs e)
         {
@@ -127,12 +140,28 @@ namespace UI
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+        private void initDrawObject()
+        {
+            DrawObject tmp = new DrawObject();
+            tmp.Color = Color.Black;
+            tmp.Pen = new Pen(tmp.Color);
+            tmp.DoDam = 10;
+            tmp.py=new Point(0,0);
+            tmp.px=new Point(0,0);
+            tmp.Paint = false;
+            tmp.Fill = false;
+            tmp.brush = new SolidBrush(tmp.Color);
+            tmp.index = 0;
+
+            a.Add(tmp);
+        }
         private void initialPanel()
         {
             Panel newPanel = new Panel();
             newPanel.Dock = DockStyle.Left;
-            newPanel.Size = new Size(210,newPanel.Height);
+            newPanel.Size = new Size(227,newPanel.Height);
             newPanel.BackColor = Color.FromArgb(0, 120, 215);
+            newPanel.AutoScroll = true;
             // Add two label 
             Label toolLabel = new Label();
             Label shapeLabel = new Label();
@@ -414,13 +443,50 @@ namespace UI
             tcMain.SelectedPage.Controls.Add(newPanel);
 
         }
+        private void initialPictureBox()
+        {
+            Guna2PictureBox pictureBox=new Guna2PictureBox();
+            pictureBox.Dock = DockStyle.Fill;
+            pictureBox.FillColor = Color.Red;
+
+            pictureBox.MouseDown += handleMouseDown;
+            pictureBox.MouseMove += handleMouseMove;
+            pictureBox.MouseUp += handleMouseUp;
+            pictureBox.MouseClick += handleMouseClick;//fill
+            pictureBox.Paint += handlePaint;
+            tcMain.SelectedPage.Controls.Add(pictureBox);
+
+        }
+        private void handleMouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+        private void handlePaint(object sender, EventArgs e)
+        {
+
+        }
+        private void handleMouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
+        private void handleMouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+        private void handleMouseDown(object sender, MouseEventArgs e)
+        {
+            int tmp=tcMain.SelectedIndex;
+            if(tmp<a.Count)
+            {
+                a[tmp].Paint = true;
+                a[tmp].py = e.Location;
+                a[tmp].cX = e.X;
+                a[tmp].cY = e.Y;
+            }
+        }
         private void handleClickPenButton(object sender, EventArgs e)
         {
 
-            if (sender is Guna2Button clickedButton)
-            {   
-                
-            }
         }
         private void handleClickEraseButton(object sender, EventArgs e)
         {
@@ -469,6 +535,24 @@ namespace UI
             {
 
             }
+        }
+
+        class DrawObject
+        {
+            public Pen Pen { get; set; }
+            public Color color { get; set; }
+            public int DoDam { get; set; }
+            public bool Paint { get; set; }
+            public Point px { get; set; }
+            public Point py { get; set; }
+            public int index { get; set; }
+            public bool Fill { get; set; }
+            public Brush brush { get; set; }
+            public Color Color { get; set; }
+
+            public List<Region> region = new List<Region>();
+            //ColorDialog dlg = new ColorDialog();
+            public int x, y, cX, cY, sX, sY;
         }
     }
 }
