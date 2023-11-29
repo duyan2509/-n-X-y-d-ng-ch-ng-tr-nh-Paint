@@ -35,9 +35,9 @@ namespace UI
             InitializeComponent();
             normalBounds = this.Bounds;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, normalBounds.Width, normalBounds.Height, 20, 20));
+            initDrawObject();
             initialPanel();
             initialPictureBox();
-            initDrawObject();
         }
 
         //delete border
@@ -153,7 +153,6 @@ namespace UI
             tmp.Fill = false;
             tmp.brush = new SolidBrush(tmp.Color);
             tmp.index = 0;
-
             a.Add(tmp);
         }
         private void initialPanel()
@@ -446,19 +445,27 @@ namespace UI
         }
         private void initialPictureBox()
         {
+            int tmp = tcMain.SelectedIndex;
             Guna2PictureBox pictureBox=new Guna2PictureBox();
             pictureBox.Dock = DockStyle.Fill;
-            pictureBox.FillColor = Color.Red;
-
+            pictureBox.BackColor = Color.White;
             pictureBox.MouseDown += handleMouseDown;
             pictureBox.MouseMove += handleMouseMove;
             pictureBox.MouseUp += handleMouseUp;
             pictureBox.MouseClick += handleMouseClick;//fill
             pictureBox.Paint += handlePaint;
+            pictureBox.SizeChanged += (sender, e) =>
+            {
+                a[tmp].bm = new Bitmap(pictureBox.Width, pictureBox.Height);
+                a[tmp].bm.SetPixel(0, 0, Color.White);
+                pictureBox.Image = a[tmp].bm;
+                a[tmp].G = Graphics.FromImage(a[tmp].bm);
+                pictureBox.Invalidate();
+            };
             tcMain.SelectedPage.Controls.Add(pictureBox);
 
         }
-        Graphics G;
+
         private void handleMouseClick(object sender, MouseEventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
@@ -479,7 +486,7 @@ namespace UI
 
                     if (selectedShapeIndex != -1)
                     {
-                        G.FillRegion(a[tmp].brush, a[tmp].region[selectedShapeIndex]);
+                        a[tmp].G.FillRegion(a[tmp].brush, a[tmp].region[selectedShapeIndex]);
                         selectedShapeIndex = -1;
                     }
                     if (a[tmp].index < 6)
@@ -559,7 +566,7 @@ namespace UI
                 if (a[tmp].index == 2)
                 {
                     //draw elip
-                    G.DrawEllipse(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
+                    a[tmp].G.DrawEllipse(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
                     //tao region
                     GraphicsPath path = new GraphicsPath();
                     path.AddEllipse(a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
@@ -584,7 +591,7 @@ namespace UI
                     Point point2 = new Point(point1.X, point3.Y);
                     Point point4 = new Point(point3.X, point1.Y);
                     Point[] ptsArray = { point1, point2, point3, point4 };
-                    G.DrawPolygon(a[tmp].Pen, ptsArray);
+                    a[tmp].G.DrawPolygon(a[tmp].Pen, ptsArray);
                     //tao region
                     GraphicsPath path = new GraphicsPath();
                     path.AddPolygon(ptsArray);
@@ -604,7 +611,7 @@ namespace UI
                         dauW = -1;
                     if (a[tmp].sY < 0)
                         dauH = -1;
-                    G.DrawEllipse(a[tmp].Pen, a[tmp].cX, a[tmp].cY, dauW * side, dauH * side);
+                    a[tmp].G.DrawEllipse(a[tmp].Pen, a[tmp].cX, a[tmp].cY, dauW * side, dauH * side);
                     //tao region
                     GraphicsPath path = new GraphicsPath();
                     path.AddEllipse(a[tmp].cX, a[tmp].cY, dauW * side, dauH * side);
@@ -614,7 +621,7 @@ namespace UI
                 if (a[tmp].index == 5)
                 {
                     //Ve line
-                    G.DrawLine(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].x, a[tmp].y);
+                    a[tmp].G.DrawLine(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].x, a[tmp].y);
                 }
             }
         }
@@ -629,7 +636,7 @@ namespace UI
                     {
                         //pen
                         a[tmp].px = e.Location;
-                        G.DrawLine(a[tmp].Pen, a[tmp].px, a[tmp].py);
+                        a[tmp].G.DrawLine(a[tmp].Pen, a[tmp].px, a[tmp].py);
                         a[tmp].py = a[tmp].px;
                     }
                 }
@@ -735,7 +742,15 @@ namespace UI
 
             public List<Region> region = new List<Region>();
             //ColorDialog dlg = new ColorDialog();
-            public int x, y, cX, cY, sX, sY;
+            public int x { get; set; }
+            public int y { get; set; }
+            public int cX { get; set; }
+            public int cY { get; set; }
+
+            public int sX { get; set; }
+            public int sY { get; set; }
+            public Graphics G { get; set; }
+            public Bitmap bm { get; set; }
         }
     }
 }
