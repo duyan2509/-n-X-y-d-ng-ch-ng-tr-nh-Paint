@@ -28,7 +28,7 @@ namespace UI
     {
 
         private Rectangle normalBounds;
-        private List<DrawObject> a=new List<DrawObject>();// mỗi  tab 1 phần tử
+        private List<DrawObject> a = new List<DrawObject>();// mỗi  tab 1 phần tử
 
         public Form1()
         {
@@ -36,9 +36,11 @@ namespace UI
             normalBounds = this.Bounds;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, normalBounds.Width, normalBounds.Height, 20, 20));
             initDrawObject();
-            initialPanel();
             initialPictureBox();
+            initialPanel();
         }
+
+
 
         //delete border
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -93,7 +95,7 @@ namespace UI
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            
+
             KryptonPage kryptonPage = new KryptonPage();
             kryptonPage.Text = (tcMain.Pages.Count + 1).ToString();
             ButtonSpecAny buttonX = new ButtonSpecAny();
@@ -147,8 +149,8 @@ namespace UI
             tmp.Color = Color.Black;
             tmp.Pen = new Pen(tmp.Color);
             tmp.DoDam = 10;
-            tmp.py=new Point(0,0);
-            tmp.px=new Point(0,0);
+            tmp.py = new Point(0, 0);
+            tmp.px = new Point(0, 0);
             tmp.Paint = false;
             tmp.Fill = false;
             tmp.brush = new SolidBrush(tmp.Color);
@@ -159,7 +161,7 @@ namespace UI
         {
             Panel newPanel = new Panel();
             newPanel.Dock = DockStyle.Left;
-            newPanel.Size = new Size(227,newPanel.Height);
+            newPanel.Size = new Size(227, newPanel.Height);
             newPanel.BackColor = Color.FromArgb(0, 120, 215);
             newPanel.AutoScroll = true;
             // Add two label 
@@ -181,7 +183,7 @@ namespace UI
             Panel toolPanel = new Panel();
             toolPanel.Location = new Point(70, 35);
             toolPanel.Size = new Size(140, 180);
-                // Pen button
+            // Pen button
             Guna2Button penButton = new Guna2Button();
             penButton.Size = new Size(45, 45);
             penButton.Location = new Point(0, 0);
@@ -193,7 +195,7 @@ namespace UI
             penButton.Click += handleClickPenButton;
             penButton.Cursor = Cursors.Hand;
             toolPanel.Controls.Add(penButton);
-                // Erase button
+            // Erase button
             Guna2Button eraseButton = new Guna2Button();
             eraseButton.Size = new Size(45, 45);
             eraseButton.Location = new Point(60, 0);
@@ -205,7 +207,7 @@ namespace UI
             eraseButton.Click += handleClickEraseButton;
             eraseButton.Cursor = Cursors.Hand;
             toolPanel.Controls.Add(eraseButton);
-                //Fill button
+            //Fill button
             Guna2Button fillButton = new Guna2Button();
             fillButton.Size = new Size(45, 45);
             fillButton.Location = new Point(0, 55);
@@ -218,7 +220,7 @@ namespace UI
             fillButton.Cursor = Cursors.Hand;
             toolPanel.Controls.Add(fillButton);
 
-                //Text button
+            //Text button
             Guna2Button textButton = new Guna2Button();
             textButton.Size = new Size(45, 45);
             textButton.Location = new Point(60, 55);
@@ -231,7 +233,7 @@ namespace UI
             textButton.Cursor = Cursors.Hand;
             toolPanel.Controls.Add(textButton);
 
-                //Brush button
+            //Brush button
             Guna2Button brushButton = new Guna2Button();
             brushButton.Size = new Size(45, 45);
             brushButton.Location = new Point(0, 110);
@@ -249,7 +251,7 @@ namespace UI
             Panel shapePanel = new Panel();
             shapePanel.Location = new Point(70, 250);
             shapePanel.Size = new Size(140, 520);
-                // Hinh chu nhat
+            // Hinh chu nhat
             Guna2Button rectangleButton = new Guna2Button();
             rectangleButton.Size = new Size(45, 45);
             rectangleButton.Location = new Point(0, 0);
@@ -263,7 +265,7 @@ namespace UI
             shapePanel.Controls.Add(rectangleButton);
 
 
-                // Hinh tron
+            // Hinh tron
             Guna2Button circleButton = new Guna2Button();
             circleButton.Size = new Size(45, 45);
             circleButton.Location = new Point(60, 0);
@@ -275,7 +277,7 @@ namespace UI
             circleButton.Click += handleClickCircleButton;
             circleButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(circleButton);
-                // Hinh Tam Giac Can
+            // Hinh Tam Giac Can
             Guna2Button triangleButton = new Guna2Button();
             triangleButton.Size = new Size(45, 45);
             triangleButton.Location = new Point(0, 60);
@@ -286,7 +288,7 @@ namespace UI
             triangleButton.Click += handleClickCircleButton;
             triangleButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(triangleButton);
-                // Hinh Tam Giac Vuong 
+            // Hinh Tam Giac Vuong 
             Guna2Button right_triangleButton = new Guna2Button();
             right_triangleButton.Size = new Size(45, 45);
             right_triangleButton.Location = new Point(60, 60);
@@ -297,7 +299,7 @@ namespace UI
             right_triangleButton.Click += handleClickCircleButton;
             right_triangleButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(right_triangleButton);
-                // Hinh Vuong
+            // Hinh Vuong
             Guna2Button squareButton = new Guna2Button();
             squareButton.Size = new Size(45, 45);
             squareButton.Location = new Point(0, 120);
@@ -308,7 +310,7 @@ namespace UI
             squareButton.Click += handleClickCircleButton;
             squareButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(squareButton);
-                // Hinh Luc Giac
+            // Hinh Luc Giac
             Guna2Button hexagonButton = new Guna2Button();
             hexagonButton.Size = new Size(45, 45);
             hexagonButton.Location = new Point(60, 180);
@@ -319,7 +321,7 @@ namespace UI
             hexagonButton.Click += handleClickCircleButton;
             hexagonButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(hexagonButton);
-                // Hinh Mui Ten
+            // Hinh Mui Ten
             Guna2Button arrowButton = new Guna2Button();
             arrowButton.Size = new Size(45, 45);
             arrowButton.Location = new Point(60, 120);
@@ -330,7 +332,7 @@ namespace UI
             arrowButton.Click += handleClickCircleButton;
             arrowButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(arrowButton);
-                // Hinh Sao 5 Canh
+            // Hinh Sao 5 Canh
             Guna2Button starButton = new Guna2Button();
             starButton.Size = new Size(45, 45);
             starButton.Location = new Point(0, 180);
@@ -341,7 +343,7 @@ namespace UI
             starButton.Click += handleClickCircleButton;
             starButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(starButton);
-                // Hinh Elip
+            // Hinh Elip
             Guna2Button ellipseButton = new Guna2Button();
             ellipseButton.Size = new Size(45, 45);
             ellipseButton.Location = new Point(0, 240);
@@ -352,7 +354,7 @@ namespace UI
             ellipseButton.Click += handleClickCircleButton;
             ellipseButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(ellipseButton);
-                // Hinh Duong Cung
+            // Hinh Duong Cung
             Guna2Button arcButton = new Guna2Button();
             arcButton.Size = new Size(45, 45);
             arcButton.Location = new Point(60, 240);
@@ -368,7 +370,7 @@ namespace UI
             Panel colorPanel = new Panel();
             colorPanel.Location = new Point(0, 50);
             colorPanel.Size = new Size(60, 400);
-            
+
             Guna2Button blackButton = new Guna2Button();
             blackButton.Size = new Size(45, 45);
             blackButton.Location = new Point(5, 0);
@@ -383,7 +385,7 @@ namespace UI
             Guna2Button greenButton = new Guna2Button();
             greenButton.Size = new Size(45, 45);
             greenButton.Location = new Point(5, 55);
-            greenButton.FillColor = Color.FromArgb(97,197,84);
+            greenButton.FillColor = Color.FromArgb(97, 197, 84);
             greenButton.BorderRadius = 20;
             greenButton.ImageSize = new Size(20, 20);
             greenButton.Animated = true;
@@ -440,29 +442,83 @@ namespace UI
             newPanel.Controls.Add(toolPanel);
             newPanel.Controls.Add(colorPanel);
             newPanel.Controls.Add(shapePanel);
+            //
+
+
+            //
             tcMain.SelectedPage.Controls.Add(newPanel);
 
         }
         private void initialPictureBox()
         {
+            PictureBox backGround = new PictureBox();
+            backGround.Dock = DockStyle.Right;
+            backGround.Width = this.Width - 263;
+            backGround.BackColor = Color.Red;
+
+
+
             int tmp = tcMain.SelectedIndex;
-            Guna2PictureBox pictureBox=new Guna2PictureBox();
-            pictureBox.Dock = DockStyle.Fill;
-            pictureBox.BackColor = Color.White;
+            Guna2PictureBox pictureBox = new Guna2PictureBox();
+
             pictureBox.MouseDown += handleMouseDown;
             pictureBox.MouseMove += handleMouseMove;
             pictureBox.MouseUp += handleMouseUp;
             pictureBox.MouseClick += handleMouseClick;//fill
             pictureBox.Paint += handlePaint;
-            pictureBox.SizeChanged += (sender, e) =>
+
+            // Button ( trong DrawObject)
+            a[tmp].bt.Text = "resize";
+            tcMain.SelectedPage.Controls.Add(a[tmp].bt);
+            a[tmp].bt.BringToFront();
+            //
+
+                //size
+            a[tmp].sizeX = 400;
+            a[tmp].sizeY = 500;
+            pictureBox.Size = new Size(a[tmp].sizeX, a[tmp].sizeY);
+            a[tmp].bm = new Bitmap(pictureBox.Width, pictureBox.Height);
+            a[tmp].bm.SetPixel(0, 0, Color.White);
+            pictureBox.Image = a[tmp].bm;
+            a[tmp].G = Graphics.FromImage(a[tmp].bm);
+            a[tmp].G.Clear(Color.White);
+            pictureBox.Invalidate();
+            this.SizeChanged += (sender, e) =>
             {
-                a[tmp].bm = new Bitmap(pictureBox.Width, pictureBox.Height);
-                a[tmp].bm.SetPixel(0, 0, Color.White);
-                pictureBox.Image = a[tmp].bm;
-                a[tmp].G = Graphics.FromImage(a[tmp].bm);
-                pictureBox.Invalidate();
+                backGround.Dock = DockStyle.Right;
+                backGround.Width = this.Width - 270;
+                backGround.BackColor = Color.Red;
+                pictureBox.Location = new Point((backGround.Width - pictureBox.Width) / 2, Math.Abs(this.Height - pictureBox.Height) / 2);
             };
-            tcMain.SelectedPage.Controls.Add(pictureBox);
+
+            backGround.Controls.Add(pictureBox);
+            pictureBox.Location = new Point((backGround.Width - pictureBox.Width) / 2, Math.Abs(this.Height - pictureBox.Height) / 2);
+
+
+
+            Form resize = new Form();
+            //thiet ke form
+
+            a[tmp].bt.Click += (s, args) =>
+            {
+                // open form resize
+                // lay width, height tu form
+                // if(ok)
+
+                if (a[tmp].region.Count != 0)
+                {
+                    return;
+                }
+                else
+                {
+                    Image originalImage = pictureBox.Image;
+                    Bitmap resizedImage = new Bitmap(originalImage, 100, 100);
+                    pictureBox.Image = resizedImage;
+                    pictureBox.Size = new Size(100, 100);
+                    pictureBox.Location = new Point((backGround.Width - pictureBox.Width) / 2, Math.Abs(this.Height - pictureBox.Height) / 2);
+                }
+            };
+            tcMain.SelectedPage.Controls.Add(backGround);
 
         }
 
@@ -553,7 +609,7 @@ namespace UI
 
                 }
             }
-                
+
         }
         private void handleMouseUp(object sender, MouseEventArgs e)
         {
@@ -651,8 +707,8 @@ namespace UI
         }
         private void handleMouseDown(object sender, MouseEventArgs e)
         {
-            int tmp=tcMain.SelectedIndex;
-            if(tmp<a.Count)
+            int tmp = tcMain.SelectedIndex;
+            if (tmp < a.Count)
             {
                 a[tmp].Paint = true;
                 a[tmp].py = e.Location;
@@ -662,19 +718,19 @@ namespace UI
         }
         private void handleClickPenButton(object sender, EventArgs e)
         {
-                int tmp = tcMain.SelectedIndex;
-                if (tmp < a.Count)
-                {
-                    a[tmp].index = 1;
-                }
-            
+            int tmp = tcMain.SelectedIndex;
+            if (tmp < a.Count)
+            {
+                a[tmp].index = 1;
+            }
+
         }
         private void handleClickEraseButton(object sender, EventArgs e)
         {
 
             if (sender is Guna2Button clickedButton)
             {
-               
+
             }
         }
         private void handleClickFillButton(object sender, EventArgs e)
@@ -751,6 +807,11 @@ namespace UI
             public int sY { get; set; }
             public Graphics G { get; set; }
             public Bitmap bm { get; set; }
+
+            public int sizeX { get; set; }
+            public int sizeY { get; set; }
+            public Button bt = new Button();
+
         }
     }
 }
