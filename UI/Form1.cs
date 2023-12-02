@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using System.Reflection;
+using System.Drawing.Text;
 //py: first point
 //cX: xFirst
 //cY: yFirst
@@ -471,6 +472,7 @@ namespace UI
             a[tmp].bt.Text = "resize";
             tcMain.SelectedPage.Controls.Add(a[tmp].bt);
             a[tmp].bt.BringToFront();
+
             //
 
                 //size
@@ -496,29 +498,34 @@ namespace UI
 
 
 
-            Form resize = new Form();
-            //thiet ke form
-
+            resize Resize = new resize();
+            
             a[tmp].bt.Click += (s, args) =>
             {
-                // open form resize
+                Resize.ShowDialog();
+                int width = Resize.width;
+                int height = Resize.height;
                 // lay width, height tu form
-                // if(ok)
 
-                if (a[tmp].region.Count != 0)
+                // if(ok)
+                if (Resize.index == 1)
                 {
-                    return;
-                }
-                else
-                {
-                    Image originalImage = pictureBox.Image;
-                    Bitmap resizedImage = new Bitmap(originalImage, 100, 100);
-                    pictureBox.Image = resizedImage;
-                    pictureBox.Size = new Size(100, 100);
-                    pictureBox.Location = new Point((backGround.Width - pictureBox.Width) / 2, Math.Abs(this.Height - pictureBox.Height) / 2);
+                    if (a[tmp].region.Count != 0)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        Image originalImage = pictureBox.Image;
+                        Bitmap resizedImage = new Bitmap(originalImage, width, height);
+                        pictureBox.Image = resizedImage;
+                        pictureBox.Size = new Size(width, height);
+                        pictureBox.Location = new Point((backGround.Width - pictureBox.Width) / 2, Math.Abs(this.Height - pictureBox.Height) / 2);
+                    }
                 }
             };
             tcMain.SelectedPage.Controls.Add(backGround);
+            
 
         }
 
@@ -810,7 +817,7 @@ namespace UI
 
             public int sizeX { get; set; }
             public int sizeY { get; set; }
-            public Button bt = new Button();
+            public Guna2Button bt = new Guna2Button();
 
         }
     }
