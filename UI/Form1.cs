@@ -480,7 +480,6 @@ namespace UI
             a[tmp].sizeY = 500;
             pictureBox.Size = new Size(a[tmp].sizeX, a[tmp].sizeY);
             a[tmp].bm = new Bitmap(pictureBox.Width, pictureBox.Height);
-            a[tmp].bm.SetPixel(0, 0, Color.White);
             pictureBox.Image = a[tmp].bm;
             a[tmp].G = Graphics.FromImage(a[tmp].bm);
             a[tmp].G.Clear(Color.White);
@@ -502,24 +501,22 @@ namespace UI
             
             a[tmp].bt.Click += (s, args) =>
             {
-                Resize.ShowDialog();
-                int width = Resize.width;
-                int height = Resize.height;
-                // lay width, height tu form
-
-                // if(ok)
-                if (Resize.index == 1)
+                if (a[tmp].region.Count != 0)
                 {
-                    if (a[tmp].region.Count != 0)
-                    {
-                        return;
-                    }
-                    else
+                    return;
+                }
+                else
+                {
+                    Resize.ShowDialog();
+                    int width = Resize.width;
+                    int height = Resize.height;
+                    if (Resize.index == 1)
                     {
                         Image originalImage = pictureBox.Image;
                         Bitmap resizedImage = new Bitmap(originalImage, width, height);
-                        pictureBox.Image = resizedImage;
+                        a[tmp].bm = resizedImage;
                         pictureBox.Size = new Size(width, height);
+                        pictureBox.Image = a[tmp].bm;
                         pictureBox.Location = new Point((backGround.Width - pictureBox.Width) / 2, Math.Abs(this.Height - pictureBox.Height) / 2);
                     }
                 }
