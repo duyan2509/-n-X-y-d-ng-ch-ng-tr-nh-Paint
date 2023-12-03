@@ -36,6 +36,7 @@ namespace UI
             InitializeComponent();
             normalBounds = this.Bounds;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, normalBounds.Width, normalBounds.Height, 20, 20));
+            this.StartPosition = FormStartPosition.CenterScreen;
             initDrawObject();
             initialPictureBox();
             initialPanel();
@@ -439,6 +440,10 @@ namespace UI
 
             pickColorButton.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(pickColorButton);
+            
+            
+            int tmp = tcMain.SelectedIndex;
+            colorPanel.Controls.Add(a[tmp].bt);
 
             newPanel.Controls.Add(toolPanel);
             newPanel.Controls.Add(colorPanel);
@@ -455,7 +460,7 @@ namespace UI
             PictureBox backGround = new PictureBox();
             backGround.Dock = DockStyle.Right;
             backGround.Width = this.Width - 263;
-            backGround.BackColor = Color.Red;
+            backGround.BackColor = Color.FromArgb(243, 243, 243);
 
 
 
@@ -469,13 +474,18 @@ namespace UI
             pictureBox.Paint += handlePaint;
 
             // Button ( trong DrawObject)
-            a[tmp].bt.Text = "resize";
-            tcMain.SelectedPage.Controls.Add(a[tmp].bt);
-            a[tmp].bt.BringToFront();
-
+            a[tmp].bt.Size = new Size(45, 45);
+            a[tmp].bt.FillColor = Color.White;
+            a[tmp].bt.BorderRadius = 20;
+            a[tmp].bt.Cursor = Cursors.Hand;
+            a[tmp].bt.Location = new Point(5, 330);
+            a[tmp].bt.Image = Properties.Resources.icons8_resize_48;
+            a[tmp].bt.ImageSize = new Size(20, 20);
+            a[tmp].bt.Animated = true;
+            //tcMain.SelectedPage.Controls.Add(a[tmp].bt);
             //
 
-                //size
+            //size
             a[tmp].sizeX = 400;
             a[tmp].sizeY = 500;
             pictureBox.Size = new Size(a[tmp].sizeX, a[tmp].sizeY);
@@ -488,7 +498,7 @@ namespace UI
             {
                 backGround.Dock = DockStyle.Right;
                 backGround.Width = this.Width - 270;
-                backGround.BackColor = Color.Red;
+                backGround.BackColor = Color.FromArgb(243, 243, 243);
                 pictureBox.Location = new Point((backGround.Width - pictureBox.Width) / 2, Math.Abs(this.Height - pictureBox.Height) / 2);
             };
 
@@ -497,7 +507,7 @@ namespace UI
 
 
 
-            resize Resize = new resize();
+            resizeForm ResizeForm = new resizeForm();
             
             a[tmp].bt.Click += (s, args) =>
             {
@@ -507,16 +517,17 @@ namespace UI
                 }
                 else
                 {
-                    Resize.ShowDialog();
-                    int width = Resize.width;
-                    int height = Resize.height;
-                    if (Resize.index == 1)
+                    ResizeForm.ShowDialog();
+                    int width = ResizeForm.width;
+                    int height = ResizeForm.height;
+                    if (ResizeForm.index == 1)
                     {
                         Image originalImage = pictureBox.Image;
                         Bitmap resizedImage = new Bitmap(originalImage, width, height);
                         a[tmp].bm = resizedImage;
                         pictureBox.Size = new Size(width, height);
                         pictureBox.Image = a[tmp].bm;
+                        a[tmp].G = Graphics.FromImage(a[tmp].bm);
                         pictureBox.Location = new Point((backGround.Width - pictureBox.Width) / 2, Math.Abs(this.Height - pictureBox.Height) / 2);
                     }
                 }
@@ -817,5 +828,7 @@ namespace UI
             public Guna2Button bt = new Guna2Button();
 
         }
+
+
     }
 }

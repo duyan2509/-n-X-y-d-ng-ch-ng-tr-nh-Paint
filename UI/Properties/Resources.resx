@@ -127,17 +127,20 @@
   <data name="icons8-rectangle-48-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-rectangle-48-blue1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-text-60-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-text-60-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="icons8-arrow-48-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-arrow-48-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-half-circle-48-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-half-circle-48-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-right-triangle-48-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-right-triangle-48-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-hexagon-48-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-hexagon-48-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-resize-50-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-resize-50-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-pencil-60" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-pencil-60.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,8 +148,11 @@
   <data name="icons8-triangle-48-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-triangle-48-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-brush-48-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-brush-48-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-text-60-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-text-60-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-brush-48-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-brush-48-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-circle-50-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-circle-50-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,29 +160,32 @@
   <data name="icons8-circle-50-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-circle-50-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-text-60-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-text-60-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-brush-48-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-brush-48-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-text-60-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-text-60-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-rounded-square-48-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-rounded-square-48-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-star-48-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-star-48-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-fill-color-60-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-fill-color-60-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-half-circle-48-white1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-half-circle-48-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-ellipse-48-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-ellipse-48-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-erase-60-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-erase-60-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="pen-fancy-solid 1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pen-fancy-solid 1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-star-48-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-star-48-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-brush-48-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-brush-48-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-resize-50-black" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-resize-50-black.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-plus-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-plus-481.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,8 +211,8 @@
   <data name="icons8-rectangle-48-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-rectangle-48-white1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-right-triangle-48-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-right-triangle-48-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-erase-60-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-erase-60-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-pencil-60-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-pencil-60-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,7 +226,7 @@
   <data name="icons8-half-circle-48-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-half-circle-48-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-half-circle-48-white1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-half-circle-48-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-resize-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-resize-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
