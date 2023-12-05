@@ -1,0 +1,282 @@
+﻿using Guna.UI2.WinForms;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Media;
+using Brush = System.Drawing.Brush;
+using Color = System.Drawing.Color;
+using Pen = System.Drawing.Pen;
+
+using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+
+namespace UI
+{
+    public partial class Form1:Form
+    {
+        private void handleMouseClick(object sender, MouseEventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            if (tmp < a.Count)
+            {
+                if (a[tmp].Fill)
+                {
+                    Point temp = e.Location;
+                    int selectedShapeIndex = -1;
+                    for (int i = 0; i < a[tmp].region.Count; i++)
+                    {
+                        if (a[tmp].region[i].IsVisible(temp))
+                        {
+                            selectedShapeIndex = i;
+                            break;
+                        }
+                    }
+
+                    if (selectedShapeIndex != -1)
+                    {
+                        a[tmp].G.FillRegion(a[tmp].brush, a[tmp].region[selectedShapeIndex]);
+                        selectedShapeIndex = -1;
+                    }
+                    if (a[tmp].index < 6)
+                        a[tmp].Fill = false;
+                }
+            }
+        }
+        private void handlePaint(object sender, PaintEventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            if (tmp < a.Count)
+            {
+                Graphics g = e.Graphics;
+                //Ve hinh khi dang nhan chuot
+                if (a[tmp].Paint)
+                {
+                    if (a[tmp].index == 2)
+                    {
+                        //draw elip
+                        g.DrawEllipse(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
+                    }
+                    if (a[tmp].index == 3)
+                    {
+                        //vuong: ve theo canh nho hon
+                        int side = Math.Abs(a[tmp].sX);
+                        if (Math.Abs(a[tmp].sX) > Math.Abs(a[tmp].sY))
+                            side = Math.Abs(a[tmp].sY);
+                        Point point1 = new Point(a[tmp].cX, a[tmp].cY);
+                        Point point3 = new Point(a[tmp].cX, a[tmp].cY);
+                        if (a[tmp].x > a[tmp].cX)
+                            point3.X += side;
+                        else if (a[tmp].x < a[tmp].cX)
+                            point3.X -= side;
+                        if (a[tmp].y > a[tmp].cY)
+                            point3.Y += side;
+                        else if (a[tmp].y < a[tmp].cY)
+                            point3.Y -= side;
+                        Point point2 = new Point(point1.X, point3.Y);
+                        Point point4 = new Point(point3.X, point1.Y);
+                        Point[] ptsArray = { point1, point2, point3, point4 };
+                        g.DrawPolygon(a[tmp].Pen, ptsArray);
+                    }
+                    if (a[tmp].index == 4)
+                    {
+                        //ve hinh tron
+                        int side = 0;
+                        if (Math.Abs(a[tmp].sX) > Math.Abs(a[tmp].sY))
+                            side = Math.Abs(a[tmp].sY);
+                        else
+                            side = Math.Abs(a[tmp].sX);
+                        int dauW = 1;
+                        int dauH = 1;
+                        if (a[tmp].sX < 0)
+                            dauW = -1;
+                        if (a[tmp].sY < 0)
+                            dauH = -1;
+                        g.DrawEllipse(a[tmp].Pen, a[tmp].cX, a[tmp].cY, dauW * side, dauH * side);
+                    }
+                    if (a[tmp].index == 5)
+                    {
+                        //Ve line
+                        g.DrawLine(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].x, a[tmp].y);
+                    }
+
+                }
+            }
+
+        }
+        private void handleMouseUp(object sender, MouseEventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            if (tmp < a.Count)
+            {
+                a[tmp].Paint = false;
+
+                //Ve hinh chinh thuc sau khi tha chuot
+                if (a[tmp].index == 2)
+                {
+                    //draw elip
+                    a[tmp].G.DrawEllipse(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
+                    //tao region
+                    GraphicsPath path = new GraphicsPath();
+                    path.AddEllipse(a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
+                    a[tmp].region.Add(new Region(path));
+                }
+                if (a[tmp].index == 3)
+                {
+                    //vuong: ve theo canh nho hon
+                    int side = Math.Abs(a[tmp].sX);
+                    if (Math.Abs(a[tmp].sX) > Math.Abs(a[tmp].sY))
+                        side = Math.Abs(a[tmp].sY);
+                    Point point1 = new Point(a[tmp].cX, a[tmp].cY);
+                    Point point3 = new Point(a[tmp].cX, a[tmp].cY);
+                    if (a[tmp].x > a[tmp].cX)
+                        point3.X += side;
+                    else if (a[tmp].x < a[tmp].cX)
+                        point3.X -= side;
+                    if (a[tmp].y > a[tmp].cY)
+                        point3.Y += side;
+                    else if (a[tmp].y < a[tmp].cY)
+                        point3.Y -= side;
+                    Point point2 = new Point(point1.X, point3.Y);
+                    Point point4 = new Point(point3.X, point1.Y);
+                    Point[] ptsArray = { point1, point2, point3, point4 };
+                    a[tmp].G.DrawPolygon(a[tmp].Pen, ptsArray);
+                    //tao region
+                    GraphicsPath path = new GraphicsPath();
+                    path.AddPolygon(ptsArray);
+                    a[tmp].region.Add(new Region(path));
+                }
+                if (a[tmp].index == 4)
+                {
+                    //ve hinh tron
+                    int side = 0;
+                    if (Math.Abs(a[tmp].sX) > Math.Abs(a[tmp].sY))
+                        side = Math.Abs(a[tmp].sY);
+                    else
+                        side = Math.Abs(a[tmp].sX);
+                    int dauW = 1;
+                    int dauH = 1;
+                    if (a[tmp].sX < 0)
+                        dauW = -1;
+                    if (a[tmp].sY < 0)
+                        dauH = -1;
+                    a[tmp].G.DrawEllipse(a[tmp].Pen, a[tmp].cX, a[tmp].cY, dauW * side, dauH * side);
+                    //tao region
+                    GraphicsPath path = new GraphicsPath();
+                    path.AddEllipse(a[tmp].cX, a[tmp].cY, dauW * side, dauH * side);
+                    a[tmp].region.Add(new Region(path));
+
+                }
+                if (a[tmp].index == 5)
+                {
+                    //Ve line
+                    a[tmp].G.DrawLine(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].x, a[tmp].y);
+                }
+            }
+        }
+        private void handleMouseMove(object sender, MouseEventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            if (tmp < a.Count)
+            {
+                if (a[tmp].Paint)
+                {
+                    if (a[tmp].index == 1)
+                    {
+                        //pen
+                        a[tmp].px = e.Location;
+                        a[tmp].G.DrawLine(a[tmp].Pen, a[tmp].px, a[tmp].py);
+                        a[tmp].py = a[tmp].px;
+                    }
+                }
+                Refresh();
+
+                a[tmp].x = e.X;
+                a[tmp].y = e.Y;
+                // Tinh sX,sY de truyen len control_Paint
+                a[tmp].sX = a[tmp].x - a[tmp].cX;
+                a[tmp].sY = a[tmp].y - a[tmp].cY;
+            }
+        }
+        private void handleMouseDown(object sender, MouseEventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            if (tmp < a.Count)
+            {
+                a[tmp].Paint = true;
+                a[tmp].py = e.Location;
+                a[tmp].cX = e.X;
+                a[tmp].cY = e.Y;
+            }
+        }
+        private void handleClickPenButton(object sender, EventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            if (tmp < a.Count)
+            {
+                a[tmp].index = 1;
+            }
+
+        }
+        private void handleClickEraseButton(object sender, EventArgs e)
+        {
+
+            if (sender is Guna2Button clickedButton)
+            {
+
+            }
+        }
+        private void handleClickFillButton(object sender, EventArgs e)
+        {
+
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                if (tmp < a.Count)
+                {
+                    a[tmp].Fill = true;
+                    a[tmp].index = 6;
+                }
+            }
+        }
+        private void handleClickTextButton(object sender, EventArgs e)
+        {
+
+            if (sender is Guna2Button clickedButton)
+            {
+
+            }
+        }
+        private void handleClickBrushButton(object sender, EventArgs e)
+        {
+
+            if (sender is Guna2Button clickedButton)
+            {
+
+            }
+        }
+        private void handleClickRectangleButton(object sender, EventArgs e)
+        {
+
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                if (tmp < a.Count)
+                {
+                    a[tmp].index = 3;
+                }
+            }
+        }
+        private void handleClickCircleButton(object sender, EventArgs e)
+        {
+
+            if (sender is Guna2Button clickedButton)
+            {
+
+            }
+        }
+
+    }
+}
