@@ -101,7 +101,59 @@ namespace UI
                         //Ve line
                         g.DrawLine(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].x, a[tmp].y);
                     }
+                    if (a[tmp].index == 7)
+                    {
+                        //Ve Hinh Chu Nhat
+                        g.DrawRectangle(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
+                    }
+                    if (a[tmp].index == 8)
+                    {
+                        //Ve Tam Giac Can
+                        Point dinhA = new Point(a[tmp].cX, a[tmp].cY);
+                        Point dinhB = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY);
+                        Point dinhC = new Point(a[tmp].cX + a[tmp].sX / 2, a[tmp].cY + a[tmp].sY);
+                        Point[] dinhArray = { dinhA, dinhB, dinhC };
 
+                        g.DrawPolygon(a[tmp].Pen, dinhArray);
+                    }
+                    if (a[tmp].index == 9)
+                    {
+                        // Ve Tam Giac Vuong
+                        Point dinhA = new Point(a[tmp].cX, a[tmp].cY);
+                        Point dinhB = new Point(a[tmp].cX, a[tmp].cY + a[tmp].sY);
+                        Point dinhC = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY);
+
+                        Point[] dinhArray = { dinhA, dinhB, dinhC };
+
+                        g.DrawPolygon(a[tmp].Pen, dinhArray);
+                    }
+                    if (a[tmp].index == 10)
+                    {
+                        // Ve Hinh Luc Giac
+                        Point p1 = new Point(a[tmp].cX + a[tmp].sX / 4, a[tmp].cY);
+                        Point p2 = new Point(a[tmp].cX + 3 * a[tmp].sX / 4, a[tmp].cY);
+                        Point p3 = new Point(a[tmp].cX, a[tmp].cY + a[tmp].sY / 2);
+                        Point p4 = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY + a[tmp].sY / 2);
+                        Point p5 = new Point(a[tmp].cX + a[tmp].sX / 4, a[tmp].cY + a[tmp].sY);
+                        Point p6 = new Point(a[tmp].cX + 3 * a[tmp].sX / 4, a[tmp].cY + a[tmp].sY);
+                        Point[] pArray = { p1, p2, p4, p6, p5, p3 };
+
+                        g.DrawPolygon(a[tmp].Pen, pArray);
+                    }
+                    if (a[tmp].index == 11)
+                    {
+                        // Ve Mui Ten
+                        Point p1 = new Point(a[tmp].cX, a[tmp].cY + a[tmp].sY / 3);
+                        Point p2 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY + a[tmp].sY / 3);
+                        Point p3 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY);
+                        Point p4 = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY + a[tmp].sY / 2);
+                        Point p5 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY + a[tmp].sY);
+                        Point p6 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY + 2 * a[tmp].sY / 3);
+                        Point p7 = new Point(a[tmp].cX, a[tmp].cY + 2 * a[tmp].sY / 3);
+                        Point[] pArray = { p1, p2, p3, p4, p5, p6, p7 };
+
+                        g.DrawPolygon(a[tmp].Pen, pArray);
+                    }
                 }
             }
 
@@ -174,6 +226,66 @@ namespace UI
                     //Ve line
                     a[tmp].G.DrawLine(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].x, a[tmp].y);
                 }
+                if (a[tmp].index == 7)
+                {
+                    //Ve Hinh Chu Nhat
+                    a[tmp].G.DrawRectangle(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
+                   
+                }
+                if (a[tmp].index == 8)
+                {
+                    //Ve Tam Giac Can
+                    Point dinhA = new Point(a[tmp].cX, a[tmp].cY);
+                    Point dinhB = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY);
+                    Point dinhC = new Point(a[tmp].cX + a[tmp].sX / 2, a[tmp].cY + a[tmp].sY);
+
+                    Point[] dinhArray = { dinhA, dinhB, dinhC };
+
+                    a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
+                }
+                if (a[tmp].index == 9)
+                {
+                    // Ve Tam Giac Vuong
+                    Point dinhA = new Point(a[tmp].cX, a[tmp].cY);
+                    Point dinhB = new Point(a[tmp].cX , a[tmp].cY + a[tmp].sY);
+                    Point dinhC = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY);
+
+                    Point[] dinhArray = { dinhA, dinhB, dinhC };
+
+                    a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
+                }
+                if (a[tmp].index == 10)
+                {   
+                    // Ve Hinh Luc Giac
+                    Point p1 = new Point(a[tmp].cX + a[tmp].sX / 4, a[tmp].cY);
+                    Point p2 = new Point(a[tmp].cX + 3 * a[tmp].sX / 4, a[tmp].cY);
+                    Point p3 = new Point(a[tmp].cX, a[tmp].cY + a[tmp].sY / 2);
+                    Point p4 = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY + a[tmp].sY / 2);
+                    Point p5 = new Point(a[tmp].cX + a[tmp].sX / 4, a[tmp].cY + a[tmp].sY);
+                    Point p6 = new Point(a[tmp].cX + 3 * a[tmp].sX / 4, a[tmp].cY + a[tmp].sY);
+                    Point[] pArray = { p1, p2, p4, p6, p5, p3 };
+
+                    a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
+                }
+                if (a[tmp].index == 11)
+                {
+                    // Ve Mui Ten
+                    Point p1 = new Point(a[tmp].cX, a[tmp].cY + a[tmp].sY / 3);
+                    Point p2 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY + a[tmp].sY / 3);
+                    Point p3 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY);
+                    Point p4 = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY + a[tmp].sY / 2);
+                    Point p5 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY + a[tmp].sY);
+                    Point p6 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY + 2 * a[tmp].sY / 3);
+                    Point p7 = new Point(a[tmp].cX, a[tmp].cY + 2 * a[tmp].sY / 3);
+                    Point[] pArray = { p1, p2, p3, p4, p5, p6, p7 };
+
+                    a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
+                }
+                if (a[tmp].index == 12)
+                {
+                    // Ve Ngoi Sao
+
+                }
             }
         }
         private void handleMouseMove(object sender, MouseEventArgs e)
@@ -188,6 +300,13 @@ namespace UI
                         //pen
                         a[tmp].px = e.Location;
                         a[tmp].G.DrawLine(a[tmp].Pen, a[tmp].px, a[tmp].py);
+                        a[tmp].py = a[tmp].px;
+                    }
+                    if (a[tmp].index == 15)
+                    {
+                        //eraser
+                        a[tmp].px = e.Location;
+                        a[tmp].G.DrawLine(a[tmp].Eraser, a[tmp].px, a[tmp].py);
                         a[tmp].py = a[tmp].px;
                     }
                 }
@@ -225,7 +344,11 @@ namespace UI
 
             if (sender is Guna2Button clickedButton)
             {
-
+                int tmp = tcMain.SelectedIndex;
+                if (tmp < a.Count)
+                {
+                    a[tmp].index = 15;
+                }
             }
         }
         private void handleClickFillButton(object sender, EventArgs e)
@@ -257,9 +380,19 @@ namespace UI
 
             }
         }
-        private void handleClickRectangleButton(object sender, EventArgs e)
+        private void handleClickEllipseButton(object sender, EventArgs e)
         {
-
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                if (tmp < a.Count)
+                {
+                    a[tmp].index = 2;
+                }
+            }
+        }
+        private void handleClickSquareButton(object sender, EventArgs e)
+        {
             if (sender is Guna2Button clickedButton)
             {
                 int tmp = tcMain.SelectedIndex;
@@ -269,14 +402,88 @@ namespace UI
                 }
             }
         }
+     
         private void handleClickCircleButton(object sender, EventArgs e)
         {
 
             if (sender is Guna2Button clickedButton)
             {
-
+                int tmp = tcMain.SelectedIndex;
+                if (tmp < a.Count)
+                {
+                    a[tmp].index = 4;
+                }
             }
         }
 
+        private void handleClickRectangleButton(object sender, EventArgs e)
+        {
+
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                if (tmp < a.Count)
+                {
+                    a[tmp].index = 7;
+                }
+            }
+        }
+
+        
+        private void handleClickTriangleButton(object sender, EventArgs e)
+        {
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                if (tmp < a.Count)
+                {
+                    a[tmp].index = 8;
+                }
+            }
+        }
+        private void handleClickright_TriangleButton(object sender, EventArgs e)
+        {
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                if (tmp < a.Count)
+                {
+                    a[tmp].index = 9;
+                }
+            }
+        }
+        private void handleClickHexagonButton(object sender, EventArgs e)
+        {
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                if (tmp < a.Count)
+                {
+                    a[tmp].index = 10;
+                }
+            }
+        }
+        private void handleClickArrowButton(object sender, EventArgs e)
+        {
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                if (tmp < a.Count)
+                {
+                    a[tmp].index = 11;
+                }
+            }
+        }
+        private void handleClickStarButton(object sender, EventArgs e)
+        {
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                if (tmp < a.Count)
+                {
+                    a[tmp].index = 12;
+                }
+            }
+        }
     }
 }

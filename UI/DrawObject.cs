@@ -41,5 +41,6 @@ namespace UI
         public int sizeY { get; set; }
         public Guna2Button bt = new Guna2Button();
 
+        public Pen Eraser { get; set; }
     }
 }

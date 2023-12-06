@@ -22,6 +22,7 @@ namespace UI
             DrawObject tmp = new DrawObject();
             tmp.Color = Color.Black;
             tmp.Pen = new Pen(tmp.Color);
+            tmp.Eraser = new Pen(Color.White, 10);
             tmp.DoDam = 10;
             tmp.py = new Point(0, 0);
             tmp.px = new Point(0, 0);
@@ -159,7 +160,7 @@ namespace UI
             triangleButton.ImageSize = new Size(20, 20);
             triangleButton.BorderRadius = 20;
             triangleButton.Animated = true;
-            triangleButton.Click += handleClickCircleButton;
+            triangleButton.Click += handleClickTriangleButton;
             triangleButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(triangleButton);
             // Hinh Tam Giac Vuong 
@@ -170,7 +171,7 @@ namespace UI
             right_triangleButton.ImageSize = new Size(20, 20);
             right_triangleButton.BorderRadius = 20;
             right_triangleButton.Animated = true;
-            right_triangleButton.Click += handleClickCircleButton;
+            right_triangleButton.Click += handleClickright_TriangleButton;
             right_triangleButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(right_triangleButton);
             // Hinh Vuong
@@ -181,7 +182,7 @@ namespace UI
             squareButton.ImageSize = new Size(20, 20);
             squareButton.BorderRadius = 20;
             squareButton.Animated = true;
-            squareButton.Click += handleClickCircleButton;
+            squareButton.Click += handleClickSquareButton;
             squareButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(squareButton);
             // Hinh Luc Giac
@@ -192,7 +193,7 @@ namespace UI
             hexagonButton.ImageSize = new Size(20, 20);
             hexagonButton.BorderRadius = 20;
             hexagonButton.Animated = true;
-            hexagonButton.Click += handleClickCircleButton;
+            hexagonButton.Click += handleClickHexagonButton;
             hexagonButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(hexagonButton);
             // Hinh Mui Ten
@@ -203,7 +204,7 @@ namespace UI
             arrowButton.ImageSize = new Size(20, 20);
             arrowButton.BorderRadius = 20;
             arrowButton.Animated = true;
-            arrowButton.Click += handleClickCircleButton;
+            arrowButton.Click += handleClickArrowButton;
             arrowButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(arrowButton);
             // Hinh Sao 5 Canh
@@ -214,7 +215,7 @@ namespace UI
             starButton.ImageSize = new Size(20, 20);
             starButton.BorderRadius = 20;
             starButton.Animated = true;
-            starButton.Click += handleClickCircleButton;
+            starButton.Click += handleClickStarButton;
             starButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(starButton);
             // Hinh Elip
@@ -225,7 +226,7 @@ namespace UI
             ellipseButton.ImageSize = new Size(20, 20);
             ellipseButton.BorderRadius = 20;
             ellipseButton.Animated = true;
-            ellipseButton.Click += handleClickCircleButton;
+            ellipseButton.Click += handleClickEllipseButton;
             ellipseButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(ellipseButton);
             // Hinh Duong Cung

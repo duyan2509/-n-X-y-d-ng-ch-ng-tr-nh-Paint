@@ -85,6 +85,6 @@ G:\hoc\Lap trinh truc quan\Github-temp\DoAnPaint\UI\obj\Debug\UI.csproj.CoreComp
 G:\hoc\Lap trinh truc quan\Github-temp\DoAnPaint\UI\obj\Debug\UI.csproj.CopyComplete
 G:\hoc\Lap trinh truc quan\Github-temp\DoAnPaint\UI\obj\Debug\UI.exe
 G:\hoc\Lap trinh truc quan\Github-temp\DoAnPaint\UI\obj\Debug\UI.pdb
-G:\hoc\Lap trinh truc quan\Github-temp\DoAnPaint\UI\obj\Debug\UI.resize.resources
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.resizeForm.resources
 C:\Users\Admin\Source\Repos\DoAnPaint\UI\obj\Debug\UI.resizeForm.resources
+G:\hoc\Lap trinh truc quan\Github-temp\DoAnPaint\UI\obj\Debug\UI.resizeForm.resources
