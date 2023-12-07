@@ -10,8 +10,10 @@ using Brush = System.Drawing.Brush;
 using Color = System.Drawing.Color;
 using Pen = System.Drawing.Pen;
 
+
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using UI.Shape;
 
 namespace UI
 {
@@ -229,8 +231,20 @@ namespace UI
                 if (a[tmp].index == 7)
                 {
                     //Ve Hinh Chu Nhat
+                    HinhChuNhat hcn=new HinhChuNhat(new PointF(a[tmp].cX, a[tmp].cY),new PointF(a[tmp].x, a[tmp].y));
                     a[tmp].G.DrawRectangle(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
-                   
+                    hcn.VeKhung(a[tmp].G);
+                    hcn.VeDiemDieuKhien(a[tmp].G);
+                    
+                    
+
+
+
+
+
+
+
+
                 }
                 if (a[tmp].index == 8)
                 {
@@ -348,6 +362,7 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 15;
+                    
                 }
             }
         }

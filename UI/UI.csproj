@@ -92,6 +92,8 @@
     <Compile Include="resize.Designer.cs">
       <DependentUpon>resize.cs</DependentUpon>
     </Compile>
+    <Compile Include="Shape\HinhChuNhat.cs" />
+    <Compile Include="Shape\HinhVe.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

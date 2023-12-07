@@ -338,13 +338,13 @@ namespace UI
 
 
             int tmp = tcMain.SelectedIndex;
-            Guna2PictureBox pictureBox = new Guna2PictureBox();
+            a[tmp].pictureBox = new Guna2PictureBox();
 
-            pictureBox.MouseDown += handleMouseDown;
-            pictureBox.MouseMove += handleMouseMove;
-            pictureBox.MouseUp += handleMouseUp;
-            pictureBox.MouseClick += handleMouseClick;//fill
-            pictureBox.Paint += handlePaint;
+            a[tmp].pictureBox.MouseDown += handleMouseDown;
+            a[tmp].pictureBox.MouseMove += handleMouseMove;
+            a[tmp].pictureBox.MouseUp += handleMouseUp;
+            a[tmp].pictureBox.MouseClick += handleMouseClick;//fill
+            a[tmp].pictureBox.Paint += handlePaint;
 
             // Button ( trong DrawObject)
             a[tmp].bt.Size = new Size(45, 45);
@@ -361,22 +361,22 @@ namespace UI
             //size
             a[tmp].sizeX = 600;
             a[tmp].sizeY = 400;
-            pictureBox.Size = new Size(a[tmp].sizeX, a[tmp].sizeY);
-            a[tmp].bm = new Bitmap(pictureBox.Width, pictureBox.Height);
-            pictureBox.Image = a[tmp].bm;
+            a[tmp].pictureBox.Size = new Size(a[tmp].sizeX, a[tmp].sizeY);
+            a[tmp].bm = new Bitmap(a[tmp].pictureBox.Width, a[tmp].pictureBox.Height);
+            a[tmp].pictureBox.Image = a[tmp].bm;
             a[tmp].G = Graphics.FromImage(a[tmp].bm);
             a[tmp].G.Clear(Color.White);
-            pictureBox.Invalidate();
+            a[tmp].pictureBox.Invalidate();
             this.SizeChanged += (sender, e) =>
             {
                 backGround.Dock = DockStyle.Right;
                 backGround.Width = this.Width - 270;
                 backGround.BackColor = Color.FromArgb(243, 243, 243);
-                pictureBox.Location = new Point((backGround.Width - pictureBox.Width) / 2, Math.Abs(this.Height - pictureBox.Height) / 2);
+                a[tmp].pictureBox.Location = new Point((backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
             };
 
-            backGround.Controls.Add(pictureBox);
-            pictureBox.Location = new Point((backGround.Width - pictureBox.Width) / 2, Math.Abs(this.Height - pictureBox.Height) / 2);
+            backGround.Controls.Add(a[tmp].pictureBox);
+            a[tmp].pictureBox.Location = new Point((backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
 
 
 
@@ -395,13 +395,13 @@ namespace UI
                     int height = ResizeForm.height;
                     if (ResizeForm.index == 1)
                     {
-                        Image originalImage = pictureBox.Image;
+                        Image originalImage = a[tmp].pictureBox.Image;
                         Bitmap resizedImage = new Bitmap(originalImage, width, height);
                         a[tmp].bm = resizedImage;
-                        pictureBox.Size = new Size(width, height);
-                        pictureBox.Image = a[tmp].bm;
+                        a[tmp].pictureBox.Size = new Size(width, height);
+                        a[tmp].pictureBox.Image = a[tmp].bm;
                         a[tmp].G = Graphics.FromImage(a[tmp].bm);
-                        pictureBox.Location = new Point((backGround.Width - pictureBox.Width) / 2, Math.Abs(this.Height - pictureBox.Height) / 2);
+                        a[tmp].pictureBox.Location = new Point((backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
                     }
                 }
             };

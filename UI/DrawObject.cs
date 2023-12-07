@@ -40,7 +40,7 @@ namespace UI
         public int sizeX { get; set; }
         public int sizeY { get; set; }
         public Guna2Button bt = new Guna2Button();
-
+        public Guna2PictureBox pictureBox = new Guna2PictureBox();
         public Pen Eraser { get; set; }
     }
 }
