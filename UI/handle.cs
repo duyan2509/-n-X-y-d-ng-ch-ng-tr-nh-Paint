@@ -235,9 +235,9 @@ namespace UI
                     a[tmp].G.DrawRectangle(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
                     hcn.VeKhung(a[tmp].G);
                     hcn.VeDiemDieuKhien(a[tmp].G);
-                    
-                    
-
+                    a[tmp].pictureBox.MouseDown += hcn.Mouse_Down;
+                    a[tmp].pictureBox.MouseUp+= hcn.Mouse_Up;
+                    a[tmp].pictureBox.MouseMove += hcn.Mouse_Move;
 
 
 

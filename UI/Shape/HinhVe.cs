@@ -34,6 +34,7 @@ namespace UI.Shape
         protected string text { get; set; }
         protected int nControl { get; set; }
         protected PointF[] frame { get; set; }
+        protected List<Rectangle> rect { get; set; }
         public HinhVe()
         {
             color= Color.Black;
