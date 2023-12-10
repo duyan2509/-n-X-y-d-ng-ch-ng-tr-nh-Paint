@@ -41,6 +41,7 @@ namespace UI.Shape
             thickness = 3.5f;
             isMove = false;
             isResize = false;
+            rect=new List<Rectangle>();
         }
 
         public abstract void Ve(PointF startPoint, PointF endPoint, Graphics G);

@@ -42,5 +42,10 @@ namespace UI
         public Guna2Button bt = new Guna2Button();
         public Guna2PictureBox pictureBox = new Guna2PictureBox();
         public Pen Eraser { get; set; }
+        public bool isResize { get; set; }
+        public Rectangle khungCu { get; set; }
+        public int dragHandle = -1;
+        public Point dragPoint { get; set; }
+        public Rectangle khung { get; set; }
     }
 }

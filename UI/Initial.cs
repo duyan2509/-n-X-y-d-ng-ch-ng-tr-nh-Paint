@@ -30,6 +30,9 @@ namespace UI
             tmp.Fill = false;
             tmp.brush = new SolidBrush(tmp.Color);
             tmp.index = 0;
+            tmp.isResize = false;
+            tmp.dragPoint = new Point(0, 0);
+            tmp.khung = new Rectangle(0, 0, 0, 0);
             a.Add(tmp);
         }
         private void initialPanel()

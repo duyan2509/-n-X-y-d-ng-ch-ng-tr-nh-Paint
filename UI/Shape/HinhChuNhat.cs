@@ -35,7 +35,7 @@ namespace UI.Shape
                 //{
                 //    isMove = true;
                 //}
-                else break;
+                //else break;
             }
         }
         public override void Mouse_Up(object sender, MouseEventArgs e)
