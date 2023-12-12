@@ -46,7 +46,7 @@ namespace UI
                     if (a[tmp].index < 6)
                         a[tmp].Fill = false;
                 }
-
+                
             }
         }
         private void handlePaint(object sender, PaintEventArgs e)
@@ -187,21 +187,21 @@ namespace UI
             if (tmp < a.Count)
             {
                 a[tmp].Paint = false;
-                int checkODK = 0;
-                for (int i = 0; i < 8; i++)
-                    if (GetHandleRect(i).Contains(e.Location))
-                        checkODK = 1;
-                if (!a[tmp].khung.Contains(e.Location) && checkODK == 0)
-                {
-                    a[tmp].isResize = false;
+                //int checkODK = 0;
+                //for (int i = 0; i < 8; i++)
+                //    if (GetHandleRect(i).Contains(e.Location))
+                //        checkODK = 1;
+                //if (!a[tmp].khung.Contains(e.Location) && checkODK == 0)
+                //{
+                //    a[tmp].isResize = false;
 
-                    a[tmp].G.DrawRectangle(a[tmp].Pen, a[tmp].khung);
+                //    a[tmp].G.DrawRectangle(a[tmp].Pen, a[tmp].khung);
 
-                    a[tmp].dragHandle = -1;
+                //    a[tmp].dragHandle = -1;
 
-                }
-                else
-                    a[tmp].isResize = true;
+                //}
+                //else
+                a[tmp].isResize = true;
 
                 ////Ve hinh chinh thuc sau khi tha chuot
                 //if (a[tmp].index == 2)
@@ -436,16 +436,18 @@ namespace UI
             int tmp = tcMain.SelectedIndex;
             if (tmp < a.Count)
             {
-                //int checkODK = 0;
-                //for (int i = 0; i < 8; i++)
-                //    if (GetHandleRect(i).Contains(e.Location))
-                //        checkODK = 1;
-                //if (!a[tmp].khung.Contains(e.Location) && checkODK == 0)
-                //{
-                //    a[tmp].isResize = false;
-                //}
-                //else
-                //    a[tmp].isResize = true;
+                int checkODK = 0;
+                for (int i = 0; i < 8; i++)
+                    if (GetHandleRect(i).Contains(e.Location))
+                        checkODK = 1;
+                if (!a[tmp].khung.IsEmpty  && !a[tmp].khung.Contains(e.Location) && checkODK == 0)
+                {
+                    //MessageBox.Show("2");
+                    a[tmp].isResize = false;
+                    a[tmp].G.DrawRectangle(a[tmp].Pen, a[tmp].khung);
+                    a[tmp].pictureBox.Refresh();
+                    a[tmp].dragHandle = -1;
+                }
                 if (a[tmp].isResize)
                 {
                     for (int i = 0; i < 8; i++)
