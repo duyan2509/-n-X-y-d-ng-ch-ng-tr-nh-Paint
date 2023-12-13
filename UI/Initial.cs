@@ -33,6 +33,7 @@ namespace UI
             tmp.isResize = false;
             tmp.dragPoint = new Point(0, 0);
             tmp.khung = new Rectangle(0, 0, 0, 0);
+            tmp.visibleFrame = false;
             a.Add(tmp);
         }
         private void initialPanel()

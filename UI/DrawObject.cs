@@ -21,6 +21,8 @@ namespace UI
         public Point px { get; set; }
         public Point py { get; set; }
         public int index { get; set; }
+        public int resizeIndex { get; set; }
+        public bool checkFrame { get; set; }
         public bool Fill { get; set; }
         public Brush brush { get; set; }
         public Color Color { get; set; }

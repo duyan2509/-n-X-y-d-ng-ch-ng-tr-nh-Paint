@@ -51,6 +51,7 @@ namespace UI
         }
         private void handlePaint(object sender, PaintEventArgs e)
         {
+            
             int tmp = tcMain.SelectedIndex;
             if (tmp < a.Count)
             {
@@ -58,20 +59,24 @@ namespace UI
                 //Ve hinh khi dang nhan chuot
                 if (a[tmp].Paint)
                 {
-                    if (a[tmp].index == 2)
+                    if (a[tmp].index == 2)//example
                     {
+                        int x = Math.Min(a[tmp].cX, a[tmp].x);
+                        int y = Math.Min(a[tmp].cY, a[tmp].y);
                         //draw elip
-                        g.DrawEllipse(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
+                        g.DrawEllipse(a[tmp].Pen, x, y,Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
 
+                        a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
 
-
-                        a[tmp].khung = new Rectangle(a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
-                        g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
-
-
-                        for (int i = 0; i < 8; i++)
+                        if (a[tmp].visibleFrame)
                         {
-                            e.Graphics.FillRectangle(Brushes.DarkRed, GetHandleRect(i));
+                            g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
+
+
+                            for (int i = 0; i < 8; i++)
+                            {
+                                e.Graphics.FillRectangle(Brushes.DarkRed, GetHandleRect(i));
+                            }
                         }
                     }
                     if (a[tmp].index == 3)
@@ -234,159 +239,11 @@ namespace UI
             if (tmp < a.Count)
             {
                 a[tmp].Paint = false;
-                //int checkODK = 0;
-                //for (int i = 0; i < 8; i++)
-                //    if (GetHandleRect(i).Contains(e.Location))
-                //        checkODK = 1;
-                //if (!a[tmp].khung.Contains(e.Location) && checkODK == 0)
-                //{
-                //    a[tmp].isResize = false;
-
-                //    a[tmp].G.DrawRectangle(a[tmp].Pen, a[tmp].khung);
-
-                //    a[tmp].dragHandle = -1;
-
-                //}
-                //else
+                a[tmp].resizeIndex = a[tmp].index;
                 a[tmp].isResize = true;
 
-                ////Ve hinh chinh thuc sau khi tha chuot
-                //if (a[tmp].index == 2)
-                //{
-                //    //draw elip
-                //    a[tmp].G.DrawEllipse(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
-                //    //tao region
-                //    GraphicsPath path = new GraphicsPath();
-                //    path.AddEllipse(a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
-                //    a[tmp].region.Add(new Region(path));
-                //}
-                //if (a[tmp].index == 3)
-                //{
-                //    //vuong: ve theo canh nho hon
-                //    int side = Math.Abs(a[tmp].sX);
-                //    if (Math.Abs(a[tmp].sX) > Math.Abs(a[tmp].sY))
-                //        side = Math.Abs(a[tmp].sY);
-                //    Point point1 = new Point(a[tmp].cX, a[tmp].cY);
-                //    Point point3 = new Point(a[tmp].cX, a[tmp].cY);
-                //    if (a[tmp].x > a[tmp].cX)
-                //        point3.X += side;
-                //    else if (a[tmp].x < a[tmp].cX)
-                //        point3.X -= side;
-                //    if (a[tmp].y > a[tmp].cY)
-                //        point3.Y += side;
-                //    else if (a[tmp].y < a[tmp].cY)
-                //        point3.Y -= side;
-                //    Point point2 = new Point(point1.X, point3.Y);
-                //    Point point4 = new Point(point3.X, point1.Y);
-                //    Point[] ptsArray = { point1, point2, point3, point4 };
-                //    a[tmp].G.DrawPolygon(a[tmp].Pen, ptsArray);
-                //    //tao region
-                //    GraphicsPath path = new GraphicsPath();
-                //    path.AddPolygon(ptsArray);
-                //    a[tmp].region.Add(new Region(path));
-                //}
-                //if (a[tmp].index == 4)
-                //{
-                //    //ve hinh tron
-                //    int side = 0;
-                //    if (Math.Abs(a[tmp].sX) > Math.Abs(a[tmp].sY))
-                //        side = Math.Abs(a[tmp].sY);
-                //    else
-                //        side = Math.Abs(a[tmp].sX);
-                //    int dauW = 1;
-                //    int dauH = 1;
-                //    if (a[tmp].sX < 0)
-                //        dauW = -1;
-                //    if (a[tmp].sY < 0)
-                //        dauH = -1;
-                //    a[tmp].G.DrawEllipse(a[tmp].Pen, a[tmp].cX, a[tmp].cY, dauW * side, dauH * side);
-                //    //tao region
-                //    GraphicsPath path = new GraphicsPath();
-                //    path.AddEllipse(a[tmp].cX, a[tmp].cY, dauW * side, dauH * side);
-                //    a[tmp].region.Add(new Region(path));
-
-                //}
-                //if (a[tmp].index == 5)
-                //{
-                //    //Ve line
-                //    a[tmp].G.DrawLine(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].x, a[tmp].y);
-                //}
-                //if (a[tmp].index == 7)
-                //{
-                //    //Ve Hinh Chu Nhat
-                //    //HinhChuNhat hcn=new HinhChuNhat(new PointF(a[tmp].cX, a[tmp].cY),new PointF(a[tmp].x, a[tmp].y));
-
-                //    a[tmp].G.DrawRectangle(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
-
-                //    dragHandle = -1;
-
-                //    //hcn.VeKhung(a[tmp].G);
-                //    //hcn.VeDiemDieuKhien(a[tmp].G);
-                //    //a[tmp].pictureBox.MouseDown += hcn.Mouse_Down;
-                //    //a[tmp].pictureBox.MouseUp+= hcn.Mouse_Up;
-                //    //a[tmp].pictureBox.MouseMove += hcn.Mouse_Move;
-
-
-
-
-
-
-
-                //}
-                //if (a[tmp].index == 8)
-                //{
-                //    //Ve Tam Giac Can
-                //    Point dinhA = new Point(a[tmp].cX, a[tmp].cY);
-                //    Point dinhB = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY);
-                //    Point dinhC = new Point(a[tmp].cX + a[tmp].sX / 2, a[tmp].cY + a[tmp].sY);
-
-                //    Point[] dinhArray = { dinhA, dinhB, dinhC };
-
-                //    a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
-                //}
-                //if (a[tmp].index == 9)
-                //{
-                //    // Ve Tam Giac Vuong
-                //    Point dinhA = new Point(a[tmp].cX, a[tmp].cY);
-                //    Point dinhB = new Point(a[tmp].cX , a[tmp].cY + a[tmp].sY);
-                //    Point dinhC = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY);
-
-                //    Point[] dinhArray = { dinhA, dinhB, dinhC };
-
-                //    a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
-                //}
-                //if (a[tmp].index == 10)
-                //{   
-                //    // Ve Hinh Luc Giac
-                //    Point p1 = new Point(a[tmp].cX + a[tmp].sX / 4, a[tmp].cY);
-                //    Point p2 = new Point(a[tmp].cX + 3 * a[tmp].sX / 4, a[tmp].cY);
-                //    Point p3 = new Point(a[tmp].cX, a[tmp].cY + a[tmp].sY / 2);
-                //    Point p4 = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY + a[tmp].sY / 2);
-                //    Point p5 = new Point(a[tmp].cX + a[tmp].sX / 4, a[tmp].cY + a[tmp].sY);
-                //    Point p6 = new Point(a[tmp].cX + 3 * a[tmp].sX / 4, a[tmp].cY + a[tmp].sY);
-                //    Point[] pArray = { p1, p2, p4, p6, p5, p3 };
-
-                //    a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
-                //}
-                //if (a[tmp].index == 11)
-                //{
-                //    // Ve Mui Ten
-                //    Point p1 = new Point(a[tmp].cX, a[tmp].cY + a[tmp].sY / 3);
-                //    Point p2 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY + a[tmp].sY / 3);
-                //    Point p3 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY);
-                //    Point p4 = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY + a[tmp].sY / 2);
-                //    Point p5 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY + a[tmp].sY);
-                //    Point p6 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY + 2 * a[tmp].sY / 3);
-                //    Point p7 = new Point(a[tmp].cX, a[tmp].cY + 2 * a[tmp].sY / 3);
-                //    Point[] pArray = { p1, p2, p3, p4, p5, p6, p7 };
-
-                //    a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
-                //}
-                //if (a[tmp].index == 12)
-                //{
-                //    // Ve Ngoi Sao
-
-                //}
+                a[tmp].visibleFrame = true;
+                a[tmp].pictureBox.Invalidate();
             }
         }
         private void handleMouseMove(object sender, MouseEventArgs e)
@@ -417,9 +274,6 @@ namespace UI
                     }
                     if (a[tmp].isResize)
                     {
-
-
-
                         if (a[tmp].dragHandle == 0)
                         {
                             int diffY = a[tmp].dragPoint.Y - e.Location.Y;
@@ -476,9 +330,6 @@ namespace UI
                             int newY = a[tmp].khung.Top + e.Y - a[tmp].cY;
                             a[tmp].khung = new Rectangle(newX, newY, a[tmp].khung.Width, a[tmp].khung.Height); // chinh sua net dut
 
-                            
-
-
                             a[tmp].pictureBox.Invalidate();
                             a[tmp].cX = e.X;
                             a[tmp].cY = e.Y;
@@ -506,7 +357,9 @@ namespace UI
                         checkODK = 1;
                 if (checkODK == 0 && !a[tmp].khung.IsEmpty  && !a[tmp].khung.Contains(e.Location) )
                 {
-                    if (a[tmp].index == 7)
+                    // ve chinh thuc
+                    a[tmp].visibleFrame = false;
+                    if (a[tmp].resizeIndex == 7)
                     {
                         a[tmp].isResize = false;
                         a[tmp].G.DrawRectangle(a[tmp].Pen, a[tmp].khung);
@@ -514,7 +367,7 @@ namespace UI
                         a[tmp].dragHandle = -1;
                         a[tmp].khung = new Rectangle(Top, 0, 0, 0);
                     }
-                    else if (a[tmp].index==2)
+                    else if (a[tmp].resizeIndex == 2)
                     {
                         a[tmp].isResize = false;
                         
@@ -523,7 +376,7 @@ namespace UI
                         a[tmp].dragHandle = -1;
                         a[tmp].khung = new Rectangle(Top, 0, 0, 0);
                     }
-                    else if (a[tmp].index==11)
+                    else if (a[tmp].resizeIndex == 11)
                     {
                         a[tmp].isResize = false;
 
@@ -615,6 +468,8 @@ namespace UI
             p.Offset(-2, -2);
             return new Rectangle(p, new Size(5, 5));
         }
+        
+       
         private void handleClickPenButton(object sender, EventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
