@@ -141,19 +141,32 @@ namespace UI
                     if (a[tmp].index == 8)
                     {
                         //Ve Tam Giac Can
-                        Point dinhA = new Point(a[tmp].cX, a[tmp].cY);
-                        Point dinhB = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY);
-                        Point dinhC = new Point(a[tmp].cX + a[tmp].sX / 2, a[tmp].cY + a[tmp].sY);
-                        Point[] dinhArray = { dinhA, dinhB, dinhC };
+                        int x = Math.Min(a[tmp].cX, a[tmp].x);
+                        int y = Math.Min(a[tmp].cY, a[tmp].y);
+                        int lX = Math.Max(a[tmp].cX, a[tmp].x);
+                        int lY = Math.Max(a[tmp].cY, a[tmp].y);
 
+                        a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
+
+
+                        Point dinhA = new Point(lX, lY);
+                        Point dinhB = new Point(x, lY);
+                        Point dinhC = new Point((lX + x) /2 , y);
+                        Point[] dinhArray = { dinhC, dinhA, dinhB };
                         g.DrawPolygon(a[tmp].Pen, dinhArray);
+                       
                     }
                     if (a[tmp].index == 9)
                     {
                         // Ve Tam Giac Vuong
-                        Point dinhA = new Point(a[tmp].cX, a[tmp].cY);
-                        Point dinhB = new Point(a[tmp].cX, a[tmp].cY + a[tmp].sY);
-                        Point dinhC = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY);
+                        int x = Math.Min(a[tmp].cX, a[tmp].x);
+                        int y = Math.Min(a[tmp].cY, a[tmp].y);
+                        int lX = Math.Max(a[tmp].cX, a[tmp].x);
+                        int lY = Math.Max(a[tmp].cY, a[tmp].y);
+                        a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
+                        Point dinhA = new Point(x, y);
+                        Point dinhB = new Point(x, lY);
+                        Point dinhC = new Point(lX, lY);
 
                         Point[] dinhArray = { dinhA, dinhB, dinhC };
 
@@ -162,31 +175,41 @@ namespace UI
                     if (a[tmp].index == 10)
                     {
                         // Ve Hinh Luc Giac
-                        Point p1 = new Point(a[tmp].cX + a[tmp].sX / 4, a[tmp].cY);
-                        Point p2 = new Point(a[tmp].cX + 3 * a[tmp].sX / 4, a[tmp].cY);
-                        Point p3 = new Point(a[tmp].cX, a[tmp].cY + a[tmp].sY / 2);
-                        Point p4 = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY + a[tmp].sY / 2);
-                        Point p5 = new Point(a[tmp].cX + a[tmp].sX / 4, a[tmp].cY + a[tmp].sY);
-                        Point p6 = new Point(a[tmp].cX + 3 * a[tmp].sX / 4, a[tmp].cY + a[tmp].sY);
-                        Point[] pArray = { p1, p2, p4, p6, p5, p3 };
+                        int x = Math.Min(a[tmp].cX, a[tmp].x);
+                        int y = Math.Min(a[tmp].cY, a[tmp].y);
+                        int lX = Math.Max(a[tmp].cX, a[tmp].x);
+                        int lY = Math.Max(a[tmp].cY, a[tmp].y);
+                        a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
+                        // Calculate the points for the hexagon
+                        Point p1 = new Point(x + (a[tmp].khung.Width) / 4, y); // Top vertex
+                        Point p2 = new Point(lX - (a[tmp].khung.Width) / 4, y); // Top-right vertex
+                        Point p3 = new Point(lX, y + (a[tmp].khung.Height) / 2); // Right vertex
+                        Point p4 = new Point(lX - (a[tmp].khung.Width) / 4, lY); // Bottom-right vertex
+                        Point p5 = new Point(x + (a[tmp].khung.Width) / 4, lY); // Bottom-left vertex
+                        Point p6 = new Point(x, y + (a[tmp].khung.Height) / 2);  // Bottom-left vertex
+                        Point[] pArray = { p1, p2, p3, p4, p5, p6 };
 
                         g.DrawPolygon(a[tmp].Pen, pArray);
                     }
                     if (a[tmp].index == 11)
                     {
+                        int x = Math.Min(a[tmp].cX, a[tmp].x);
+                        int y = Math.Min(a[tmp].cY, a[tmp].y);
+                        int lX = Math.Max(a[tmp].cX, a[tmp].x);
+                        int lY = Math.Max(a[tmp].cY, a[tmp].y);
+                        a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
                         // Ve Mui Ten
-                        Point p1 = new Point(a[tmp].cX, a[tmp].cY + a[tmp].sY / 3);
-                        Point p2 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY + a[tmp].sY / 3);
-                        Point p3 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY);
-                        Point p4 = new Point(a[tmp].cX + a[tmp].sX, a[tmp].cY + a[tmp].sY / 2);
-                        Point p5 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY + a[tmp].sY);
-                        Point p6 = new Point(a[tmp].cX + 2 * a[tmp].sX / 3, a[tmp].cY + 2 * a[tmp].sY / 3);
-                        Point p7 = new Point(a[tmp].cX, a[tmp].cY + 2 * a[tmp].sY / 3);
+                        Point p1 = new Point(lX, y + (a[tmp].khung.Height / 2)); 
+                        Point p2 = new Point(lX - (a[tmp].khung.Width / 3), y); 
+                        Point p3 = new Point(lX - (a[tmp].khung.Width / 3), y + (a[tmp].khung.Height / 3)); 
+                        Point p4 = new Point(x, y + (a[tmp].khung.Height / 3)); 
+                        Point p5 = new Point(x, lY - (a[tmp].khung.Height / 3)); 
+                        Point p6 = new Point(lX - (a[tmp].khung.Width / 3), lY - (a[tmp].khung.Height / 3)); 
+                        Point p7 = new Point(lX - (a[tmp].khung.Width / 3), lY); 
                         Point[] pArray = { p1, p2, p3, p4, p5, p6, p7 };
 
                         g.DrawPolygon(a[tmp].Pen, pArray);
 
-                        a[tmp].khung = new Rectangle(p1.X, p3.Y, Math.Abs(p4.X-p1.X),Math.Abs(p3.Y-p5.Y));
                         g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
 
 
@@ -207,21 +230,57 @@ namespace UI
                         g.DrawEllipse(a[tmp].Pen, a[tmp].khung);
                     else if (a[tmp].index == 3 || a[tmp].index == 7)
                         g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
-                    else if (a[tmp].index == 8 || a[tmp].index == 9 || a[tmp].index == 10 || a[tmp].index == 11)
+                    else if(a[tmp].index == 8)
+                    {   
+                        // tam giac can
+                        Point dinhA = new Point(a[tmp].khung.X + a[tmp].khung.Width, a[tmp].khung.Y + a[tmp].khung.Height);
+                        Point dinhB = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height);
+                        Point dinhC = new Point((a[tmp].khung.X + a[tmp].khung.Width + a[tmp].khung.X) / 2, a[tmp].khung.Y);
+                        Point[] dinhArray = { dinhC, dinhA, dinhB };
+                        g.DrawPolygon(a[tmp].Pen, dinhArray);
+                    }
+                    else if(a[tmp].index == 9)
                     {
-                        Point p1 = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height / 3);
-                        Point p2 = new Point(a[tmp].khung.X + 2 * a[tmp].khung.Width / 3, a[tmp].khung.Y + a[tmp].khung.Height / 3);
-                        Point p3 = new Point(a[tmp].khung.X + 2 * a[tmp].khung.Width / 3, a[tmp].khung.Y);
-                        Point p4 = new Point(a[tmp].khung.X + a[tmp].khung.Width, a[tmp].khung.Y + a[tmp].khung.Height / 2);
-                        Point p5 = new Point(a[tmp].khung.X + 2 * a[tmp].khung.Width / 3, a[tmp].khung.Y + a[tmp].khung.Height);
-                        Point p6 = new Point(a[tmp].khung.X + 2 * a[tmp].khung.Width / 3, a[tmp].khung.Y + 2 * a[tmp].khung.Height / 3);
-                        Point p7 = new Point(a[tmp].khung.X, a[tmp].khung.Y + 2 * a[tmp].khung.Height / 3);
+                        Point dinhA = new Point(a[tmp].khung.X , a[tmp].khung.Y);
+                        Point dinhB = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height);
+                        Point dinhC = new Point(a[tmp].khung.X + a[tmp].khung.Width , a[tmp].khung.Y + a[tmp].khung.Height);
+                        Point[] dinhArray = { dinhC, dinhA, dinhB };
+                        g.DrawPolygon(a[tmp].Pen, dinhArray);
+                    }
+                    else if(a[tmp].index == 10)
+                    {
+                        int x = a[tmp].khung.X;
+                        int y = a[tmp].khung.Y;
+                        int lX = a[tmp].khung.X + a[tmp].khung.Width;
+                        int lY = a[tmp].khung.Y + a[tmp].khung.Height;
+                        Point p1 = new Point(x + (a[tmp].khung.Width) / 4, y); 
+                        Point p2 = new Point(lX - (a[tmp].khung.Width) / 4, y); 
+                        Point p3 = new Point(lX, y + (a[tmp].khung.Height) / 2);
+                        Point p4 = new Point(lX - (a[tmp].khung.Width) / 4, lY);
+                        Point p5 = new Point(x + (a[tmp].khung.Width) / 4, lY);
+                        Point p6 = new Point(x, y + (a[tmp].khung.Height) / 2);
+                        Point[] pArray = { p1, p2, p3, p4, p5, p6 };
+
+                        g.DrawPolygon(a[tmp].Pen, pArray);
+                    }
+                    else if (a[tmp].index == 11)
+                    {    // mui ten phai
+                        int x = a[tmp].khung.X;
+                        int y = a[tmp].khung.Y;
+                        int lX = a[tmp].khung.X + a[tmp].khung.Width;
+                        int lY = a[tmp].khung.Y + a[tmp].khung.Height;
+                        Point p1 = new Point(lX, y + (a[tmp].khung.Height / 2));
+                        Point p2 = new Point(lX - (a[tmp].khung.Width / 3), y);
+                        Point p3 = new Point(lX - (a[tmp].khung.Width / 3), y + (a[tmp].khung.Height / 3));
+                        Point p4 = new Point(x, y + (a[tmp].khung.Height / 3));
+                        Point p5 = new Point(x, lY - (a[tmp].khung.Height / 3));
+                        Point p6 = new Point(lX - (a[tmp].khung.Width / 3), lY - (a[tmp].khung.Height / 3));
+                        Point p7 = new Point(lX - (a[tmp].khung.Width / 3), lY);
                         Point[] pArray = { p1, p2, p3, p4, p5, p6, p7 };
 
                         g.DrawPolygon(a[tmp].Pen, pArray);
                     }
-                        //a[tmp].index==8|| a[tmp].index == 9 || a[tmp].index == 10 ||
-
+                    
 
                     for (int i = 0; i < 8; i++)
                     {
@@ -274,6 +333,7 @@ namespace UI
                     }
                     if (a[tmp].isResize)
                     {
+
                         if (a[tmp].dragHandle == 0)
                         {
                             int diffY = a[tmp].dragPoint.Y - e.Location.Y;
@@ -318,10 +378,11 @@ namespace UI
                             int diff = a[tmp].dragPoint.X - e.Location.X;
                             a[tmp].khung = new Rectangle(a[tmp].khungCu.Left - diff, a[tmp].khungCu.Top, a[tmp].khungCu.Width + diff, a[tmp].khungCu.Height);
                         }
+                        if (a[tmp].dragHandle > -1) {
 
 
-                        if (a[tmp].dragHandle > -1)
                             a[tmp].pictureBox.Invalidate();
+                        }
                         else
                         {
                             //handle move
@@ -376,17 +437,64 @@ namespace UI
                         a[tmp].dragHandle = -1;
                         a[tmp].khung = new Rectangle(Top, 0, 0, 0);
                     }
-                    else if (a[tmp].resizeIndex == 11)
+                    else if(a[tmp].resizeIndex == 8)
+                    {
+                        a[tmp].isResize = false;
+                        Point dinhA = new Point(a[tmp].khung.X + a[tmp].khung.Width, a[tmp].khung.Y + a[tmp].khung.Height);
+                        Point dinhB = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height);
+                        Point dinhC = new Point((a[tmp].khung.X + a[tmp].khung.Width + a[tmp].khung.X) / 2, a[tmp].khung.Y);
+                        Point[] dinhArray = { dinhC, dinhA, dinhB };
+                        a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
+                        a[tmp].pictureBox.Refresh();
+                        a[tmp].dragHandle = -1;
+                        a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                    }
+                    else if(a[tmp].resizeIndex == 9)
+                    {
+                        a[tmp].isResize = false;
+                        Point dinhA = new Point(a[tmp].khung.X, a[tmp].khung.Y);
+                        Point dinhB = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height);
+                        Point dinhC = new Point(a[tmp].khung.X + a[tmp].khung.Width, a[tmp].khung.Y + a[tmp].khung.Height);
+                        Point[] dinhArray = { dinhC, dinhA, dinhB };
+                        a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
+                        a[tmp].pictureBox.Refresh();
+                        a[tmp].dragHandle = -1;
+                        a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                    }
+                    else if(a[tmp].resizeIndex == 10)
                     {
                         a[tmp].isResize = false;
 
-                        Point p1 = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height / 3);
-                        Point p2 = new Point(a[tmp].khung.X + 2 * a[tmp].khung.Width / 3, a[tmp].khung.Y + a[tmp].khung.Height / 3);
-                        Point p3 = new Point(a[tmp].khung.X + 2 * a[tmp].khung.Width / 3, a[tmp].khung.Y);
-                        Point p4 = new Point(a[tmp].khung.X + a[tmp].khung.Width, a[tmp].khung.Y + a[tmp].khung.Height / 2);
-                        Point p5 = new Point(a[tmp].khung.X + 2 * a[tmp].khung.Width / 3, a[tmp].khung.Y + a[tmp].khung.Height);
-                        Point p6 = new Point(a[tmp].khung.X + 2 * a[tmp].khung.Width / 3, a[tmp].khung.Y + 2 * a[tmp].khung.Height / 3);
-                        Point p7 = new Point(a[tmp].khung.X, a[tmp].khung.Y + 2 * a[tmp].khung.Height / 3);
+                        int x = a[tmp].khung.X;
+                        int y = a[tmp].khung.Y;
+                        int lX = a[tmp].khung.X + a[tmp].khung.Width;
+                        int lY = a[tmp].khung.Y + a[tmp].khung.Height;
+                        Point p1 = new Point(x + (a[tmp].khung.Width) / 4, y);
+                        Point p2 = new Point(lX - (a[tmp].khung.Width) / 4, y);
+                        Point p3 = new Point(lX, y + (a[tmp].khung.Height) / 2);
+                        Point p4 = new Point(lX - (a[tmp].khung.Width) / 4, lY);
+                        Point p5 = new Point(x + (a[tmp].khung.Width) / 4, lY);
+                        Point p6 = new Point(x, y + (a[tmp].khung.Height) / 2);
+                        Point[] pArray = { p1, p2, p3, p4, p5, p6 };
+                        a[tmp].pictureBox.Refresh();
+                        a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
+                        a[tmp].dragHandle = -1;
+                        a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                    }
+                    else if (a[tmp].resizeIndex == 11)
+                    {
+                        a[tmp].isResize = false;
+                        int x = a[tmp].khung.X;
+                        int y = a[tmp].khung.Y;
+                        int lX = a[tmp].khung.X + a[tmp].khung.Width;
+                        int lY = a[tmp].khung.Y + a[tmp].khung.Height;
+                        Point p1 = new Point(lX, y + (a[tmp].khung.Height / 2));
+                        Point p2 = new Point(lX - (a[tmp].khung.Width / 3), y);
+                        Point p3 = new Point(lX - (a[tmp].khung.Width / 3), y + (a[tmp].khung.Height / 3));
+                        Point p4 = new Point(x, y + (a[tmp].khung.Height / 3));
+                        Point p5 = new Point(x, lY - (a[tmp].khung.Height / 3));
+                        Point p6 = new Point(lX - (a[tmp].khung.Width / 3), lY - (a[tmp].khung.Height / 3));
+                        Point p7 = new Point(lX - (a[tmp].khung.Width / 3), lY);
                         Point[] pArray = { p1, p2, p3, p4, p5, p6, p7 };
 
                         a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
