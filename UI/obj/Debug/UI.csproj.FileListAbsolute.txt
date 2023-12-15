@@ -88,3 +88,4 @@ G:\hoc\Lap trinh truc quan\Github-temp\DoAnPaint\UI\obj\Debug\UI.pdb
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.resizeForm.resources
 C:\Users\Admin\Source\Repos\DoAnPaint\UI\obj\Debug\UI.resizeForm.resources
 G:\hoc\Lap trinh truc quan\Github-temp\DoAnPaint\UI\obj\Debug\UI.resizeForm.resources
+G:\hoc\Lap trinh truc quan\Github-temp2\DoAnPaint\UI\obj\Debug\UI.resizeForm.resources

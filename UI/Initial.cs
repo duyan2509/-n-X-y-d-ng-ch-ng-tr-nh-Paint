@@ -144,18 +144,18 @@ namespace UI
             shapePanel.Controls.Add(rectangleButton);
 
 
-            // Hinh tron
-            Guna2Button circleButton = new Guna2Button();
-            circleButton.Size = new Size(45, 45);
-            circleButton.Location = new Point(60, 0);
-            circleButton.FillColor = Color.FromArgb(94, 148, 255);
-            circleButton.BorderRadius = 20;
-            circleButton.Image = Properties.Resources.icons8_circle_50_white;
-            circleButton.ImageSize = new Size(20, 20);
-            circleButton.Animated = true;
-            circleButton.Click += handleClickCircleButton;
-            circleButton.Cursor = Cursors.Hand;
-            shapePanel.Controls.Add(circleButton);
+            // Hinh Line
+            Guna2Button lineButton = new Guna2Button();
+            lineButton.Size = new Size(45, 45);
+            lineButton.Location = new Point(60, 0);
+            lineButton.FillColor = Color.FromArgb(94, 148, 255);
+            lineButton.BorderRadius = 20;
+            lineButton.Image = Properties.Resources.icons8_line_48_white ;
+            lineButton.ImageSize = new Size(20, 20);
+            lineButton.Animated = true;
+            lineButton.Click += handleClickLineButton;
+            lineButton.Cursor = Cursors.Hand;
+            shapePanel.Controls.Add(lineButton);
             // Hinh Tam Giac Can
             Guna2Button triangleButton = new Guna2Button();
             triangleButton.Size = new Size(45, 45);
@@ -241,7 +241,7 @@ namespace UI
             arcButton.ImageSize = new Size(20, 20);
             arcButton.BorderRadius = 20;
             arcButton.Animated = true;
-            arcButton.Click += handleClickCircleButton;
+            //arcButton.Click += handleClickCircleButton;
             arcButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(arcButton);
 

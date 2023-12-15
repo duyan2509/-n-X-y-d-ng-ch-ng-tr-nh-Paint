@@ -79,48 +79,8 @@ namespace UI
                             }
                         }
                     }
-                    if (a[tmp].index == 3)
-                    {
-                        //vuong: ve theo canh nho hon
-                        int side = Math.Abs(a[tmp].sX);
-                        if (Math.Abs(a[tmp].sX) > Math.Abs(a[tmp].sY))
-                            side = Math.Abs(a[tmp].sY);
-                        Point point1 = new Point(a[tmp].cX, a[tmp].cY);
-                        Point point3 = new Point(a[tmp].cX, a[tmp].cY);
-                        if (a[tmp].x > a[tmp].cX)
-                            point3.X += side;
-                        else if (a[tmp].x < a[tmp].cX)
-                            point3.X -= side;
-                        if (a[tmp].y > a[tmp].cY)
-                            point3.Y += side;
-                        else if (a[tmp].y < a[tmp].cY)
-                            point3.Y -= side;
-                        Point point2 = new Point(point1.X, point3.Y);
-                        Point point4 = new Point(point3.X, point1.Y);
-                        Point[] ptsArray = { point1, point2, point3, point4 };
-                        g.DrawPolygon(a[tmp].Pen, ptsArray);
-                    }
-                    if (a[tmp].index == 4)
-                    {
-                        //ve hinh tron
-                        int side = 0;
-                        if (Math.Abs(a[tmp].sX) > Math.Abs(a[tmp].sY))
-                            side = Math.Abs(a[tmp].sY);
-                        else
-                            side = Math.Abs(a[tmp].sX);
-                        int dauW = 1;
-                        int dauH = 1;
-                        if (a[tmp].sX < 0)
-                            dauW = -1;
-                        if (a[tmp].sY < 0)
-                            dauH = -1;
-                        g.DrawEllipse(a[tmp].Pen, a[tmp].cX, a[tmp].cY, dauW * side, dauH * side);
 
-
-
-
-
-                    }
+    
                     if (a[tmp].index == 5)
                     {
                         //Ve line
@@ -218,6 +178,37 @@ namespace UI
                             e.Graphics.FillRectangle(Brushes.DarkRed, GetHandleRect(i));
                         }
                     }
+                    if(a[tmp].index == 12)
+                    {
+                        // Ve ngoi sao
+                        int x = Math.Min(a[tmp].cX, a[tmp].x);
+                        int y = Math.Min(a[tmp].cY, a[tmp].y);
+                        int lX = Math.Max(a[tmp].cX, a[tmp].x);
+                        int lY = Math.Max(a[tmp].cY, a[tmp].y);
+                        a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
+
+                        Point p1 = new Point(x + (a[tmp].khung.Width / 2), y);
+                        Point p2 = new Point(lX - (5 * a[tmp].khung.Width / 14), y + (3 * (a[tmp].khung.Height) / 8));
+                        Point p3 = new Point(lX, y + (3 * (a[tmp].khung.Height) / 8));
+                        Point p4 = new Point(lX - (2 * a[tmp].khung.Width / 7), lY - (5 * a[tmp].khung.Height / 14));
+                        Point p5 = new Point(lX - (3 * a[tmp].khung.Width / 14), lY);
+                        Point p6 = new Point(x + a[tmp].khung.Width / 2, lY - (3 * a[tmp].khung.Height / 14));
+                        Point p7 = new Point(x + (3 * a[tmp].khung.Width / 14), lY);
+                        Point p8 = new Point(x + (2 * a[tmp].khung.Width / 7), lY - (5 * a[tmp].khung.Height / 14));
+                        Point p9 = new Point(x, y + (3 * (a[tmp].khung.Height) / 8));
+                        Point p10 = new Point(x + (5 * a[tmp].khung.Width / 14), y + (3 * (a[tmp].khung.Height) / 8));
+                        Point[] pArray = { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 };
+
+                        g.DrawPolygon(a[tmp].Pen, pArray);
+
+                        g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
+
+
+                        for (int i = 0; i < 10; i++)
+                        {
+                            e.Graphics.FillRectangle(Brushes.DarkRed, GetHandleRect(i));
+                        }
+                    }
 
 
                 }
@@ -280,7 +271,27 @@ namespace UI
 
                         g.DrawPolygon(a[tmp].Pen, pArray);
                     }
-                    
+                    else if (a[tmp].index == 12)
+                    {
+                        // Ngoi sao
+                        int x = a[tmp].khung.X;
+                        int y = a[tmp].khung.Y;
+                        int lX = a[tmp].khung.X + a[tmp].khung.Width;
+                        int lY = a[tmp].khung.Y + a[tmp].khung.Height;
+                        Point p1 = new Point(x + (a[tmp].khung.Width / 2), y);
+                        Point p2 = new Point(lX - (5 * a[tmp].khung.Width / 14), y + (3 * (a[tmp].khung.Height) / 8));
+                        Point p3 = new Point(lX, y + (3 * (a[tmp].khung.Height) / 8));
+                        Point p4 = new Point(lX - (2 * a[tmp].khung.Width / 7), lY - (5 * a[tmp].khung.Height / 14));
+                        Point p5 = new Point(lX - (3 * a[tmp].khung.Width / 14), lY);
+                        Point p6 = new Point(x + a[tmp].khung.Width / 2, lY - (3 * a[tmp].khung.Height / 14));
+                        Point p7 = new Point(x + (3 * a[tmp].khung.Width / 14), lY);
+                        Point p8 = new Point(x + (2 * a[tmp].khung.Width / 7), lY - (5 * a[tmp].khung.Height / 14));
+                        Point p9 = new Point(x, y + (3 * (a[tmp].khung.Height) / 8));
+                        Point p10 = new Point(x + (5 * a[tmp].khung.Width / 14), y + (3 * (a[tmp].khung.Height) / 8));
+                        Point[] pArray = { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 };
+
+                        g.DrawPolygon(a[tmp].Pen, pArray);
+                    }
 
                     for (int i = 0; i < 8; i++)
                     {
@@ -652,7 +663,7 @@ namespace UI
             }
         }
      
-        private void handleClickCircleButton(object sender, EventArgs e)
+        private void handleClickLineButton(object sender, EventArgs e)
         {
 
             if (sender is Guna2Button clickedButton)
