@@ -37,6 +37,7 @@ namespace UI
         public int sY { get; set; }
         public Graphics G { get; set; }
         public Bitmap bm { get; set; }
+        public Bitmap bmSelect { get; set; }
 
         public int sizeX { get; set; }
         public int sizeY { get; set; }
