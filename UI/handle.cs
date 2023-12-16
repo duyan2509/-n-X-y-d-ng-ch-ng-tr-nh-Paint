@@ -64,39 +64,26 @@ namespace UI
                         int x = Math.Min(a[tmp].cX, a[tmp].x);
                         int y = Math.Min(a[tmp].cY, a[tmp].y);
                         //draw elip
-                        g.DrawEllipse(a[tmp].Pen, x, y,Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
+                        a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
+                        g.DrawEllipse(a[tmp].Pen, a[tmp].khung);
 
                         a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
 
-                        if (a[tmp].visibleFrame)
-                        {
-                            g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
-
-
-                            for (int i = 0; i < 8; i++)
-                            {
-                                e.Graphics.FillRectangle(Brushes.DarkRed, GetHandleRect(i));
-                            }
-                        }
                     }
-
-    
                     if (a[tmp].index == 5)
                     {
                         //Ve line
+                        a[tmp].khung = new Rectangle(a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
+
                         g.DrawLine(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].x, a[tmp].y);
                     }
                     if (a[tmp].index == 7)
                     {
                         //Ve Hinh Chu Nhat
-                        a[tmp].khung=new Rectangle(a[tmp].cX, a[tmp].cY, a[tmp].sX, a[tmp].sY);
+                        int x = Math.Min(a[tmp].cX, a[tmp].x);
+                        int y = Math.Min(a[tmp].cY, a[tmp].y);
+                        a[tmp].khung=new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
                         g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
-
-
-                        for (int i = 0; i < 8; i++)
-                        {
-                            e.Graphics.FillRectangle(Brushes.DarkRed, GetHandleRect(i));
-                        }
                     }
                     if (a[tmp].index == 8)
                     {
@@ -169,14 +156,6 @@ namespace UI
                         Point[] pArray = { p1, p2, p3, p4, p5, p6, p7 };
 
                         g.DrawPolygon(a[tmp].Pen, pArray);
-
-                        g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
-
-
-                        for (int i = 0; i < 8; i++)
-                        {
-                            e.Graphics.FillRectangle(Brushes.DarkRed, GetHandleRect(i));
-                        }
                     }
                     if(a[tmp].index == 12)
                     {
@@ -200,27 +179,24 @@ namespace UI
                         Point[] pArray = { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 };
 
                         g.DrawPolygon(a[tmp].Pen, pArray);
-
-                        g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
-
-
-                        for (int i = 0; i < 10; i++)
-                        {
-                            e.Graphics.FillRectangle(Brushes.DarkRed, GetHandleRect(i));
-                        }
                     }
 
 
                 }
                 if (a[tmp].isResize)
                 {
-                    g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
+                    if (a[tmp].index!=5)
+                        g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
 
 
                     if (a[tmp].index == 2)
                         g.DrawEllipse(a[tmp].Pen, a[tmp].khung);
                     else if (a[tmp].index == 3 || a[tmp].index == 7)
                         g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
+                    else if(a[tmp].index == 5)
+                    {
+                        g.DrawLine(a[tmp].Pen, a[tmp].khung.Left, a[tmp].khung.Top, a[tmp].khung.Right, a[tmp].khung.Bottom);
+                    }
                     else if(a[tmp].index == 8)
                     {   
                         // tam giac can
@@ -293,10 +269,15 @@ namespace UI
                         g.DrawPolygon(a[tmp].Pen, pArray);
                     }
 
-                    for (int i = 0; i < 8; i++)
+
+                    if (a[tmp].index == 5)
                     {
-                        g.FillRectangle(Brushes.DarkRed, GetHandleRect(i));
+                        g.FillRectangle(Brushes.DarkRed, GetHandleRect(0));
+                        g.FillRectangle(Brushes.DarkRed, GetHandleRect(4));
                     }
+                    else 
+                        for (int i = 0; i < 8; i++)
+                            g.FillRectangle(Brushes.DarkRed, GetHandleRect(i));
                 }
 
             }
@@ -312,7 +293,6 @@ namespace UI
                 a[tmp].resizeIndex = a[tmp].index;
                 a[tmp].isResize = true;
 
-                a[tmp].visibleFrame = true;
                 a[tmp].pictureBox.Invalidate();
             }
         }
@@ -349,7 +329,7 @@ namespace UI
                         {
                             int diffY = a[tmp].dragPoint.Y - e.Location.Y;
                             int diffX = a[tmp].dragPoint.X - e.Location.X;
-                            a[tmp].khung = new Rectangle(a[tmp].khungCu.Left - diffX, a[tmp].khungCu.Top - diffY, a[tmp].khungCu.Width + diffX, a[tmp].khungCu.Height + diffY);
+                            a[tmp].khung = new Rectangle(a[tmp].khungCu.Left - diffX, a[tmp].khungCu.Top - diffY,Math.Abs(a[tmp].khungCu.Width + diffX), a[tmp].khungCu.Height + diffY);
                         }
                         else if (a[tmp].dragHandle == 1)
                         {
@@ -430,7 +410,6 @@ namespace UI
                 if (checkODK == 0 && !a[tmp].khung.IsEmpty  && !a[tmp].khung.Contains(e.Location) )
                 {
                     // ve chinh thuc
-                    a[tmp].visibleFrame = false;
                     if (a[tmp].resizeIndex == 7)
                     {
                         a[tmp].isResize = false;
@@ -444,6 +423,15 @@ namespace UI
                         a[tmp].isResize = false;
                         
                         a[tmp].G.DrawEllipse(a[tmp].Pen, a[tmp].khung);
+                        a[tmp].pictureBox.Refresh();
+                        a[tmp].dragHandle = -1;
+                        a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                    }
+                    else if (a[tmp].resizeIndex==5)
+                    {
+                        a[tmp].isResize = false;
+
+                        a[tmp].G.DrawLine(a[tmp].Pen, a[tmp].khung.Left, a[tmp].khung.Top, a[tmp].khung.Right, a[tmp].khung.Bottom); ;
                         a[tmp].pictureBox.Refresh();
                         a[tmp].dragHandle = -1;
                         a[tmp].khung = new Rectangle(Top, 0, 0, 0);
@@ -487,8 +475,8 @@ namespace UI
                         Point p5 = new Point(x + (a[tmp].khung.Width) / 4, lY);
                         Point p6 = new Point(x, y + (a[tmp].khung.Height) / 2);
                         Point[] pArray = { p1, p2, p3, p4, p5, p6 };
-                        a[tmp].pictureBox.Refresh();
                         a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
+                        a[tmp].pictureBox.Refresh();
                         a[tmp].dragHandle = -1;
                         a[tmp].khung = new Rectangle(Top, 0, 0, 0);
                     }
@@ -507,6 +495,33 @@ namespace UI
                         Point p6 = new Point(lX - (a[tmp].khung.Width / 3), lY - (a[tmp].khung.Height / 3));
                         Point p7 = new Point(lX - (a[tmp].khung.Width / 3), lY);
                         Point[] pArray = { p1, p2, p3, p4, p5, p6, p7 };
+
+                        a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
+                        a[tmp].pictureBox.Refresh();
+                        a[tmp].dragHandle = -1;
+                        a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                    }
+                    else if (a[tmp].resizeIndex == 12)
+                    {
+                        a[tmp].isResize = false;
+                        int x = a[tmp].khung.X;
+                        int y = a[tmp].khung.Y;
+                        int lX = a[tmp].khung.X + a[tmp].khung.Width;
+                        int lY = a[tmp].khung.Y + a[tmp].khung.Height;
+                        Point p1 = new Point(x + (a[tmp].khung.Width / 2), y);
+                        Point p2 = new Point(lX - (5 * a[tmp].khung.Width / 14), y + (3 * (a[tmp].khung.Height) / 8));
+                        Point p3 = new Point(lX, y + (3 * (a[tmp].khung.Height) / 8));
+                        Point p4 = new Point(lX - (2 * a[tmp].khung.Width / 7), lY - (5 * a[tmp].khung.Height / 14));
+                        Point p5 = new Point(lX - (3 * a[tmp].khung.Width / 14), lY);
+                        Point p6 = new Point(x + a[tmp].khung.Width / 2, lY - (3 * a[tmp].khung.Height / 14));
+                        Point p7 = new Point(x + (3 * a[tmp].khung.Width / 14), lY);
+                        Point p8 = new Point(x + (2 * a[tmp].khung.Width / 7), lY - (5 * a[tmp].khung.Height / 14));
+                        Point p9 = new Point(x, y + (3 * (a[tmp].khung.Height) / 8));
+                        Point p10 = new Point(x + (5 * a[tmp].khung.Width / 14), y + (3 * (a[tmp].khung.Height) / 8));
+                        Point[] pArray = { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 };
+                        //
+
+                        //
 
                         a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
                         a[tmp].pictureBox.Refresh();
@@ -533,12 +548,6 @@ namespace UI
                         a[tmp].dragHandle = -1;
                         a[tmp].cX = e.X;
                         a[tmp].cY = e.Y;
-                        //MessageBox.Show("2");
-                        //a[tmp].isResize = false;
-                        //a[tmp].G.DrawRectangle(a[tmp].Pen, a[tmp].khung);
-                        //a[tmp].pictureBox.Refresh();
-                        //a[tmp].dragHandle = -1;
-                        //a[tmp].khung = new Rectangle(Top, 0, 0, 0);
                     }
 
                 }
@@ -671,7 +680,7 @@ namespace UI
                 int tmp = tcMain.SelectedIndex;
                 if (tmp < a.Count)
                 {
-                    a[tmp].index = 4;
+                    a[tmp].index = 5;
                 }
             }
         }

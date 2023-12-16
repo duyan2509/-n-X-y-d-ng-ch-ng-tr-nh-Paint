@@ -22,7 +22,6 @@ namespace UI
         public Point py { get; set; }
         public int index { get; set; }
         public int resizeIndex { get; set; }
-        public bool visibleFrame { get; set; }
         public bool Fill { get; set; }
         public Brush brush { get; set; }
         public Color Color { get; set; }
