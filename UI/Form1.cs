@@ -31,13 +31,15 @@ namespace UI
 
         private Rectangle normalBounds;
         private List<DrawObject> a = new List<DrawObject>();// mỗi  tab 1 phần tử
-
+        private Pen resizePen;
         public Form1()
         {
             InitializeComponent();
             normalBounds = this.Bounds;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, normalBounds.Width, normalBounds.Height, 20, 20));
             this.StartPosition = FormStartPosition.CenterScreen;
+            resizePen = new Pen(Color.Black,1f);
+            resizePen.DashPattern = new float[] {7,2 };
             initDrawObject();
             initialPictureBox();
             initialPanel();
@@ -146,13 +148,10 @@ namespace UI
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-        
-        
-        
 
-
-
-
-
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(a[0].listBitmap.Count.ToString());
+        }
     }
 }

@@ -33,6 +33,7 @@ namespace UI
             tmp.isResize = false;
             tmp.dragPoint = new Point(0, 0);
             tmp.khung = new Rectangle(0, 0, 0, 0);
+            tmp.listBitmap = new List<Bitmap>();
             a.Add(tmp);
         }
         private void initialPanel()
@@ -370,6 +371,7 @@ namespace UI
             a[tmp].G = Graphics.FromImage(a[tmp].bm);
             a[tmp].G.Clear(Color.White);
             a[tmp].pictureBox.Invalidate();
+            a[tmp].listBitmap.Add(a[tmp].bm);
             this.SizeChanged += (sender, e) =>
             {
                 backGround.Dock = DockStyle.Right;
@@ -401,6 +403,7 @@ namespace UI
                         Image originalImage = a[tmp].pictureBox.Image;
                         Bitmap resizedImage = new Bitmap(originalImage, width, height);
                         a[tmp].bm = resizedImage;
+                        a[tmp].listBitmap.Add(a[tmp].bm);
                         a[tmp].pictureBox.Size = new Size(width, height);
                         a[tmp].pictureBox.Image = a[tmp].bm;
                         a[tmp].G = Graphics.FromImage(a[tmp].bm);

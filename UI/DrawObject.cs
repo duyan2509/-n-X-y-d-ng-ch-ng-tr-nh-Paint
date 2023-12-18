@@ -49,5 +49,6 @@ namespace UI
         public int dragHandle = -1;
         public Point dragPoint { get; set; }
         public Rectangle khung { get; set; }
+        public List<Bitmap> listBitmap { get; set; }
     }
 }

@@ -20,6 +20,7 @@ namespace UI
 {
     public partial class Form1:Form
     {
+        private bool checkFirstDraw = false;
         private void handleMouseClick(object sender, MouseEventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
@@ -188,23 +189,16 @@ namespace UI
 
                         g.DrawPolygon(a[tmp].Pen, pArray);
                     }
-
-
+                    checkFirstDraw = true;
                 }
                 if (a[tmp].isResize)
                 {
-                    if (a[tmp].index!=5)
-                        g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
-
-
                     if (a[tmp].index == 2)
                         g.DrawEllipse(a[tmp].Pen, a[tmp].khung);
                     else if (a[tmp].index == 7)
                         g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
                     else if(a[tmp].index == 5)
-                    {
                         g.DrawLine(a[tmp].Pen, a[tmp].khung.Left, a[tmp].khung.Top, a[tmp].khung.Right, a[tmp].khung.Bottom);
-                    }
                     else if(a[tmp].index == 8)
                     {   
                         // tam giac can
@@ -277,7 +271,8 @@ namespace UI
                         g.DrawPolygon(a[tmp].Pen, pArray);
                     }
 
-
+                    if (a[tmp].index != 5)
+                        g.DrawRectangle(resizePen, a[tmp].khung);
                     if (a[tmp].index == 5)
                     {
                         g.FillRectangle(Brushes.DarkRed, GetHandleRect(0));
@@ -286,6 +281,8 @@ namespace UI
                     else if (a[tmp].index !=0)
                         for (int i = 0; i < 8; i++)
                             g.FillRectangle(Brushes.DarkRed, GetHandleRect(i));
+                    a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = a[tmp].bm;
+
                 }
 
             }
@@ -297,6 +294,11 @@ namespace UI
 
             if (tmp < a.Count)
             {
+                if (a[tmp].Paint && checkFirstDraw)
+                {
+                    a[tmp].listBitmap.Add(a[tmp].bm);
+                    checkFirstDraw = false;
+                }
                 if (a[tmp].Paint && a[tmp].index!=1 && a[tmp].index!=15)
                 {
                     a[tmp].Paint = false;
@@ -432,7 +434,7 @@ namespace UI
                             
                             int newX = a[tmp].khung.Left + e.X - a[tmp].cX;
                             int newY = a[tmp].khung.Top + e.Y - a[tmp].cY;
-                            a[tmp].khung = new Rectangle(newX, newY, a[tmp].khung.Width, a[tmp].khung.Height); // chinh sua net dut
+                            a[tmp].khung = new Rectangle(newX, newY, a[tmp].khung.Width, a[tmp].khung.Height);
 
                             a[tmp].pictureBox.Invalidate();
                             a[tmp].cX = e.X;
@@ -585,7 +587,7 @@ namespace UI
                         a[tmp].khung = new Rectangle(Top, 0, 0, 0);
                     }
 
-
+                    a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = a[tmp].bm;
                 }
 
 
