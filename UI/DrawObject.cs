@@ -50,5 +50,6 @@ namespace UI
         public Point dragPoint { get; set; }
         public Rectangle khung { get; set; }
         public List<Bitmap> listBitmap { get; set; }
+        public int iBitmap;
     }
 }

@@ -80,19 +80,21 @@ namespace UI
                     }
                     if (a[tmp].index == 3 )
                     {
+                        //copy
                         int x = Math.Min(a[tmp].cX, a[tmp].x);
                         int y = Math.Min(a[tmp].cY, a[tmp].y);
                         a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
                         // ve khung
-                        g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
+                        g.DrawRectangle(resizePen, a[tmp].khung);
                     }
                     if (a[tmp].index == 4)
                     {
+                        //paste
                         int x = Math.Min(a[tmp].cX, a[tmp].x);
                         int y = Math.Min(a[tmp].cY, a[tmp].y);
                         a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
                         // ve khung
-                        g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
+                        g.DrawRectangle(resizePen, a[tmp].khung);
                     }
                     if (a[tmp].index == 7)
                     {
@@ -202,9 +204,8 @@ namespace UI
                 if (a[tmp].isResize)
                 {   
                     if(a[tmp].index == 3 || a[tmp].index == 4)
-                    {
                         return;
-                    }
+                    
                     if (a[tmp].index == 2)
                         g.DrawEllipse(a[tmp].Pen, a[tmp].khung);
                     else if (a[tmp].index == 7)
@@ -285,6 +286,7 @@ namespace UI
 
                     if (a[tmp].index != 5)
                         g.DrawRectangle(resizePen, a[tmp].khung);
+                    
                     if (a[tmp].index == 5)
                     {
                         g.FillRectangle(Brushes.DarkRed, GetHandleRect(0));
@@ -293,7 +295,8 @@ namespace UI
                     else if (a[tmp].index !=0)
                         for (int i = 0; i < 8; i++)
                             g.FillRectangle(Brushes.DarkRed, GetHandleRect(i));
-                    a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = a[tmp].bm;
+
+                    a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
 
                 }
 
@@ -308,7 +311,8 @@ namespace UI
             {
                 if (a[tmp].Paint && checkFirstDraw)
                 {
-                    a[tmp].listBitmap.Add(a[tmp].bm);
+                    a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
+                    a[tmp].iBitmap++;
                     checkFirstDraw = false;
                 }
                 if (a[tmp].Paint && a[tmp].index!=1 && a[tmp].index!=15)
@@ -337,7 +341,7 @@ namespace UI
                         a[tmp].G.DrawImage(clipboardImage, a[tmp].khung);
                     }
                 }
-                    a[tmp].pictureBox.Invalidate();
+                a[tmp].pictureBox.Refresh();
             }
         }
         private void handleMouseMove(object sender, MouseEventArgs e)
@@ -616,8 +620,11 @@ namespace UI
                         a[tmp].dragHandle = -1;
                         a[tmp].khung = new Rectangle(Top, 0, 0, 0);
                     }
+                    //Clipboard.SetImage(a[tmp].pictureBox.Image);
 
-                    a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = a[tmp].bm;
+                    a[tmp].listBitmap[a[tmp].listBitmap.Count - 1]=new Bitmap(a[tmp].pictureBox.Image);
+                   // Clipboard.SetImage(a[tmp].listBitmap[a[tmp].listBitmap.Count - 1]);
+
                 }
 
 
@@ -757,17 +764,7 @@ namespace UI
                 }
             }
         }
-        private void handleClickSquareButton(object sender, EventArgs e)
-        {
-            if (sender is Guna2Button clickedButton)
-            {
-                int tmp = tcMain.SelectedIndex;
-                if (tmp < a.Count)
-                {
-                    a[tmp].index = 3;
-                }
-            }
-        }
+
      
         private void handleClickLineButton(object sender, EventArgs e)
         {

@@ -151,7 +151,28 @@ namespace UI
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(a[0].listBitmap.Count.ToString());
+            int tmp = tcMain.SelectedIndex;
+            if (a[tmp].iBitmap > 0)
+                a[tmp].iBitmap--;
+            
+            a[tmp].bm = a[tmp].listBitmap[a[tmp].iBitmap];
+            a[tmp].pictureBox.Image = a[tmp].bm;
+            a[tmp].G = Graphics.FromImage(a[tmp].bm);
+            a[tmp].pictureBox.Refresh();
+        }
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            a[tmp].iBitmap++;
+            if (a[tmp].iBitmap < a[tmp].listBitmap.Count)
+            {
+                a[tmp].bm = a[tmp].listBitmap[a[tmp].iBitmap];
+                a[tmp].pictureBox.Image = a[tmp].bm;
+                a[tmp].G = Graphics.FromImage(a[tmp].bm);
+                a[tmp].pictureBox.Refresh();
+            }
+            else
+                a[tmp].iBitmap = a[tmp].listBitmap.Count - 1;
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -163,6 +184,11 @@ namespace UI
         {
             int tmp = tcMain.SelectedIndex;
             a[tmp].index = 4;
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(a[0].listBitmap.Count.ToString());
         }
     }
 }

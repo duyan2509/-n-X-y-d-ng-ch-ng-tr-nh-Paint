@@ -34,6 +34,7 @@ namespace UI
             tmp.dragPoint = new Point(0, 0);
             tmp.khung = new Rectangle(0, 0, 0, 0);
             tmp.listBitmap = new List<Bitmap>();
+            tmp.iBitmap = 0;
             a.Add(tmp);
         }
         private void initialPanel()
@@ -179,16 +180,16 @@ namespace UI
             right_triangleButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(right_triangleButton);
             // Hinh Vuong
-            Guna2Button squareButton = new Guna2Button();
-            squareButton.Size = new Size(45, 45);
-            squareButton.Location = new Point(0, 120);
-            squareButton.Image = Properties.Resources.icons8_rounded_square_48_white;
-            squareButton.ImageSize = new Size(20, 20);
-            squareButton.BorderRadius = 20;
-            squareButton.Animated = true;
-            squareButton.Click += handleClickSquareButton;
-            squareButton.Cursor = Cursors.Hand;
-            shapePanel.Controls.Add(squareButton);
+            //Guna2Button squareButton = new Guna2Button();
+            //squareButton.Size = new Size(45, 45);
+            //squareButton.Location = new Point(0, 120);
+            //squareButton.Image = Properties.Resources.icons8_rounded_square_48_white;
+            //squareButton.ImageSize = new Size(20, 20);
+            //squareButton.BorderRadius = 20;
+            //squareButton.Animated = true;
+            //squareButton.Click += handleClickSquareButton;
+            //squareButton.Cursor = Cursors.Hand;
+            //shapePanel.Controls.Add(squareButton);
             // Hinh Luc Giac
             Guna2Button hexagonButton = new Guna2Button();
             hexagonButton.Size = new Size(45, 45);
@@ -371,7 +372,7 @@ namespace UI
             a[tmp].G = Graphics.FromImage(a[tmp].bm);
             a[tmp].G.Clear(Color.White);
             a[tmp].pictureBox.Invalidate();
-            a[tmp].listBitmap.Add(a[tmp].bm);
+            a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
             this.SizeChanged += (sender, e) =>
             {
                 backGround.Dock = DockStyle.Right;
