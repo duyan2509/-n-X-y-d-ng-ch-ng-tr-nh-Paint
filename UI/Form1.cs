@@ -153,5 +153,16 @@ namespace UI
         {
             MessageBox.Show(a[0].listBitmap.Count.ToString());
         }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            a[tmp].index = 3;
+        }
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            a[tmp].index = 4;
+        }
     }
 }

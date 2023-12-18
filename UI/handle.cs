@@ -78,7 +78,15 @@ namespace UI
 
                         g.DrawLine(a[tmp].Pen, a[tmp].cX, a[tmp].cY, a[tmp].x, a[tmp].y);
                     }
-                    if (a[tmp].index ==3 )
+                    if (a[tmp].index == 3 )
+                    {
+                        int x = Math.Min(a[tmp].cX, a[tmp].x);
+                        int y = Math.Min(a[tmp].cY, a[tmp].y);
+                        a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
+                        // ve khung
+                        g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
+                    }
+                    if (a[tmp].index == 4)
                     {
                         int x = Math.Min(a[tmp].cX, a[tmp].x);
                         int y = Math.Min(a[tmp].cY, a[tmp].y);
@@ -192,15 +200,19 @@ namespace UI
                     checkFirstDraw = true;
                 }
                 if (a[tmp].isResize)
-                {
+                {   
+                    if(a[tmp].index == 3 || a[tmp].index == 4)
+                    {
+                        return;
+                    }
                     if (a[tmp].index == 2)
                         g.DrawEllipse(a[tmp].Pen, a[tmp].khung);
                     else if (a[tmp].index == 7)
                         g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
-                    else if(a[tmp].index == 5)
+                    else if (a[tmp].index == 5)
                         g.DrawLine(a[tmp].Pen, a[tmp].khung.Left, a[tmp].khung.Top, a[tmp].khung.Right, a[tmp].khung.Bottom);
-                    else if(a[tmp].index == 8)
-                    {   
+                    else if (a[tmp].index == 8)
+                    {
                         // tam giac can
                         Point dinhA = new Point(a[tmp].khung.X + a[tmp].khung.Width, a[tmp].khung.Y + a[tmp].khung.Height);
                         Point dinhB = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height);
@@ -208,22 +220,22 @@ namespace UI
                         Point[] dinhArray = { dinhC, dinhA, dinhB };
                         g.DrawPolygon(a[tmp].Pen, dinhArray);
                     }
-                    else if(a[tmp].index == 9)
+                    else if (a[tmp].index == 9)
                     {
-                        Point dinhA = new Point(a[tmp].khung.X , a[tmp].khung.Y);
+                        Point dinhA = new Point(a[tmp].khung.X, a[tmp].khung.Y);
                         Point dinhB = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height);
-                        Point dinhC = new Point(a[tmp].khung.X + a[tmp].khung.Width , a[tmp].khung.Y + a[tmp].khung.Height);
+                        Point dinhC = new Point(a[tmp].khung.X + a[tmp].khung.Width, a[tmp].khung.Y + a[tmp].khung.Height);
                         Point[] dinhArray = { dinhC, dinhA, dinhB };
                         g.DrawPolygon(a[tmp].Pen, dinhArray);
                     }
-                    else if(a[tmp].index == 10)
+                    else if (a[tmp].index == 10)
                     {
                         int x = a[tmp].khung.X;
                         int y = a[tmp].khung.Y;
                         int lX = a[tmp].khung.X + a[tmp].khung.Width;
                         int lY = a[tmp].khung.Y + a[tmp].khung.Height;
-                        Point p1 = new Point(x + (a[tmp].khung.Width) / 4, y); 
-                        Point p2 = new Point(lX - (a[tmp].khung.Width) / 4, y); 
+                        Point p1 = new Point(x + (a[tmp].khung.Width) / 4, y);
+                        Point p2 = new Point(lX - (a[tmp].khung.Width) / 4, y);
                         Point p3 = new Point(lX, y + (a[tmp].khung.Height) / 2);
                         Point p4 = new Point(lX - (a[tmp].khung.Width) / 4, lY);
                         Point p5 = new Point(x + (a[tmp].khung.Width) / 4, lY);
@@ -307,10 +319,25 @@ namespace UI
                 }
                 if (a[tmp].index == 3 && a[tmp].isResize)
                 {
-                //
-
+                    a[tmp].Paint = false;
+                    a[tmp].isResize = true;
+                    a[tmp].resizeIndex = a[tmp].index;
+                    Bitmap croppedBitmap = a[tmp].bm.Clone(a[tmp].khung, a[tmp].bm.PixelFormat);
+                    Clipboard.SetImage(croppedBitmap);
                 }
-                a[tmp].pictureBox.Invalidate();
+                if (a[tmp].index == 4 && a[tmp].isResize)
+                {
+                    a[tmp].Paint = false;
+                    a[tmp].isResize = true;
+                    a[tmp].resizeIndex = a[tmp].index;
+                    Image clipboardImage = Clipboard.GetImage();
+                    if (clipboardImage != null)
+                    {
+                        a[tmp].G.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                        a[tmp].G.DrawImage(clipboardImage, a[tmp].khung);
+                    }
+                }
+                    a[tmp].pictureBox.Invalidate();
             }
         }
         private void handleMouseMove(object sender, MouseEventArgs e)
@@ -319,7 +346,7 @@ namespace UI
             if(e.Button==MouseButtons.Left)
             {
                 if (tmp < a.Count)
-                {
+                {   
                     if (a[tmp].Paint)
                     {
                         if (a[tmp].index == 1)
@@ -458,6 +485,13 @@ namespace UI
             int tmp = tcMain.SelectedIndex;
             if (tmp < a.Count)
             {
+                if (a[tmp].resizeIndex == 3 || a[tmp].resizeIndex == 4)
+                {
+                    a[tmp].isResize = false;
+                    a[tmp].pictureBox.Refresh();
+                    a[tmp].dragHandle = -1;
+                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                }
                 int checkODK = 0;
                 for (int i = 0; i < 8; i++)
                     if (GetHandleRect(i).Contains(e.Location))
@@ -484,10 +518,6 @@ namespace UI
                         a[tmp].dragHandle = -1;
                         a[tmp].khung = new Rectangle(Top, 0, 0, 0);
                     }
-                    //else if (a[tmp].index==3)
-                    //{
-
-                    //}
                     else if (a[tmp].resizeIndex==5)
                     {
                         a[tmp].isResize = false;
