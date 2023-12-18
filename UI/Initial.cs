@@ -313,7 +313,7 @@ namespace UI
             pickColorButton.BorderRadius = 20;
             pickColorButton.ImageSize = new Size(15, 15);
             pickColorButton.Animated = true;
-            //pickColorButton.Click += ;
+            pickColorButton.Click += handlePickColor;
             pickColorButton.Image = Properties.Resources.icons8_plus_48;
 
             pickColorButton.Cursor = Cursors.Hand;

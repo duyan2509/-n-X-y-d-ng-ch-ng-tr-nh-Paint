@@ -151,10 +151,15 @@ namespace UI
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             int tmp = tcMain.SelectedIndex;
+            if (a[tmp].isResize)
+            {
+                VeChinhThuc();
+                a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
+            }
             if (a[tmp].iBitmap > 0)
                 a[tmp].iBitmap--;
-            
             a[tmp].bm = a[tmp].listBitmap[a[tmp].iBitmap];
             a[tmp].pictureBox.Image = a[tmp].bm;
             a[tmp].G = Graphics.FromImage(a[tmp].bm);

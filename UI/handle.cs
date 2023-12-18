@@ -28,24 +28,10 @@ namespace UI
             {
                 if (a[tmp].Fill)
                 {
-                    Point temp = e.Location;
-                    int selectedShapeIndex = -1;
-                    for (int i = 0; i < a[tmp].region.Count; i++)
-                    {
-                        if (a[tmp].region[i].IsVisible(temp))
-                        {
-                            selectedShapeIndex = i;
-                            break;
-                        }
-                    }
-
-                    if (selectedShapeIndex != -1)
-                    {
-                        a[tmp].G.FillRegion(a[tmp].brush, a[tmp].region[selectedShapeIndex]);
-                        selectedShapeIndex = -1;
-                    }
-                    if (a[tmp].index < 6)
-                        a[tmp].Fill = false;
+                    a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
+                    a[tmp].iBitmap++;
+                    Fill(e.X,e.Y,dlgColor.Color);
+                    a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
                 }
                 
             }
@@ -296,8 +282,7 @@ namespace UI
                         for (int i = 0; i < 8; i++)
                             g.FillRectangle(Brushes.DarkRed, GetHandleRect(i));
 
-                    a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
-
+                    //a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
                 }
 
             }
@@ -496,6 +481,10 @@ namespace UI
                     a[tmp].dragHandle = -1;
                     a[tmp].khung = new Rectangle(Top, 0, 0, 0);
                 }
+                if(a[tmp].index != 6)
+                {
+                    a[tmp].Fill = false;
+                }
                 int checkODK = 0;
                 for (int i = 0; i < 8; i++)
                     if (GetHandleRect(i).Contains(e.Location))
@@ -503,131 +492,10 @@ namespace UI
                 if (checkODK == 0 && !a[tmp].khung.IsEmpty  && !a[tmp].khung.Contains(e.Location))
                 {
                     // ve chinh thuc
-                    if (a[tmp].resizeIndex == 7)
-                    {
-                        a[tmp].isResize = false;
-                        a[tmp].G.DrawRectangle(a[tmp].Pen, a[tmp].khung);
-                        a[tmp].pictureBox.Refresh();
-                        a[tmp].dragHandle = -1;
-                       // MessageBox.Show(Top.ToString());
-                        a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
-
-                    }
-                    else if (a[tmp].resizeIndex == 2)
-                    {
-                        a[tmp].isResize = false;
-                        
-                        a[tmp].G.DrawEllipse(a[tmp].Pen, a[tmp].khung);
-                        a[tmp].pictureBox.Refresh();
-                        a[tmp].dragHandle = -1;
-                        a[tmp].khung = new Rectangle(Top, 0, 0, 0);
-                    }
-                    else if (a[tmp].resizeIndex==5)
-                    {
-                        a[tmp].isResize = false;
-
-                        a[tmp].G.DrawLine(a[tmp].Pen, a[tmp].khung.Left, a[tmp].khung.Top, a[tmp].khung.Right, a[tmp].khung.Bottom); ;
-                        a[tmp].pictureBox.Refresh();
-                        a[tmp].dragHandle = -1;
-                        a[tmp].khung = new Rectangle(Top, 0, 0, 0);
-                    }
-                    else if(a[tmp].resizeIndex == 8)
-                    {
-                        a[tmp].isResize = false;
-                        Point dinhA = new Point(a[tmp].khung.X + a[tmp].khung.Width, a[tmp].khung.Y + a[tmp].khung.Height);
-                        Point dinhB = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height);
-                        Point dinhC = new Point((a[tmp].khung.X + a[tmp].khung.Width + a[tmp].khung.X) / 2, a[tmp].khung.Y);
-                        Point[] dinhArray = { dinhC, dinhA, dinhB };
-                        a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
-                        a[tmp].pictureBox.Refresh();
-                        a[tmp].dragHandle = -1;
-                        a[tmp].khung = new Rectangle(Top, 0, 0, 0);
-                    }
-                    else if(a[tmp].resizeIndex == 9)
-                    {
-                        a[tmp].isResize = false;
-                        Point dinhA = new Point(a[tmp].khung.X, a[tmp].khung.Y);
-                        Point dinhB = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height);
-                        Point dinhC = new Point(a[tmp].khung.X + a[tmp].khung.Width, a[tmp].khung.Y + a[tmp].khung.Height);
-                        Point[] dinhArray = { dinhC, dinhA, dinhB };
-                        a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
-                        a[tmp].pictureBox.Refresh();
-                        a[tmp].dragHandle = -1;
-                        a[tmp].khung = new Rectangle(Top, 0, 0, 0);
-                    }
-                    else if(a[tmp].resizeIndex == 10)
-                    {
-                        a[tmp].isResize = false;
-
-                        int x = a[tmp].khung.X;
-                        int y = a[tmp].khung.Y;
-                        int lX = a[tmp].khung.X + a[tmp].khung.Width;
-                        int lY = a[tmp].khung.Y + a[tmp].khung.Height;
-                        Point p1 = new Point(x + (a[tmp].khung.Width) / 4, y);
-                        Point p2 = new Point(lX - (a[tmp].khung.Width) / 4, y);
-                        Point p3 = new Point(lX, y + (a[tmp].khung.Height) / 2);
-                        Point p4 = new Point(lX - (a[tmp].khung.Width) / 4, lY);
-                        Point p5 = new Point(x + (a[tmp].khung.Width) / 4, lY);
-                        Point p6 = new Point(x, y + (a[tmp].khung.Height) / 2);
-                        Point[] pArray = { p1, p2, p3, p4, p5, p6 };
-                        a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
-                        a[tmp].pictureBox.Refresh();
-                        a[tmp].dragHandle = -1;
-                        a[tmp].khung = new Rectangle(Top, 0, 0, 0);
-                    }
-                    else if (a[tmp].resizeIndex == 11)
-                    {
-                        a[tmp].isResize = false;
-                        int x = a[tmp].khung.X;
-                        int y = a[tmp].khung.Y;
-                        int lX = a[tmp].khung.X + a[tmp].khung.Width;
-                        int lY = a[tmp].khung.Y + a[tmp].khung.Height;
-                        Point p1 = new Point(lX, y + (a[tmp].khung.Height / 2));
-                        Point p2 = new Point(lX - (a[tmp].khung.Width / 3), y);
-                        Point p3 = new Point(lX - (a[tmp].khung.Width / 3), y + (a[tmp].khung.Height / 3));
-                        Point p4 = new Point(x, y + (a[tmp].khung.Height / 3));
-                        Point p5 = new Point(x, lY - (a[tmp].khung.Height / 3));
-                        Point p6 = new Point(lX - (a[tmp].khung.Width / 3), lY - (a[tmp].khung.Height / 3));
-                        Point p7 = new Point(lX - (a[tmp].khung.Width / 3), lY);
-                        Point[] pArray = { p1, p2, p3, p4, p5, p6, p7 };
-
-                        a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
-                        a[tmp].pictureBox.Refresh();
-                        a[tmp].dragHandle = -1;
-                        a[tmp].khung = new Rectangle(Top, 0, 0, 0);
-                    }
-                    else if (a[tmp].resizeIndex == 12)
-                    {
-                        a[tmp].isResize = false;
-                        int x = a[tmp].khung.X;
-                        int y = a[tmp].khung.Y;
-                        int lX = a[tmp].khung.X + a[tmp].khung.Width;
-                        int lY = a[tmp].khung.Y + a[tmp].khung.Height;
-                        Point p1 = new Point(x + (a[tmp].khung.Width / 2), y);
-                        Point p2 = new Point(lX - (5 * a[tmp].khung.Width / 14), y + (3 * (a[tmp].khung.Height) / 8));
-                        Point p3 = new Point(lX, y + (3 * (a[tmp].khung.Height) / 8));
-                        Point p4 = new Point(lX - (2 * a[tmp].khung.Width / 7), lY - (5 * a[tmp].khung.Height / 14));
-                        Point p5 = new Point(lX - (3 * a[tmp].khung.Width / 14), lY);
-                        Point p6 = new Point(x + a[tmp].khung.Width / 2, lY - (3 * a[tmp].khung.Height / 14));
-                        Point p7 = new Point(x + (3 * a[tmp].khung.Width / 14), lY);
-                        Point p8 = new Point(x + (2 * a[tmp].khung.Width / 7), lY - (5 * a[tmp].khung.Height / 14));
-                        Point p9 = new Point(x, y + (3 * (a[tmp].khung.Height) / 8));
-                        Point p10 = new Point(x + (5 * a[tmp].khung.Width / 14), y + (3 * (a[tmp].khung.Height) / 8));
-                        Point[] pArray = { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 };
-
-                        a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
-                        a[tmp].pictureBox.Refresh();
-                        a[tmp].dragHandle = -1;
-                        a[tmp].khung = new Rectangle(Top, 0, 0, 0);
-                    }
-                    //Clipboard.SetImage(a[tmp].pictureBox.Image);
-
-                    a[tmp].listBitmap[a[tmp].listBitmap.Count - 1]=new Bitmap(a[tmp].pictureBox.Image);
-                   // Clipboard.SetImage(a[tmp].listBitmap[a[tmp].listBitmap.Count - 1]);
-
+                    VeChinhThuc();
+                    a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
+                    // Clipboard.SetImage(a[tmp].listBitmap[a[tmp].listBitmap.Count - 1]);
                 }
-
-
                 if (a[tmp].isResize)
                 {
                     for (int i = 0; i < 8; i++)
@@ -654,6 +522,11 @@ namespace UI
                     a[tmp].py = e.Location;
                     a[tmp].cX = e.X;
                     a[tmp].cY = e.Y;
+                    if(a[tmp].listBitmap.Count > 0)
+                    {
+                        XoaRedo();
+                        a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
+                    }
                 }
             }
         }
@@ -701,7 +574,139 @@ namespace UI
             return new Rectangle(p, new Size(5, 5));
         }
         
-       
+        private void VeChinhThuc()
+        {
+            int tmp = tcMain.SelectedIndex;
+            if (tmp < a.Count)
+            {
+                 if (a[tmp].resizeIndex == 7)
+                {
+                    a[tmp].isResize = false;
+                    a[tmp].G.DrawRectangle(a[tmp].Pen, a[tmp].khung);
+                    a[tmp].pictureBox.Refresh();
+                    a[tmp].dragHandle = -1;
+                    // MessageBox.Show(Top.ToString());
+                    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+
+                }
+                else if (a[tmp].resizeIndex == 2)
+                {
+                    a[tmp].isResize = false;
+
+                    a[tmp].G.DrawEllipse(a[tmp].Pen, a[tmp].khung);
+                    a[tmp].pictureBox.Refresh();
+                    a[tmp].dragHandle = -1;
+                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                }
+                else if (a[tmp].resizeIndex == 5)
+                {
+                    a[tmp].isResize = false;
+
+                    a[tmp].G.DrawLine(a[tmp].Pen, a[tmp].khung.Left, a[tmp].khung.Top, a[tmp].khung.Right, a[tmp].khung.Bottom); ;
+                    a[tmp].pictureBox.Refresh();
+                    a[tmp].dragHandle = -1;
+                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                }
+                else if (a[tmp].resizeIndex == 8)
+                {
+                    a[tmp].isResize = false;
+                    Point dinhA = new Point(a[tmp].khung.X + a[tmp].khung.Width, a[tmp].khung.Y + a[tmp].khung.Height);
+                    Point dinhB = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height);
+                    Point dinhC = new Point((a[tmp].khung.X + a[tmp].khung.Width + a[tmp].khung.X) / 2, a[tmp].khung.Y);
+                    Point[] dinhArray = { dinhC, dinhA, dinhB };
+                    a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
+                    a[tmp].pictureBox.Refresh();
+                    a[tmp].dragHandle = -1;
+                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                }
+                else if (a[tmp].resizeIndex == 9)
+                {
+                    a[tmp].isResize = false;
+                    Point dinhA = new Point(a[tmp].khung.X, a[tmp].khung.Y);
+                    Point dinhB = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height);
+                    Point dinhC = new Point(a[tmp].khung.X + a[tmp].khung.Width, a[tmp].khung.Y + a[tmp].khung.Height);
+                    Point[] dinhArray = { dinhC, dinhA, dinhB };
+                    a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
+                    a[tmp].pictureBox.Refresh();
+                    a[tmp].dragHandle = -1;
+                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                }
+                else if (a[tmp].resizeIndex == 10)
+                {
+                    a[tmp].isResize = false;
+
+                    int x = a[tmp].khung.X;
+                    int y = a[tmp].khung.Y;
+                    int lX = a[tmp].khung.X + a[tmp].khung.Width;
+                    int lY = a[tmp].khung.Y + a[tmp].khung.Height;
+                    Point p1 = new Point(x + (a[tmp].khung.Width) / 4, y);
+                    Point p2 = new Point(lX - (a[tmp].khung.Width) / 4, y);
+                    Point p3 = new Point(lX, y + (a[tmp].khung.Height) / 2);
+                    Point p4 = new Point(lX - (a[tmp].khung.Width) / 4, lY);
+                    Point p5 = new Point(x + (a[tmp].khung.Width) / 4, lY);
+                    Point p6 = new Point(x, y + (a[tmp].khung.Height) / 2);
+                    Point[] pArray = { p1, p2, p3, p4, p5, p6 };
+                    a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
+                    a[tmp].pictureBox.Refresh();
+                    a[tmp].dragHandle = -1;
+                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                }
+                else if (a[tmp].resizeIndex == 11)
+                {
+                    a[tmp].isResize = false;
+                    int x = a[tmp].khung.X;
+                    int y = a[tmp].khung.Y;
+                    int lX = a[tmp].khung.X + a[tmp].khung.Width;
+                    int lY = a[tmp].khung.Y + a[tmp].khung.Height;
+                    Point p1 = new Point(lX, y + (a[tmp].khung.Height / 2));
+                    Point p2 = new Point(lX - (a[tmp].khung.Width / 3), y);
+                    Point p3 = new Point(lX - (a[tmp].khung.Width / 3), y + (a[tmp].khung.Height / 3));
+                    Point p4 = new Point(x, y + (a[tmp].khung.Height / 3));
+                    Point p5 = new Point(x, lY - (a[tmp].khung.Height / 3));
+                    Point p6 = new Point(lX - (a[tmp].khung.Width / 3), lY - (a[tmp].khung.Height / 3));
+                    Point p7 = new Point(lX - (a[tmp].khung.Width / 3), lY);
+                    Point[] pArray = { p1, p2, p3, p4, p5, p6, p7 };
+
+                    a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
+                    a[tmp].pictureBox.Refresh();
+                    a[tmp].dragHandle = -1;
+                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                }
+                else if (a[tmp].resizeIndex == 12)
+                {
+                    a[tmp].isResize = false;
+                    int x = a[tmp].khung.X;
+                    int y = a[tmp].khung.Y;
+                    int lX = a[tmp].khung.X + a[tmp].khung.Width;
+                    int lY = a[tmp].khung.Y + a[tmp].khung.Height;
+                    Point p1 = new Point(x + (a[tmp].khung.Width / 2), y);
+                    Point p2 = new Point(lX - (5 * a[tmp].khung.Width / 14), y + (3 * (a[tmp].khung.Height) / 8));
+                    Point p3 = new Point(lX, y + (3 * (a[tmp].khung.Height) / 8));
+                    Point p4 = new Point(lX - (2 * a[tmp].khung.Width / 7), lY - (5 * a[tmp].khung.Height / 14));
+                    Point p5 = new Point(lX - (3 * a[tmp].khung.Width / 14), lY);
+                    Point p6 = new Point(x + a[tmp].khung.Width / 2, lY - (3 * a[tmp].khung.Height / 14));
+                    Point p7 = new Point(x + (3 * a[tmp].khung.Width / 14), lY);
+                    Point p8 = new Point(x + (2 * a[tmp].khung.Width / 7), lY - (5 * a[tmp].khung.Height / 14));
+                    Point p9 = new Point(x, y + (3 * (a[tmp].khung.Height) / 8));
+                    Point p10 = new Point(x + (5 * a[tmp].khung.Width / 14), y + (3 * (a[tmp].khung.Height) / 8));
+                    Point[] pArray = { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 };
+
+                    a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
+                    a[tmp].pictureBox.Refresh();
+                    a[tmp].dragHandle = -1;
+                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                }
+            }
+        }
+        private void XoaRedo()
+        {
+            int tmp = tcMain.SelectedIndex;
+            if (tmp >= 0 && tmp < a.Count && a[tmp].iBitmap >= 0 && a[tmp].iBitmap < a[tmp].listBitmap.Count)
+            {
+                int n = a[tmp].listBitmap.Count - a[tmp].iBitmap - 1;
+                a[tmp].listBitmap.RemoveRange(a[tmp].iBitmap + 1, n);
+            }
+        }
         private void handleClickPenButton(object sender, EventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
@@ -735,6 +740,36 @@ namespace UI
                     a[tmp].Fill = true;
                     a[tmp].index = 6;
                 }
+            }
+        }
+        public void Fill( int x, int y, Color new_clr)
+        {
+            int tmp = tcMain.SelectedIndex;
+            Color old_Color = a[tmp].bm.GetPixel(x, y);
+            Stack<Point> pixel = new Stack<Point>();
+            pixel.Push(new Point(x, y));
+            a[tmp].bm.SetPixel(x, y, new_clr);
+            if (old_Color == new_clr) return;
+            while (pixel.Count > 0)
+            {
+                Point pt = (Point)pixel.Pop();
+                if (pt.X > 0 && pt.Y > 0 && pt.X < a[tmp].bm.Width - 1 && pt.Y < a[tmp].bm.Height - 1)
+                {
+                    validate( pixel, pt.X - 1, pt.Y, old_Color, new_clr);
+                    validate( pixel, pt.X, pt.Y - 1, old_Color, new_clr);
+                    validate( pixel, pt.X + 1, pt.Y, old_Color, new_clr);
+                    validate( pixel, pt.X, pt.Y + 1, old_Color, new_clr);
+                }
+            }
+        }
+        private void validate( Stack<Point> sp, int x, int y, Color old_Color, Color new_Color)
+        {
+            int tmp = tcMain.SelectedIndex;
+            Color cx = a[tmp].bm.GetPixel(x, y);
+            if (cx == old_Color)
+            {
+                sp.Push(new Point(x, y));
+                a[tmp].bm.SetPixel(x, y, new_Color);
             }
         }
         private void handleClickTextButton(object sender, EventArgs e)
@@ -846,6 +881,15 @@ namespace UI
                 {
                     a[tmp].index = 12;
                 }
+            }
+        }
+        private void handlePickColor(object sender, EventArgs e)
+        {
+            if (sender is Guna2Button clickedButton)
+            {
+                dlgColor.ShowDialog();
+                int tmp = tcMain.SelectedIndex;
+                a[tmp].Pen.Color = dlgColor.Color;
             }
         }
     }
