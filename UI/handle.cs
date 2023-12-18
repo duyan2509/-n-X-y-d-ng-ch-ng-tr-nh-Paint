@@ -344,45 +344,85 @@ namespace UI
                         {
                             int diffY = a[tmp].dragPoint.Y - e.Location.Y;
                             int diffX = a[tmp].dragPoint.X - e.Location.X;
-                            a[tmp].khung = new Rectangle(a[tmp].khungCu.Left - diffX, a[tmp].khungCu.Top - diffY,Math.Abs(a[tmp].khungCu.Width + diffX), a[tmp].khungCu.Height + diffY);
+                            Rectangle rtg = new Rectangle();
+                            rtg = new Rectangle(a[tmp].khungCu.Left - diffX, a[tmp].khungCu.Top - diffY,a[tmp].khungCu.Width + diffX, a[tmp].khungCu.Height + diffY);
+                            if (a[tmp].resizeIndex == 5)
+                                a[tmp].khung = rtg;
+                            else
+                                a[tmp].khung=updateKhung(rtg, a[tmp].khung);
                         }
                         else if (a[tmp].dragHandle == 1)
                         {
                             int diff = a[tmp].dragPoint.Y - e.Location.Y;
-                            a[tmp].khung = new Rectangle(a[tmp].khungCu.Left, a[tmp].khungCu.Top - diff, a[tmp].khungCu.Width, a[tmp].khungCu.Height + diff);
+                            Rectangle rtg = new Rectangle();
+                            rtg = new Rectangle(a[tmp].khungCu.Left, a[tmp].khungCu.Top - diff, a[tmp].khungCu.Width, a[tmp].khungCu.Height + diff);
+                            if (a[tmp].resizeIndex == 5)
+                                a[tmp].khung = rtg;
+                            else
+                                a[tmp].khung = updateKhung(rtg, a[tmp].khung);
                         }
                         else if (a[tmp].dragHandle == 2)
                         {
                             int diffY = a[tmp].dragPoint.Y - e.Location.Y;
                             int diffX = a[tmp].dragPoint.X - e.Location.X;
-                            a[tmp].khung = new Rectangle(a[tmp].khungCu.Left, a[tmp].khungCu.Top - diffY, a[tmp].khungCu.Width - diffX, a[tmp].khungCu.Height + diffY);
+                            Rectangle rtg = new Rectangle();
+                            rtg = new Rectangle(a[tmp].khungCu.Left, a[tmp].khungCu.Top - diffY, a[tmp].khungCu.Width - diffX, a[tmp].khungCu.Height + diffY);
+                            if (a[tmp].resizeIndex == 5)
+                                a[tmp].khung = rtg;
+                            else
+                                a[tmp].khung = updateKhung(rtg, a[tmp].khung);
                         }
                         else if (a[tmp].dragHandle == 3)
                         {
                             int diff = a[tmp].dragPoint.X - e.Location.X;
-                            a[tmp].khung = new Rectangle(a[tmp].khungCu.Left, a[tmp].khungCu.Top, a[tmp].khungCu.Width - diff, a[tmp].khungCu.Height);
+                            Rectangle rtg = new Rectangle();
+                            rtg = new Rectangle(a[tmp].khungCu.Left, a[tmp].khungCu.Top, a[tmp].khungCu.Width - diff, a[tmp].khungCu.Height);
+                            if (a[tmp].resizeIndex == 5)
+                                a[tmp].khung = rtg;
+                            else
+                                a[tmp].khung = updateKhung(rtg, a[tmp].khung);
                         }
                         else if (a[tmp].dragHandle == 4)
                         {
                             int diffY = a[tmp].dragPoint.Y - e.Location.Y;
                             int diffX = a[tmp].dragPoint.X - e.Location.X;
-                            a[tmp].khung = new Rectangle(a[tmp].khungCu.Left, a[tmp].khungCu.Top, a[tmp].khungCu.Width - diffX, a[tmp].khungCu.Height - diffY);
+                            Rectangle rtg = new Rectangle();
+                            rtg = new Rectangle(a[tmp].khungCu.Left, a[tmp].khungCu.Top, a[tmp].khungCu.Width - diffX,a[tmp].khungCu.Height - diffY);
+                            if (a[tmp].resizeIndex == 5)
+                                a[tmp].khung = rtg;
+                            else
+                                a[tmp].khung = updateKhung(rtg, a[tmp].khung);
                         }
                         else if (a[tmp].dragHandle == 5)
                         {
                             int diff = a[tmp].dragPoint.Y - e.Location.Y;
-                            a[tmp].khung = new Rectangle(a[tmp].khungCu.Left, a[tmp].khungCu.Top, a[tmp].khungCu.Width, a[tmp].khungCu.Height - diff);
+                            Rectangle rtg = new Rectangle();
+                            rtg = new Rectangle(a[tmp].khungCu.Left, a[tmp].khungCu.Top, a[tmp].khungCu.Width, a[tmp].khungCu.Height - diff);
+                            if (a[tmp].resizeIndex == 5)
+                                a[tmp].khung = rtg;
+                            else
+                                a[tmp].khung = updateKhung(rtg, a[tmp].khung);
                         }
                         else if (a[tmp].dragHandle == 6)
                         {
                             int diffY = a[tmp].dragPoint.Y - e.Location.Y;
                             int diffX = a[tmp].dragPoint.X - e.Location.X;
-                            a[tmp].khung = new Rectangle(a[tmp].khungCu.Left - diffX, a[tmp].khungCu.Top, a[tmp].khungCu.Width + diffX, a[tmp].khungCu.Height - diffY);
+                            Rectangle rtg = new Rectangle();
+                            rtg = new Rectangle(a[tmp].khungCu.Left - diffX, a[tmp].khungCu.Top, a[tmp].khungCu.Width + diffX, a[tmp].khungCu.Height - diffY);
+                            if (a[tmp].resizeIndex == 5)
+                                a[tmp].khung = rtg;
+                            else
+                                a[tmp].khung = updateKhung(rtg, a[tmp].khung);
                         }
                         else if (a[tmp].dragHandle == 7)
                         {
                             int diff = a[tmp].dragPoint.X - e.Location.X;
-                            a[tmp].khung = new Rectangle(a[tmp].khungCu.Left - diff, a[tmp].khungCu.Top, a[tmp].khungCu.Width + diff, a[tmp].khungCu.Height);
+                            Rectangle rtg = new Rectangle();
+                            rtg = new Rectangle(a[tmp].khungCu.Left - diff, a[tmp].khungCu.Top, a[tmp].khungCu.Width + diff, a[tmp].khungCu.Height);
+                            if (a[tmp].resizeIndex == 5)
+                                a[tmp].khung = rtg;
+                            else
+                                a[tmp].khung = updateKhung(rtg, a[tmp].khung);
                         }
                         if (a[tmp].dragHandle > -1)
                             a[tmp].pictureBox.Invalidate();
@@ -410,7 +450,7 @@ namespace UI
                 
             }
         }
- 
+        
         private void handleMouseDown(object sender, MouseEventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
@@ -577,6 +617,16 @@ namespace UI
                     a[tmp].cY = e.Y;
                 }
             }
+        }
+        private Rectangle updateKhung(Rectangle rtg,   Rectangle khung)
+        {
+            if (rtg.Width > 5 && rtg.Height > 5)
+                khung = rtg;
+            else if (rtg.Width <= 5 && rtg.Height > 5)
+                khung = new Rectangle(khung.X, rtg.Y, khung.Width, rtg.Height);
+            else if (rtg.Height <= 5 && rtg.Width > 5)
+                khung = new Rectangle(rtg.X, khung.Y, rtg.Width, khung.Height);
+            return khung;
         }
         private Point GetHandlePoint(int value)
         {
