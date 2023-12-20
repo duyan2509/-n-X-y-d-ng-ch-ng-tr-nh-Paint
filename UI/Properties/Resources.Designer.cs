@@ -383,6 +383,26 @@ namespace UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_select_cursor_48_blue {
+            get {
+                object obj = ResourceManager.GetObject("icons8_select_cursor_48_blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_select_cursor_48_white {
+            get {
+                object obj = ResourceManager.GetObject("icons8_select_cursor_48_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_star_48_blue {
             get {
                 object obj = ResourceManager.GetObject("icons8-star-48-blue", resourceCulture);
@@ -436,6 +456,46 @@ namespace UI.Properties {
         internal static System.Drawing.Bitmap icons8_triangle_48_white {
             get {
                 object obj = ResourceManager.GetObject("icons8-triangle-48-white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_zoom_in_30_blue {
+            get {
+                object obj = ResourceManager.GetObject("icons8_zoom_in_30_blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_zoom_in_30_white {
+            get {
+                object obj = ResourceManager.GetObject("icons8_zoom_in_30_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_zoom_out_30_blue {
+            get {
+                object obj = ResourceManager.GetObject("icons8_zoom_out_30_blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_zoom_out_30_white {
+            get {
+                object obj = ResourceManager.GetObject("icons8_zoom_out_30_white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

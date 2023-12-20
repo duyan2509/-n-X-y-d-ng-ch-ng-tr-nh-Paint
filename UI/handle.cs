@@ -892,5 +892,45 @@ namespace UI
                 a[tmp].Pen.Color = dlgColor.Color;
             }
         }
+        private void handleClickBlackButton(object sender, EventArgs e)
+        {
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                a[tmp].Pen.Color = Color.Black;
+            }
+        }
+        private void handleClickGreenButton(object sender, EventArgs e)
+        {
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                a[tmp].Pen.Color = Color.FromArgb(97, 197, 84);
+            }
+        }
+        private void handleClickRedButton(object sender, EventArgs e)
+        {
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                a[tmp].Pen.Color = Color.FromArgb(237, 105, 94);
+            }
+        }
+        private void handleClickYellowButton(object sender, EventArgs e)
+        {
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                a[tmp].Pen.Color = Color.FromArgb(244, 191, 79);
+            }
+        }
+        private void handleClickBlueButton(object sender, EventArgs e)
+        {
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                a[tmp].Pen.Color = Color.FromArgb(77, 139, 183);
+            }
+        }
     }
 }

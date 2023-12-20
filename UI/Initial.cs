@@ -249,69 +249,81 @@ namespace UI
             //Add color panel
             Panel colorPanel = new Panel();
             colorPanel.Location = new Point(0, 50);
-            colorPanel.Size = new Size(60, 400);
+            colorPanel.Size = new Size(60, 265);
+            colorPanel.BackColor = Color.FromArgb(60, 65, 105);
+            //Add design panel
+            Panel designPanel = new Panel();
+            designPanel.Location = new Point(0, 320);
+            designPanel.Size = new Size(60, 225);
+            designPanel.BackColor = Color.FromArgb(12, 21, 89);
 
             Guna2Button blackButton = new Guna2Button();
-            blackButton.Size = new Size(45, 45);
-            blackButton.Location = new Point(5, 0);
+            blackButton.Size = new Size(35, 35);
+            blackButton.Location = new Point(10, 15);
             blackButton.FillColor = Color.Black;
-            blackButton.BorderRadius = 20;
-            blackButton.ImageSize = new Size(20, 20);
+            blackButton.BorderRadius = 15;
+            blackButton.ImageSize = new Size(10, 10);
             blackButton.Animated = true;
+            blackButton.Click += handleClickBlackButton;
             //blackButton.Click += ;
             blackButton.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(blackButton);
 
             Guna2Button greenButton = new Guna2Button();
-            greenButton.Size = new Size(45, 45);
-            greenButton.Location = new Point(5, 55);
+            greenButton.Size = new Size(35, 35);
+            greenButton.Location = new Point(10, 55);
             greenButton.FillColor = Color.FromArgb(97, 197, 84);
-            greenButton.BorderRadius = 20;
-            greenButton.ImageSize = new Size(20, 20);
+            greenButton.BorderRadius = 15;
+            greenButton.ImageSize = new Size(10, 10);
             greenButton.Animated = true;
+            greenButton.Click += handleClickGreenButton;
             //greenButton.Click += ;
             greenButton.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(greenButton);
 
             Guna2Button redButton = new Guna2Button();
-            redButton.Size = new Size(45, 45);
-            redButton.Location = new Point(5, 110);
+            redButton.Size = new Size(35, 35);
+            redButton.Location = new Point(10, 95);
             redButton.FillColor = Color.FromArgb(237, 105, 94);
-            redButton.BorderRadius = 20;
-            redButton.ImageSize = new Size(20, 20);
+            redButton.BorderRadius = 15;
+            redButton.ImageSize = new Size(10, 10);
             redButton.Animated = true;
+            redButton.Click += handleClickRedButton;
             //redButton.Click += ;
             redButton.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(redButton);
 
             Guna2Button yellowButton = new Guna2Button();
-            yellowButton.Size = new Size(45, 45);
-            yellowButton.Location = new Point(5, 165);
+            yellowButton.Size = new Size(35, 35);
+            yellowButton.Location = new Point(10, 135);
             yellowButton.FillColor = Color.FromArgb(244, 191, 79);
-            yellowButton.BorderRadius = 20;
-            yellowButton.ImageSize = new Size(20, 20);
+            yellowButton.BorderRadius = 15;
+            yellowButton.ImageSize = new Size(10, 10);
             yellowButton.Animated = true;
+            yellowButton.Click += handleClickYellowButton;
             //yellowButton.Click += ;
             yellowButton.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(yellowButton);
 
             Guna2Button blueButton = new Guna2Button();
-            blueButton.Size = new Size(45, 45);
-            blueButton.Location = new Point(5, 220);
+            blueButton.Size = new Size(35, 35);
+            blueButton.Location = new Point(10, 175);
             blueButton.FillColor = Color.FromArgb(77, 139, 183);
-            blueButton.BorderRadius = 20;
-            blueButton.ImageSize = new Size(20, 20);
+            blueButton.BorderRadius = 15;
+            blueButton.ImageSize = new Size(10, 10);
             blueButton.Animated = true;
+            blueButton.Click += handleClickBlueButton;
             //blueButton.Click += ;
             blueButton.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(blueButton);
 
+            //Button Color Pick
             Guna2Button pickColorButton = new Guna2Button();
-            pickColorButton.Size = new Size(45, 45);
-            pickColorButton.Location = new Point(5, 275);
+            pickColorButton.Size = new Size(35, 35);
+            pickColorButton.Location = new Point(10, 215);
             pickColorButton.FillColor = Color.FromArgb(203, 213, 224);
-            pickColorButton.BorderRadius = 20;
-            pickColorButton.ImageSize = new Size(15, 15);
+            pickColorButton.BorderRadius = 15;
+            pickColorButton.ImageSize = new Size(18, 18);
             pickColorButton.Animated = true;
             pickColorButton.Click += handlePickColor;
             pickColorButton.Image = Properties.Resources.icons8_plus_48;
@@ -319,13 +331,73 @@ namespace UI
             pickColorButton.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(pickColorButton);
 
+            //Button Select
+            Guna2Button selectButton = new Guna2Button();
+            selectButton.Size = new Size(35, 35);
+            selectButton.Location = new Point(10, 15);
+            selectButton.FillColor = Color.FromArgb(203, 213, 224);
+            selectButton.BorderRadius = 15;
+            selectButton.ImageSize = new Size(18, 18);
+            selectButton.Animated = true;
+            selectButton.Image = Properties.Resources.icons8_select_cursor_48_blue;
+             // +=
+             selectButton.Cursor = Cursors.Hand;
+            designPanel.Controls.Add(selectButton);
+
+            //Button zoom in
+            Guna2Button zoomInButton = new Guna2Button();
+            zoomInButton.Size = new Size(35, 35);
+            zoomInButton.Location = new Point(10, 55);
+            zoomInButton.FillColor = Color.FromArgb(203, 213, 224);
+            zoomInButton.BorderRadius = 15;
+            zoomInButton.ImageSize = new Size(18, 18);
+            zoomInButton.Animated = true;
+            zoomInButton.Image = Properties.Resources.icons8_zoom_in_30_blue;
+            // +=
+            zoomInButton.Cursor = Cursors.Hand;
+            designPanel.Controls.Add(zoomInButton);
+
+            //Button zoom out
+            Guna2Button zoomOutButton = new Guna2Button();
+            zoomOutButton.Size = new Size(35, 35);
+            zoomOutButton.Location = new Point(10, 95);
+            zoomOutButton.FillColor = Color.FromArgb(203, 213, 224);
+            zoomOutButton.BorderRadius = 15;
+            zoomOutButton.ImageSize = new Size(18, 18);
+            zoomOutButton.Animated = true;
+            zoomOutButton.Image = Properties.Resources.icons8_zoom_out_30_blue;
+
+            // +=
+            zoomOutButton.Cursor = Cursors.Hand;
+            designPanel.Controls.Add(zoomOutButton);
+
+            //Button reset
+            Guna2Button resetButton = new Guna2Button();
+            resetButton.Size = new Size(35, 35);
+            resetButton.Location = new Point(10, 175);
+            resetButton.FillColor = Color.FromArgb(203, 213, 224);
+            resetButton.BorderRadius = 15;
+            resetButton.ImageSize = new Size(10, 10);
+            resetButton.Animated = true;
+            // +=
+            resetButton.Cursor = Cursors.Hand;
+            designPanel.Controls.Add(resetButton);
+
+         
+
+
+            //Drop Down Brush
+            //Drop Down Size
+
 
             int tmp = tcMain.SelectedIndex;
             colorPanel.Controls.Add(a[tmp].bt);
+            designPanel.Controls.Add(a[tmp].bt);
 
             newPanel.Controls.Add(toolPanel);
             newPanel.Controls.Add(colorPanel);
             newPanel.Controls.Add(shapePanel);
+            newPanel.Controls.Add(designPanel);
             //
 
 
@@ -351,14 +423,14 @@ namespace UI
             a[tmp].pictureBox.MouseClick += handleMouseClick;//fill
             a[tmp].pictureBox.Paint += handlePaint;
 
-            // Button ( trong DrawObject)
-            a[tmp].bt.Size = new Size(45, 45);
+            // Button ( trong DrawObject) Resize
+            a[tmp].bt.Size = new Size(35, 35);
             a[tmp].bt.FillColor = Color.White;
-            a[tmp].bt.BorderRadius = 20;
+            a[tmp].bt.BorderRadius = 15;
             a[tmp].bt.Cursor = Cursors.Hand;
-            a[tmp].bt.Location = new Point(5, 330);
+            a[tmp].bt.Location = new Point(10, 135);
             a[tmp].bt.Image = Properties.Resources.icons8_resize_48;
-            a[tmp].bt.ImageSize = new Size(20, 20);
+            a[tmp].bt.ImageSize = new Size(18, 18);
             a[tmp].bt.Animated = true;
             //tcMain.SelectedPage.Controls.Add(a[tmp].bt);
             //
