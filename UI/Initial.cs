@@ -179,17 +179,7 @@ namespace UI
             right_triangleButton.Click += handleClickright_TriangleButton;
             right_triangleButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(right_triangleButton);
-            // Hinh Vuong
-            //Guna2Button squareButton = new Guna2Button();
-            //squareButton.Size = new Size(45, 45);
-            //squareButton.Location = new Point(0, 120);
-            //squareButton.Image = Properties.Resources.icons8_rounded_square_48_white;
-            //squareButton.ImageSize = new Size(20, 20);
-            //squareButton.BorderRadius = 20;
-            //squareButton.Animated = true;
-            //squareButton.Click += handleClickSquareButton;
-            //squareButton.Cursor = Cursors.Hand;
-            //shapePanel.Controls.Add(squareButton);
+
             // Hinh Luc Giac
             Guna2Button hexagonButton = new Guna2Button();
             hexagonButton.Size = new Size(45, 45);
@@ -246,28 +236,35 @@ namespace UI
             arcButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(arcButton);
 
-            //Add color panel
-            Panel colorPanel = new Panel();
-            colorPanel.Location = new Point(0, 50);
-            colorPanel.Size = new Size(60, 265);
-            colorPanel.BackColor = Color.FromArgb(60, 65, 105);
-            //Add design panel
-            Panel designPanel = new Panel();
-            designPanel.Location = new Point(0, 320);
-            designPanel.Size = new Size(60, 225);
-            designPanel.BackColor = Color.FromArgb(12, 21, 89);
 
-            Guna2Button blackButton = new Guna2Button();
-            blackButton.Size = new Size(35, 35);
-            blackButton.Location = new Point(10, 15);
-            blackButton.FillColor = Color.Black;
-            blackButton.BorderRadius = 15;
-            blackButton.ImageSize = new Size(10, 10);
-            blackButton.Animated = true;
-            blackButton.Click += handleClickBlackButton;
+
+            //Add color panel
+            Guna2Panel colorPanel = new Guna2Panel();
+            colorPanel.Location = new Point(5, 30);
+            colorPanel.Size = new Size(60, 190);
+            colorPanel.BorderColor = pnTitleBar.BackColor;
+            colorPanel.BorderRadius = 20;
+            colorPanel.BorderThickness = 2;            //Add design panel
+            Guna2Panel designPanel = new Guna2Panel();
+            designPanel.Location = new Point(5, 240);
+            designPanel.Size = new Size(60, 225);
+            designPanel.BorderColor = pnTitleBar.BackColor;
+            designPanel.BorderRadius = 20;
+            designPanel.BorderThickness = 2;
+
+            Guna2Button pickingButton = new Guna2Button();
+            pickingButton.Size = new Size(35, 35);
+            pickingButton.Location = new Point(10, 15);
+            pickingButton.FillColor = Color.Black;
+            pickingButton.BorderRadius = 15;
+            pickingButton.BorderThickness = 2;
+            pickingButton.BorderColor=Color.White;
+            pickingButton.ImageSize = new Size(10, 10);
+            pickingButton.Animated = true;
+            pickingButton.Click += handleClickBlackButton;
             //blackButton.Click += ;
-            blackButton.Cursor = Cursors.Hand;
-            colorPanel.Controls.Add(blackButton);
+            pickingButton.Cursor = Cursors.Hand;
+            colorPanel.Controls.Add(pickingButton);
 
             Guna2Button greenButton = new Guna2Button();
             greenButton.Size = new Size(35, 35);
@@ -293,34 +290,10 @@ namespace UI
             redButton.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(redButton);
 
-            Guna2Button yellowButton = new Guna2Button();
-            yellowButton.Size = new Size(35, 35);
-            yellowButton.Location = new Point(10, 135);
-            yellowButton.FillColor = Color.FromArgb(244, 191, 79);
-            yellowButton.BorderRadius = 15;
-            yellowButton.ImageSize = new Size(10, 10);
-            yellowButton.Animated = true;
-            yellowButton.Click += handleClickYellowButton;
-            //yellowButton.Click += ;
-            yellowButton.Cursor = Cursors.Hand;
-            colorPanel.Controls.Add(yellowButton);
-
-            Guna2Button blueButton = new Guna2Button();
-            blueButton.Size = new Size(35, 35);
-            blueButton.Location = new Point(10, 175);
-            blueButton.FillColor = Color.FromArgb(77, 139, 183);
-            blueButton.BorderRadius = 15;
-            blueButton.ImageSize = new Size(10, 10);
-            blueButton.Animated = true;
-            blueButton.Click += handleClickBlueButton;
-            //blueButton.Click += ;
-            blueButton.Cursor = Cursors.Hand;
-            colorPanel.Controls.Add(blueButton);
-
             //Button Color Pick
             Guna2Button pickColorButton = new Guna2Button();
             pickColorButton.Size = new Size(35, 35);
-            pickColorButton.Location = new Point(10, 215);
+            pickColorButton.Location = new Point(10, 135);
             pickColorButton.FillColor = Color.FromArgb(203, 213, 224);
             pickColorButton.BorderRadius = 15;
             pickColorButton.ImageSize = new Size(18, 18);
