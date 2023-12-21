@@ -967,8 +967,8 @@ namespace UI
 
                 // Create ToolStripMenuItems for different sizes
                 ToolStripMenuItem brush1Item = new ToolStripMenuItem(Properties.Resources.icons8_brush_48_blue);
-                ToolStripMenuItem brush2Item = new ToolStripMenuItem(Properties.Resources.icons8_brush_48_blue);
-                ToolStripMenuItem brush3Item = new ToolStripMenuItem(Properties.Resources.icons8_brush_48_blue);
+                ToolStripMenuItem brush2Item = new ToolStripMenuItem(Properties.Resources.icons8_calligraphy_brush_64_blue);
+                ToolStripMenuItem brush3Item = new ToolStripMenuItem(Properties.Resources.icons8_marker_pen_50_blue);
                 // Set DisplayStyle to show only the image
                 brush1Item.DisplayStyle = ToolStripItemDisplayStyle.Image;
                 brush2Item.DisplayStyle = ToolStripItemDisplayStyle.Image;

@@ -253,4 +253,16 @@
   <data name="icons8_zoom_out_30_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-zoom-out-30-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8_calligraphy_brush_64_blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-calligraphy-brush-64-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_calligraphy_brush_64_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-calligraphy-brush-64-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_marker_pen_50_blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-marker-pen-50-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8_marker_pen_50_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-marker-pen-50-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

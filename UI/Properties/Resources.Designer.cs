@@ -103,6 +103,26 @@ namespace UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_calligraphy_brush_64_blue {
+            get {
+                object obj = ResourceManager.GetObject("icons8_calligraphy_brush_64_blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_calligraphy_brush_64_white {
+            get {
+                object obj = ResourceManager.GetObject("icons8_calligraphy_brush_64_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_circle_50_blue {
             get {
                 object obj = ResourceManager.GetObject("icons8-circle-50-blue", resourceCulture);
@@ -246,6 +266,26 @@ namespace UI.Properties {
         internal static System.Drawing.Bitmap icons8_line_48_white {
             get {
                 object obj = ResourceManager.GetObject("icons8_line_48_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_marker_pen_50_blue {
+            get {
+                object obj = ResourceManager.GetObject("icons8_marker_pen_50_blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_marker_pen_50_white {
+            get {
+                object obj = ResourceManager.GetObject("icons8_marker_pen_50_white", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

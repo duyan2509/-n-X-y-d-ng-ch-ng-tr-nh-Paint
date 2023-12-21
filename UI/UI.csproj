@@ -263,5 +263,17 @@
   <ItemGroup>
     <None Include="Resources\icons8-zoom-out-30-white.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-calligraphy-brush-64-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-calligraphy-brush-64-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-marker-pen-50-blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-marker-pen-50-white.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
