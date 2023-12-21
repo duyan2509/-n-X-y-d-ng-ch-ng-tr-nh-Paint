@@ -780,14 +780,7 @@ namespace UI
 
             }
         }
-        private void handleClickBrushButton(object sender, EventArgs e)
-        {
-
-            if (sender is Guna2Button clickedButton)
-            {
-
-            }
-        }
+      
         private void handleClickEllipseButton(object sender, EventArgs e)
         {
             if (sender is Guna2Button clickedButton)
@@ -931,6 +924,75 @@ namespace UI
                 int tmp = tcMain.SelectedIndex;
                 a[tmp].Pen.Color = Color.FromArgb(77, 139, 183);
             }
+        }
+        // Size Button
+        private void handleClickSizeButton(object sender, EventArgs e)
+        {
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                ContextMenuStrip sizeMenu = new ContextMenuStrip();
+
+                // Create ToolStripMenuItems for different sizes
+                ToolStripMenuItem smallSizeItem = new ToolStripMenuItem("Small Size");
+                ToolStripMenuItem mediumSizeItem = new ToolStripMenuItem("Medium Size");
+                ToolStripMenuItem largeSizeItem = new ToolStripMenuItem("Large Size");
+
+                // Add event handlers for menu item clicks
+                smallSizeItem.Click += SizeMenuItem_Click;
+                mediumSizeItem.Click += SizeMenuItem_Click;
+                largeSizeItem.Click += SizeMenuItem_Click;
+
+                // Add the ToolStripMenuItems to the dropdown menu
+                sizeMenu.Items.Add(smallSizeItem);
+                sizeMenu.Items.Add(mediumSizeItem);
+                sizeMenu.Items.Add(largeSizeItem);
+
+                // Show the context menu at the button's location
+                sizeMenu.Show(clickedButton, new Point(0, clickedButton.Height));
+            }
+        }
+        private void SizeMenuItem_Click(object sender, EventArgs e)
+        {
+            // Handle size selection here
+            ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
+            MessageBox.Show($"Selected size: {clickedItem.Text}");
+        }
+        private void handleClickBrushButton(object sender, EventArgs e)
+        {
+            if (sender is Guna2Button clickedButton)
+            {
+                int tmp = tcMain.SelectedIndex;
+                ContextMenuStrip brushMenu = new ContextMenuStrip();
+
+                // Create ToolStripMenuItems for different sizes
+                ToolStripMenuItem brush1Item = new ToolStripMenuItem(Properties.Resources.icons8_brush_48_blue);
+                ToolStripMenuItem brush2Item = new ToolStripMenuItem(Properties.Resources.icons8_brush_48_blue);
+                ToolStripMenuItem brush3Item = new ToolStripMenuItem(Properties.Resources.icons8_brush_48_blue);
+                // Set DisplayStyle to show only the image
+                brush1Item.DisplayStyle = ToolStripItemDisplayStyle.Image;
+                brush2Item.DisplayStyle = ToolStripItemDisplayStyle.Image;
+                brush3Item.DisplayStyle = ToolStripItemDisplayStyle.Image;
+
+              
+
+                // Add event handlers for menu item clicks
+                brush1Item.Click += BrushMenuItem_Click;
+                brush2Item.Click += BrushMenuItem_Click;
+                brush3Item.Click += BrushMenuItem_Click;
+
+                // Add the ToolStripMenuItems to the dropdown menu
+                brushMenu.Items.Add(brush1Item);
+                brushMenu.Items.Add(brush2Item);
+                brushMenu.Items.Add(brush3Item);
+
+                // Show the context menu at the button's location
+                brushMenu.Show(clickedButton, new Point(0, clickedButton.Height));
+            }
+        }
+        private void BrushMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
