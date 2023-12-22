@@ -132,7 +132,7 @@ namespace UI
             sizeButton.Location = new Point(60, 110);
             sizeButton.FillColor = Color.FromArgb(94, 148, 255);
             sizeButton.BorderRadius = 20;
-            //sizeButton.Image = Properties.Resources.icons8_text_60_white;
+            sizeButton.Image = Properties.Resources.icons8_line_width_50;
             sizeButton.ImageSize = new Size(20, 20);
             sizeButton.Animated = true;
             sizeButton.Click += handleClickSizeButton;

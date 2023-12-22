@@ -275,5 +275,11 @@
   <ItemGroup>
     <None Include="Resources\icons8-marker-pen-50-white.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-line-width-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-line-width-50 %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

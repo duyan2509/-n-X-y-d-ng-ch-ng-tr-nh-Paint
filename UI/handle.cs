@@ -970,11 +970,14 @@ namespace UI
                 ToolStripMenuItem brush2Item = new ToolStripMenuItem(Properties.Resources.icons8_calligraphy_brush_64_blue);
                 ToolStripMenuItem brush3Item = new ToolStripMenuItem(Properties.Resources.icons8_marker_pen_50_blue);
                 // Set DisplayStyle to show only the image
-                brush1Item.DisplayStyle = ToolStripItemDisplayStyle.Image;
-                brush2Item.DisplayStyle = ToolStripItemDisplayStyle.Image;
-                brush3Item.DisplayStyle = ToolStripItemDisplayStyle.Image;
+                brush1Item.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+                brush1Item.Text = "Brush";
+                brush2Item.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+                brush2Item.Text = "Brush";
+                brush3Item.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
+                brush3Item.Text = "Brush";
 
-              
+
 
                 // Add event handlers for menu item clicks
                 brush1Item.Click += BrushMenuItem_Click;
@@ -985,9 +988,9 @@ namespace UI
                 brushMenu.Items.Add(brush1Item);
                 brushMenu.Items.Add(brush2Item);
                 brushMenu.Items.Add(brush3Item);
-
+                
                 // Show the context menu at the button's location
-                brushMenu.Show(clickedButton, new Point(0, clickedButton.Height));
+                brushMenu.Show(clickedButton, new Point(-15, clickedButton.Height));
             }
         }
         private void BrushMenuItem_Click(object sender, EventArgs e)
