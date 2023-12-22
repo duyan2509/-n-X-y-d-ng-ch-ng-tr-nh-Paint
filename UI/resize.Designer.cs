@@ -35,8 +35,8 @@
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +47,7 @@
             this.label2.Location = new System.Drawing.Point(19, 76);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 26);
+            this.label2.Size = new System.Drawing.Size(60, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "Width";
             // 
@@ -58,7 +58,7 @@
             this.label3.Location = new System.Drawing.Point(209, 76);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 26);
+            this.label3.Size = new System.Drawing.Size(65, 23);
             this.label3.TabIndex = 2;
             this.label3.Text = "Height";
             // 
@@ -68,8 +68,10 @@
             this.txt_Width.Location = new System.Drawing.Point(24, 106);
             this.txt_Width.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Width.Name = "txt_Width";
-            this.txt_Width.Size = new System.Drawing.Size(139, 37);
+            this.txt_Width.Size = new System.Drawing.Size(139, 34);
             this.txt_Width.TabIndex = 3;
+            this.txt_Width.Text = "600";
+            this.txt_Width.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txt_Height
             // 
@@ -77,8 +79,10 @@
             this.txt_Height.Location = new System.Drawing.Point(214, 106);
             this.txt_Height.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Height.Name = "txt_Height";
-            this.txt_Height.Size = new System.Drawing.Size(149, 37);
+            this.txt_Height.Size = new System.Drawing.Size(149, 34);
             this.txt_Height.TabIndex = 4;
+            this.txt_Height.Text = "400";
+            this.txt_Height.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // guna2HtmlLabel1
             // 
@@ -125,14 +129,6 @@
             this.panel1.Size = new System.Drawing.Size(415, 270);
             this.panel1.TabIndex = 10;
             // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 270);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(415, 41);
-            this.panel2.TabIndex = 11;
-            // 
             // guna2Button2
             // 
             this.guna2Button2.Animated = true;
@@ -153,6 +149,14 @@
             this.guna2Button2.TabIndex = 9;
             this.guna2Button2.Text = "Cancel";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 270);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(415, 41);
+            this.panel2.TabIndex = 11;
             // 
             // resizeForm
             // 

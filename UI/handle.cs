@@ -39,6 +39,7 @@ namespace UI
         private void handlePaint(object sender, PaintEventArgs e)
         {
             
+            
             int tmp = tcMain.SelectedIndex;
             if (tmp < a.Count)
             {
@@ -493,8 +494,8 @@ namespace UI
                 {
                     // ve chinh thuc
                     VeChinhThuc();
+                    a[tmp].isClear = false;
                     a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
-                    // Clipboard.SetImage(a[tmp].listBitmap[a[tmp].listBitmap.Count - 1]);
                 }
                 if (a[tmp].isResize)
                 {
@@ -581,11 +582,11 @@ namespace UI
             {
                  if (a[tmp].resizeIndex == 7)
                 {
+
                     a[tmp].isResize = false;
                     a[tmp].G.DrawRectangle(a[tmp].Pen, a[tmp].khung);
                     a[tmp].pictureBox.Refresh();
                     a[tmp].dragHandle = -1;
-                    // MessageBox.Show(Top.ToString());
                     a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
 
                 }
@@ -996,6 +997,69 @@ namespace UI
         private void BrushMenuItem_Click(object sender, EventArgs e)
         {
             
+        }
+        private void handleClickZoomIn(object sender, EventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            int w = (int)(1.2 * a[tmp].pictureBox.Width);
+            int h = (int)(1.2 * a[tmp].pictureBox.Height);
+            a[tmp].pictureBox.Size = new Size(w,h);
+            Image originalImage = a[tmp].pictureBox.Image;
+
+            Bitmap newBitmap = new Bitmap(w,h);
+            using (Graphics g = Graphics.FromImage(newBitmap))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.DrawImage(originalImage, 0, 0,w,h);
+            }
+            a[tmp].bm = newBitmap;
+            a[tmp].pictureBox.Image = a[tmp].bm;
+            a[tmp].G = Graphics.FromImage(a[tmp].bm);
+            a[tmp].pictureBox.Location = new Point(0, 0);
+            a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - w) / 2+3, Math.Abs(this.Height - h) / 2+3);
+            a[tmp].pictureBox.Refresh();
+        }
+        private void handleClickZoomOut(object sender, EventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            int w = (int)(0.8 * a[tmp].pictureBox.Width);
+            int h = (int)(0.8 * a[tmp].pictureBox.Height);
+            a[tmp].pictureBox.Size = new Size(w, h);
+            Image originalImage = a[tmp].pictureBox.Image;
+
+            Bitmap newBitmap = new Bitmap(w, h);
+            using (Graphics g = Graphics.FromImage(newBitmap))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.DrawImage(originalImage, 0, 0, w, h);
+            }
+            a[tmp].bm = newBitmap;
+            a[tmp].pictureBox.Image = a[tmp].bm;
+            a[tmp].G = Graphics.FromImage(a[tmp].bm);
+            a[tmp].pictureBox.Location = new Point(0, 0);
+            a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - w) / 2 , Math.Abs(this.Height - h) / 2 );
+            a[tmp].pictureBox.Refresh();
+        }
+        private void handleResetZoom(object sender, EventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            int w = a[tmp].sizeBitmap.Width;
+            int h = a[tmp].sizeBitmap.Height;
+            a[tmp].pictureBox.Size = new Size(w, h);
+            Image originalImage = a[tmp].pictureBox.Image;
+
+            Bitmap newBitmap = new Bitmap(w, h);
+            using (Graphics g = Graphics.FromImage(newBitmap))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.DrawImage(originalImage, 0, 0, w, h);
+            }
+            a[tmp].bm = newBitmap;
+            a[tmp].pictureBox.Image = a[tmp].bm;
+            a[tmp].G = Graphics.FromImage(a[tmp].bm);
+            a[tmp].pictureBox.Location = new Point(0, 0);
+            a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - w) / 2 , Math.Abs(this.Height - h) / 2 );
+            a[tmp].pictureBox.Refresh();
         }
     }
 }

@@ -18,6 +18,8 @@ namespace UI
         public resizeForm()
         {
             InitializeComponent();
+            width = 600;
+            height = 400;
         }
        
 
@@ -26,6 +28,8 @@ namespace UI
             index = 1;
             width = int.Parse(txt_Width.Text);
             height = int.Parse(txt_Height.Text);
+            txt_Width.Text = width.ToString();
+            txt_Height.Text = height.ToString();
             this.Close();
 
         }

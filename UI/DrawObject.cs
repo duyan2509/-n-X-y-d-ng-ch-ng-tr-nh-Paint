@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Forms;
 using Brush = System.Drawing.Brush;
 using Color = System.Drawing.Color;
 using Pen = System.Drawing.Pen;
@@ -38,18 +39,20 @@ namespace UI
         public Graphics G { get; set; }
         public Bitmap bm { get; set; }
         public Bitmap bmSelect { get; set; }
-
-        public int sizeX { get; set; }
-        public int sizeY { get; set; }
+        public List<Bitmap> listBitmap { get; set; }
+        public int iBitmap { get; set; }
+        public Size size { get; set; }
+        public Size sizeBitmap { get; set; }
+        public bool isClear { get; set; }
         public Guna2Button bt = new Guna2Button();
         public Guna2PictureBox pictureBox = new Guna2PictureBox();
+        public Panel backGround = new Panel();
         public Pen Eraser { get; set; }
         public bool isResize { get; set; }
         public Rectangle khungCu { get; set; }
         public int dragHandle = -1;
         public Point dragPoint { get; set; }
         public Rectangle khung { get; set; }
-        public List<Bitmap> listBitmap { get; set; }
-        public int iBitmap;
+        
     }
 }

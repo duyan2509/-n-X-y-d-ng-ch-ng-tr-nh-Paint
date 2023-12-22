@@ -35,6 +35,7 @@ namespace UI
             tmp.khung = new Rectangle(0, 0, 0, 0);
             tmp.listBitmap = new List<Bitmap>();
             tmp.iBitmap = 0;
+            tmp.isClear = true;
             a.Add(tmp);
         }
         private void initialPanel()
@@ -339,7 +340,7 @@ namespace UI
             zoomInButton.ImageSize = new Size(18, 18);
             zoomInButton.Animated = true;
             zoomInButton.Image = Properties.Resources.icons8_zoom_in_30_blue;
-            // +=
+            zoomInButton.Click += handleClickZoomIn;
             zoomInButton.Cursor = Cursors.Hand;
             designPanel.Controls.Add(zoomInButton);
 
@@ -353,7 +354,7 @@ namespace UI
             zoomOutButton.Animated = true;
             zoomOutButton.Image = Properties.Resources.icons8_zoom_out_30_blue;
 
-            // +=
+            zoomOutButton.Click += handleClickZoomOut;
             zoomOutButton.Cursor = Cursors.Hand;
             designPanel.Controls.Add(zoomOutButton);
 
@@ -365,7 +366,8 @@ namespace UI
             resetButton.BorderRadius = 15;
             resetButton.ImageSize = new Size(10, 10);
             resetButton.Animated = true;
-            // +=
+            resetButton.Click += handleResetZoom;
+
             resetButton.Cursor = Cursors.Hand;
             designPanel.Controls.Add(resetButton);
 
@@ -393,15 +395,16 @@ namespace UI
         }
         private void initialPictureBox()
         {
-            PictureBox backGround = new PictureBox();
-            backGround.Dock = DockStyle.Right;
-            backGround.Width = this.Width - 263;
-            backGround.BackColor = Color.FromArgb(243, 243, 243);
-
-
-
             int tmp = tcMain.SelectedIndex;
+            a[tmp].backGround.Dock = DockStyle.Right;
+            a[tmp].backGround.AutoScroll = true;
+            a[tmp].backGround.Width = this.Width - 263;
+            a[tmp].backGround.BackColor = Color.FromArgb(243, 243, 243);
+
+
+
             a[tmp].pictureBox = new Guna2PictureBox();
+            a[tmp].pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
 
             a[tmp].pictureBox.MouseDown += handleMouseDown;
             a[tmp].pictureBox.MouseMove += handleMouseMove;
@@ -422,37 +425,32 @@ namespace UI
             //
 
             //size
-            a[tmp].sizeX = 600;
-            a[tmp].sizeY = 400;
-            a[tmp].pictureBox.Size = new Size(a[tmp].sizeX, a[tmp].sizeY);
+            a[tmp].pictureBox.Size = new Size(600, 400);
             a[tmp].bm = new Bitmap(a[tmp].pictureBox.Width, a[tmp].pictureBox.Height);
             a[tmp].pictureBox.Image = a[tmp].bm;
             a[tmp].G = Graphics.FromImage(a[tmp].bm);
             a[tmp].G.Clear(Color.White);
             a[tmp].pictureBox.Invalidate();
+            a[tmp].sizeBitmap = new Size(a[tmp].pictureBox.Width, a[tmp].pictureBox.Height);
             a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
             this.SizeChanged += (sender, e) =>
             {
-                backGround.Dock = DockStyle.Right;
-                backGround.Width = this.Width - 270;
-                backGround.BackColor = Color.FromArgb(243, 243, 243);
-                a[tmp].pictureBox.Location = new Point((backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
+                a[tmp].backGround.Dock = DockStyle.Right;
+                a[tmp].backGround.Width = this.Width - 270;
+                a[tmp].backGround.BackColor = Color.FromArgb(243, 243, 243);
+                a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
             };
 
-            backGround.Controls.Add(a[tmp].pictureBox);
-            a[tmp].pictureBox.Location = new Point((backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
-
+            a[tmp].backGround.Controls.Add(a[tmp].pictureBox);
+            a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
+            
 
 
             resizeForm ResizeForm = new resizeForm();
 
             a[tmp].bt.Click += (s, args) =>
             {
-                if (a[tmp].region.Count != 0)
-                {
-                    return;
-                }
-                else
+                if (a[tmp].isClear)
                 {
                     ResizeForm.ShowDialog();
                     int width = ResizeForm.width;
@@ -466,11 +464,12 @@ namespace UI
                         a[tmp].pictureBox.Size = new Size(width, height);
                         a[tmp].pictureBox.Image = a[tmp].bm;
                         a[tmp].G = Graphics.FromImage(a[tmp].bm);
-                        a[tmp].pictureBox.Location = new Point((backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
+                        a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
+                        a[tmp].sizeBitmap = new Size(a[tmp].pictureBox.Width, a[tmp].pictureBox.Height);
                     }
                 }
             };
-            tcMain.SelectedPage.Controls.Add(backGround);
+            tcMain.SelectedPage.Controls.Add(a[tmp].backGround);
 
 
         }
