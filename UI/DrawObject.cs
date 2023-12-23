@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Brush = System.Drawing.Brush;
 using Color = System.Drawing.Color;
 using Pen = System.Drawing.Pen;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace UI
 {
@@ -53,6 +54,7 @@ namespace UI
         public int dragHandle = -1;
         public Point dragPoint { get; set; }
         public Rectangle khung { get; set; }
-        
+        public KryptonRichTextBox text = new KryptonRichTextBox();
+        public bool isText  { get; set; }
     }
 }

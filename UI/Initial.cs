@@ -36,7 +36,9 @@ namespace UI
             tmp.listBitmap = new List<Bitmap>();
             tmp.iBitmap = 0;
             tmp.isClear = true;
+
             a.Add(tmp);
+
         }
         private void initialPanel()
         {
@@ -469,6 +471,16 @@ namespace UI
                     }
                 }
             };
+
+            // khởi tạo text cho picture box
+            
+            a[tmp].text.ForeColor = Color.Black;
+            a[tmp].text.StateActive.Back.Color1 = Color.White;
+            a[tmp].text.StateActive.Border.Width = 0;
+            a[tmp].text.Hide();
+            a[tmp].pictureBox.Controls.Add(a[tmp].text);
+
+
             tcMain.SelectedPage.Controls.Add(a[tmp].backGround);
 
 

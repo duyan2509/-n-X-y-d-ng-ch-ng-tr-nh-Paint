@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using UI.Shape;
 using Brushes = System.Drawing.Brushes;
+using ComponentFactory.Krypton.Toolkit;
 
 namespace UI
 {
@@ -274,6 +275,11 @@ namespace UI
                     if (a[tmp].index != 5)
                         g.DrawRectangle(resizePen, a[tmp].khung);
                     
+                    if(a[tmp].index == 16)
+                    {
+                        a[tmp].text.Size = new Size(a[tmp].khung.Width - 12, a[tmp].khung.Height - 12);
+                        a[tmp].text.Location = new Point(a[tmp].khung.X + 6, a[tmp].khung.Y + 6);
+                    }
                     if (a[tmp].index == 5)
                     {
                         g.FillRectangle(Brushes.DarkRed, GetHandleRect(0));
@@ -282,7 +288,6 @@ namespace UI
                     else if (a[tmp].index !=0)
                         for (int i = 0; i < 8; i++)
                             g.FillRectangle(Brushes.DarkRed, GetHandleRect(i));
-
                     //a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
                 }
 
@@ -474,7 +479,7 @@ namespace UI
         {
             int tmp = tcMain.SelectedIndex;
             if (tmp < a.Count)
-            {
+            {   
                 if (a[tmp].resizeIndex == 3 || a[tmp].resizeIndex == 4)
                 {
                     a[tmp].isResize = false;
@@ -494,6 +499,8 @@ namespace UI
                 {
                     // ve chinh thuc
                     VeChinhThuc();
+                    a[tmp].isText = !a[tmp].isText;
+                    
                     a[tmp].isClear = false;
                     a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
                 }
@@ -508,7 +515,6 @@ namespace UI
                             a[tmp].dragPoint = GetHandlePoint(i);
                         }
                     }
-
                     if (checkODK == 0 &&!a[tmp].khung.IsEmpty && a[tmp].khung.Contains(e.Location))
                     {
                         a[tmp].dragHandle = -1;
@@ -519,6 +525,12 @@ namespace UI
                 }
                 else if (a[tmp].index!=0)
                 {
+                    if(a[tmp].index == 16 && a[tmp].isText)
+                    {
+                        // tạo khung cho text
+                        a[tmp].khung = new Rectangle(e.X, e.Y, 160, 47);
+                        a[tmp].text.Show();
+                    }
                     a[tmp].Paint = true;
                     a[tmp].py = e.Location;
                     a[tmp].cX = e.X;
@@ -697,6 +709,51 @@ namespace UI
                     a[tmp].dragHandle = -1;
                     a[tmp].khung = new Rectangle(Top, 0, 0, 0);
                 }
+                else if (a[tmp].resizeIndex == 16)
+                {
+                    int maxWidth = a[tmp].text.Width - 5;
+                    string text = a[tmp].text.Text;
+                    Font font = a[tmp].text.Font;
+
+                    List<string> linesToDraw = new List<string>();
+                    string currentLine = "";
+
+                    foreach (char character in text)
+                    {
+                        string testLine = currentLine + character;
+                        SizeF size = a[tmp].G.MeasureString(testLine, font);
+
+                        if (size.Width <= maxWidth || char.IsWhiteSpace(character))
+                        {
+                            currentLine += character;
+                        }
+                        else
+                        {
+                            linesToDraw.Add(currentLine);
+                            currentLine = character.ToString();
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(currentLine))
+                    {
+                        linesToDraw.Add(currentLine);
+                    }
+
+                    int y = a[tmp].khung.Y + 8;
+
+                    foreach (string line in linesToDraw)
+                    {
+                        a[tmp].G.DrawString(line, font, a[tmp].brush, new PointF(a[tmp].khung.X + 8, y)); 
+                        y += (int)font.GetHeight() + 2; 
+                    }
+
+                   
+                    a[tmp].isResize = false;
+                    a[tmp].pictureBox.Refresh();
+                    a[tmp].dragHandle = -1;
+                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                    a[tmp].text.Hide();
+                    a[tmp].text.Text = "";
+                }
             }
         }
         private void XoaRedo()
@@ -778,7 +835,9 @@ namespace UI
 
             if (sender is Guna2Button clickedButton)
             {
-
+                int tmp = tcMain.SelectedIndex;
+                a[tmp].index = 16;
+                a[tmp].isText = true;
             }
         }
       
