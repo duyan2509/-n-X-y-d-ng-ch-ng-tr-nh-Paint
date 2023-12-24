@@ -55,7 +55,6 @@ namespace UI
                         //draw elip
                         a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
                         g.DrawEllipse(a[tmp].Pen, a[tmp].khung);
-
                         a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
 
                     }
@@ -374,6 +373,8 @@ namespace UI
                                 a[tmp].khung = rtg;
                             else
                                 a[tmp].khung=updateKhung(rtg, a[tmp].khung);
+                            this.Cursor = Cursors.SizeNWSE;
+
                         }
                         else if (a[tmp].dragHandle == 1)
                         {
@@ -384,6 +385,7 @@ namespace UI
                                 a[tmp].khung = rtg;
                             else
                                 a[tmp].khung = updateKhung(rtg, a[tmp].khung);
+                            this.Cursor = Cursors.SizeNS;
                         }
                         else if (a[tmp].dragHandle == 2)
                         {
@@ -395,6 +397,7 @@ namespace UI
                                 a[tmp].khung = rtg;
                             else
                                 a[tmp].khung = updateKhung(rtg, a[tmp].khung);
+                            this.Cursor = Cursors.SizeNESW;
                         }
                         else if (a[tmp].dragHandle == 3)
                         {
@@ -405,6 +408,7 @@ namespace UI
                                 a[tmp].khung = rtg;
                             else
                                 a[tmp].khung = updateKhung(rtg, a[tmp].khung);
+                            this.Cursor = Cursors.SizeWE;
                         }
                         else if (a[tmp].dragHandle == 4)
                         {
@@ -416,6 +420,7 @@ namespace UI
                                 a[tmp].khung = rtg;
                             else
                                 a[tmp].khung = updateKhung(rtg, a[tmp].khung);
+                            this.Cursor = Cursors.SizeNWSE;
                         }
                         else if (a[tmp].dragHandle == 5)
                         {
@@ -426,6 +431,7 @@ namespace UI
                                 a[tmp].khung = rtg;
                             else
                                 a[tmp].khung = updateKhung(rtg, a[tmp].khung);
+                            this.Cursor = Cursors.SizeNS;
                         }
                         else if (a[tmp].dragHandle == 6)
                         {
@@ -437,6 +443,7 @@ namespace UI
                                 a[tmp].khung = rtg;
                             else
                                 a[tmp].khung = updateKhung(rtg, a[tmp].khung);
+                            this.Cursor = Cursors.SizeNESW;
                         }
                         else if (a[tmp].dragHandle == 7)
                         {
@@ -447,6 +454,7 @@ namespace UI
                                 a[tmp].khung = rtg;
                             else
                                 a[tmp].khung = updateKhung(rtg, a[tmp].khung);
+                            this.Cursor = Cursors.SizeWE;
                         }
                         if (a[tmp].dragHandle > -1)
                             a[tmp].pictureBox.Invalidate();
@@ -461,6 +469,7 @@ namespace UI
                             a[tmp].pictureBox.Invalidate();
                             a[tmp].cX = e.X;
                             a[tmp].cY = e.Y;
+                            this.Cursor = Cursors.SizeAll;
                         }
 
                     }
@@ -474,7 +483,6 @@ namespace UI
                 
             }
         }
-        
         private void handleMouseDown(object sender, MouseEventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
@@ -543,6 +551,7 @@ namespace UI
                 }
             }
         }
+      
         private Rectangle updateKhung(Rectangle rtg,   Rectangle khung)
         {
             if (rtg.Width > 5 && rtg.Height > 5)
@@ -559,6 +568,7 @@ namespace UI
 
             //trả về vị trí điểm điều khiển 
             Point result = Point.Empty;
+            
 
             if (value == 0)
                 result = new Point(a[tmp].khung.Left, a[tmp].khung.Top);
@@ -840,7 +850,6 @@ namespace UI
                 a[tmp].isText = true;
             }
         }
-      
         private void handleClickEllipseButton(object sender, EventArgs e)
         {
             if (sender is Guna2Button clickedButton)
@@ -852,8 +861,6 @@ namespace UI
                 }
             }
         }
-
-     
         private void handleClickLineButton(object sender, EventArgs e)
         {
 
@@ -866,7 +873,6 @@ namespace UI
                 }
             }
         }
-
         private void handleClickRectangleButton(object sender, EventArgs e)
         {
 
@@ -879,8 +885,6 @@ namespace UI
                 }
             }
         }
-
-        
         private void handleClickTriangleButton(object sender, EventArgs e)
         {
             if (sender is Guna2Button clickedButton)
@@ -1120,5 +1124,6 @@ namespace UI
             a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - w) / 2 , Math.Abs(this.Height - h) / 2 );
             a[tmp].pictureBox.Refresh();
         }
+
     }
 }
