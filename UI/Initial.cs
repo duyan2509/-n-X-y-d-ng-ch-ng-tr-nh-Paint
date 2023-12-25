@@ -155,6 +155,7 @@ namespace UI
             rectangleButton.ImageSize = new Size(20, 20);
             rectangleButton.Animated = true;
             rectangleButton.Click += handleClickRectangleButton;
+           
             rectangleButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(rectangleButton);
 
@@ -241,7 +242,7 @@ namespace UI
             // Hinh Duong Cung
             Guna2Button arcButton = new Guna2Button();
             arcButton.Size = new Size(45, 45);
-            arcButton.Location = new Point(60, 240);
+            arcButton.Location = new Point(0, 120);
             arcButton.Image = Properties.Resources.icons8_half_circle_48_white;
             arcButton.ImageSize = new Size(20, 20);
             arcButton.BorderRadius = 20;
@@ -433,6 +434,8 @@ namespace UI
             a[tmp].pictureBox.MouseUp += handleMouseUp;
             a[tmp].pictureBox.MouseClick += handleMouseClick;//fill
             a[tmp].pictureBox.Paint += handlePaint;
+           
+            //a[tmp].pictureBox.MouseLeave += handleMouseLeave;
 
             // Button ( trong DrawObject) Resize
             a[tmp].bt.Size = new Size(35, 35);
@@ -443,7 +446,7 @@ namespace UI
             a[tmp].bt.Image = Properties.Resources.icons8_resize_48;
             a[tmp].bt.ImageSize = new Size(18, 18);
             a[tmp].bt.Animated = true;
-            //tcMain.SelectedPage.Controls.Add(a[tmp].bt);
+            tcMain.SelectedPage.Controls.Add(a[tmp].bt);
             //
 
             //size
