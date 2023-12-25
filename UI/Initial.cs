@@ -20,7 +20,7 @@ namespace UI
         private void initDrawObject()
         {
             DrawObject tmp = new DrawObject();
-            tmp.Pen = new Pen(Color.Black,3);
+            tmp.Pen = new Pen(Color.Black,3f);
             tmp.Eraser = new Pen(Color.White, 10);
             tmp.DoDam = 10;
             tmp.py = new Point(0, 0);

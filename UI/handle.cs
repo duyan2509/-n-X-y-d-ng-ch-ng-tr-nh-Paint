@@ -621,7 +621,7 @@ namespace UI
                     a[tmp].G.DrawEllipse(a[tmp].Pen, a[tmp].khung);
                     a[tmp].pictureBox.Refresh();
                     a[tmp].dragHandle = -1;
-                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
                 }
                 else if (a[tmp].resizeIndex == 5)
                 {
@@ -630,7 +630,7 @@ namespace UI
                     a[tmp].G.DrawLine(a[tmp].Pen, a[tmp].khung.Left, a[tmp].khung.Top, a[tmp].khung.Right, a[tmp].khung.Bottom); ;
                     a[tmp].pictureBox.Refresh();
                     a[tmp].dragHandle = -1;
-                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
                 }
                 else if (a[tmp].resizeIndex == 8)
                 {
@@ -642,7 +642,7 @@ namespace UI
                     a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
                     a[tmp].pictureBox.Refresh();
                     a[tmp].dragHandle = -1;
-                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
                 }
                 else if (a[tmp].resizeIndex == 9)
                 {
@@ -654,7 +654,7 @@ namespace UI
                     a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
                     a[tmp].pictureBox.Refresh();
                     a[tmp].dragHandle = -1;
-                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
                 }
                 else if (a[tmp].resizeIndex == 10)
                 {
@@ -674,7 +674,7 @@ namespace UI
                     a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
                     a[tmp].pictureBox.Refresh();
                     a[tmp].dragHandle = -1;
-                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
                 }
                 else if (a[tmp].resizeIndex == 11)
                 {
@@ -695,7 +695,7 @@ namespace UI
                     a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
                     a[tmp].pictureBox.Refresh();
                     a[tmp].dragHandle = -1;
-                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
                 }
                 else if (a[tmp].resizeIndex == 12)
                 {
@@ -719,7 +719,7 @@ namespace UI
                     a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
                     a[tmp].pictureBox.Refresh();
                     a[tmp].dragHandle = -1;
-                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
                 }
                 else if (a[tmp].resizeIndex == 16)
                 {
@@ -762,7 +762,7 @@ namespace UI
                     a[tmp].isResize = false;
                     a[tmp].pictureBox.Refresh();
                     a[tmp].dragHandle = -1;
-                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
+                    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
                     a[tmp].text.Hide();
                     a[tmp].text.Text = "";
                 }
@@ -1006,11 +1006,11 @@ namespace UI
                 ToolStripMenuItem brush3Item = new ToolStripMenuItem(Properties.Resources.icons8_marker_pen_50_blue);
                 // Set DisplayStyle to show only the image
                 brush1Item.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-                brush1Item.Text = "Brush";
+                brush1Item.Text = "Solid";
                 brush2Item.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-                brush2Item.Text = "Brush";
+                brush2Item.Text = "Dash";
                 brush3Item.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
-                brush3Item.Text = "Brush";
+                brush3Item.Text = "Dot";
 
 
 
@@ -1030,7 +1030,14 @@ namespace UI
         }
         private void BrushMenuItem_Click(object sender, EventArgs e)
         {
-            
+            int tmp = tcMain.SelectedIndex;
+            ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
+            if (clickedItem.Text == "Solid")
+                a[tmp].Pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            if (clickedItem.Text == "Dash")
+                a[tmp].Pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            if (clickedItem.Text == "Dot")
+                a[tmp].Pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
         }
         private void handleClickZoomIn(object sender, EventArgs e)
         {
