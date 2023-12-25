@@ -20,15 +20,14 @@ namespace UI
         private void initDrawObject()
         {
             DrawObject tmp = new DrawObject();
-            tmp.Color = Color.Black;
-            tmp.Pen = new Pen(tmp.Color);
+            tmp.Pen = new Pen(Color.Black,3);
             tmp.Eraser = new Pen(Color.White, 10);
             tmp.DoDam = 10;
             tmp.py = new Point(0, 0);
             tmp.px = new Point(0, 0);
             tmp.Paint = false;
             tmp.Fill = false;
-            tmp.brush = new SolidBrush(tmp.Color);
+            tmp.brush = new SolidBrush(tmp.Pen.Color);
             tmp.index = 0;
             tmp.isResize = false;
             tmp.dragPoint = new Point(0, 0);
@@ -36,7 +35,6 @@ namespace UI
             tmp.listBitmap = new List<Bitmap>();
             tmp.iBitmap = 0;
             tmp.isClear = true;
-
             a.Add(tmp);
 
         }
@@ -277,32 +275,44 @@ namespace UI
             pickingButton.BorderColor=Color.White;
             pickingButton.ImageSize = new Size(10, 10);
             pickingButton.Animated = true;
-            pickingButton.Click += handleClickBlackButton;
-            //blackButton.Click += ;
             pickingButton.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(pickingButton);
-
-            Guna2Button greenButton = new Guna2Button();
-            greenButton.Size = new Size(35, 35);
-            greenButton.Location = new Point(10, 55);
-            greenButton.FillColor = Color.FromArgb(97, 197, 84);
-            greenButton.BorderRadius = 15;
-            greenButton.ImageSize = new Size(10, 10);
-            greenButton.Animated = true;
-            greenButton.Click += handleClickGreenButton;
-            //greenButton.Click += ;
-            greenButton.Cursor = Cursors.Hand;
-            colorPanel.Controls.Add(greenButton);
+            
+            Guna2Button yellowButton = new Guna2Button();
+            yellowButton.Size = new Size(35, 35);
+            yellowButton.Location = new Point(10, 55);
+            yellowButton.FillColor = Color.Yellow;
+            yellowButton.BorderRadius = 15;
+            yellowButton.ImageSize = new Size(10, 10);
+            yellowButton.Animated = true;
+            yellowButton.Click += (sender,e)=> 
+            {
+                if (sender is Guna2Button clickedButton)
+                {
+                    int stt = tcMain.SelectedIndex;
+                    a[stt].Pen.Color = Color.Yellow;
+                    pickingButton.FillColor=a[stt].Pen.Color;   
+                }
+            };
+            yellowButton.Cursor = Cursors.Hand;
+            colorPanel.Controls.Add(yellowButton);
 
             Guna2Button redButton = new Guna2Button();
             redButton.Size = new Size(35, 35);
             redButton.Location = new Point(10, 95);
-            redButton.FillColor = Color.FromArgb(237, 105, 94);
+            redButton.FillColor = Color.Red;
             redButton.BorderRadius = 15;
             redButton.ImageSize = new Size(10, 10);
             redButton.Animated = true;
-            redButton.Click += handleClickRedButton;
-            //redButton.Click += ;
+            redButton.Click += (sender,e)=>
+            {
+                if (sender is Guna2Button clickedButton)
+                {
+                    int stt = tcMain.SelectedIndex;
+                    a[stt].Pen.Color = Color.Red;
+                    pickingButton.FillColor = a[stt].Pen.Color;
+                }
+            };
             redButton.Cursor = Cursors.Hand;
             colorPanel.Controls.Add(redButton);
 
@@ -314,7 +324,17 @@ namespace UI
             pickColorButton.BorderRadius = 15;
             pickColorButton.ImageSize = new Size(18, 18);
             pickColorButton.Animated = true;
-            pickColorButton.Click += handlePickColor;
+            pickColorButton.Click += (sender, e) =>
+            {
+                if (sender is Guna2Button clickedButton)
+                {
+                    dlgColor.ShowDialog();
+                    int stt = tcMain.SelectedIndex;
+                    a[stt].Pen.Color = dlgColor.Color;
+                    pickingButton.FillColor=a[stt].Pen.Color;
+                }
+            };
+
             pickColorButton.Image = Properties.Resources.icons8_plus_48;
 
             pickColorButton.Cursor = Cursors.Hand;
@@ -473,7 +493,7 @@ namespace UI
             };
 
             // khởi tạo text cho picture box
-            
+
             a[tmp].text.ForeColor = Color.Black;
             a[tmp].text.StateActive.Back.Color1 = Color.White;
             a[tmp].text.StateActive.Border.Width = 0;
@@ -482,8 +502,6 @@ namespace UI
 
 
             tcMain.SelectedPage.Controls.Add(a[tmp].backGround);
-
-
         }
 
     }

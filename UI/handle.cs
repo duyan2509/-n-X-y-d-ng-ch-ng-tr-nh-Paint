@@ -338,7 +338,7 @@ namespace UI
         private void handleMouseMove(object sender, MouseEventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
-            if(e.Button==MouseButtons.Left)
+            if (e.Button==MouseButtons.Left)
             {
                 if (tmp < a.Count)
                 {   
@@ -592,7 +592,9 @@ namespace UI
             int tmp = tcMain.SelectedIndex;
             if (tmp < a.Count)
             {
-                 if (a[tmp].resizeIndex == 7)
+                if (a[tmp].index==6)
+                    a[tmp].isResize = false;
+                if (a[tmp].resizeIndex == 7)
                 {
 
                     a[tmp].isResize = false;
@@ -813,11 +815,12 @@ namespace UI
                 Point pt = (Point)pixel.Pop();
                 if (pt.X > 0 && pt.Y > 0 && pt.X < a[tmp].bm.Width - 1 && pt.Y < a[tmp].bm.Height - 1)
                 {
-                    validate( pixel, pt.X - 1, pt.Y, old_Color, new_clr);
-                    validate( pixel, pt.X, pt.Y - 1, old_Color, new_clr);
-                    validate( pixel, pt.X + 1, pt.Y, old_Color, new_clr);
-                    validate( pixel, pt.X, pt.Y + 1, old_Color, new_clr);
+                    validate(pixel, pt.X - 1, pt.Y, old_Color, new_clr);
+                    validate(pixel, pt.X, pt.Y - 1, old_Color, new_clr);
+                    validate(pixel, pt.X + 1, pt.Y, old_Color, new_clr);
+                    validate(pixel, pt.X, pt.Y + 1, old_Color, new_clr);
                 }
+                
             }
         }
         private void validate( Stack<Point> sp, int x, int y, Color old_Color, Color new_Color)
@@ -936,55 +939,8 @@ namespace UI
                 }
             }
         }
-        private void handlePickColor(object sender, EventArgs e)
-        {
-            if (sender is Guna2Button clickedButton)
-            {
-                dlgColor.ShowDialog();
-                int tmp = tcMain.SelectedIndex;
-                a[tmp].Pen.Color = dlgColor.Color;
-            }
-        }
-        private void handleClickBlackButton(object sender, EventArgs e)
-        {
-            if (sender is Guna2Button clickedButton)
-            {
-                int tmp = tcMain.SelectedIndex;
-                a[tmp].Pen.Color = Color.Black;
-            }
-        }
-        private void handleClickGreenButton(object sender, EventArgs e)
-        {
-            if (sender is Guna2Button clickedButton)
-            {
-                int tmp = tcMain.SelectedIndex;
-                a[tmp].Pen.Color = Color.FromArgb(97, 197, 84);
-            }
-        }
-        private void handleClickRedButton(object sender, EventArgs e)
-        {
-            if (sender is Guna2Button clickedButton)
-            {
-                int tmp = tcMain.SelectedIndex;
-                a[tmp].Pen.Color = Color.FromArgb(237, 105, 94);
-            }
-        }
-        private void handleClickYellowButton(object sender, EventArgs e)
-        {
-            if (sender is Guna2Button clickedButton)
-            {
-                int tmp = tcMain.SelectedIndex;
-                a[tmp].Pen.Color = Color.FromArgb(244, 191, 79);
-            }
-        }
-        private void handleClickBlueButton(object sender, EventArgs e)
-        {
-            if (sender is Guna2Button clickedButton)
-            {
-                int tmp = tcMain.SelectedIndex;
-                a[tmp].Pen.Color = Color.FromArgb(77, 139, 183);
-            }
-        }
+
+
         // Size Button
         private void handleClickSizeButton(object sender, EventArgs e)
         {
@@ -992,11 +948,19 @@ namespace UI
             {
                 int tmp = tcMain.SelectedIndex;
                 ContextMenuStrip sizeMenu = new ContextMenuStrip();
+                
 
                 // Create ToolStripMenuItems for different sizes
-                ToolStripMenuItem smallSizeItem = new ToolStripMenuItem("Small Size");
-                ToolStripMenuItem mediumSizeItem = new ToolStripMenuItem("Medium Size");
-                ToolStripMenuItem largeSizeItem = new ToolStripMenuItem("Large Size");
+                ToolStripMenuItem smallSizeItem = new ToolStripMenuItem();
+                smallSizeItem.DisplayStyle = ToolStripItemDisplayStyle.Text;
+                smallSizeItem.Text = "3px";
+                ToolStripMenuItem mediumSizeItem = new ToolStripMenuItem();
+                mediumSizeItem.DisplayStyle = ToolStripItemDisplayStyle.Text;
+                mediumSizeItem.Text = "5px";
+                ToolStripMenuItem largeSizeItem = new ToolStripMenuItem();
+                largeSizeItem.DisplayStyle = ToolStripItemDisplayStyle.Text;
+                largeSizeItem.Text = "8px";
+
 
                 // Add event handlers for menu item clicks
                 smallSizeItem.Click += SizeMenuItem_Click;
@@ -1009,14 +973,21 @@ namespace UI
                 sizeMenu.Items.Add(largeSizeItem);
 
                 // Show the context menu at the button's location
-                sizeMenu.Show(clickedButton, new Point(0, clickedButton.Height));
+                sizeMenu.Show(clickedButton, new Point(-15, clickedButton.Height));
+                
             }
         }
         private void SizeMenuItem_Click(object sender, EventArgs e)
         {
             // Handle size selection here
+            int tmp = tcMain.SelectedIndex;
             ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
-            MessageBox.Show($"Selected size: {clickedItem.Text}");
+            if (clickedItem.Text == "3px")
+                a[tmp].Pen = new Pen(a[tmp].Pen.Color, 3f);
+            if (clickedItem.Text == "5px")
+                a[tmp].Pen = new Pen(a[tmp].Pen.Color, 5f);
+            if (clickedItem.Text == "8px")
+                a[tmp].Pen = new Pen(a[tmp].Pen.Color, 8f);
         }
         private void handleClickBrushButton(object sender, EventArgs e)
         {
@@ -1074,8 +1045,6 @@ namespace UI
             a[tmp].bm = newBitmap;
             a[tmp].pictureBox.Image = a[tmp].bm;
             a[tmp].G = Graphics.FromImage(a[tmp].bm);
-            a[tmp].pictureBox.Location = new Point(0, 0);
-            a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - w) / 2+3, Math.Abs(this.Height - h) / 2+3);
             a[tmp].pictureBox.Refresh();
         }
         private void handleClickZoomOut(object sender, EventArgs e)
@@ -1095,8 +1064,6 @@ namespace UI
             a[tmp].bm = newBitmap;
             a[tmp].pictureBox.Image = a[tmp].bm;
             a[tmp].G = Graphics.FromImage(a[tmp].bm);
-            a[tmp].pictureBox.Location = new Point(0, 0);
-            a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - w) / 2 , Math.Abs(this.Height - h) / 2 );
             a[tmp].pictureBox.Refresh();
         }
         private void handleResetZoom(object sender, EventArgs e)
@@ -1116,8 +1083,6 @@ namespace UI
             a[tmp].bm = newBitmap;
             a[tmp].pictureBox.Image = a[tmp].bm;
             a[tmp].G = Graphics.FromImage(a[tmp].bm);
-            a[tmp].pictureBox.Location = new Point(0, 0);
-            a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - w) / 2 , Math.Abs(this.Height - h) / 2 );
             a[tmp].pictureBox.Refresh();
         }
     }
