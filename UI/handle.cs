@@ -39,8 +39,6 @@ namespace UI
         }
         private void handlePaint(object sender, PaintEventArgs e)
         {
-            
-            
             int tmp = tcMain.SelectedIndex;
             if (tmp < a.Count)
             {
@@ -74,12 +72,27 @@ namespace UI
                         // ve khung
                         g.DrawRectangle(resizePen, a[tmp].khung);
                     }
+                    if (a[tmp].index == 17)
+                    {
+                        //select
+                        int x = Math.Min(a[tmp].cX, a[tmp].x);
+                        int y = Math.Min(a[tmp].cY, a[tmp].y);
+                        a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
+                        // ve khung
+                        g.DrawRectangle(resizePen, a[tmp].khung);
+                    }
                     if (a[tmp].index == 4)
                     {
                         //paste
                         int x = Math.Min(a[tmp].cX, a[tmp].x);
                         int y = Math.Min(a[tmp].cY, a[tmp].y);
-                        a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
+                        Image clipboardImage = Clipboard.GetImage();
+                        if (clipboardImage != null)
+                        {
+                            a[tmp].khung = new Rectangle(0, 0, clipboardImage.Width, clipboardImage.Height);
+                            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                            g.DrawImage(clipboardImage, a[tmp].khung);
+                        }
                         // ve khung
                         g.DrawRectangle(resizePen, a[tmp].khung);
                     }
@@ -189,11 +202,20 @@ namespace UI
                     checkFirstDraw = true;
                 }
                 if (a[tmp].isResize)
-                {   
-                    if(a[tmp].index == 3 || a[tmp].index == 4)
-                        return;
-                    
-                    if (a[tmp].index == 2)
+                {
+                    if (a[tmp].index == 17)
+                    {
+                        Image clipboardImage = Clipboard.GetImage();
+                        if (clipboardImage != null)
+                            g.DrawImage(clipboardImage, a[tmp].khung);
+                    }
+                    else if (a[tmp].index == 4)
+                    {
+                        Image clipboardImage = Clipboard.GetImage();
+                        if(clipboardImage != null)
+                            g.DrawImage(clipboardImage, a[tmp].khung);
+                    }
+                    else if (a[tmp].index == 2)
                         g.DrawEllipse(a[tmp].Pen, a[tmp].khung);
                     else if (a[tmp].index == 7)
                         g.DrawRectangle(a[tmp].Pen, a[tmp].khung);
@@ -271,7 +293,7 @@ namespace UI
                         g.DrawPolygon(a[tmp].Pen, pArray);
                     }
 
-                    if (a[tmp].index != 5)
+                    if (a[tmp].index != 5 && a[tmp].index!=18)
                         g.DrawRectangle(resizePen, a[tmp].khung);
                     
                     if(a[tmp].index == 16)
@@ -284,9 +306,9 @@ namespace UI
                         g.FillRectangle(Brushes.DarkRed, GetHandleRect(0));
                         g.FillRectangle(Brushes.DarkRed, GetHandleRect(4));
                     }
-                    else if (a[tmp].index !=0)
+                    else if (a[tmp].index !=0 && a[tmp].index!=18)
                         for (int i = 0; i < 8; i++)
-                            g.FillRectangle(Brushes.DarkRed, GetHandleRect(i));
+                            g.FillRectangle(Brushes.BlueViolet, GetHandleRect(i));
                     //a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
                 }
 
@@ -305,30 +327,24 @@ namespace UI
                     a[tmp].iBitmap++;
                     checkFirstDraw = false;
                 }
-                if (a[tmp].Paint && a[tmp].index!=1 && a[tmp].index!=15)
+                if (a[tmp].Paint && a[tmp].index!=1 && a[tmp].index!=15 && a[tmp].index!=17 )
                 {
                     a[tmp].Paint = false;
                     a[tmp].resizeIndex = a[tmp].index;
                     a[tmp].isResize = true;
                 }
-                if (a[tmp].index == 3 && a[tmp].isResize)
+                if (a[tmp].index == 17 && a[tmp].Paint)
                 {
+                    //select
                     a[tmp].Paint = false;
-                    a[tmp].isResize = true;
                     a[tmp].resizeIndex = a[tmp].index;
-                    Bitmap croppedBitmap = a[tmp].bm.Clone(a[tmp].khung, a[tmp].bm.PixelFormat);
-                    Clipboard.SetImage(croppedBitmap);
-                }
-                if (a[tmp].index == 4 && a[tmp].isResize)
-                {
-                    a[tmp].Paint = false;
                     a[tmp].isResize = true;
-                    a[tmp].resizeIndex = a[tmp].index;
-                    Image clipboardImage = Clipboard.GetImage();
-                    if (clipboardImage != null)
+                    Bitmap croppedBitmap;
+                    if (a[tmp].khung.Width!=0 && a[tmp].khung.Height!=0)
                     {
-                        a[tmp].G.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                        a[tmp].G.DrawImage(clipboardImage, a[tmp].khung);
+                        croppedBitmap = a[tmp].bm.Clone(a[tmp].khung, a[tmp].bm.PixelFormat);
+                        Clipboard.SetImage(croppedBitmap);
+                        a[tmp].G.FillRectangle(Brushes.White, a[tmp].khung);
                     }
                 }
                 a[tmp].pictureBox.Refresh();
@@ -488,13 +504,6 @@ namespace UI
             int tmp = tcMain.SelectedIndex;
             if (tmp < a.Count)
             {   
-                if (a[tmp].resizeIndex == 3 || a[tmp].resizeIndex == 4)
-                {
-                    a[tmp].isResize = false;
-                    a[tmp].pictureBox.Refresh();
-                    a[tmp].dragHandle = -1;
-                    a[tmp].khung = new Rectangle(Top, 0, 0, 0);
-                }
                 if(a[tmp].index != 6)
                 {
                     a[tmp].Fill = false;
@@ -531,7 +540,7 @@ namespace UI
                     }
 
                 }
-                else if (a[tmp].index!=0)
+                else if (a[tmp].index!=0 && a[tmp].index!=4)
                 {
                     if(a[tmp].index == 16 && a[tmp].isText)
                     {
@@ -612,7 +621,35 @@ namespace UI
                     a[tmp].pictureBox.Refresh();
                     a[tmp].dragHandle = -1;
                     a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                }
+                else if (a[tmp].resizeIndex == 17)
+                {
+                    a[tmp].isResize = false;
+                    Image clipboardImage = Clipboard.GetImage();
+                    if (clipboardImage != null)
+                    {
+                        a[tmp].G.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                        a[tmp].G.DrawImage(clipboardImage, a[tmp].khung);
+                        a[tmp].pictureBox.Refresh();
+                        a[tmp].dragHandle = -1;
+                        a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                    }
+                   // MessageBox.Show("a");
 
+                }
+                else if (a[tmp].resizeIndex==4)
+                {
+                    a[tmp].isResize = false;
+                    Image clipboardImage = Clipboard.GetImage();
+                    if (clipboardImage != null)
+                    {
+                        a[tmp].G.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                        a[tmp].G.DrawImage(clipboardImage, a[tmp].khung);
+                        a[tmp].pictureBox.Refresh();
+                        a[tmp].dragHandle = -1;
+                        a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                        a[tmp].Paint = false;
+                    }
                 }
                 else if (a[tmp].resizeIndex == 2)
                 {
@@ -777,6 +814,26 @@ namespace UI
                 a[tmp].listBitmap.RemoveRange(a[tmp].iBitmap + 1, n);
             }
         }
+        private void handleSelectButton(object sender, EventArgs e)
+        {
+            int tmp=tcMain.SelectedIndex;
+            if(tmp<a.Count)
+            {
+                a[tmp].index = 17;
+            }
+        }
+        private void SetTimeout(Action action, int timeout)
+        {
+            var timer = new Timer();
+            timer.Interval = timeout;
+            timer.Tick += (s, e) =>
+            {
+                action();
+                timer.Stop();
+            };
+            timer.Start();
+        }
+
         private void handleClickPenButton(object sender, EventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
@@ -1001,9 +1058,9 @@ namespace UI
                 ContextMenuStrip brushMenu = new ContextMenuStrip();
 
                 // Create ToolStripMenuItems for different sizes
-                ToolStripMenuItem brush1Item = new ToolStripMenuItem(Properties.Resources.icons8_brush_48_blue);
-                ToolStripMenuItem brush2Item = new ToolStripMenuItem(Properties.Resources.icons8_calligraphy_brush_64_blue);
-                ToolStripMenuItem brush3Item = new ToolStripMenuItem(Properties.Resources.icons8_marker_pen_50_blue);
+                ToolStripMenuItem brush1Item = new ToolStripMenuItem(Properties.Resources.icons8_horizontal_line_50);
+                ToolStripMenuItem brush2Item = new ToolStripMenuItem(Properties.Resources.icons8_dashed_line_48);
+                ToolStripMenuItem brush3Item = new ToolStripMenuItem(Properties.Resources.icons8_ellipsis_48);
                 // Set DisplayStyle to show only the image
                 brush1Item.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                 brush1Item.Text = "Solid";

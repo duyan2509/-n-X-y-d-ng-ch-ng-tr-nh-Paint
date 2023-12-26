@@ -281,5 +281,17 @@
   <ItemGroup>
     <None Include="Resources\icons8-line-width-50 %281%29.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-ellipsis-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-horizontal-line-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-dashed-line-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-check-48.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

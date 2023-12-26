@@ -350,7 +350,7 @@ namespace UI
             selectButton.ImageSize = new Size(18, 18);
             selectButton.Animated = true;
             selectButton.Image = Properties.Resources.icons8_select_cursor_48_blue;
-             // +=
+            selectButton.Click += handleSelectButton;
              selectButton.Cursor = Cursors.Hand;
             designPanel.Controls.Add(selectButton);
 
@@ -503,6 +503,15 @@ namespace UI
             a[tmp].text.Hide();
             a[tmp].pictureBox.Controls.Add(a[tmp].text);
 
+            //// button show success
+            //Guna2Button showSucces = new Guna2Button();
+            //showSucces.Size = new Size(45, 45);
+            //showSucces.Location = new Point(0, 0);
+            //showSucces.FillColor = Color.FromArgb(94, 148, 255);
+            //showSucces.BorderRadius = 20;
+            //showSucces.Image = Properties.Resources.icons8_pencil_60_white;
+            //showSucces.ImageSize = new Size(20, 20);
+            //a[tmp].pictureBox.Controls.Add(showSucces);
 
             tcMain.SelectedPage.Controls.Add(a[tmp].backGround);
         }

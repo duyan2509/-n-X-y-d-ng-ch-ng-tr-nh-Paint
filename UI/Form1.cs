@@ -40,6 +40,8 @@ namespace UI
             this.StartPosition = FormStartPosition.CenterScreen;
             resizePen = new Pen(Color.Black,1f);
             resizePen.DashPattern = new float[] {7,2 };
+            btSuccess.Visible = false;
+            btSuccess.BackColor = Color.FromArgb(0, 120, 215);
             initDrawObject();
             initialPictureBox();
             initialPanel();
@@ -183,17 +185,40 @@ namespace UI
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
-            a[tmp].index = 3;
+            if (a[tmp].resizeIndex == 17)
+                btSuccess.Visible = true;
+            var action = new Action(() => {
+                btSuccess.Visible = false;
+            });
+
+            SetTimeout(action, 100);
         }
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
             a[tmp].index = 4;
+            a[tmp].Paint = true;
+            a[tmp].pictureBox.Invalidate();
+
+            //a[tmp].Paint = false;
+            //a[tmp].resizeIndex = a[tmp].index;
+            //a[tmp].isResize = true;
+            //a[tmp].pictureBox.Invalidate();
         }
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(a[0].listBitmap.Count.ToString());
+            int tmp = tcMain.SelectedIndex;
+            if (a[tmp].resizeIndex == 17)
+            {
+                a[tmp].resizeIndex = 0;
+                a[tmp].index = 18;
+                a[tmp].G.FillRectangle(Brushes.White, a[tmp].khung);
+                a[tmp].pictureBox.Refresh();
+                a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                a[tmp].index = 17;
+                a[tmp].resizeIndex = 17;
+            }
         }
     }
 }
