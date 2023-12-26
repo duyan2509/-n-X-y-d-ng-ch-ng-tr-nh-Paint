@@ -56,5 +56,7 @@ namespace UI
         public Rectangle khung { get; set; }
         public KryptonRichTextBox text = new KryptonRichTextBox();
         public bool isText  { get; set; }
+        public string filePath { get; set; }
+        public string fileName { get; set; }
     }
 }

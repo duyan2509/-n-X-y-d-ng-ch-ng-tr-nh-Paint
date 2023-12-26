@@ -305,8 +305,8 @@ namespace UI
                     }
                     if (a[tmp].index == 5)
                     {
-                        g.FillRectangle(Brushes.DarkRed, GetHandleRect(0));
-                        g.FillRectangle(Brushes.DarkRed, GetHandleRect(4));
+                        g.FillRectangle(Brushes.BlueViolet, GetHandleRect(0));
+                        g.FillRectangle(Brushes.BlueViolet, GetHandleRect(4));
                     }
                     else if (a[tmp].index !=0 && a[tmp].index!=18)
                         for (int i = 0; i < 8; i++)
@@ -355,6 +355,7 @@ namespace UI
         private void handleMouseMove(object sender, MouseEventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
+
             if (e.Button==MouseButtons.Left)
             {
                 if (tmp < a.Count)
@@ -523,37 +524,48 @@ namespace UI
         {
             int tmp = tcMain.SelectedIndex;
             if (tmp < a.Count)
-            {   
+            {
                 if(a[tmp].index == 6)
                 {
+                    //a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
+                    //a[tmp].iBitmap++;
+                    //Fill(e.X, e.Y, dlgColor.Color);
+                    //a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);v
                     a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
                     a[tmp].iBitmap++;
-                    Fill(e.X, e.Y, dlgColor.Color);
+                    Bitmap bm = (Bitmap)a[tmp].pictureBox.Image;
+                    new FillTool().FloodFill(ref bm, a[tmp].Pen.Color, new Point(e.X, e.Y));
+                    a[tmp].pictureBox.Image = bm;
+                    a[tmp].bm = bm;
+                    a[tmp].G = Graphics.FromImage(a[tmp].bm);
                     a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
+                    a[tmp].isResize = false;
                 }
-<<<<<<< HEAD
                 else 
                     a[tmp].Fill = false;
-=======
+
                 if (a[tmp].index == 17)
                 {
                     this.Cursor = Cursors.Cross;
                 }
->>>>>>> da797ee714619d2dd018470293e9026504312ad0
 
                 int checkODK = 0;
                 for (int i = 0; i < 8; i++)
                     if (GetHandleRect(i).Contains(e.Location))
                         checkODK = 1;
-                if (checkODK == 0 && !a[tmp].khung.IsEmpty  && !a[tmp].khung.Contains(e.Location))
+                if (checkODK == 0 && !a[tmp].khung.IsEmpty  && !a[tmp].khung.Contains(e.Location) && a[tmp].index!=6)
                 {
+                    //MessageBox.Show(a[tmp].khung.X.ToString() + " " +a[tmp].khung.Width.ToString());
+
                     // ve chinh thuc
                     VeChinhThuc();
                     a[tmp].isText = !a[tmp].isText;
+
                     
                     a[tmp].isClear = false;
                     a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
                 }
+
                 if (a[tmp].isResize)
                 {
                     for (int i = 0; i < 8; i++)
@@ -573,7 +585,7 @@ namespace UI
                     }
 
                 }
-                else if (a[tmp].index!=0 && a[tmp].index!=4)
+                else if (a[tmp].index!=0 && a[tmp].index!=4 && a[tmp].index!=6)
                 {
                     if(a[tmp].index == 16 && a[tmp].isText)
                     {
@@ -661,8 +673,7 @@ namespace UI
             int tmp = tcMain.SelectedIndex;
             if (tmp < a.Count)
             {
-                if (a[tmp].index==6)
-                    a[tmp].isResize = false;
+                //MessageBox.Show("a");
                 if (a[tmp].resizeIndex == 7)
                 {
 
@@ -684,8 +695,6 @@ namespace UI
                         a[tmp].dragHandle = -1;
                         a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
                     }
-                   // MessageBox.Show("a");
-
                 }
                 else if (a[tmp].resizeIndex==4)
                 {

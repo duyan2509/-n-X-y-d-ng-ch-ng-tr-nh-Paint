@@ -35,6 +35,7 @@ namespace UI
             tmp.listBitmap = new List<Bitmap>();
             tmp.iBitmap = 0;
             tmp.isClear = true;
+            tmp.filePath = "";
             a.Add(tmp);
 
         }
@@ -73,6 +74,8 @@ namespace UI
             penButton.Image = Properties.Resources.icons8_pencil_60_white;
             penButton.ImageSize = new Size(20, 20);
             penButton.Animated = true;
+            //penButton.BorderThickness = 2;
+            //penButton.BorderColor = Color.White;
             penButton.Click += handleClickPenButton;
             penButton.Cursor = Cursors.Hand;
             toolPanel.Controls.Add(penButton);
@@ -394,23 +397,20 @@ namespace UI
             resetButton.Cursor = Cursors.Hand;
             designPanel.Controls.Add(resetButton);
 
-         
 
 
-            //Drop Down Brush
-            //Drop Down Size
 
 
             int tmp = tcMain.SelectedIndex;
             colorPanel.Controls.Add(a[tmp].bt);
             designPanel.Controls.Add(a[tmp].bt);
 
+
             newPanel.Controls.Add(toolPanel);
             newPanel.Controls.Add(colorPanel);
             newPanel.Controls.Add(shapePanel);
             newPanel.Controls.Add(designPanel);
             //
-
 
             //
             tcMain.SelectedPage.Controls.Add(newPanel);

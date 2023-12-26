@@ -15,6 +15,8 @@ using Guna.UI2.WinForms;
 using System.Reflection;
 using System.Drawing.Text;
 using static UI.DrawObject;
+using System.IO;
+using System.Drawing.Imaging;
 //py: first point
 //cX: xFirst
 //cY: yFirst
@@ -220,6 +222,97 @@ namespace UI
                 a[tmp].index = 17;
                 a[tmp].resizeIndex = 17;
             }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            int tmp=tcMain.SelectedIndex;
+            // Thiết lập các thuộc tính cho hộp thoại mở tệp
+            openFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png; *.gif; *.bmp)|*.jpg; *.jpeg; *.png; *.gif; *.bmp";
+            openFileDialog.Title = "Chọn một tệp hình ảnh";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Load hình ảnh từ tệp đã chọn
+                    string selectedFile = openFileDialog.FileName;
+                    Image selectedImage = Image.FromFile(selectedFile);
+                    Image image = selectedImage;
+                    a[tmp].pictureBox.Size = new Size(selectedImage.Width, selectedImage.Height);
+                    a[tmp].bm = new Bitmap(a[tmp].pictureBox.Width, a[tmp].pictureBox.Height);
+                    // Hiển thị hình ảnh trong ứng dụng Paint của bạn (ví dụ PictureBox)
+                    a[tmp].bm = (Bitmap)selectedImage;
+                    a[tmp].pictureBox.Image = a[tmp].bm;
+                    a[tmp].G = Graphics.FromImage(a[tmp].bm);
+                    a[tmp].pictureBox.Refresh();
+                    a[tmp].sizeBitmap = new Size(a[tmp].pictureBox.Width, a[tmp].pictureBox.Height);
+                    a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
+
+                    Path.GetFileName(selectedFile);
+                    a[tmp].fileName = Path.GetFileName(selectedFile);
+
+                    fileName.Text= a[tmp].fileName;
+                    a[tmp].filePath= selectedFile;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: Không thể mở tệp hình ảnh. Chi tiết lỗi: " + ex.Message);
+                }
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            if (a[tmp].filePath == "")
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png; *.gif; *.bmp)|*.jpg; *.jpeg; *.png; *.gif; *.bmp";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    a[tmp].filePath = saveFileDialog.FileName;
+                    string filePath = saveFileDialog.FileName;
+                    string extension = Path.GetExtension(filePath).ToLower();
+
+                    ImageFormat imageFormat = ImageFormat.Png;
+                    if (extension == ".jpg" || extension == ".jpeg")
+                        imageFormat = ImageFormat.Jpeg;
+                    else if (extension == ".bmp")
+                        imageFormat = ImageFormat.Bmp;
+                    else if (extension == ".gif")
+                        imageFormat = ImageFormat.Gif;
+                    a[tmp].pictureBox.Image.Save(a[tmp].filePath, imageFormat);
+                }
+            }
+            else
+            {
+                try
+                {
+                    string filePath = a[tmp].filePath;
+                    Bitmap newBm = a[tmp].bm.Clone(new Rectangle(0, 0, a[tmp].bm.Width, a[tmp].bm.Height), a[tmp].bm.PixelFormat);
+                    newBm.Save(filePath);
+                    //string extension = Path.GetExtension(filePath).ToLower();
+                    //ImageFormat imageFormat = ImageFormat.Png;
+
+                    //if (extension == ".jpg" || extension == ".jpeg")
+                    //    imageFormat = ImageFormat.Jpeg;
+                    //else if (extension == ".bmp")
+                    //    imageFormat = ImageFormat.Bmp;
+                    //else if (extension == ".gif")
+                    //    imageFormat = ImageFormat.Gif;
+
+                    //Clipboard.SetImage(a[tmp].pictureBox.Image);
+                    //a[tmp].pictureBox.Image.Save(filePath, imageFormat);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi lưu file: " + ex.Message);
+                }
+            }
+
         }
     }
 }
