@@ -434,8 +434,8 @@ namespace UI
             a[tmp].pictureBox.MouseUp += handleMouseUp;
             a[tmp].pictureBox.MouseClick += handleMouseClick;//fill
             a[tmp].pictureBox.Paint += handlePaint;
-           
-            //a[tmp].pictureBox.MouseLeave += handleMouseLeave;
+            //a[tmp].pictureBox.MouseEnter += handleMouseEnter;
+            
 
             // Button ( trong DrawObject) Resize
             a[tmp].bt.Size = new Size(35, 35);
@@ -516,5 +516,6 @@ namespace UI
             tcMain.SelectedPage.Controls.Add(a[tmp].backGround);
         }
 
+       
     }
 }

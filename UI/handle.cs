@@ -48,13 +48,14 @@ namespace UI
                 {
                     if (a[tmp].index == 2)//example
                     {
+                        
                         int x = Math.Min(a[tmp].cX, a[tmp].x);
                         int y = Math.Min(a[tmp].cY, a[tmp].y);
                         //draw elip
                         a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
                         g.DrawEllipse(a[tmp].Pen, a[tmp].khung);
                         a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
-
+                         
                     }
                     if (a[tmp].index == 5)
                     {
@@ -78,6 +79,7 @@ namespace UI
                         int x = Math.Min(a[tmp].cX, a[tmp].x);
                         int y = Math.Min(a[tmp].cY, a[tmp].y);
                         a[tmp].khung = new Rectangle(x, y, Math.Abs(a[tmp].sX), Math.Abs(a[tmp].sY));
+                        this.Cursor = Cursors.Cross;
                         // ve khung
                         g.DrawRectangle(resizePen, a[tmp].khung);
                     }
@@ -495,10 +497,28 @@ namespace UI
                     a[tmp].sX = a[tmp].x - a[tmp].cX;
                     a[tmp].sY = a[tmp].y - a[tmp].cY;
                 }
-
+              
                 
             }
+            //Hover len cac diem dieu khien
+            int handleIndex = GetHandleIndexUnderMouse(e.Location);
+           
+               
+                    if (handleIndex == 0)
+                    {
+                        this.Cursor = Cursors.SizeNWSE;
+                    }
+                    else if (handleIndex == 1) { this.Cursor = Cursors.SizeNS; }
+                    else if (handleIndex == 2) { this.Cursor = Cursors.SizeNESW; }
+                    else if (handleIndex == 3) { this.Cursor = Cursors.SizeWE; }
+                    else if (handleIndex == 4) { this.Cursor = Cursors.SizeNWSE; }
+                    else if (handleIndex == 5) { this.Cursor = Cursors.SizeNS; }
+                    else if (handleIndex == 6) { this.Cursor = Cursors.SizeNESW; }
+                    else if (handleIndex == 7) { this.Cursor = Cursors.SizeWE; }
+                
+            
         }
+        
         private void handleMouseDown(object sender, MouseEventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
@@ -508,6 +528,11 @@ namespace UI
                 {
                     a[tmp].Fill = false;
                 }
+                if (a[tmp].index == 17)
+                {
+                    this.Cursor = Cursors.Cross;
+                }
+
                 int checkODK = 0;
                 for (int i = 0; i < 8; i++)
                     if (GetHandleRect(i).Contains(e.Location))
@@ -597,7 +622,24 @@ namespace UI
                 result = new Point(a[tmp].khung.Left, a[tmp].khung.Top + (a[tmp].khung.Height / 2));
             return result;
         }
+        private int GetHandleIndexUnderMouse(Point mouseLocation)
+        {
+            int tmp = tcMain.SelectedIndex;
 
+            // Kiểm tra xem con trỏ chuột có nằm trong khu vực của các điểm resize không
+            for (int i = 0; i < 8; i++)
+            {
+                Point handlePoint = GetHandlePoint(i);
+                Rectangle handleRect = new Rectangle(handlePoint.X - 5 / 2, handlePoint.Y - 5 / 2, 5, 5);
+
+                if (handleRect.Contains(mouseLocation))
+                {
+                    return i; // Trả về chỉ số của điểm resize nếu con trỏ nằm trong khu vực của nó
+                }
+            }
+
+            return -1; // Trả về -1 nếu con trỏ không nằm trong khu vực của bất kỳ điểm resize nào
+        }
         private Rectangle GetHandleRect(int stt)
         {
             // trả về diện tích điểm điều khiển theo stt
@@ -821,6 +863,8 @@ namespace UI
             {
                 a[tmp].index = 17;
             }
+           
+
         }
         private void SetTimeout(Action action, int timeout)
         {
