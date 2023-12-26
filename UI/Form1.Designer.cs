@@ -41,20 +41,17 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btMaxi = new System.Windows.Forms.Button();
             this.btMini = new System.Windows.Forms.Button();
-            this.btClose = new System.Windows.Forms.Button();
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.dlgColor = new System.Windows.Forms.ColorDialog();
+            this.btMaxi = new Guna.UI2.WinForms.Guna2Button();
+            this.btClose = new Guna.UI2.WinForms.Guna2Button();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -153,10 +150,10 @@
             // pnTitleBar
             // 
             this.pnTitleBar.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.pnTitleBar.Controls.Add(this.menuStrip1);
             this.pnTitleBar.Controls.Add(this.btMaxi);
-            this.pnTitleBar.Controls.Add(this.btMini);
             this.pnTitleBar.Controls.Add(this.btClose);
+            this.pnTitleBar.Controls.Add(this.menuStrip1);
+            this.pnTitleBar.Controls.Add(this.btMini);
             this.pnTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnTitleBar.Location = new System.Drawing.Point(0, 0);
             this.pnTitleBar.Name = "pnTitleBar";
@@ -189,7 +186,6 @@
             this.toolStripSeparator,
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
-            this.toolStripSeparator1,
             this.toolStripSeparator2,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -199,28 +195,23 @@
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator.Size = new System.Drawing.Size(221, 6);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.saveAsToolStripMenuItem.Text = "Save &As";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(178, 6);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.exitToolStripMenuItem.Text = "E&xit";
             // 
             // editToolStripMenuItem
@@ -231,9 +222,7 @@
             this.toolStripSeparator3,
             this.cutToolStripMenuItem,
             this.copyToolStripMenuItem,
-            this.pasteToolStripMenuItem,
-            this.toolStripSeparator4,
-            this.selectAllToolStripMenuItem});
+            this.pasteToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
             this.editToolStripMenuItem.Text = "&Edit";
@@ -259,37 +248,12 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(221, 6);
             // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(221, 6);
-            // 
-            // selectAllToolStripMenuItem
-            // 
-            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.selectAllToolStripMenuItem.Text = "Select &All";
-            // 
-            // btMaxi
-            // 
-            this.btMaxi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btMaxi.FlatAppearance.BorderSize = 0;
-            this.btMaxi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMaxi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btMaxi.Location = new System.Drawing.Point(778, 6);
-            this.btMaxi.Name = "btMaxi";
-            this.btMaxi.Size = new System.Drawing.Size(44, 28);
-            this.btMaxi.TabIndex = 2;
-            this.btMaxi.Text = "▭";
-            this.btMaxi.UseVisualStyleBackColor = true;
-            this.btMaxi.Click += new System.EventHandler(this.btMaxi_Click);
-            // 
             // btMini
             // 
             this.btMini.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btMini.FlatAppearance.BorderSize = 0;
             this.btMini.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMini.Location = new System.Drawing.Point(728, 6);
+            this.btMini.Location = new System.Drawing.Point(769, 11);
             this.btMini.Name = "btMini";
             this.btMini.Size = new System.Drawing.Size(44, 28);
             this.btMini.TabIndex = 1;
@@ -297,19 +261,38 @@
             this.btMini.UseVisualStyleBackColor = true;
             this.btMini.Click += new System.EventHandler(this.btMini_Click);
             // 
+            // btMaxi
+            // 
+            this.btMaxi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btMaxi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btMaxi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btMaxi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btMaxi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btMaxi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.btMaxi.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btMaxi.ForeColor = System.Drawing.Color.White;
+            this.btMaxi.Image = global::UI.Properties.Resources.icons8_toggle_full_screen_50;
+            this.btMaxi.Location = new System.Drawing.Point(810, 3);
+            this.btMaxi.Name = "btMaxi";
+            this.btMaxi.Size = new System.Drawing.Size(40, 40);
+            this.btMaxi.TabIndex = 4;
+            this.btMaxi.Click += new System.EventHandler(this.btMaxi_Click);
+            // 
             // btClose
             // 
             this.btClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btClose.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveBorder;
-            this.btClose.FlatAppearance.BorderSize = 0;
-            this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btClose.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btClose.Location = new System.Drawing.Point(828, 7);
+            this.btClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.btClose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btClose.ForeColor = System.Drawing.Color.White;
+            this.btClose.Image = global::UI.Properties.Resources.icons8_close_50;
+            this.btClose.Location = new System.Drawing.Point(845, 2);
             this.btClose.Name = "btClose";
-            this.btClose.Size = new System.Drawing.Size(44, 28);
-            this.btClose.TabIndex = 0;
-            this.btClose.Text = "X";
-            this.btClose.UseVisualStyleBackColor = true;
+            this.btClose.Size = new System.Drawing.Size(40, 40);
+            this.btClose.TabIndex = 1;
             this.btClose.Click += new System.EventHandler(this.btClose_Click);
             // 
             // newToolStripMenuItem
@@ -318,7 +301,7 @@
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.newToolStripMenuItem.Text = "&New";
             // 
             // openToolStripMenuItem
@@ -327,7 +310,7 @@
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.openToolStripMenuItem.Text = "&Open";
             // 
             // saveToolStripMenuItem
@@ -336,7 +319,7 @@
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.saveToolStripMenuItem.Text = "&Save";
             // 
             // cutToolStripMenuItem
@@ -417,8 +400,6 @@
 
         private System.Windows.Forms.Panel pnContainer;
         private System.Windows.Forms.Panel pnTitleBar;
-        private System.Windows.Forms.Button btClose;
-        private System.Windows.Forms.Button btMaxi;
         private System.Windows.Forms.Button btMini;
         private ComponentFactory.Krypton.Navigator.KryptonNavigator tcMain;
         private ComponentFactory.Krypton.Navigator.ButtonSpecNavigator btAdd;
@@ -432,7 +413,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
@@ -442,11 +422,11 @@
         private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ColorDialog dlgColor;
         private Guna.UI2.WinForms.Guna2Button btSuccess;
+        private Guna.UI2.WinForms.Guna2Button btClose;
+        private Guna.UI2.WinForms.Guna2Button btMaxi;
     }
 }
 

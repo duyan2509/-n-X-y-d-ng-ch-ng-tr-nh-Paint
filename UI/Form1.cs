@@ -88,15 +88,15 @@ namespace UI
                 Screen primaryScreen = Screen.PrimaryScreen;
                 int screenWidth = primaryScreen.Bounds.Width;
                 int screenHeight = primaryScreen.Bounds.Height;
-                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, screenWidth, screenHeight, 20, 20));
+                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, screenWidth, screenHeight, 0, 0));
                 WindowState = FormWindowState.Maximized;
-                //btMaxi.Image = Resource.NormalScreen;
+                btMaxi.Image = Properties.Resources.icons8_minimize_50__1_;
             }
             else
             {
                 Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, normalBounds.Width, normalBounds.Height, 20, 20));
                 WindowState = FormWindowState.Normal;
-                //btMax.Image = Resource.NormalScreen;  
+                btMaxi.Image = Properties.Resources.icons8_toggle_full_screen_50;
             }
         }
 
@@ -108,6 +108,7 @@ namespace UI
             ButtonSpecAny buttonX = new ButtonSpecAny();
             buttonX.Type = PaletteButtonSpecStyle.Close;
             buttonX.UniqueName = "btClose" + kryptonPage.Text;
+            
 
 
             buttonX.Click += (s, args) =>

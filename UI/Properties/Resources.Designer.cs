@@ -63,6 +63,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_add_50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_arrow_48_blue {
             get {
                 object obj = ResourceManager.GetObject("icons8-arrow-48-blue", resourceCulture);
@@ -146,6 +156,16 @@ namespace UI.Properties {
         internal static System.Drawing.Bitmap icons8_circle_50_white {
             get {
                 object obj = ResourceManager.GetObject("icons8-circle-50-white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_close_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_close_50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -343,6 +363,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_minimize_50__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8_minimize_50__1_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_pencil_60 {
             get {
                 object obj = ResourceManager.GetObject("icons8-pencil-60", resourceCulture);
@@ -526,6 +556,16 @@ namespace UI.Properties {
         internal static System.Drawing.Bitmap icons8_text_60_white {
             get {
                 object obj = ResourceManager.GetObject("icons8-text-60-white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_toggle_full_screen_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_toggle_full_screen_50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

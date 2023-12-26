@@ -293,5 +293,17 @@
   <ItemGroup>
     <None Include="Resources\icons8-check-48.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-close-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-minimize-50 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-toggle-full-screen-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-add-50.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -443,7 +443,8 @@ namespace UI
             a[tmp].bt.BorderRadius = 15;
             a[tmp].bt.Cursor = Cursors.Hand;
             a[tmp].bt.Location = new Point(10, 135);
-            a[tmp].bt.Image = Properties.Resources.icons8_resize_48;
+            a[tmp].bt.Image = Properties.Resources.icons8_resize_50_black;
+            a[tmp].bt.FillColor = Color.FromArgb(203, 213, 224);
             a[tmp].bt.ImageSize = new Size(18, 18);
             a[tmp].bt.Animated = true;
             tcMain.SelectedPage.Controls.Add(a[tmp].bt);

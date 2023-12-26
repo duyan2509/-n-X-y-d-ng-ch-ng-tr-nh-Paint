@@ -27,13 +27,13 @@ namespace UI
             int tmp = tcMain.SelectedIndex;
             if (tmp < a.Count)
             {
-                if (a[tmp].Fill)
-                {
-                    a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
-                    a[tmp].iBitmap++;
-                    Fill(e.X,e.Y,dlgColor.Color);
-                    a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
-                }
+                //if (a[tmp].Fill)
+                //{
+                //    a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
+                //    a[tmp].iBitmap++;
+                //    Fill(e.X,e.Y,dlgColor.Color);
+                //    a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
+                //}
                 
             }
         }
@@ -504,10 +504,16 @@ namespace UI
             int tmp = tcMain.SelectedIndex;
             if (tmp < a.Count)
             {   
-                if(a[tmp].index != 6)
+                if(a[tmp].index == 6)
                 {
-                    a[tmp].Fill = false;
+                    a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
+                    a[tmp].iBitmap++;
+                    Fill(e.X, e.Y, dlgColor.Color);
+                    a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
                 }
+                else 
+                    a[tmp].Fill = false;
+
                 int checkODK = 0;
                 for (int i = 0; i < 8; i++)
                     if (GetHandleRect(i).Contains(e.Location))
