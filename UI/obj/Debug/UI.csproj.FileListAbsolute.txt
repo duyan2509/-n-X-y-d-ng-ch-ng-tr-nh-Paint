@@ -95,3 +95,5 @@ G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\bin\Debug\ComponentFactory.Krypto
 G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\bin\Debug\ComponentFactory.Krypton.Toolkit.pdb
 G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\bin\Debug\ComponentFactory.Krypton.Workspace.pdb
 G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.resizeForm.resources
+C:\Users\Admin\source\repos\DoAnPaint\UI\obj\Debug\UI.Close.resources
+C:\Users\Admin\source\repos\DoAnPaint\UI\obj\Debug\UI.Save.resources

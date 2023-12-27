@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace UI.Shape
+namespace UI
 {
 
 //soDiemDieuKhien
@@ -20,36 +20,19 @@ namespace UI.Shape
 //loaiHinh
 //hinhNen
 
-    public abstract class HinhVe
+    public class HinhVe
     {
-        protected Color color { get; set; }
-        protected float thickness { get; set; }
-        protected PointF startPoint { get; set; }
-        protected PointF endPoint { get; set; }
-        protected PointF currentPoint { get; set; }
-        protected GraphicsPath path { get; set; }
-        protected bool isMove { get; set; }
-        protected bool isResize { get; set; }
-        protected int index { get; set; }
-        protected string text { get; set; }
-        protected int nControl { get; set; }
-        protected PointF[] frame { get; set; }
-        protected List<Rectangle> rect { get; set; }
-        public HinhVe()
+        public virtual void Paint_Paint(ref Graphics g,  DrawObject aa)
         {
-            color= Color.Black;
-            thickness = 3.5f;
-            isMove = false;
-            isResize = false;
-            rect=new List<Rectangle>();
-        }
 
-        public abstract void Ve(PointF startPoint, PointF endPoint, Graphics G);
-        public abstract void Mouse_Down(object sender, MouseEventArgs e);
-        public abstract void Mouse_Up(object sender, MouseEventArgs e);
-        public abstract void Mouse_Move(object sender, MouseEventArgs e);
-        public abstract void CreateFrame();
-        public abstract void VeKhung(Graphics G);
-        public abstract void VeDiemDieuKhien(Graphics G);
+        }
+        public virtual void Paint_Resize(ref Graphics g,  DrawObject aa)
+        {
+
+        }
+        public virtual void VeChinhThuc(DrawObject aa)
+        {
+
+        }
     }
 }

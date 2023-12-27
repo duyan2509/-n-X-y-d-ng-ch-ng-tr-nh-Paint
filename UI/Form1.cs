@@ -2,29 +2,12 @@
 using ComponentFactory.Krypton.Toolkit;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Guna.UI2.WinForms;
-using System.Reflection;
-using System.Drawing.Text;
-using static UI.DrawObject;
 using System.IO;
 using System.Drawing.Imaging;
-//py: first point
-//cX: xFirst
-//cY: yFirst
-//--> py
-//x: xMove
-//y: yMove
-//sX: xMove-xFirst
-//sY = yMove - yFirst
 namespace UI
 {
 
@@ -75,7 +58,46 @@ namespace UI
 
         private void btClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Close close = new Close();
+            close.ShowDialog();
+            
+            
+            if (close.CloseAll==1)
+                CloseAllPages();
+            else if(close.CloseAll==0)
+                CloseCurrentPage();
+            
+        }
+        private void CloseAllPages()
+        {
+            for(int i=0;i<a.Count;i++)
+            {
+                if (a[i].listBitmap.Count>1)
+                {
+                    //save 
+                    Save sv = new Save();
+                    sv.ShowDialog();
+                    if(sv.save)
+                    {
+                        Save();
+                    }
+                }
+            }
+            Application.Exit(); 
+        }
+
+        private void CloseCurrentPage()
+        {
+            int tmp = tcMain.SelectedIndex;
+            if (a[tmp].listBitmap.Count > 1)
+            {
+                //save 
+                Save sv = new Save();
+                sv.ShowDialog();
+                if (sv.save)
+                    Save();
+            }
+            tcMain.Pages.RemoveAt(tmp);
         }
 
         private void btMini_Click(object sender, EventArgs e)
@@ -104,7 +126,7 @@ namespace UI
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-
+            // ........
             KryptonPage kryptonPage = new KryptonPage();
             kryptonPage.Text = (tcMain.Pages.Count + 1).ToString();
             ButtonSpecAny buttonX = new ButtonSpecAny();
@@ -138,12 +160,13 @@ namespace UI
 
         private void btClose1_Click(object sender, EventArgs e)
         {
+            //.....
             if (sender is ButtonSpecAny closeButton)
             {
-                KryptonPage pageToRemove = tcMain.Pages.FirstOrDefault(page => page.ButtonSpecs.Contains(closeButton));
-                if (pageToRemove != null)
+                int tmp = tcMain.SelectedIndex;
+                if(tmp>=0  && tmp<a.Count)
                 {
-                    tcMain.Pages.Remove(pageToRemove);
+                    tcMain.Pages.RemoveAt(tmp);
                 }
             }
         }
@@ -202,11 +225,6 @@ namespace UI
             a[tmp].index = 4;
             a[tmp].Paint = true;
             a[tmp].pictureBox.Invalidate();
-
-            //a[tmp].Paint = false;
-            //a[tmp].resizeIndex = a[tmp].index;
-            //a[tmp].isResize = true;
-            //a[tmp].pictureBox.Invalidate();
         }
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -223,7 +241,6 @@ namespace UI
                 a[tmp].resizeIndex = 17;
             }
         }
-
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
@@ -240,22 +257,26 @@ namespace UI
                     // Load hình ảnh từ tệp đã chọn
                     string selectedFile = openFileDialog.FileName;
                     Image selectedImage = Image.FromFile(selectedFile);
-                    Image image = selectedImage;
-                    a[tmp].pictureBox.Size = new Size(selectedImage.Width, selectedImage.Height);
-                    a[tmp].bm = new Bitmap(a[tmp].pictureBox.Width, a[tmp].pictureBox.Height);
-                    // Hiển thị hình ảnh trong ứng dụng Paint của bạn (ví dụ PictureBox)
-                    a[tmp].bm = (Bitmap)selectedImage;
-                    a[tmp].pictureBox.Image = a[tmp].bm;
-                    a[tmp].G = Graphics.FromImage(a[tmp].bm);
-                    a[tmp].pictureBox.Refresh();
-                    a[tmp].sizeBitmap = new Size(a[tmp].pictureBox.Width, a[tmp].pictureBox.Height);
-                    a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
+                    using(Bitmap bmb=new Bitmap(selectedFile))
+                    {
+                        MemoryStream m=new MemoryStream();
+                        bmb.Save(m, ImageFormat.Bmp);
+                        a[tmp].pictureBox.Size = new Size(bmb.Width, bmb.Height);
+                        a[tmp].bm = new Bitmap(a[tmp].pictureBox.Width, a[tmp].pictureBox.Height);
+                        // Hiển thị hình ảnh trong ứng dụng Paint của bạn (ví dụ PictureBox)
+                        a[tmp].bm = (Bitmap)Image.FromStream(m);
+                        a[tmp].pictureBox.Image = a[tmp].bm;
+                        a[tmp].G = Graphics.FromImage(a[tmp].bm);
+                        a[tmp].pictureBox.Refresh();
+                        a[tmp].sizeBitmap = new Size(a[tmp].pictureBox.Width, a[tmp].pictureBox.Height);
+                        a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
 
-                    Path.GetFileName(selectedFile);
-                    a[tmp].fileName = Path.GetFileName(selectedFile);
+                        Path.GetFileName(selectedFile);
+                        a[tmp].fileName = Path.GetFileName(selectedFile);
 
-                    fileName.Text= a[tmp].fileName;
-                    a[tmp].filePath= selectedFile;
+                        fileName.Text = a[tmp].fileName;
+                        a[tmp].filePath = selectedFile;
+                    }                
                 }
                 catch (Exception ex)
                 {
@@ -263,8 +284,7 @@ namespace UI
                 }
             }
         }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Save()
         {
             int tmp = tcMain.SelectedIndex;
             if (a[tmp].filePath == "")
@@ -302,21 +322,117 @@ namespace UI
                     else if (extension == ".gif")
                         imageFormat = ImageFormat.Gif;
 
-                    a[tmp].pictureBox.Image.Save(filePath, imageFormat);
+                    using (Bitmap bmb = (Bitmap)a[tmp].pictureBox.Image.Clone())
+                    {
+                        bmb.Save(filePath, imageFormat);
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Lỗi khi lưu file: " + ex.Message);
                 }
             }
-
+        }
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Save();
         }
 
         private void tcMain_SelectedPageChanged(object sender, EventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
-            if(tmp<a.Count)
+            if(tmp>=0 && tmp<a.Count)
                 fileName.Text = a[tmp].fileName;
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int tmp=tcMain.SelectedIndex;
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png; *.gif; *.bmp)|*.jpg; *.jpeg; *.png; *.gif; *.bmp";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                a[tmp].filePath = saveFileDialog.FileName;
+                string filePath = saveFileDialog.FileName;
+                string extension = Path.GetExtension(filePath).ToLower();
+
+                ImageFormat imageFormat = ImageFormat.Png;
+                if (extension == ".jpg" || extension == ".jpeg")
+                    imageFormat = ImageFormat.Jpeg;
+                else if (extension == ".bmp")
+                    imageFormat = ImageFormat.Bmp;
+                else if (extension == ".gif")
+                    imageFormat = ImageFormat.Gif;
+                a[tmp].pictureBox.Image.Save(a[tmp].filePath, imageFormat);
+            }
+        }
+        private void handleClickZoomIn(object sender, EventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            int w = (int)(1.2 * a[tmp].pictureBox.Width);
+            int h = (int)(1.2 * a[tmp].pictureBox.Height);
+            a[tmp].pictureBox.Size = new Size(w, h);
+            Image originalImage = a[tmp].pictureBox.Image;
+
+            Bitmap newBitmap = new Bitmap(w, h);
+            using (Graphics g = Graphics.FromImage(newBitmap))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.DrawImage(originalImage, 0, 0, w, h);
+            }
+            a[tmp].bm = newBitmap;
+            a[tmp].pictureBox.Image = a[tmp].bm;
+            a[tmp].G = Graphics.FromImage(a[tmp].bm);
+            a[tmp].pictureBox.Refresh();
+        }
+        private void handleClickZoomOut(object sender, EventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            int w = (int)(0.8 * a[tmp].pictureBox.Width);
+            int h = (int)(0.8 * a[tmp].pictureBox.Height);
+            a[tmp].pictureBox.Size = new Size(w, h);
+            Image originalImage = a[tmp].pictureBox.Image;
+
+            Bitmap newBitmap = new Bitmap(w, h);
+            using (Graphics g = Graphics.FromImage(newBitmap))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.DrawImage(originalImage, 0, 0, w, h);
+            }
+            a[tmp].bm = newBitmap;
+            a[tmp].pictureBox.Image = a[tmp].bm;
+            a[tmp].G = Graphics.FromImage(a[tmp].bm);
+            a[tmp].pictureBox.Refresh();
+        }
+        private void handleResetZoom(object sender, EventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            int w = a[tmp].sizeBitmap.Width;
+            int h = a[tmp].sizeBitmap.Height;
+            a[tmp].pictureBox.Size = new Size(w, h);
+            Image originalImage = a[tmp].pictureBox.Image;
+
+            Bitmap newBitmap = new Bitmap(w, h);
+            using (Graphics g = Graphics.FromImage(newBitmap))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.DrawImage(originalImage, 0, 0, w, h);
+            }
+            a[tmp].bm = newBitmap;
+            a[tmp].pictureBox.Image = a[tmp].bm;
+            a[tmp].G = Graphics.FromImage(a[tmp].bm);
+            a[tmp].pictureBox.Refresh();
+        }
+        private void SetTimeout(Action action, int timeout)
+        {
+            var timer = new Timer();
+            timer.Interval = timeout;
+            timer.Tick += (s, e) =>
+            {
+                action();
+                timer.Stop();
+            };
+            timer.Start();
         }
     }
 }

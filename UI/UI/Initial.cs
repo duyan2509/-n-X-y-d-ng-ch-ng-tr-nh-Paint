@@ -12,6 +12,7 @@ using Pen = System.Drawing.Pen;
 
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using UI;
 
 namespace UI
 {
@@ -26,7 +27,6 @@ namespace UI
             tmp.py = new Point(0, 0);
             tmp.px = new Point(0, 0);
             tmp.Paint = false;
-            tmp.Fill = false;
             tmp.brush = new SolidBrush(tmp.Pen.Color);
             tmp.index = 0;
             tmp.isResize = false;
@@ -39,6 +39,7 @@ namespace UI
             tmp.fileName = "";
             fileName.Text = tmp.fileName;
             tmp.buttons = new List<Guna2Button>();
+            tmp.currShape = new HinhVe();
             a.Add(tmp);
 
         }
@@ -164,7 +165,7 @@ namespace UI
             rectangleButton.Image = Properties.Resources.icons8_rectangle_48_white;
             rectangleButton.ImageSize = new Size(20, 20);
             rectangleButton.Animated = true;
-            textButton.BorderColor = Color.White;
+            rectangleButton.BorderColor = Color.White;
             rectangleButton.Click += handleClickRectangleButton;
             rectangleButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(rectangleButton);
@@ -252,7 +253,7 @@ namespace UI
             // Hinh Elip
             Guna2Button ellipseButton = new Guna2Button();
             ellipseButton.Size = new Size(45, 45);
-            ellipseButton.Location = new Point(0, 240);
+            ellipseButton.Location = new Point(0, 120);
             ellipseButton.Image = Properties.Resources.icons8_ellipse_48_white;
             ellipseButton.ImageSize = new Size(20, 20);
             ellipseButton.BorderRadius = 20;
@@ -262,19 +263,7 @@ namespace UI
             ellipseButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(ellipseButton);
             a[tmp].buttons.Add(ellipseButton);
-            // Hinh Duong Cung
-            Guna2Button arcButton = new Guna2Button();
-            arcButton.Size = new Size(45, 45);
-            arcButton.Location = new Point(0, 120);
-            arcButton.Image = Properties.Resources.icons8_half_circle_48_white;
-            arcButton.ImageSize = new Size(20, 20);
-            arcButton.BorderRadius = 20;
-            arcButton.Animated = true;
-            arcButton.BorderColor = Color.White;
-            //arcButton.Click += handleClickCircleButton;
-            arcButton.Cursor = Cursors.Hand;
-            shapePanel.Controls.Add(arcButton);
-            a[tmp].buttons.Add(arcButton);
+
 
 
             //Add color panel
@@ -454,10 +443,7 @@ namespace UI
             a[tmp].pictureBox.MouseDown += handleMouseDown;
             a[tmp].pictureBox.MouseMove += handleMouseMove;
             a[tmp].pictureBox.MouseUp += handleMouseUp;
-            a[tmp].pictureBox.MouseClick += handleMouseClick;//fill
-            a[tmp].pictureBox.Paint += handlePaint;
-            //a[tmp].pictureBox.MouseEnter += handleMouseEnter;
-            
+            a[tmp].pictureBox.Paint += handlePaint;            
 
             // Button ( trong DrawObject) Resize
             a[tmp].bt.Size = new Size(35, 35);
@@ -525,17 +511,6 @@ namespace UI
             a[tmp].text.StateActive.Border.Width = 0;
             a[tmp].text.Hide();
             a[tmp].pictureBox.Controls.Add(a[tmp].text);
-
-            //// button show success
-            //Guna2Button showSucces = new Guna2Button();
-            //showSucces.Size = new Size(45, 45);
-            //showSucces.Location = new Point(0, 0);
-            //showSucces.FillColor = Color.FromArgb(94, 148, 255);
-            //showSucces.BorderRadius = 20;
-            //showSucces.Image = Properties.Resources.icons8_pencil_60_white;
-            //showSucces.ImageSize = new Size(20, 20);
-            //a[tmp].pictureBox.Controls.Add(showSucces);
-
             tcMain.SelectedPage.Controls.Add(a[tmp].backGround);
         }
 

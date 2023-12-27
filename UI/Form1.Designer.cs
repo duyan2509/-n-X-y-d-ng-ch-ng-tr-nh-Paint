@@ -36,17 +36,11 @@
             this.btAdd = new ComponentFactory.Krypton.Navigator.ButtonSpecNavigator();
             this.kryptonPage1 = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.btClose1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
-            this.btSuccess = new Guna.UI2.WinForms.Guna2Button();
             this.fileName = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnTitleBar = new System.Windows.Forms.Panel();
-            this.btMaxi = new Guna.UI2.WinForms.Guna2Button();
-            this.btClose = new Guna.UI2.WinForms.Guna2Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,12 +48,18 @@
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btMini = new System.Windows.Forms.Button();
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.dlgColor = new System.Windows.Forms.ColorDialog();
+            this.btMaxi = new Guna.UI2.WinForms.Guna2Button();
+            this.btClose = new Guna.UI2.WinForms.Guna2Button();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btSuccess = new Guna.UI2.WinForms.Guna2Button();
             this.pnContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tcMain)).BeginInit();
             this.tcMain.SuspendLayout();
@@ -149,26 +149,6 @@
             this.btClose1.UniqueName = "31A147EECA5F43286FA9B6E033F7570B";
             this.btClose1.Click += new System.EventHandler(this.btClose1_Click);
             // 
-            // btSuccess
-            // 
-            this.btSuccess.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSuccess.BackColor = System.Drawing.Color.Transparent;
-            this.btSuccess.BackgroundImage = global::UI.Properties.Resources.icons8_check_48;
-            this.btSuccess.BorderRadius = 20;
-            this.btSuccess.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btSuccess.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btSuccess.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btSuccess.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btSuccess.FillColor = System.Drawing.Color.Transparent;
-            this.btSuccess.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btSuccess.ForeColor = System.Drawing.Color.Transparent;
-            this.btSuccess.Image = global::UI.Properties.Resources.icons8_check_48;
-            this.btSuccess.ImageSize = new System.Drawing.Size(50, 50);
-            this.btSuccess.Location = new System.Drawing.Point(811, 458);
-            this.btSuccess.Name = "btSuccess";
-            this.btSuccess.Size = new System.Drawing.Size(25, 25);
-            this.btSuccess.TabIndex = 0;
-            // 
             // fileName
             // 
             this.fileName.AcceptsTab = true;
@@ -214,40 +194,6 @@
             this.pnTitleBar.TabIndex = 1;
             this.pnTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnTitleBar_MouseDown);
             // 
-            // btMaxi
-            // 
-            this.btMaxi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btMaxi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btMaxi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btMaxi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btMaxi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btMaxi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.btMaxi.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btMaxi.ForeColor = System.Drawing.Color.White;
-            this.btMaxi.Image = global::UI.Properties.Resources.icons8_toggle_full_screen_50;
-            this.btMaxi.Location = new System.Drawing.Point(810, 3);
-            this.btMaxi.Name = "btMaxi";
-            this.btMaxi.Size = new System.Drawing.Size(40, 40);
-            this.btMaxi.TabIndex = 4;
-            this.btMaxi.Click += new System.EventHandler(this.btMaxi_Click);
-            // 
-            // btClose
-            // 
-            this.btClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
-            this.btClose.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btClose.ForeColor = System.Drawing.Color.White;
-            this.btClose.Image = global::UI.Properties.Resources.icons8_close_50;
-            this.btClose.Location = new System.Drawing.Point(845, 2);
-            this.btClose.Name = "btClose";
-            this.btClose.Size = new System.Drawing.Size(40, 40);
-            this.btClose.TabIndex = 1;
-            this.btClose.Click += new System.EventHandler(this.btClose_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.HotTrack;
@@ -279,55 +225,27 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.fileToolStripMenuItem.Text = "&File";
             // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
-            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.newToolStripMenuItem.Text = "&New";
-            // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
-            this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.openToolStripMenuItem.Text = "&Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
-            // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(178, 6);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
-            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.saveToolStripMenuItem.Text = "&Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.toolStripSeparator.Size = new System.Drawing.Size(221, 6);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.saveAsToolStripMenuItem.Text = "Save &As";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(178, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(221, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.exitToolStripMenuItem.Text = "E&xit";
             // 
             // editToolStripMenuItem
@@ -364,6 +282,82 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(176, 6);
             // 
+            // btMini
+            // 
+            this.btMini.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btMini.FlatAppearance.BorderSize = 0;
+            this.btMini.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btMini.Location = new System.Drawing.Point(769, 11);
+            this.btMini.Name = "btMini";
+            this.btMini.Size = new System.Drawing.Size(44, 28);
+            this.btMini.TabIndex = 1;
+            this.btMini.Text = "__";
+            this.btMini.UseVisualStyleBackColor = true;
+            this.btMini.Click += new System.EventHandler(this.btMini_Click);
+            // 
+            // btMaxi
+            // 
+            this.btMaxi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btMaxi.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btMaxi.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btMaxi.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btMaxi.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btMaxi.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.btMaxi.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btMaxi.ForeColor = System.Drawing.Color.White;
+            this.btMaxi.Image = global::UI.Properties.Resources.icons8_toggle_full_screen_50;
+            this.btMaxi.Location = new System.Drawing.Point(810, 3);
+            this.btMaxi.Name = "btMaxi";
+            this.btMaxi.Size = new System.Drawing.Size(40, 40);
+            this.btMaxi.TabIndex = 4;
+            this.btMaxi.Click += new System.EventHandler(this.btMaxi_Click);
+            // 
+            // btClose
+            // 
+            this.btClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btClose.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btClose.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(102)))), ((int)(((byte)(204)))));
+            this.btClose.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btClose.ForeColor = System.Drawing.Color.White;
+            this.btClose.Image = global::UI.Properties.Resources.icons8_close_50;
+            this.btClose.Location = new System.Drawing.Point(845, 2);
+            this.btClose.Name = "btClose";
+            this.btClose.Size = new System.Drawing.Size(40, 40);
+            this.btClose.TabIndex = 1;
+            this.btClose.Click += new System.EventHandler(this.btClose_Click);
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripMenuItem.Image")));
+            this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newToolStripMenuItem.Text = "&New";
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripMenuItem.Image")));
+            this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.openToolStripMenuItem.Text = "&Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
+            this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripMenuItem.Image")));
@@ -394,18 +388,25 @@
             this.pasteToolStripMenuItem.Text = "&Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
-            // btMini
+            // btSuccess
             // 
-            this.btMini.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btMini.FlatAppearance.BorderSize = 0;
-            this.btMini.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btMini.Location = new System.Drawing.Point(769, 11);
-            this.btMini.Name = "btMini";
-            this.btMini.Size = new System.Drawing.Size(44, 28);
-            this.btMini.TabIndex = 1;
-            this.btMini.Text = "__";
-            this.btMini.UseVisualStyleBackColor = true;
-            this.btMini.Click += new System.EventHandler(this.btMini_Click);
+            this.btSuccess.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btSuccess.BackColor = System.Drawing.Color.Transparent;
+            this.btSuccess.BackgroundImage = global::UI.Properties.Resources.icons8_check_48;
+            this.btSuccess.BorderRadius = 20;
+            this.btSuccess.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btSuccess.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btSuccess.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btSuccess.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btSuccess.FillColor = System.Drawing.Color.Transparent;
+            this.btSuccess.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btSuccess.ForeColor = System.Drawing.Color.Transparent;
+            this.btSuccess.Image = global::UI.Properties.Resources.icons8_check_48;
+            this.btSuccess.ImageSize = new System.Drawing.Size(50, 50);
+            this.btSuccess.Location = new System.Drawing.Point(811, 458);
+            this.btSuccess.Name = "btSuccess";
+            this.btSuccess.Size = new System.Drawing.Size(25, 25);
+            this.btSuccess.TabIndex = 0;
             // 
             // Form1
             // 
