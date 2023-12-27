@@ -188,6 +188,7 @@ namespace UI
             }
             if (a[tmp].iBitmap > 0)
                 a[tmp].iBitmap--;
+
             a[tmp].bm = a[tmp].listBitmap[a[tmp].iBitmap];
             a[tmp].pictureBox.Image = a[tmp].bm;
             a[tmp].G = Graphics.FromImage(a[tmp].bm);

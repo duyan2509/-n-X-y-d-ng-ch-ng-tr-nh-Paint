@@ -72,8 +72,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Shape\Ellipse.cs" />
+    <Compile Include="Shape\Hexagon.cs" />
     <Compile Include="Shape\Line.cs" />
+    <Compile Include="Shape\RightTriangle.cs" />
     <Compile Include="Shape\Text.cs" />
+    <Compile Include="Shape\Triangle.cs" />
     <Compile Include="UI\Close.cs">
       <SubType>Form</SubType>
     </Compile>

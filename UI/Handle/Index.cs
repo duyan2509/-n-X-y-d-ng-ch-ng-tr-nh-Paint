@@ -155,6 +155,8 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 8;
+                    a[tmp].currShape = new Triangle();
+                    a[tmp].currResize= new Triangle();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -173,6 +175,8 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 9;
+                    a[tmp].currShape = new RightTriangle();
+                    a[tmp].currResize = new RightTriangle();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -191,6 +195,8 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 10;
+                    a[tmp].currShape = new Hexagon();
+                    a[tmp].currResize = new Hexagon();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;

@@ -19,10 +19,16 @@ namespace UI
                 if (a[tmp].index != 1 && a[tmp].index != 15)
                 {
                     if (a[tmp].Paint)
+                    {
                         a[tmp].currShape.Paint_Paint(ref g, a[tmp]);
+                        checkFirstDraw = true;
+                    }
                     if (a[tmp].isResize)
                         a[tmp].currShape.Paint_Resize(ref g, a[tmp]);
                 }
+                else
+                    checkFirstDraw = true;
+
                 //Ve hinh khi dang nhan chuot
                 //if (a[tmp].Paint)
                 //{
