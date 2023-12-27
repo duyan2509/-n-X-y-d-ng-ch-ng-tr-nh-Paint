@@ -58,5 +58,6 @@ namespace UI
         public bool isText  { get; set; }
         public string filePath { get; set; }
         public string fileName { get; set; }
+        public List <Guna2Button> buttons { get; set; }
     }
 }

@@ -36,8 +36,8 @@
             this.btAdd = new ComponentFactory.Krypton.Navigator.ButtonSpecNavigator();
             this.kryptonPage1 = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.btClose1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
-            this.fileName = new Guna.UI2.WinForms.Guna2TextBox();
             this.btSuccess = new Guna.UI2.WinForms.Guna2Button();
+            this.fileName = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnTitleBar = new System.Windows.Forms.Panel();
             this.btMaxi = new Guna.UI2.WinForms.Guna2Button();
             this.btClose = new Guna.UI2.WinForms.Guna2Button();
@@ -118,6 +118,7 @@
             this.tcMain.Size = new System.Drawing.Size(897, 496);
             this.tcMain.TabIndex = 0;
             this.tcMain.Text = "kryptonNavigator1";
+            this.tcMain.SelectedPageChanged += new System.EventHandler(this.tcMain_SelectedPageChanged);
             // 
             // btAdd
             // 
@@ -148,6 +149,26 @@
             this.btClose1.UniqueName = "31A147EECA5F43286FA9B6E033F7570B";
             this.btClose1.Click += new System.EventHandler(this.btClose1_Click);
             // 
+            // btSuccess
+            // 
+            this.btSuccess.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btSuccess.BackColor = System.Drawing.Color.Transparent;
+            this.btSuccess.BackgroundImage = global::UI.Properties.Resources.icons8_check_48;
+            this.btSuccess.BorderRadius = 20;
+            this.btSuccess.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btSuccess.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btSuccess.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btSuccess.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btSuccess.FillColor = System.Drawing.Color.Transparent;
+            this.btSuccess.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btSuccess.ForeColor = System.Drawing.Color.Transparent;
+            this.btSuccess.Image = global::UI.Properties.Resources.icons8_check_48;
+            this.btSuccess.ImageSize = new System.Drawing.Size(50, 50);
+            this.btSuccess.Location = new System.Drawing.Point(811, 458);
+            this.btSuccess.Name = "btSuccess";
+            this.btSuccess.Size = new System.Drawing.Size(25, 25);
+            this.btSuccess.TabIndex = 0;
+            // 
             // fileName
             // 
             this.fileName.AcceptsTab = true;
@@ -172,30 +193,11 @@
             this.fileName.Name = "fileName";
             this.fileName.PasswordChar = '\0';
             this.fileName.PlaceholderText = "";
+            this.fileName.ReadOnly = true;
             this.fileName.SelectedText = "";
             this.fileName.Size = new System.Drawing.Size(418, 30);
             this.fileName.TabIndex = 5;
             this.fileName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btSuccess
-            // 
-            this.btSuccess.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSuccess.BackColor = System.Drawing.Color.Transparent;
-            this.btSuccess.BackgroundImage = global::UI.Properties.Resources.icons8_check_48;
-            this.btSuccess.BorderRadius = 20;
-            this.btSuccess.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btSuccess.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btSuccess.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btSuccess.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btSuccess.FillColor = System.Drawing.Color.Transparent;
-            this.btSuccess.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btSuccess.ForeColor = System.Drawing.Color.Transparent;
-            this.btSuccess.Image = global::UI.Properties.Resources.icons8_check_48;
-            this.btSuccess.ImageSize = new System.Drawing.Size(50, 50);
-            this.btSuccess.Location = new System.Drawing.Point(811, 458);
-            this.btSuccess.Name = "btSuccess";
-            this.btSuccess.Size = new System.Drawing.Size(25, 25);
-            this.btSuccess.TabIndex = 0;
             // 
             // pnTitleBar
             // 
@@ -258,7 +260,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(9, 6);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(253, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(103, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuStrip1_MouseDown_1);
@@ -283,7 +285,7 @@
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.newToolStripMenuItem.Text = "&New";
             // 
             // openToolStripMenuItem
@@ -307,7 +309,7 @@
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 

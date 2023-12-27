@@ -875,13 +875,21 @@ namespace UI
         }
         private void handleSelectButton(object sender, EventArgs e)
         {
-            int tmp=tcMain.SelectedIndex;
-            if(tmp<a.Count)
+            if (sender is Guna2Button clickedButton)
             {
-                a[tmp].index = 17;
-            }
-           
+                int tmp = tcMain.SelectedIndex;
+                if (tmp < a.Count)
+                {
+                    a[tmp].index = 17;
+                    foreach (Guna2Button button in a[tmp].buttons)
+                    {
+                        button.BorderThickness = 0;
+                        button.Refresh();
+                    }
+                    clickedButton.BorderThickness = 2;
 
+                }
+            }
         }
         private void SetTimeout(Action action, int timeout)
         {
@@ -897,12 +905,21 @@ namespace UI
 
         private void handleClickPenButton(object sender, EventArgs e)
         {
-            int tmp = tcMain.SelectedIndex;
-            if (tmp < a.Count)
+            if (sender is Guna2Button clickedButton)
             {
-                a[tmp].index = 1;
-            }
+                int tmp = tcMain.SelectedIndex;
+                if (tmp < a.Count)
+                {
+                    a[tmp].index = 1;
+                    foreach (Guna2Button button in a[tmp].buttons)
+                    {
+                        button.BorderThickness = 0;
+                        button.Refresh();
+                    }
+                    clickedButton.BorderThickness = 2;
 
+                }
+            }
         }
         private void handleClickEraseButton(object sender, EventArgs e)
         {
@@ -913,13 +930,20 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 15;
-                    
+                    foreach (Guna2Button button in a[tmp].buttons)
+                    {
+                        button.BorderThickness = 0;
+                        button.Refresh();
+                    }
+
+                    // Tăng BorderThickness của button được click lên một giá trị nào đó
+                    clickedButton.BorderThickness = 2;
+
                 }
             }
         }
         private void handleClickFillButton(object sender, EventArgs e)
         {
-
             if (sender is Guna2Button clickedButton)
             {
                 int tmp = tcMain.SelectedIndex;
@@ -927,48 +951,34 @@ namespace UI
                 {
                     a[tmp].Fill = true;
                     a[tmp].index = 6;
+                    foreach (Guna2Button button in a[tmp].buttons)
+                    {
+                        button.BorderThickness = 0;
+                        button.Refresh();
+                    }
+                    clickedButton.BorderThickness = 2;
+
                 }
             }
         }
-        public void Fill( int x, int y, Color new_clr)
-        {
-            int tmp = tcMain.SelectedIndex;
-            Color old_Color = a[tmp].bm.GetPixel(x, y);
-            Stack<Point> pixel = new Stack<Point>();
-            pixel.Push(new Point(x, y));
-            a[tmp].bm.SetPixel(x, y, new_clr);
-            if (old_Color == new_clr) return;
-            while (pixel.Count > 0)
-            {
-                Point pt = (Point)pixel.Pop();
-                if (pt.X > 0 && pt.Y > 0 && pt.X < a[tmp].bm.Width - 1 && pt.Y < a[tmp].bm.Height - 1)
-                {
-                    validate(pixel, pt.X - 1, pt.Y, old_Color, new_clr);
-                    validate(pixel, pt.X, pt.Y - 1, old_Color, new_clr);
-                    validate(pixel, pt.X + 1, pt.Y, old_Color, new_clr);
-                    validate(pixel, pt.X, pt.Y + 1, old_Color, new_clr);
-                }
-                
-            }
-        }
-        private void validate( Stack<Point> sp, int x, int y, Color old_Color, Color new_Color)
-        {
-            int tmp = tcMain.SelectedIndex;
-            Color cx = a[tmp].bm.GetPixel(x, y);
-            if (cx == old_Color)
-            {
-                sp.Push(new Point(x, y));
-                a[tmp].bm.SetPixel(x, y, new_Color);
-            }
-        }
+
         private void handleClickTextButton(object sender, EventArgs e)
         {
-
             if (sender is Guna2Button clickedButton)
             {
                 int tmp = tcMain.SelectedIndex;
-                a[tmp].index = 16;
-                a[tmp].isText = true;
+                if (tmp < a.Count)
+                {
+                    a[tmp].index = 16;
+                    a[tmp].isText = true;
+                    foreach (Guna2Button button in a[tmp].buttons)
+                    {
+                        button.BorderThickness = 0;
+                        button.Refresh();
+                    }
+                    clickedButton.BorderThickness = 2;
+
+                }
             }
         }
         private void handleClickEllipseButton(object sender, EventArgs e)
@@ -979,6 +989,13 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 2;
+                    foreach (Guna2Button button in a[tmp].buttons)
+                    {
+                        button.BorderThickness = 0;
+                        button.Refresh();
+                    }
+                    clickedButton.BorderThickness = 2;
+
                 }
             }
         }
@@ -991,6 +1008,13 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 5;
+                    foreach (Guna2Button button in a[tmp].buttons)
+                    {
+                        button.BorderThickness = 0;
+                        button.Refresh();
+                    }
+                    clickedButton.BorderThickness = 2;
+
                 }
             }
         }
@@ -1003,6 +1027,13 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 7;
+                    foreach (Guna2Button button in a[tmp].buttons)
+                    {
+                        button.BorderThickness = 0;
+                        button.Refresh();
+                    }
+                    clickedButton.BorderThickness = 2;
+
                 }
             }
         }
@@ -1014,6 +1045,13 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 8;
+                    foreach (Guna2Button button in a[tmp].buttons)
+                    {
+                        button.BorderThickness = 0;
+                        button.Refresh();
+                    }
+                    clickedButton.BorderThickness = 2;
+
                 }
             }
         }
@@ -1025,6 +1063,13 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 9;
+                    foreach (Guna2Button button in a[tmp].buttons)
+                    {
+                        button.BorderThickness = 0;
+                        button.Refresh();
+                    }
+                    clickedButton.BorderThickness = 2;
+
                 }
             }
         }
@@ -1036,6 +1081,13 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 10;
+                    foreach (Guna2Button button in a[tmp].buttons)
+                    {
+                        button.BorderThickness = 0;
+                        button.Refresh();
+                    }
+                    clickedButton.BorderThickness = 2;
+
                 }
             }
         }
@@ -1047,6 +1099,13 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 11;
+                    foreach (Guna2Button button in a[tmp].buttons)
+                    {
+                        button.BorderThickness = 0;
+                        button.Refresh();
+                    }
+                    clickedButton.BorderThickness = 2;
+
                 }
             }
         }
@@ -1058,6 +1117,13 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 12;
+                    foreach (Guna2Button button in a[tmp].buttons)
+                    {
+                        button.BorderThickness = 0;
+                        button.Refresh();
+                    }
+                    clickedButton.BorderThickness = 2;
+
                 }
             }
         }

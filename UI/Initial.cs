@@ -36,6 +36,9 @@ namespace UI
             tmp.iBitmap = 0;
             tmp.isClear = true;
             tmp.filePath = "";
+            tmp.fileName = "";
+            fileName.Text = tmp.fileName;
+            tmp.buttons = new List<Guna2Button>();
             a.Add(tmp);
 
         }
@@ -60,7 +63,7 @@ namespace UI
             newPanel.Controls.Add(toolLabel);
             newPanel.Controls.Add(shapeLabel);
 
-
+            int tmp=tcMain.SelectedIndex;
             //Add tool panel
             Panel toolPanel = new Panel();
             toolPanel.Location = new Point(70, 35);
@@ -74,11 +77,11 @@ namespace UI
             penButton.Image = Properties.Resources.icons8_pencil_60_white;
             penButton.ImageSize = new Size(20, 20);
             penButton.Animated = true;
-            //penButton.BorderThickness = 2;
-            //penButton.BorderColor = Color.White;
+            penButton.BorderColor = Color.White;
             penButton.Click += handleClickPenButton;
             penButton.Cursor = Cursors.Hand;
             toolPanel.Controls.Add(penButton);
+            a[tmp].buttons.Add(penButton);
             // Erase button
             Guna2Button eraseButton = new Guna2Button();
             eraseButton.Size = new Size(45, 45);
@@ -88,9 +91,11 @@ namespace UI
             eraseButton.Image = Properties.Resources.icons8_erase_60_white;
             eraseButton.ImageSize = new Size(20, 20);
             eraseButton.Animated = true;
+            eraseButton.BorderColor = Color.White;
             eraseButton.Click += handleClickEraseButton;
             eraseButton.Cursor = Cursors.Hand;
             toolPanel.Controls.Add(eraseButton);
+            a[tmp].buttons.Add(eraseButton);
             //Fill button
             Guna2Button fillButton = new Guna2Button();
             fillButton.Size = new Size(45, 45);
@@ -100,10 +105,11 @@ namespace UI
             fillButton.Image = Properties.Resources.icons8_fill_color_60_white;
             fillButton.ImageSize = new Size(20, 20);
             fillButton.Animated = true;
+            fillButton.BorderColor=Color.White;
             fillButton.Click += handleClickFillButton;
             fillButton.Cursor = Cursors.Hand;
             toolPanel.Controls.Add(fillButton);
-
+            a[tmp].buttons.Add(fillButton);
             //Text button
             Guna2Button textButton = new Guna2Button();
             textButton.Size = new Size(45, 45);
@@ -113,10 +119,11 @@ namespace UI
             textButton.Image = Properties.Resources.icons8_text_60_white;
             textButton.ImageSize = new Size(20, 20);
             textButton.Animated = true;
+            textButton.BorderColor = Color.White;
             textButton.Click += handleClickTextButton;
             textButton.Cursor = Cursors.Hand;
             toolPanel.Controls.Add(textButton);
-
+            a[tmp].buttons.Add(textButton);
             //Brush button
             Guna2Button brushButton = new Guna2Button();
             brushButton.Size = new Size(45, 45);
@@ -157,11 +164,11 @@ namespace UI
             rectangleButton.Image = Properties.Resources.icons8_rectangle_48_white;
             rectangleButton.ImageSize = new Size(20, 20);
             rectangleButton.Animated = true;
+            textButton.BorderColor = Color.White;
             rectangleButton.Click += handleClickRectangleButton;
-           
             rectangleButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(rectangleButton);
-
+            a[tmp].buttons.Add(rectangleButton);
 
             // Hinh Line
             Guna2Button lineButton = new Guna2Button();
@@ -174,7 +181,9 @@ namespace UI
             lineButton.Animated = true;
             lineButton.Click += handleClickLineButton;
             lineButton.Cursor = Cursors.Hand;
+            lineButton.BorderColor=Color.White;
             shapePanel.Controls.Add(lineButton);
+            a[tmp].buttons.Add(lineButton);
             // Hinh Tam Giac Can
             Guna2Button triangleButton = new Guna2Button();
             triangleButton.Size = new Size(45, 45);
@@ -183,9 +192,11 @@ namespace UI
             triangleButton.ImageSize = new Size(20, 20);
             triangleButton.BorderRadius = 20;
             triangleButton.Animated = true;
+            triangleButton.BorderColor = Color.White;
             triangleButton.Click += handleClickTriangleButton;
             triangleButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(triangleButton);
+            a[tmp].buttons.Add(triangleButton);
             // Hinh Tam Giac Vuong 
             Guna2Button right_triangleButton = new Guna2Button();
             right_triangleButton.Size = new Size(45, 45);
@@ -194,10 +205,11 @@ namespace UI
             right_triangleButton.ImageSize = new Size(20, 20);
             right_triangleButton.BorderRadius = 20;
             right_triangleButton.Animated = true;
+            right_triangleButton.BorderColor = Color.White;
             right_triangleButton.Click += handleClickright_TriangleButton;
             right_triangleButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(right_triangleButton);
-
+            a[tmp].buttons.Add(right_triangleButton);
             // Hinh Luc Giac
             Guna2Button hexagonButton = new Guna2Button();
             hexagonButton.Size = new Size(45, 45);
@@ -206,9 +218,11 @@ namespace UI
             hexagonButton.ImageSize = new Size(20, 20);
             hexagonButton.BorderRadius = 20;
             hexagonButton.Animated = true;
+            hexagonButton.BorderColor = Color.White;
             hexagonButton.Click += handleClickHexagonButton;
             hexagonButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(hexagonButton);
+            a[tmp].buttons.Add(hexagonButton);
             // Hinh Mui Ten
             Guna2Button arrowButton = new Guna2Button();
             arrowButton.Size = new Size(45, 45);
@@ -217,9 +231,11 @@ namespace UI
             arrowButton.ImageSize = new Size(20, 20);
             arrowButton.BorderRadius = 20;
             arrowButton.Animated = true;
+            arrowButton.BorderColor = Color.White;
             arrowButton.Click += handleClickArrowButton;
             arrowButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(arrowButton);
+            a[tmp].buttons.Add(arrowButton);
             // Hinh Sao 5 Canh
             Guna2Button starButton = new Guna2Button();
             starButton.Size = new Size(45, 45);
@@ -228,9 +244,11 @@ namespace UI
             starButton.ImageSize = new Size(20, 20);
             starButton.BorderRadius = 20;
             starButton.Animated = true;
+            starButton.BorderColor = Color.White;
             starButton.Click += handleClickStarButton;
             starButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(starButton);
+            a[tmp].buttons.Add(starButton);
             // Hinh Elip
             Guna2Button ellipseButton = new Guna2Button();
             ellipseButton.Size = new Size(45, 45);
@@ -239,9 +257,11 @@ namespace UI
             ellipseButton.ImageSize = new Size(20, 20);
             ellipseButton.BorderRadius = 20;
             ellipseButton.Animated = true;
+            ellipseButton.BorderColor = Color.White;
             ellipseButton.Click += handleClickEllipseButton;
             ellipseButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(ellipseButton);
+            a[tmp].buttons.Add(ellipseButton);
             // Hinh Duong Cung
             Guna2Button arcButton = new Guna2Button();
             arcButton.Size = new Size(45, 45);
@@ -250,10 +270,11 @@ namespace UI
             arcButton.ImageSize = new Size(20, 20);
             arcButton.BorderRadius = 20;
             arcButton.Animated = true;
+            arcButton.BorderColor = Color.White;
             //arcButton.Click += handleClickCircleButton;
             arcButton.Cursor = Cursors.Hand;
             shapePanel.Controls.Add(arcButton);
-
+            a[tmp].buttons.Add(arcButton);
 
 
             //Add color panel
@@ -352,6 +373,7 @@ namespace UI
             selectButton.BorderRadius = 15;
             selectButton.ImageSize = new Size(18, 18);
             selectButton.Animated = true;
+            selectButton.BorderColor = Color.FromArgb(94, 148, 255);
             selectButton.Image = Properties.Resources.icons8_select_cursor_48_blue;
             selectButton.Click += handleSelectButton;
              selectButton.Cursor = Cursors.Hand;
@@ -401,7 +423,7 @@ namespace UI
 
 
 
-            int tmp = tcMain.SelectedIndex;
+
             colorPanel.Controls.Add(a[tmp].bt);
             designPanel.Controls.Add(a[tmp].bt);
 

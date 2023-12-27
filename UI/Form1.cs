@@ -112,7 +112,6 @@ namespace UI
             buttonX.UniqueName = "btClose" + kryptonPage.Text;
             
 
-
             buttonX.Click += (s, args) =>
             {
 
@@ -134,6 +133,7 @@ namespace UI
             initialPanel();
             initialPictureBox();
         }
+
 
 
         private void btClose1_Click(object sender, EventArgs e)
@@ -292,20 +292,17 @@ namespace UI
                 try
                 {
                     string filePath = a[tmp].filePath;
-                    Bitmap newBm = a[tmp].bm.Clone(new Rectangle(0, 0, a[tmp].bm.Width, a[tmp].bm.Height), a[tmp].bm.PixelFormat);
-                    newBm.Save(filePath);
-                    //string extension = Path.GetExtension(filePath).ToLower();
-                    //ImageFormat imageFormat = ImageFormat.Png;
+                    string extension = Path.GetExtension(filePath).ToLower();
+                    ImageFormat imageFormat = ImageFormat.Png;
 
-                    //if (extension == ".jpg" || extension == ".jpeg")
-                    //    imageFormat = ImageFormat.Jpeg;
-                    //else if (extension == ".bmp")
-                    //    imageFormat = ImageFormat.Bmp;
-                    //else if (extension == ".gif")
-                    //    imageFormat = ImageFormat.Gif;
+                    if (extension == ".jpg" || extension == ".jpeg")
+                        imageFormat = ImageFormat.Jpeg;
+                    else if (extension == ".bmp")
+                        imageFormat = ImageFormat.Bmp;
+                    else if (extension == ".gif")
+                        imageFormat = ImageFormat.Gif;
 
-                    //Clipboard.SetImage(a[tmp].pictureBox.Image);
-                    //a[tmp].pictureBox.Image.Save(filePath, imageFormat);
+                    a[tmp].pictureBox.Image.Save(filePath, imageFormat);
                 }
                 catch (Exception ex)
                 {
@@ -313,6 +310,13 @@ namespace UI
                 }
             }
 
+        }
+
+        private void tcMain_SelectedPageChanged(object sender, EventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            if(tmp<a.Count)
+                fileName.Text = a[tmp].fileName;
         }
     }
 }
