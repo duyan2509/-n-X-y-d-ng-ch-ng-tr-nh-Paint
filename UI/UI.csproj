@@ -71,6 +71,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Shape\Ellipse.cs" />
+    <Compile Include="Shape\Line.cs" />
+    <Compile Include="Shape\Text.cs" />
     <Compile Include="UI\Close.cs">
       <SubType>Form</SubType>
     </Compile>

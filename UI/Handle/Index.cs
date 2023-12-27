@@ -73,6 +73,8 @@ namespace UI
                 {
                     a[tmp].index = 16;
                     a[tmp].isText = true;
+                    a[tmp].currShape = new Text();
+                    a[tmp].currResize = new Text();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -91,6 +93,8 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 2;
+                    a[tmp].currShape = new Ellipse();
+                    a[tmp].currResize = new Ellipse();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -110,6 +114,8 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 5;
+                    a[tmp].currShape = new Line();
+                    a[tmp].currResize = new Line();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;

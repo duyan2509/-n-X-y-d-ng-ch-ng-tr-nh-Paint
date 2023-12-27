@@ -26,7 +26,7 @@ namespace UI
                 //Ve hinh khi dang nhan chuot
                 //if (a[tmp].Paint)
                 //{
-                //    if (a[tmp].index == 2)//example
+                //    if (a[tmp].index == 2)
                 //    {
 
                 //        int x = Math.Min(a[tmp].cX, a[tmp].x);
@@ -275,11 +275,7 @@ namespace UI
 
                 //        g.DrawPolygon(a[tmp].Pen, pArray);
                 //    }
-                //    else if (a[tmp].index == 16)
-                //    {
-                //        a[tmp].text.Size = new Size(a[tmp].khung.Width - 12, a[tmp].khung.Height - 12);
-                //        a[tmp].text.Location = new Point(a[tmp].khung.X + 6, a[tmp].khung.Y + 6);
-                //    }
+
 
 
 
@@ -592,191 +588,191 @@ namespace UI
                 //if (a[tmp].resizeIndex == 7)
                 //{
 
-                //    a[tmp].isResize = false;
-                //    a[tmp].G.DrawRectangle(a[tmp].Pen, a[tmp].khung);
-                //    a[tmp].pictureBox.Refresh();
-                //    a[tmp].dragHandle = -1;
-                //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
-                //}
-                //else if (a[tmp].resizeIndex == 17)
-                //{
-                //    a[tmp].isResize = false;
-                //    Image clipboardImage = Clipboard.GetImage();
-                //    if (clipboardImage != null)
-                //    {
-                //        a[tmp].G.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                //        a[tmp].G.DrawImage(clipboardImage, a[tmp].khung);
-                //        a[tmp].pictureBox.Refresh();
-                //        a[tmp].dragHandle = -1;
-                //        a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
-                //    }
-                //}
-                //else if (a[tmp].resizeIndex == 4)
-                //{
-                //    a[tmp].isResize = false;
-                //    Image clipboardImage = Clipboard.GetImage();
-                //    if (clipboardImage != null)
-                //    {
-                //        a[tmp].G.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                //        a[tmp].G.DrawImage(clipboardImage, a[tmp].khung);
-                //        a[tmp].pictureBox.Refresh();
-                //        a[tmp].dragHandle = -1;
-                //        a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
-                //        a[tmp].Paint = false;
-                //    }
-                //}
-                //else if (a[tmp].resizeIndex == 2)
-                //{
-                //    a[tmp].isResize = false;
+                    //    a[tmp].isResize = false;
+                    //    a[tmp].G.DrawRectangle(a[tmp].Pen, a[tmp].khung);
+                    //    a[tmp].pictureBox.Refresh();
+                    //    a[tmp].dragHandle = -1;
+                    //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                    //}
+                    //else if (a[tmp].resizeIndex == 17)
+                    //{
+                    //    a[tmp].isResize = false;
+                    //    Image clipboardImage = Clipboard.GetImage();
+                    //    if (clipboardImage != null)
+                    //    {
+                    //        a[tmp].G.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                    //        a[tmp].G.DrawImage(clipboardImage, a[tmp].khung);
+                    //        a[tmp].pictureBox.Refresh();
+                    //        a[tmp].dragHandle = -1;
+                    //        a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                    //    }
+                    //}
+                    //else if (a[tmp].resizeIndex == 4)
+                    //{
+                    //    a[tmp].isResize = false;
+                    //    Image clipboardImage = Clipboard.GetImage();
+                    //    if (clipboardImage != null)
+                    //    {
+                    //        a[tmp].G.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                    //        a[tmp].G.DrawImage(clipboardImage, a[tmp].khung);
+                    //        a[tmp].pictureBox.Refresh();
+                    //        a[tmp].dragHandle = -1;
+                    //        a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                    //        a[tmp].Paint = false;
+                    //    }
+                    //}
+                    //else if (a[tmp].resizeIndex == 2)
+                    //{
+                    //    a[tmp].isResize = false;
 
-                //    a[tmp].G.DrawEllipse(a[tmp].Pen, a[tmp].khung);
-                //    a[tmp].pictureBox.Refresh();
-                //    a[tmp].dragHandle = -1;
-                //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
-                //}
-                //else if (a[tmp].resizeIndex == 5)
-                //{
-                //    a[tmp].isResize = false;
+                    //    a[tmp].G.DrawEllipse(a[tmp].Pen, a[tmp].khung);
+                    //    a[tmp].pictureBox.Refresh();
+                    //    a[tmp].dragHandle = -1;
+                    //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                    //}
+                    //else if (a[tmp].resizeIndex == 5)
+                    //{
+                    //    a[tmp].isResize = false;
 
-                //    a[tmp].G.DrawLine(a[tmp].Pen, a[tmp].khung.Left, a[tmp].khung.Top, a[tmp].khung.Right, a[tmp].khung.Bottom); ;
-                //    a[tmp].pictureBox.Refresh();
-                //    a[tmp].dragHandle = -1;
-                //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
-                //}
-                //else if (a[tmp].resizeIndex == 8)
-                //{
-                //    a[tmp].isResize = false;
-                //    Point dinhA = new Point(a[tmp].khung.X + a[tmp].khung.Width, a[tmp].khung.Y + a[tmp].khung.Height);
-                //    Point dinhB = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height);
-                //    Point dinhC = new Point((a[tmp].khung.X + a[tmp].khung.Width + a[tmp].khung.X) / 2, a[tmp].khung.Y);
-                //    Point[] dinhArray = { dinhC, dinhA, dinhB };
-                //    a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
-                //    a[tmp].pictureBox.Refresh();
-                //    a[tmp].dragHandle = -1;
-                //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
-                //}
-                //else if (a[tmp].resizeIndex == 9)
-                //{
-                //    a[tmp].isResize = false;
-                //    Point dinhA = new Point(a[tmp].khung.X, a[tmp].khung.Y);
-                //    Point dinhB = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height);
-                //    Point dinhC = new Point(a[tmp].khung.X + a[tmp].khung.Width, a[tmp].khung.Y + a[tmp].khung.Height);
-                //    Point[] dinhArray = { dinhC, dinhA, dinhB };
-                //    a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
-                //    a[tmp].pictureBox.Refresh();
-                //    a[tmp].dragHandle = -1;
-                //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
-                //}
-                //else if (a[tmp].resizeIndex == 10)
-                //{
-                //    a[tmp].isResize = false;
+                    //    a[tmp].G.DrawLine(a[tmp].Pen, a[tmp].khung.Left, a[tmp].khung.Top, a[tmp].khung.Right, a[tmp].khung.Bottom); ;
+                    //    a[tmp].pictureBox.Refresh();
+                    //    a[tmp].dragHandle = -1;
+                    //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                    //}
+                    //else if (a[tmp].resizeIndex == 8)
+                    //{
+                    //    a[tmp].isResize = false;
+                    //    Point dinhA = new Point(a[tmp].khung.X + a[tmp].khung.Width, a[tmp].khung.Y + a[tmp].khung.Height);
+                    //    Point dinhB = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height);
+                    //    Point dinhC = new Point((a[tmp].khung.X + a[tmp].khung.Width + a[tmp].khung.X) / 2, a[tmp].khung.Y);
+                    //    Point[] dinhArray = { dinhC, dinhA, dinhB };
+                    //    a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
+                    //    a[tmp].pictureBox.Refresh();
+                    //    a[tmp].dragHandle = -1;
+                    //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                    //}
+                    //else if (a[tmp].resizeIndex == 9)
+                    //{
+                    //    a[tmp].isResize = false;
+                    //    Point dinhA = new Point(a[tmp].khung.X, a[tmp].khung.Y);
+                    //    Point dinhB = new Point(a[tmp].khung.X, a[tmp].khung.Y + a[tmp].khung.Height);
+                    //    Point dinhC = new Point(a[tmp].khung.X + a[tmp].khung.Width, a[tmp].khung.Y + a[tmp].khung.Height);
+                    //    Point[] dinhArray = { dinhC, dinhA, dinhB };
+                    //    a[tmp].G.DrawPolygon(a[tmp].Pen, dinhArray);
+                    //    a[tmp].pictureBox.Refresh();
+                    //    a[tmp].dragHandle = -1;
+                    //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                    //}
+                    //else if (a[tmp].resizeIndex == 10)
+                    //{
+                    //    a[tmp].isResize = false;
 
-                //    int x = a[tmp].khung.X;
-                //    int y = a[tmp].khung.Y;
-                //    int lX = a[tmp].khung.X + a[tmp].khung.Width;
-                //    int lY = a[tmp].khung.Y + a[tmp].khung.Height;
-                //    Point p1 = new Point(x + (a[tmp].khung.Width) / 4, y);
-                //    Point p2 = new Point(lX - (a[tmp].khung.Width) / 4, y);
-                //    Point p3 = new Point(lX, y + (a[tmp].khung.Height) / 2);
-                //    Point p4 = new Point(lX - (a[tmp].khung.Width) / 4, lY);
-                //    Point p5 = new Point(x + (a[tmp].khung.Width) / 4, lY);
-                //    Point p6 = new Point(x, y + (a[tmp].khung.Height) / 2);
-                //    Point[] pArray = { p1, p2, p3, p4, p5, p6 };
-                //    a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
-                //    a[tmp].pictureBox.Refresh();
-                //    a[tmp].dragHandle = -1;
-                //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
-                //}
-                //else if (a[tmp].resizeIndex == 11)
-                //{
-                //    a[tmp].isResize = false;
-                //    int x = a[tmp].khung.X;
-                //    int y = a[tmp].khung.Y;
-                //    int lX = a[tmp].khung.X + a[tmp].khung.Width;
-                //    int lY = a[tmp].khung.Y + a[tmp].khung.Height;
-                //    Point p1 = new Point(lX, y + (a[tmp].khung.Height / 2));
-                //    Point p2 = new Point(lX - (a[tmp].khung.Width / 3), y);
-                //    Point p3 = new Point(lX - (a[tmp].khung.Width / 3), y + (a[tmp].khung.Height / 3));
-                //    Point p4 = new Point(x, y + (a[tmp].khung.Height / 3));
-                //    Point p5 = new Point(x, lY - (a[tmp].khung.Height / 3));
-                //    Point p6 = new Point(lX - (a[tmp].khung.Width / 3), lY - (a[tmp].khung.Height / 3));
-                //    Point p7 = new Point(lX - (a[tmp].khung.Width / 3), lY);
-                //    Point[] pArray = { p1, p2, p3, p4, p5, p6, p7 };
+                    //    int x = a[tmp].khung.X;
+                    //    int y = a[tmp].khung.Y;
+                    //    int lX = a[tmp].khung.X + a[tmp].khung.Width;
+                    //    int lY = a[tmp].khung.Y + a[tmp].khung.Height;
+                    //    Point p1 = new Point(x + (a[tmp].khung.Width) / 4, y);
+                    //    Point p2 = new Point(lX - (a[tmp].khung.Width) / 4, y);
+                    //    Point p3 = new Point(lX, y + (a[tmp].khung.Height) / 2);
+                    //    Point p4 = new Point(lX - (a[tmp].khung.Width) / 4, lY);
+                    //    Point p5 = new Point(x + (a[tmp].khung.Width) / 4, lY);
+                    //    Point p6 = new Point(x, y + (a[tmp].khung.Height) / 2);
+                    //    Point[] pArray = { p1, p2, p3, p4, p5, p6 };
+                    //    a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
+                    //    a[tmp].pictureBox.Refresh();
+                    //    a[tmp].dragHandle = -1;
+                    //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                    //}
+                    //else if (a[tmp].resizeIndex == 11)
+                    //{
+                    //    a[tmp].isResize = false;
+                    //    int x = a[tmp].khung.X;
+                    //    int y = a[tmp].khung.Y;
+                    //    int lX = a[tmp].khung.X + a[tmp].khung.Width;
+                    //    int lY = a[tmp].khung.Y + a[tmp].khung.Height;
+                    //    Point p1 = new Point(lX, y + (a[tmp].khung.Height / 2));
+                    //    Point p2 = new Point(lX - (a[tmp].khung.Width / 3), y);
+                    //    Point p3 = new Point(lX - (a[tmp].khung.Width / 3), y + (a[tmp].khung.Height / 3));
+                    //    Point p4 = new Point(x, y + (a[tmp].khung.Height / 3));
+                    //    Point p5 = new Point(x, lY - (a[tmp].khung.Height / 3));
+                    //    Point p6 = new Point(lX - (a[tmp].khung.Width / 3), lY - (a[tmp].khung.Height / 3));
+                    //    Point p7 = new Point(lX - (a[tmp].khung.Width / 3), lY);
+                    //    Point[] pArray = { p1, p2, p3, p4, p5, p6, p7 };
 
-                //    a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
-                //    a[tmp].pictureBox.Refresh();
-                //    a[tmp].dragHandle = -1;
-                //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
-                //}
-                //else if (a[tmp].resizeIndex == 12)
-                //{
-                //    a[tmp].isResize = false;
-                //    int x = a[tmp].khung.X;
-                //    int y = a[tmp].khung.Y;
-                //    int lX = a[tmp].khung.X + a[tmp].khung.Width;
-                //    int lY = a[tmp].khung.Y + a[tmp].khung.Height;
-                //    Point p1 = new Point(x + (a[tmp].khung.Width / 2), y);
-                //    Point p2 = new Point(lX - (5 * a[tmp].khung.Width / 14), y + (3 * (a[tmp].khung.Height) / 8));
-                //    Point p3 = new Point(lX, y + (3 * (a[tmp].khung.Height) / 8));
-                //    Point p4 = new Point(lX - (2 * a[tmp].khung.Width / 7), lY - (5 * a[tmp].khung.Height / 14));
-                //    Point p5 = new Point(lX - (3 * a[tmp].khung.Width / 14), lY);
-                //    Point p6 = new Point(x + a[tmp].khung.Width / 2, lY - (3 * a[tmp].khung.Height / 14));
-                //    Point p7 = new Point(x + (3 * a[tmp].khung.Width / 14), lY);
-                //    Point p8 = new Point(x + (2 * a[tmp].khung.Width / 7), lY - (5 * a[tmp].khung.Height / 14));
-                //    Point p9 = new Point(x, y + (3 * (a[tmp].khung.Height) / 8));
-                //    Point p10 = new Point(x + (5 * a[tmp].khung.Width / 14), y + (3 * (a[tmp].khung.Height) / 8));
-                //    Point[] pArray = { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 };
+                    //    a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
+                    //    a[tmp].pictureBox.Refresh();
+                    //    a[tmp].dragHandle = -1;
+                    //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                    //}
+                    //else if (a[tmp].resizeIndex == 12)
+                    //{
+                    //    a[tmp].isResize = false;
+                    //    int x = a[tmp].khung.X;
+                    //    int y = a[tmp].khung.Y;
+                    //    int lX = a[tmp].khung.X + a[tmp].khung.Width;
+                    //    int lY = a[tmp].khung.Y + a[tmp].khung.Height;
+                    //    Point p1 = new Point(x + (a[tmp].khung.Width / 2), y);
+                    //    Point p2 = new Point(lX - (5 * a[tmp].khung.Width / 14), y + (3 * (a[tmp].khung.Height) / 8));
+                    //    Point p3 = new Point(lX, y + (3 * (a[tmp].khung.Height) / 8));
+                    //    Point p4 = new Point(lX - (2 * a[tmp].khung.Width / 7), lY - (5 * a[tmp].khung.Height / 14));
+                    //    Point p5 = new Point(lX - (3 * a[tmp].khung.Width / 14), lY);
+                    //    Point p6 = new Point(x + a[tmp].khung.Width / 2, lY - (3 * a[tmp].khung.Height / 14));
+                    //    Point p7 = new Point(x + (3 * a[tmp].khung.Width / 14), lY);
+                    //    Point p8 = new Point(x + (2 * a[tmp].khung.Width / 7), lY - (5 * a[tmp].khung.Height / 14));
+                    //    Point p9 = new Point(x, y + (3 * (a[tmp].khung.Height) / 8));
+                    //    Point p10 = new Point(x + (5 * a[tmp].khung.Width / 14), y + (3 * (a[tmp].khung.Height) / 8));
+                    //    Point[] pArray = { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10 };
 
-                //    a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
-                //    a[tmp].pictureBox.Refresh();
-                //    a[tmp].dragHandle = -1;
-                //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
-                //}
-                //else if (a[tmp].resizeIndex == 16)
-                //{
-                //    int maxWidth = a[tmp].text.Width - 5;
-                //    string text = a[tmp].text.Text;
-                //    Font font = a[tmp].text.Font;
+                    //    a[tmp].G.DrawPolygon(a[tmp].Pen, pArray);
+                    //    a[tmp].pictureBox.Refresh();
+                    //    a[tmp].dragHandle = -1;
+                    //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                    //}
+                    //if (a[tmp].resizeIndex == 16)
+                    //{
+                    //    int maxWidth = a[tmp].text.Width - 5;
+                    //    string text = a[tmp].text.Text;
+                    //    Font font = a[tmp].text.Font;
 
-                //    List<string> linesToDraw = new List<string>();
-                //    string currentLine = "";
+                    //    List<string> linesToDraw = new List<string>();
+                    //    string currentLine = "";
 
-                //    foreach (char character in text)
-                //    {
-                //        string testLine = currentLine + character;
-                //        SizeF size = a[tmp].G.MeasureString(testLine, font);
+                    //    foreach (char character in text)
+                    //    {
+                    //        string testLine = currentLine + character;
+                    //        SizeF size = a[tmp].G.MeasureString(testLine, font);
 
-                //        if (size.Width <= maxWidth || char.IsWhiteSpace(character))
-                //        {
-                //            currentLine += character;
-                //        }
-                //        else
-                //        {
-                //            linesToDraw.Add(currentLine);
-                //            currentLine = character.ToString();
-                //        }
-                //    }
-                //    if (!string.IsNullOrEmpty(currentLine))
-                //    {
-                //        linesToDraw.Add(currentLine);
-                //    }
+                    //        if (size.Width <= maxWidth || char.IsWhiteSpace(character))
+                    //        {
+                    //            currentLine += character;
+                    //        }
+                    //        else
+                    //        {
+                    //            linesToDraw.Add(currentLine);
+                    //            currentLine = character.ToString();
+                    //        }
+                    //    }
+                    //    if (!string.IsNullOrEmpty(currentLine))
+                    //    {
+                    //        linesToDraw.Add(currentLine);
+                    //    }
 
-                //    int y = a[tmp].khung.Y + 8;
+                    //    int y = a[tmp].khung.Y + 8;
 
-                //    foreach (string line in linesToDraw)
-                //    {
-                //        a[tmp].G.DrawString(line, font, a[tmp].brush, new PointF(a[tmp].khung.X + 8, y));
-                //        y += (int)font.GetHeight() + 2;
-                //    }
+                    //    foreach (string line in linesToDraw)
+                    //    {
+                    //        a[tmp].G.DrawString(line, font, a[tmp].brush, new PointF(a[tmp].khung.X + 8, y));
+                    //        y += (int)font.GetHeight() + 2;
+                    //    }
 
 
-                //    a[tmp].isResize = false;
-                //    a[tmp].pictureBox.Refresh();
-                //    a[tmp].dragHandle = -1;
-                //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
-                //    a[tmp].text.Hide();
-                //    a[tmp].text.Text = "";
-                //}
+                    //    a[tmp].isResize = false;
+                    //    a[tmp].pictureBox.Refresh();
+                    //    a[tmp].dragHandle = -1;
+                    //    a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                    //    a[tmp].text.Hide();
+                    //    a[tmp].text.Text = "";
+                    //}
             }
         }
         private void XoaRedo()
