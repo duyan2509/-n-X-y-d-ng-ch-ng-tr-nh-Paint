@@ -17,6 +17,7 @@ namespace UI
         {
             InitializeComponent();
             CloseAll = -1;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -29,6 +30,11 @@ namespace UI
         {
             CloseAll = 0;
             this.Close();
+        }
+
+        private void Close_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

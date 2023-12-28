@@ -215,7 +215,8 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 11;
-                    
+                    a[tmp].currShape = new Arrow();
+                    a[tmp].currResize = new Arrow();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -234,6 +235,8 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 12;
+                    a[tmp].currShape = new Star();
+                    a[tmp].currResize = new Star();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;

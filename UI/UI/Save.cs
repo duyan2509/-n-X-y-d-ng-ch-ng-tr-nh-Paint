@@ -16,6 +16,7 @@ namespace UI
         public Save()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void btYes_Click(object sender, EventArgs e)
@@ -28,6 +29,11 @@ namespace UI
         {
             save = false;
             this.Close();
+        }
+
+        private void Save_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
