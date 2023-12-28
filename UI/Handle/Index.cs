@@ -74,7 +74,6 @@ namespace UI
                     a[tmp].index = 16;
                     a[tmp].isText = true;
                     a[tmp].currShape = new Text();
-                    a[tmp].currResize = new Text();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -94,7 +93,6 @@ namespace UI
                 {
                     a[tmp].index = 2;
                     a[tmp].currShape = new Ellipse();
-                    a[tmp].currResize = new Ellipse();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -115,7 +113,6 @@ namespace UI
                 {
                     a[tmp].index = 5;
                     a[tmp].currShape = new Line();
-                    a[tmp].currResize = new Line();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -136,7 +133,6 @@ namespace UI
                 {
                     a[tmp].index = 7;
                     a[tmp].currShape=new HinhChuNhat();
-                    a[tmp].currResize = new HinhChuNhat();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -156,7 +152,6 @@ namespace UI
                 {
                     a[tmp].index = 8;
                     a[tmp].currShape = new Triangle();
-                    a[tmp].currResize= new Triangle();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -176,7 +171,6 @@ namespace UI
                 {
                     a[tmp].index = 9;
                     a[tmp].currShape = new RightTriangle();
-                    a[tmp].currResize = new RightTriangle();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -196,7 +190,6 @@ namespace UI
                 {
                     a[tmp].index = 10;
                     a[tmp].currShape = new Hexagon();
-                    a[tmp].currResize = new Hexagon();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -216,7 +209,6 @@ namespace UI
                 {
                     a[tmp].index = 11;
                     a[tmp].currShape = new Arrow();
-                    a[tmp].currResize = new Arrow();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -236,7 +228,6 @@ namespace UI
                 {
                     a[tmp].index = 12;
                     a[tmp].currShape = new Star();
-                    a[tmp].currResize = new Star();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;

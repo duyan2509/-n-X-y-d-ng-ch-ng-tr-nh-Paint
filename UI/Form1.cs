@@ -58,46 +58,42 @@ namespace UI
 
         private void btClose_Click(object sender, EventArgs e)
         {
-            Close close = new Close();
-            close.ShowDialog();
-            
-            
-            if (close.CloseAll==1)
-                CloseAllPages();
-            else if(close.CloseAll==0)
-                CloseCurrentPage();
+            int tmp = tcMain.SelectedIndex;
+            if (tmp >= 0)
+            {
+                Close close = new Close();
+                close.ShowDialog();
+                if (close.CloseAll == 1)
+                    CloseAllPages();
+                else if (close.CloseAll == 0)
+                    CloseCurrentPage();
+            }
+            else
+                this.Close();
             
         }
         private void CloseAllPages()
         {
             for(int i=0;i<a.Count;i++)
-            {
-                if (a[i].listBitmap.Count>1)
-                {
-                    //save 
-                    Save sv = new Save();
-                    sv.ShowDialog();
-                    if(sv.save)
-                    {
-                        Save();
-                    }
-                }
-            }
-            Application.Exit(); 
+                CloseCurrentPage();
         }
 
         private void CloseCurrentPage()
         {
             int tmp = tcMain.SelectedIndex;
-            if (a[tmp].listBitmap.Count > 1)
+            if (!a[tmp].isClear)
             {
                 //save 
-                Save sv = new Save();
+                Save sv = new Save(tcMain.SelectedIndex);
                 sv.ShowDialog();
-                if (sv.save)
+                if (sv.save == 1)
                     Save();
+                else if (sv.save == -1)
+                    return;
             }
             tcMain.Pages.RemoveAt(tmp);
+            if (tmp == 0)            
+                this.Close();
         }
 
         private void btMini_Click(object sender, EventArgs e)
@@ -126,23 +122,36 @@ namespace UI
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            // ........
+            AddTab();
+        }
+        private void AddTab()
+        {
             KryptonPage kryptonPage = new KryptonPage();
             kryptonPage.Text = (tcMain.Pages.Count + 1).ToString();
             ButtonSpecAny buttonX = new ButtonSpecAny();
             buttonX.Type = PaletteButtonSpecStyle.Close;
             buttonX.UniqueName = "btClose" + kryptonPage.Text;
-            
+
 
             buttonX.Click += (s, args) =>
             {
-
+                int tmp = tcMain.SelectedIndex;
                 if (s is ButtonSpecAny closeButton)
                 {
                     KryptonPage pageToRemove = tcMain.Pages.FirstOrDefault(page => page.ButtonSpecs.Contains(closeButton));
                     if (pageToRemove != null)
                     {
-                        tcMain.Pages.Remove(pageToRemove);
+                        if (!a[tmp].isClear)
+                        {
+                            Save sv = new Save(tmp);
+                            sv.ShowDialog();
+                            if (sv.save==1)
+                                Save();
+                            else if (sv.save == -1)
+                                return;
+                        }
+                        tcMain.Pages.RemoveAt(tmp);
+                        a.RemoveAt(tmp);
                     }
                 }
             };
@@ -157,16 +166,25 @@ namespace UI
         }
 
 
-
         private void btClose1_Click(object sender, EventArgs e)
         {
-            //.....
             if (sender is ButtonSpecAny closeButton)
             {
                 int tmp = tcMain.SelectedIndex;
                 if(tmp>=0  && tmp<a.Count)
                 {
+                    if (!a[tmp].isClear)
+                    {
+                        Save sv = new Save(tmp);
+                        sv.ShowDialog();
+                        if (sv.save==1)
+                            Save();
+                        else if (sv.save == -1)
+                            return;
+                    }
                     tcMain.Pages.RemoveAt(tmp);
+                    a.RemoveAt(tmp);
+
                 }
             }
         }
@@ -189,6 +207,9 @@ namespace UI
             if (a[tmp].iBitmap > 0)
                 a[tmp].iBitmap--;
 
+            if (a[tmp].iBitmap == 0)
+                a[tmp].isClear = true;
+
             a[tmp].bm = a[tmp].listBitmap[a[tmp].iBitmap];
             a[tmp].pictureBox.Image = a[tmp].bm;
             a[tmp].G = Graphics.FromImage(a[tmp].bm);
@@ -206,7 +227,10 @@ namespace UI
                 a[tmp].pictureBox.Refresh();
             }
             else
+            {
                 a[tmp].iBitmap = a[tmp].listBitmap.Count - 1;
+                a[tmp].isClear = false;
+            }
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -247,7 +271,6 @@ namespace UI
             
             OpenFileDialog openFileDialog = new OpenFileDialog();
             int tmp=tcMain.SelectedIndex;
-            // Thiết lập các thuộc tính cho hộp thoại mở tệp
             openFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png; *.gif; *.bmp)|*.jpg; *.jpeg; *.png; *.gif; *.bmp";
             openFileDialog.Title = "Chọn một tệp hình ảnh";
 
@@ -255,16 +278,13 @@ namespace UI
             {
                 try
                 {
-                    // Load hình ảnh từ tệp đã chọn
                     string selectedFile = openFileDialog.FileName;
-                    Image selectedImage = Image.FromFile(selectedFile);
                     using(Bitmap bmb=new Bitmap(selectedFile))
                     {
                         MemoryStream m=new MemoryStream();
                         bmb.Save(m, ImageFormat.Bmp);
                         a[tmp].pictureBox.Size = new Size(bmb.Width, bmb.Height);
                         a[tmp].bm = new Bitmap(a[tmp].pictureBox.Width, a[tmp].pictureBox.Height);
-                        // Hiển thị hình ảnh trong ứng dụng Paint của bạn (ví dụ PictureBox)
                         a[tmp].bm = (Bitmap)Image.FromStream(m);
                         a[tmp].pictureBox.Image = a[tmp].bm;
                         a[tmp].G = Graphics.FromImage(a[tmp].bm);
@@ -277,6 +297,7 @@ namespace UI
 
                         fileName.Text = a[tmp].fileName;
                         a[tmp].filePath = selectedFile;
+                        m.Dispose();
                     }                
                 }
                 catch (Exception ex)
@@ -295,8 +316,7 @@ namespace UI
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     a[tmp].filePath = saveFileDialog.FileName;
-                    string filePath = saveFileDialog.FileName;
-                    string extension = Path.GetExtension(filePath).ToLower();
+                    string extension = Path.GetExtension(a[tmp].filePath).ToLower();
 
                     ImageFormat imageFormat = ImageFormat.Png;
                     if (extension == ".jpg" || extension == ".jpeg")
@@ -305,7 +325,10 @@ namespace UI
                         imageFormat = ImageFormat.Bmp;
                     else if (extension == ".gif")
                         imageFormat = ImageFormat.Gif;
-                    a[tmp].pictureBox.Image.Save(a[tmp].filePath, imageFormat);
+                    Bitmap bm_sv = new Bitmap(a[tmp].pictureBox.Image, a[tmp].sizeBitmap);
+                    bm_sv.Save(a[tmp].filePath, imageFormat);
+                    bm_sv.Dispose();
+                    a[tmp].isClear = true;
                 }
             }
             else
@@ -323,10 +346,11 @@ namespace UI
                     else if (extension == ".gif")
                         imageFormat = ImageFormat.Gif;
 
-                    using (Bitmap bmb = (Bitmap)a[tmp].pictureBox.Image.Clone())
-                    {
-                        bmb.Save(filePath, imageFormat);
-                    }
+
+                    Bitmap bmb = (Bitmap)a[tmp].pictureBox.Image.Clone();
+                    bmb.Save(filePath, imageFormat);
+                    bmb = new Bitmap(bmb, a[tmp].sizeBitmap);
+                    a[tmp].isClear = true;
                 }
                 catch (Exception ex)
                 {
@@ -348,7 +372,7 @@ namespace UI
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int tmp=tcMain.SelectedIndex;
+            int tmp = tcMain.SelectedIndex;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Image Files (*.jpg; *.jpeg; *.png; *.gif; *.bmp)|*.jpg; *.jpeg; *.png; *.gif; *.bmp";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -372,38 +396,44 @@ namespace UI
             int tmp = tcMain.SelectedIndex;
             int w = (int)(1.2 * a[tmp].pictureBox.Width);
             int h = (int)(1.2 * a[tmp].pictureBox.Height);
-            a[tmp].pictureBox.Size = new Size(w, h);
-            Image originalImage = a[tmp].pictureBox.Image;
-
-            Bitmap newBitmap = new Bitmap(w, h);
-            using (Graphics g = Graphics.FromImage(newBitmap))
+            if (w <2000 && h <2000)
             {
-                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                g.DrawImage(originalImage, 0, 0, w, h);
+                a[tmp].pictureBox.Size = new Size(w, h);
+                Image originalImage = a[tmp].pictureBox.Image;
+
+                Bitmap newBitmap = new Bitmap(w, h);
+                using (Graphics g = Graphics.FromImage(newBitmap))
+                {
+                    g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                    g.DrawImage(originalImage, 0, 0, w, h);
+                }
+                a[tmp].bm = newBitmap;
+                a[tmp].pictureBox.Image = a[tmp].bm;
+                a[tmp].G = Graphics.FromImage(a[tmp].bm);
+                a[tmp].pictureBox.Refresh();
             }
-            a[tmp].bm = newBitmap;
-            a[tmp].pictureBox.Image = a[tmp].bm;
-            a[tmp].G = Graphics.FromImage(a[tmp].bm);
-            a[tmp].pictureBox.Refresh();
         }
         private void handleClickZoomOut(object sender, EventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
             int w = (int)(0.8 * a[tmp].pictureBox.Width);
             int h = (int)(0.8 * a[tmp].pictureBox.Height);
-            a[tmp].pictureBox.Size = new Size(w, h);
-            Image originalImage = a[tmp].pictureBox.Image;
-
-            Bitmap newBitmap = new Bitmap(w, h);
-            using (Graphics g = Graphics.FromImage(newBitmap))
+            if (w > 300 && h > 300)
             {
-                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                g.DrawImage(originalImage, 0, 0, w, h);
+                a[tmp].pictureBox.Size = new Size(w, h);
+                Image originalImage = a[tmp].pictureBox.Image;
+
+                Bitmap newBitmap = new Bitmap(w, h);
+                using (Graphics g = Graphics.FromImage(newBitmap))
+                {
+                    g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                    g.DrawImage(originalImage, 0, 0, w, h);
+                }
+                a[tmp].bm = newBitmap;
+                a[tmp].pictureBox.Image = a[tmp].bm;
+                a[tmp].G = Graphics.FromImage(a[tmp].bm);
+                a[tmp].pictureBox.Refresh();
             }
-            a[tmp].bm = newBitmap;
-            a[tmp].pictureBox.Image = a[tmp].bm;
-            a[tmp].G = Graphics.FromImage(a[tmp].bm);
-            a[tmp].pictureBox.Refresh();
         }
         private void handleResetZoom(object sender, EventArgs e)
         {
@@ -434,6 +464,11 @@ namespace UI
                 timer.Stop();
             };
             timer.Start();
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddTab();
         }
     }
 }

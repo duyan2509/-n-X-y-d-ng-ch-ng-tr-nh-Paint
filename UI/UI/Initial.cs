@@ -40,6 +40,7 @@ namespace UI
             fileName.Text = tmp.fileName;
             tmp.buttons = new List<Guna2Button>();
             tmp.currShape = new HinhVe();
+            tmp.bt = new Guna2Button();
             a.Add(tmp);
 
         }
@@ -365,7 +366,8 @@ namespace UI
             selectButton.BorderColor = Color.FromArgb(94, 148, 255);
             selectButton.Image = Properties.Resources.icons8_select_cursor_48_blue;
             selectButton.Click += handleSelectButton;
-             selectButton.Cursor = Cursors.Hand;
+            selectButton.Cursor = Cursors.Hand;
+            a[tmp].buttons.Add(selectButton);
             designPanel.Controls.Add(selectButton);
 
             //Button zoom in
@@ -407,13 +409,6 @@ namespace UI
 
             resetButton.Cursor = Cursors.Hand;
             designPanel.Controls.Add(resetButton);
-
-
-
-
-
-
-            colorPanel.Controls.Add(a[tmp].bt);
             designPanel.Controls.Add(a[tmp].bt);
 
 
@@ -445,7 +440,7 @@ namespace UI
             a[tmp].pictureBox.MouseUp += handleMouseUp;
             a[tmp].pictureBox.Paint += handlePaint;            
 
-            // Button ( trong DrawObject) Resize
+            // Button (trong DrawObject) Resize
             a[tmp].bt.Size = new Size(35, 35);
             a[tmp].bt.FillColor = Color.White;
             a[tmp].bt.BorderRadius = 15;
@@ -455,7 +450,6 @@ namespace UI
             a[tmp].bt.FillColor = Color.FromArgb(203, 213, 224);
             a[tmp].bt.ImageSize = new Size(18, 18);
             a[tmp].bt.Animated = true;
-            tcMain.SelectedPage.Controls.Add(a[tmp].bt);
             //
 
             //size
@@ -469,10 +463,14 @@ namespace UI
             a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
             this.SizeChanged += (sender, e) =>
             {
-                a[tmp].backGround.Dock = DockStyle.Right;
-                a[tmp].backGround.Width = this.Width - 270;
-                a[tmp].backGround.BackColor = Color.FromArgb(243, 243, 243);
-                a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
+                int i = tcMain.SelectedIndex;
+                if (i >= 0)
+                {
+                    a[i].backGround.Dock = DockStyle.Right;
+                    a[i].backGround.Width = this.Width - 270;
+                    a[i].backGround.BackColor = Color.FromArgb(243, 243, 243);
+                    a[i].pictureBox.Location = new Point((a[tmp].backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
+                }
             };
 
             a[tmp].backGround.Controls.Add(a[tmp].pictureBox);
@@ -480,10 +478,10 @@ namespace UI
             
 
 
-            resizeForm ResizeForm = new resizeForm();
 
             a[tmp].bt.Click += (s, args) =>
             {
+                resizeForm ResizeForm = new resizeForm();
                 if (a[tmp].isClear)
                 {
                     ResizeForm.ShowDialog();
@@ -492,14 +490,18 @@ namespace UI
                     if (ResizeForm.index == 1)
                     {
                         Image originalImage = a[tmp].pictureBox.Image;
-                        Bitmap resizedImage = new Bitmap(originalImage, width, height);
+                        Bitmap resizedImage;
+                        Size sz=new Size(width, height);
+                        if (width >= 2000 && height >= 2000)
+                            sz = new Size(2000, 2000);
+                        resizedImage = new Bitmap(originalImage, sz);
                         a[tmp].bm = resizedImage;
                         a[tmp].listBitmap.Add(a[tmp].bm);
                         a[tmp].pictureBox.Size = new Size(width, height);
                         a[tmp].pictureBox.Image = a[tmp].bm;
                         a[tmp].G = Graphics.FromImage(a[tmp].bm);
                         a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
-                        a[tmp].sizeBitmap = new Size(a[tmp].pictureBox.Width, a[tmp].pictureBox.Height);
+                        a[tmp].sizeBitmap = new Size(width, height);
                     }
                 }
             };

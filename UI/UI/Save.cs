@@ -12,22 +12,24 @@ namespace UI
 {
     public partial class Save : Form
     {
-        public bool save { get; set; }
-        public Save()
+        public int save { get; set; }
+        public Save(int stt)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            label1.Text+= (stt+1).ToString()+" ?";
+            save = -1;
         }
 
         private void btYes_Click(object sender, EventArgs e)
         {
-            save= true;
+            save= 1;
             this.Close();
         }
 
         private void btNo_Click(object sender, EventArgs e)
         {
-            save = false;
+            save = 0;
             this.Close();
         }
 

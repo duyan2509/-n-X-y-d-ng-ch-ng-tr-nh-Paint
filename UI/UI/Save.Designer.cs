@@ -39,32 +39,35 @@
             // 
             // btYes
             // 
+            this.btYes.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btYes.BorderRadius = 10;
             this.btYes.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btYes.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btYes.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btYes.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btYes.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btYes.ForeColor = System.Drawing.Color.White;
-            this.btYes.Location = new System.Drawing.Point(43, 91);
-            this.btYes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btYes.Location = new System.Drawing.Point(57, 112);
+            this.btYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btYes.Name = "btYes";
-            this.btYes.Size = new System.Drawing.Size(135, 37);
+            this.btYes.Size = new System.Drawing.Size(180, 46);
             this.btYes.TabIndex = 0;
             this.btYes.Text = "Yes";
             this.btYes.Click += new System.EventHandler(this.btYes_Click);
             // 
             // btNo
             // 
+            this.btNo.BorderRadius = 10;
             this.btNo.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btNo.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btNo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btNo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btNo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btNo.ForeColor = System.Drawing.Color.White;
-            this.btNo.Location = new System.Drawing.Point(210, 25);
-            this.btNo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btNo.Location = new System.Drawing.Point(280, 31);
+            this.btNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btNo.Name = "btNo";
-            this.btNo.Size = new System.Drawing.Size(135, 37);
+            this.btNo.Size = new System.Drawing.Size(180, 46);
             this.btNo.TabIndex = 1;
             this.btNo.Text = "No";
             this.btNo.Click += new System.EventHandler(this.btNo_Click);
@@ -73,9 +76,10 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel1.Controls.Add(this.btNo);
-            this.panel1.Location = new System.Drawing.Point(-1, 66);
+            this.panel1.Location = new System.Drawing.Point(-1, 81);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(389, 85);
+            this.panel1.Size = new System.Drawing.Size(519, 105);
             this.panel1.TabIndex = 2;
             // 
             // label1
@@ -83,21 +87,22 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(50, 27);
+            this.label1.Location = new System.Drawing.Point(67, 33);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(285, 18);
+            this.label1.Size = new System.Drawing.Size(348, 24);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Do you want to save changes to Untitled ?";
+            this.label1.Text = "Do you want to save changes to Untitled ";
             // 
             // Save
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(389, 147);
+            this.ClientSize = new System.Drawing.Size(519, 181);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btYes);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Save";
             this.Text = "Save";
             this.Load += new System.EventHandler(this.Save_Load);
