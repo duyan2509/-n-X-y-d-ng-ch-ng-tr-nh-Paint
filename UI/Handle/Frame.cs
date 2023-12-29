@@ -32,7 +32,7 @@ namespace UI
                     a[tmp].khung = rtg;
                 else
                     a[tmp].khung = updateKhung(rtg, a[tmp].khung);
-                this.Cursor = Cursors.SizeNWSE;
+                a[tmp].pictureBox.Cursor = Cursors.SizeNWSE;
             }
             else if (a[tmp].dragHandle == 1)
             {
@@ -43,7 +43,7 @@ namespace UI
                     a[tmp].khung = rtg;
                 else
                     a[tmp].khung = updateKhung(rtg, a[tmp].khung);
-                this.Cursor = Cursors.SizeNS;
+                a[tmp].pictureBox.Cursor = Cursors.SizeNS;
             }
             else if (a[tmp].dragHandle == 2)
             {
@@ -55,7 +55,7 @@ namespace UI
                     a[tmp].khung = rtg;
                 else
                     a[tmp].khung = updateKhung(rtg, a[tmp].khung);
-                this.Cursor = Cursors.SizeNESW;
+                a[tmp].pictureBox.Cursor = Cursors.SizeNESW;
             }
             else if (a[tmp].dragHandle == 3)
             {
@@ -66,7 +66,7 @@ namespace UI
                     a[tmp].khung = rtg;
                 else
                     a[tmp].khung = updateKhung(rtg, a[tmp].khung);
-                this.Cursor = Cursors.SizeWE;
+                a[tmp].pictureBox.Cursor = Cursors.SizeWE;
             }
             else if (a[tmp].dragHandle == 4)
             {
@@ -78,7 +78,7 @@ namespace UI
                     a[tmp].khung = rtg;
                 else
                     a[tmp].khung = updateKhung(rtg, a[tmp].khung);
-                this.Cursor = Cursors.SizeNWSE;
+                a[tmp].pictureBox.Cursor = Cursors.SizeNWSE;
             }
             else if (a[tmp].dragHandle == 5)
             {
@@ -89,7 +89,7 @@ namespace UI
                     a[tmp].khung = rtg;
                 else
                     a[tmp].khung = updateKhung(rtg, a[tmp].khung);
-                this.Cursor = Cursors.SizeNS;
+                a[tmp].pictureBox.Cursor = Cursors.SizeNS;
             }
             else if (a[tmp].dragHandle == 6)
             {
@@ -101,7 +101,7 @@ namespace UI
                     a[tmp].khung = rtg;
                 else
                     a[tmp].khung = updateKhung(rtg, a[tmp].khung);
-                this.Cursor = Cursors.SizeNESW;
+                a[tmp].pictureBox.Cursor = Cursors.SizeNESW;
             }
             else if (a[tmp].dragHandle == 7)
             {
@@ -112,7 +112,7 @@ namespace UI
                     a[tmp].khung = rtg;
                 else
                     a[tmp].khung = updateKhung(rtg, a[tmp].khung);
-                this.Cursor = Cursors.SizeWE;
+                a[tmp].pictureBox.Cursor = Cursors.SizeWE;
             }
         }
         private Point GetHandlePoint(int value)
@@ -151,11 +151,19 @@ namespace UI
                 Point handlePoint = GetHandlePoint(i);
                 Rectangle handleRect = new Rectangle(handlePoint.X - 5 / 2, handlePoint.Y - 5 / 2, 5, 5);
 
+                Rectangle handleFrame = a[tmp].khung;
+
                 if (handleRect.Contains(mouseLocation))
                 {
                     return i; // Trả về chỉ số của điểm resize nếu con trỏ nằm trong khu vực của nó
                 }
+                else if (handleFrame.Contains(mouseLocation))
+                {
+                    return 9;
+                }
             }
+
+           
 
             return -1; // Trả về -1 nếu con trỏ không nằm trong khu vực của bất kỳ điểm resize nào
         }
