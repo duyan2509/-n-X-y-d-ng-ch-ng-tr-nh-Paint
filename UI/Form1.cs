@@ -394,6 +394,7 @@ namespace UI
         private void handleClickZoomIn(object sender, EventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
+            a[tmp].isSelect = false;
             int w = (int)(1.2 * a[tmp].pictureBox.Width);
             int h = (int)(1.2 * a[tmp].pictureBox.Height);
             if (w <2000 && h <2000)
@@ -416,6 +417,7 @@ namespace UI
         private void handleClickZoomOut(object sender, EventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
+            a[tmp].isSelect = false;
             int w = (int)(0.8 * a[tmp].pictureBox.Width);
             int h = (int)(0.8 * a[tmp].pictureBox.Height);
             if (w > 300 && h > 300)
@@ -438,6 +440,7 @@ namespace UI
         private void handleResetZoom(object sender, EventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
+            a[tmp].isSelect = false;
             int w = a[tmp].sizeBitmap.Width;
             int h = a[tmp].sizeBitmap.Height;
             a[tmp].pictureBox.Size = new Size(w, h);

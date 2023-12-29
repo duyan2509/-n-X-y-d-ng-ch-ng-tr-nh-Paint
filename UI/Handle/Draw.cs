@@ -12,7 +12,9 @@ namespace UI
         private bool checkFirstDraw = false;
         private void handlePaint(object sender, PaintEventArgs e)
         {
+            
             int tmp = tcMain.SelectedIndex;
+            
             if (tmp < a.Count)
             {
                 Graphics g = e.Graphics;
@@ -28,7 +30,7 @@ namespace UI
                 }
                 else
                     checkFirstDraw = true;
-
+               
                 //Ve hinh khi dang nhan chuot
                 //if (a[tmp].Paint)
                 //{
@@ -305,9 +307,9 @@ namespace UI
         private void handleMouseUp(object sender, MouseEventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
-
             if (tmp < a.Count)
             {
+                
                 if (a[tmp].Paint && checkFirstDraw)
                 {
                     a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
@@ -382,7 +384,7 @@ namespace UI
                             a[tmp].pictureBox.Invalidate();
                             a[tmp].cX = e.X;
                             a[tmp].cY = e.Y;
-                            this.Cursor = Cursors.SizeAll;
+                            a[tmp].pictureBox.Cursor = Cursors.SizeAll;
                         }
 
                     }
@@ -399,19 +401,31 @@ namespace UI
             int handleIndex = GetHandleIndexUnderMouse(e.Location);
 
 
-            if (handleIndex == 0)
+
+          
+       
+            if (a[tmp].isSelect)
             {
-                this.Cursor = Cursors.SizeNWSE;
+                
+                if (handleIndex == 0)
+                {
+                    a[tmp].pictureBox.Cursor = Cursors.SizeNWSE;
+                }
+                else if (handleIndex == 1) { a[tmp].pictureBox.Cursor = Cursors.SizeNS; }
+                else if (handleIndex == 2) { a[tmp].pictureBox.Cursor = Cursors.SizeNESW; }
+                else if (handleIndex == 3) { a[tmp].pictureBox.Cursor = Cursors.SizeWE; }
+                else if (handleIndex == 4) { a[tmp].pictureBox.Cursor = Cursors.SizeNWSE; }
+                else if (handleIndex == 5) { a[tmp].pictureBox.Cursor = Cursors.SizeNS; }
+                else if (handleIndex == 6) { a[tmp].pictureBox.Cursor = Cursors.SizeNESW; }
+                else if (handleIndex == 7) { a[tmp].pictureBox.Cursor = Cursors.SizeWE; }
+                else if (handleIndex == 9) { a[tmp].pictureBox.Cursor = Cursors.SizeAll; }
+                else a[tmp].pictureBox.Cursor = Cursors.Cross;
             }
-            else if (handleIndex == 1) { this.Cursor = Cursors.SizeNS; }
-            else if (handleIndex == 2) { this.Cursor = Cursors.SizeNESW; }
-            else if (handleIndex == 3) { this.Cursor = Cursors.SizeWE; }
-            else if (handleIndex == 4) { this.Cursor = Cursors.SizeNWSE; }
-            else if (handleIndex == 5) { this.Cursor = Cursors.SizeNS; }
-            else if (handleIndex == 6) { this.Cursor = Cursors.SizeNESW; }
-            else if (handleIndex == 7) { this.Cursor = Cursors.SizeWE; }
-
-
+            else
+            {
+               a[tmp].pictureBox.Cursor = Cursors.Default;
+            }
+            
         }
 
         private void handleMouseDown(object sender, MouseEventArgs e)
@@ -432,7 +446,7 @@ namespace UI
                     a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
                     a[tmp].isResize = false;
                 }
-
+                
 
                 if (a[tmp].index == 17)
                 {
@@ -448,10 +462,11 @@ namespace UI
                     // ve chinh thuc
                     VeChinhThuc();
                     a[tmp].isText = !a[tmp].isText;
-
-
+                    
+                    
                     a[tmp].isClear = false;
                     a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
+                   
                 }
 
                 if (a[tmp].isResize)
@@ -496,9 +511,10 @@ namespace UI
         private void VeChinhThuc()
         {
             int tmp = tcMain.SelectedIndex;
+            
             if (tmp < a.Count)
             {
-                
+               
                 a[tmp].currResize.VeChinhThuc(a[tmp]);
                 //if (a[tmp].resizeIndex == 7)
                 //{

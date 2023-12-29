@@ -101,3 +101,5 @@ C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.Close.resources
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.Save.resources
 G:\hoc\Lap trinh truc quan\Github-temp\DoAnPaint\UI\obj\Debug\UI.Close.resources
 G:\hoc\Lap trinh truc quan\Github-temp\DoAnPaint\UI\obj\Debug\UI.Save.resources
+G:\hoc\Lap trinh truc quan\Github-temp2\DoAnPaint\UI\obj\Debug\UI.Close.resources
+G:\hoc\Lap trinh truc quan\Github-temp2\DoAnPaint\UI\obj\Debug\UI.Save.resources

@@ -15,6 +15,7 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 1;
+                    a[tmp].isSelect = false;
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -34,6 +35,7 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 15;
+                    a[tmp].isSelect = false;
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -54,6 +56,7 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 6;
+                    a[tmp].isSelect = false;
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -73,6 +76,7 @@ namespace UI
                 {
                     a[tmp].index = 16;
                     a[tmp].isText = true;
+                    a[tmp].isSelect = false;
                     a[tmp].currShape = new Text();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
@@ -92,6 +96,7 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 2;
+                    a[tmp].isSelect = true;
                     a[tmp].currShape = new Ellipse();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
@@ -112,6 +117,7 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 5;
+                    a[tmp].isSelect = true;
                     a[tmp].currShape = new Line();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
@@ -132,6 +138,7 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 7;
+                    a[tmp].isSelect = true;
                     a[tmp].currShape=new HinhChuNhat();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
@@ -151,6 +158,7 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 8;
+                    a[tmp].isSelect = true;
                     a[tmp].currShape = new Triangle();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
@@ -170,6 +178,7 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 9;
+                    a[tmp].isSelect = true;
                     a[tmp].currShape = new RightTriangle();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
@@ -189,6 +198,7 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 10;
+                    a[tmp].isSelect = true;
                     a[tmp].currShape = new Hexagon();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
@@ -208,7 +218,9 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 11;
+                    a[tmp].isSelect = true;
                     a[tmp].currShape = new Arrow();
+                    
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -227,6 +239,7 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 12;
+                    a[tmp].isSelect = true;
                     a[tmp].currShape = new Star();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
@@ -245,7 +258,8 @@ namespace UI
                 int tmp = tcMain.SelectedIndex;
                 if (tmp < a.Count)
                 {
-                    a[tmp].index = 17;
+                    a[tmp].index = 17; 
+                    a[tmp].isSelect = false;
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -262,7 +276,7 @@ namespace UI
             {
                 int tmp = tcMain.SelectedIndex;
                 ContextMenuStrip sizeMenu = new ContextMenuStrip();
-
+                a[tmp].isSelect = false;
 
                 // Create ToolStripMenuItems for different sizes
                 ToolStripMenuItem smallSizeItem = new ToolStripMenuItem();
@@ -308,6 +322,7 @@ namespace UI
             if (sender is Guna2Button clickedButton)
             {
                 int tmp = tcMain.SelectedIndex;
+                a[tmp].isSelect = false;
                 ContextMenuStrip brushMenu = new ContextMenuStrip();
 
                 // Create ToolStripMenuItems for different sizes
@@ -341,6 +356,7 @@ namespace UI
         private void BrushMenuItem_Click(object sender, EventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
+            a[tmp].isSelect = false;
             ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
             if (clickedItem.Text == "Solid")
                 a[tmp].Pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
