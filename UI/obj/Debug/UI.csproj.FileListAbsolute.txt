@@ -50,7 +50,6 @@ G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.csproj.CopyComplete
 G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.exe
 G:\hoc\Lap trinh truc quan\Github\DoAnPaint\UI\obj\Debug\UI.pdb
 C:\Users\Admin\Source\Repos\DoAnPaint\UI\bin\Debug\Guna.UI2.dll
-C:\Users\Admin\Source\Repos\DoAnPaint\UI\obj\Debug\UI.Form1.resources
 G:\hoc\Lap trinh truc quan\Github-temp2\DoAnPaint\UI\obj\Debug\UI.csproj.AssemblyReference.cache
 G:\hoc\Lap trinh truc quan\Github-temp2\DoAnPaint\UI\obj\Debug\UI.Form1.resources
 G:\hoc\Lap trinh truc quan\Github-temp2\DoAnPaint\UI\obj\Debug\UI.Properties.Resources.resources
@@ -103,3 +102,4 @@ G:\hoc\Lap trinh truc quan\Github-temp\DoAnPaint\UI\obj\Debug\UI.Close.resources
 G:\hoc\Lap trinh truc quan\Github-temp\DoAnPaint\UI\obj\Debug\UI.Save.resources
 G:\hoc\Lap trinh truc quan\Github-temp2\DoAnPaint\UI\obj\Debug\UI.Close.resources
 G:\hoc\Lap trinh truc quan\Github-temp2\DoAnPaint\UI\obj\Debug\UI.Save.resources
+C:\Users\Admin\source\repos\DoAnPaint\UI\obj\Debug\UI.FormMain.resources

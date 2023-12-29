@@ -7,7 +7,7 @@ using Brushes = System.Drawing.Brushes;
 
 namespace UI
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
         private Rectangle updateKhung(Rectangle rtg, Rectangle khung)
         {
@@ -28,7 +28,7 @@ namespace UI
                 int diffX = a[tmp].dragPoint.X - e.X;
                 Rectangle rtg = new Rectangle();
                 rtg = new Rectangle(a[tmp].khungCu.Left - diffX, a[tmp].khungCu.Top - diffY, a[tmp].khungCu.Width + diffX, a[tmp].khungCu.Height + diffY);
-                if (a[tmp].resizeIndex == 5)
+                if (a[tmp].resizeIndex == 5)//line
                     a[tmp].khung = rtg;
                 else
                     a[tmp].khung = updateKhung(rtg, a[tmp].khung);
@@ -172,7 +172,7 @@ namespace UI
             // trả về diện tích điểm điều khiển theo stt
             Point p = GetHandlePoint(stt);
             p.Offset(-2, -2);
-            return new Rectangle(p, new Size(5, 5));
+            return new Rectangle(p, new Size(7, 7));
         }
 
 

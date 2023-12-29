@@ -12,7 +12,6 @@ namespace UI
 
     public class HinhVe
     {
-        protected Pen resizePen { get; set; } 
         public virtual void Paint_Paint(ref Graphics g,  DrawObject aa)
         {
 

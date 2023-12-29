@@ -12,8 +12,7 @@ namespace UI
     {
         public Paste() : base()
         {
-            resizePen = new Pen(Color.White, 1f);
-            resizePen.DashPattern = new float[] { 7, 2 };
+
         }
         public override void Paint_Paint(ref Graphics g, DrawObject aa)
         {
@@ -27,8 +26,6 @@ namespace UI
                 g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
                 g.DrawImage(clipboardImage, aa.khung);
             }
-            // ve khung
-            g.DrawRectangle(resizePen, aa.khung);
         }
         public override void Paint_Resize(ref Graphics g, DrawObject aa)
         {

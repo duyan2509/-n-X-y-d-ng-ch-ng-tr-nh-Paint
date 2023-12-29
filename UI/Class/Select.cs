@@ -10,10 +10,10 @@ namespace UI
 {
     public class Select : HinhVe
     {
-        
+        private Pen resizePen { get; set; }
         public Select() : base()
         {
-            resizePen = new Pen(Color.White, 1f);
+            resizePen = new Pen(Color.Blue, 1f);
             resizePen.DashPattern = new float[] { 7, 2 };
         }
         public override void Paint_Paint(ref Graphics g, DrawObject aa)
