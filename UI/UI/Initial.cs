@@ -306,7 +306,9 @@ namespace UI
                 {
                     int stt = tcMain.SelectedIndex;
                     a[stt].Pen.Color = Color.Yellow;
-                    pickingButton.FillColor=a[stt].Pen.Color;   
+                    pickingButton.FillColor=a[stt].Pen.Color;
+                    if (a[stt].isResize)
+                        a[stt].pictureBox.Refresh();
                 }
             };
             yellowButton.Cursor = Cursors.Hand;
@@ -326,6 +328,8 @@ namespace UI
                     int stt = tcMain.SelectedIndex;
                     a[stt].Pen.Color = Color.Red;
                     pickingButton.FillColor = a[stt].Pen.Color;
+                    if (a[stt].isResize)
+                        a[stt].pictureBox.Refresh();
                 }
             };
             redButton.Cursor = Cursors.Hand;
@@ -347,6 +351,8 @@ namespace UI
                     int stt = tcMain.SelectedIndex;
                     a[stt].Pen.Color = dlgColor.Color;
                     pickingButton.FillColor=a[stt].Pen.Color;
+                    if (a[stt].isResize)
+                        a[stt].pictureBox.Refresh();
                 }
             };
 

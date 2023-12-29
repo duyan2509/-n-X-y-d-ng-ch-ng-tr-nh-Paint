@@ -16,7 +16,7 @@ namespace UI
 
         private Rectangle normalBounds;
         private List<DrawObject> a = new List<DrawObject>();// mỗi  tab 1 phần tử
-        private Pen resizePen;
+        public Pen resizePen { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -201,7 +201,7 @@ namespace UI
             int tmp = tcMain.SelectedIndex;
             if (a[tmp].isResize)
             {
-                VeChinhThuc();
+                a[tmp].currResize.VeChinhThuc(a[tmp]);
                 a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
             }
             if (a[tmp].iBitmap > 0)
@@ -248,6 +248,7 @@ namespace UI
         {
             int tmp = tcMain.SelectedIndex;
             a[tmp].index = 4;
+            a[tmp].currShape = new Paste();
             a[tmp].Paint = true;
             a[tmp].pictureBox.Invalidate();
         }
@@ -469,6 +470,11 @@ namespace UI
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddTab();
+        }
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dlgPrint.ShowDialog();
         }
     }
 }

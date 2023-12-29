@@ -246,6 +246,7 @@ namespace UI
                 if (tmp < a.Count)
                 {
                     a[tmp].index = 17;
+                    a[tmp].currShape = new Select();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;

@@ -71,14 +71,16 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Shape\Arrow.cs" />
-    <Compile Include="Shape\Ellipse.cs" />
-    <Compile Include="Shape\Hexagon.cs" />
-    <Compile Include="Shape\Line.cs" />
-    <Compile Include="Shape\RightTriangle.cs" />
-    <Compile Include="Shape\Star.cs" />
-    <Compile Include="Shape\Text.cs" />
-    <Compile Include="Shape\Triangle.cs" />
+    <Compile Include="Class\Arrow.cs" />
+    <Compile Include="Class\Ellipse.cs" />
+    <Compile Include="Class\Hexagon.cs" />
+    <Compile Include="Class\Line.cs" />
+    <Compile Include="Class\Paste.cs" />
+    <Compile Include="Class\RightTriangle.cs" />
+    <Compile Include="Class\Select.cs" />
+    <Compile Include="Class\Star.cs" />
+    <Compile Include="Class\Text.cs" />
+    <Compile Include="Class\Triangle.cs" />
     <Compile Include="UI\Close.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,8 +121,8 @@
     <Compile Include="UI\Save.Designer.cs">
       <DependentUpon>Save.cs</DependentUpon>
     </Compile>
-    <Compile Include="Shape\HinhChuNhat.cs" />
-    <Compile Include="Shape\HinhVe.cs" />
+    <Compile Include="Class\HinhChuNhat.cs" />
+    <Compile Include="Class\HinhVe.cs" />
     <EmbeddedResource Include="UI\Close.resx">
       <DependentUpon>Close.cs</DependentUpon>
     </EmbeddedResource>

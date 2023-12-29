@@ -10,18 +10,9 @@ using System.Windows.Forms;
 namespace UI
 {
 
-//soDiemDieuKhien
-//graphicsPath
-//khuVuc
-//viTriChuotSoVoiHinhVe
-//diChuyen
-//thayDoiKichThuoc
-//VanBan
-//loaiHinh
-//hinhNen
-
     public class HinhVe
     {
+        protected Pen resizePen { get; set; } 
         public virtual void Paint_Paint(ref Graphics g,  DrawObject aa)
         {
 
