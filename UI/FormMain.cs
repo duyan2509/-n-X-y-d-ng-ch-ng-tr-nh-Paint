@@ -198,7 +198,7 @@ namespace UI
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
-            if (a[tmp].currResize == null)
+            if (a[tmp].currResize == null && a[tmp].index!=1 && a[tmp].index!=15)
                 return;
                 if (a[tmp].isResize)
             {
@@ -333,6 +333,7 @@ namespace UI
                     else if (extension == ".gif")
                         imageFormat = ImageFormat.Gif;
                     Bitmap bm_sv = new Bitmap(a[tmp].pictureBox.Image, a[tmp].sizeBitmap);
+
                     bm_sv.Save(a[tmp].filePath, imageFormat);
                     bm_sv.Dispose();
                     a[tmp].isClear = true;

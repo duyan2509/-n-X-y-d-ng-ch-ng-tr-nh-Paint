@@ -23,7 +23,6 @@ namespace UI
             DrawObject tmp = new DrawObject();
             tmp.Pen = new Pen(Color.Black,3f);
             tmp.Eraser = new Pen(Color.White, 10);
-            tmp.DoDam = 10;
             tmp.py = new Point(0, 0);
             tmp.px = new Point(0, 0);
             tmp.Paint = false;
@@ -50,7 +49,7 @@ namespace UI
             newPanel.Dock = DockStyle.Left;
             newPanel.Size = new Size(227, newPanel.Height);
             newPanel.BackColor = Color.FromArgb(0, 120, 215);
-            newPanel.AutoScroll = true;
+
             // Add two label 
             Label toolLabel = new Label();
             Label shapeLabel = new Label();

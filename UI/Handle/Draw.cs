@@ -25,25 +25,25 @@ namespace UI
                         checkFirstDraw = true;
                     }
                     if (a[tmp].isResize)
+                    {
                         a[tmp].currShape.Paint_Resize(ref g, a[tmp]);
+                        //ve khung
+                        if (a[tmp].index != 5 && a[tmp].index != 18)
+                            g.DrawRectangle(resizePen, a[tmp].khung);
+
+                        //ve diem dieu khien
+                        if (a[tmp].index == 5)
+                        {
+                            g.FillRectangle(Brushes.Blue, GetHandleRect(0));
+                            g.FillRectangle(Brushes.Blue, GetHandleRect(4));
+                        }
+                        else if (a[tmp].index != 0 && a[tmp].index != 18)
+                            for (int i = 0; i < 8; i++)
+                                g.FillRectangle(Brushes.Blue, GetHandleRect(i));
+                    }
                 }
                 else
                     checkFirstDraw = true;
-
-
-                // ve khung 
-                if (a[tmp].index != 5 && a[tmp].index != 18)
-                    g.DrawRectangle(resizePen, a[tmp].khung);
-
-                // ve diem dieu khien
-                if (a[tmp].index == 5)
-                {
-                    g.FillRectangle(Brushes.Blue, GetHandleRect(0));
-                    g.FillRectangle(Brushes.Blue, GetHandleRect(4));
-                }
-                else if (a[tmp].index != 0 && a[tmp].index != 18)
-                     for (int i = 0; i < 8; i++)
-                         g.FillRectangle(Brushes.Blue, GetHandleRect(i));
             }
 
         }
@@ -112,7 +112,7 @@ namespace UI
                             a[tmp].G.DrawLine(a[tmp].Eraser, a[tmp].px, a[tmp].py);
                             a[tmp].py = a[tmp].px;
                         }
-                        a[tmp].pictureBox.Invalidate();
+                        a[tmp].pictureBox.Refresh();
 
                     }
                     if (a[tmp].isResize)
