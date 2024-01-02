@@ -249,6 +249,8 @@ namespace UI
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
+            a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
+            a[tmp].iBitmap++;
             a[tmp].index = 4;
             a[tmp].isSelect = true;
             a[tmp].currShape = new Paste();
@@ -257,6 +259,7 @@ namespace UI
             a[tmp].Paint = false;
             a[tmp].isResize = true;
             a[tmp].pictureBox.Refresh();
+            a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
         }
 
         private void cutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -419,6 +422,7 @@ namespace UI
                 a[tmp].bm = newBitmap;
                 a[tmp].pictureBox.Image = a[tmp].bm;
                 a[tmp].G = Graphics.FromImage(a[tmp].bm);
+                MessageBox.Show(a[tmp].isResize.ToString());
                 a[tmp].pictureBox.Refresh();
             }
         }
@@ -442,7 +446,8 @@ namespace UI
                 a[tmp].bm = newBitmap;
                 a[tmp].pictureBox.Image = a[tmp].bm;
                 a[tmp].G = Graphics.FromImage(a[tmp].bm);
-                a[tmp].pictureBox.Refresh();
+                if (!a[tmp].khung.Equals(new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0)))
+                    a[tmp].pictureBox.Refresh();
             }
         }
         private void handleResetZoom(object sender, EventArgs e)
@@ -463,7 +468,8 @@ namespace UI
             a[tmp].bm = newBitmap;
             a[tmp].pictureBox.Image = a[tmp].bm;
             a[tmp].G = Graphics.FromImage(a[tmp].bm);
-            a[tmp].pictureBox.Refresh();
+            if (!a[tmp].khung.Equals(new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0)))
+                a[tmp].pictureBox.Refresh();
         }
         private void SetTimeout(Action action, int timeout)
         {

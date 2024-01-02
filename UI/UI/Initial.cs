@@ -474,7 +474,7 @@ namespace UI
                     a[i].backGround.Dock = DockStyle.Right;
                     a[i].backGround.Width = this.Width - 270;
                     a[i].backGround.BackColor = Color.FromArgb(243, 243, 243);
-                    a[i].pictureBox.Location = new Point((a[tmp].backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
+                    a[i].pictureBox.Location = new Point((a[i].backGround.Width - a[i].pictureBox.Width) / 2, Math.Abs(this.Height - a[i].pictureBox.Height) / 2);
                 }
             };
 
@@ -515,6 +515,7 @@ namespace UI
 
             a[tmp].text.ForeColor = Color.Black;
             a[tmp].text.StateActive.Back.Color1 = Color.White;
+            a[tmp].text.StateActive.Back.Color1 = Color.Transparent;
             a[tmp].text.StateActive.Border.Width = 0;
             a[tmp].text.Hide();
             a[tmp].pictureBox.Controls.Add(a[tmp].text);

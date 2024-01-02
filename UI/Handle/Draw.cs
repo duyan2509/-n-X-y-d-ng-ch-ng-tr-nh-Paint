@@ -84,7 +84,8 @@ namespace UI
                         a[tmp].G.FillRectangle(Brushes.White, a[tmp].khung);
                     }
                 }
-                a[tmp].pictureBox.Refresh();
+                if (!a[tmp].khung.Equals(new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0)))
+                    a[tmp].pictureBox.Refresh();
             }
         }
         private void handleMouseMove(object sender, MouseEventArgs e)
@@ -184,6 +185,7 @@ namespace UI
                     a[tmp].pictureBox.Image = bm;
                     a[tmp].bm = bm;
                     a[tmp].G = Graphics.FromImage(a[tmp].bm);
+
                     a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
                     a[tmp].isResize = false;
                 }
@@ -192,23 +194,10 @@ namespace UI
                 if (a[tmp].index == 17)
                     this.Cursor = Cursors.Cross;
 
-                //kiem tra co dang click vao o dieu khien
-                int checkODK = 0;
-                for (int i = 0; i < 8; i++)
-                    if (GetHandleRect(i).Contains(e.Location))
-                        checkODK = 1;
-
-                //Ve chinh thuc khi an ra ngoai
-                if (checkODK == 0 && !a[tmp].khung.IsEmpty && !a[tmp].khung.Contains(e.Location) && a[tmp].index != 6 && a[tmp].currResize!=null)
-                {
-                    a[tmp].currResize.VeChinhThuc(a[tmp]);
-                    a[tmp].isText = !a[tmp].isText;
-                    a[tmp].isClear = false;
-                    a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
-                }
 
                 if (a[tmp].isResize)
                 {
+                    int checkODK = 0;
                     //Kiem tra dragHandle nao duoc an
                     for (int i = 0; i < 8; i++)
                     {
@@ -217,7 +206,15 @@ namespace UI
                             a[tmp].dragHandle = i;
                             a[tmp].khungCu = a[tmp].khung;
                             a[tmp].dragPoint = GetHandlePoint(i);
+                            checkODK = 1;
                         }
+                    }
+                    if (checkODK == 0 && !a[tmp].khung.IsEmpty && !a[tmp].khung.Contains(e.Location) && a[tmp].index != 6 && a[tmp].currResize != null)
+                    {
+                        a[tmp].currResize.VeChinhThuc(a[tmp]);
+                        a[tmp].isText = !a[tmp].isText;
+                        a[tmp].isClear = false;
+                        a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
                     }
                     if (checkODK == 0 && !a[tmp].khung.IsEmpty && a[tmp].khung.Contains(e.Location))
                     {
