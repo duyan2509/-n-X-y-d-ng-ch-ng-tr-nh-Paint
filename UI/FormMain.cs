@@ -30,6 +30,7 @@ namespace UI
             initDrawObject();
             initialPictureBox();
             initialPanel();
+            tcMain.BackColor=Color.FromArgb(0, 120, 215);
         }
 
 
@@ -200,9 +201,8 @@ namespace UI
             int tmp = tcMain.SelectedIndex;
             if (a[tmp].currResize == null && a[tmp].index!=1 && a[tmp].index!=15)
                 return;
-                if (a[tmp].isResize)
+            if (a[tmp].isResize)
             {
-                
                 a[tmp].currResize.VeChinhThuc(a[tmp]);
                 a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
             }

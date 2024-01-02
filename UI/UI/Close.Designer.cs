@@ -41,29 +41,32 @@
             this.btCloseAll.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btCloseAll.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btCloseAll.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btCloseAll.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btCloseAll.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.btCloseAll.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btCloseAll.ForeColor = System.Drawing.Color.White;
             this.btCloseAll.Location = new System.Drawing.Point(40, 62);
             this.btCloseAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btCloseAll.Name = "btCloseAll";
-            this.btCloseAll.Size = new System.Drawing.Size(180, 46);
+            this.btCloseAll.Size = new System.Drawing.Size(180, 58);
             this.btCloseAll.TabIndex = 0;
             this.btCloseAll.Text = "Close All";
             this.btCloseAll.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // btCloseCurrentTab
             // 
+            this.btCloseCurrentTab.BackColor = System.Drawing.SystemColors.Control;
             this.btCloseCurrentTab.BorderRadius = 10;
             this.btCloseCurrentTab.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btCloseCurrentTab.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btCloseCurrentTab.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btCloseCurrentTab.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btCloseCurrentTab.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btCloseCurrentTab.ForeColor = System.Drawing.Color.White;
+            this.btCloseCurrentTab.FillColor = System.Drawing.Color.White;
+            this.btCloseCurrentTab.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCloseCurrentTab.ForeColor = System.Drawing.Color.DodgerBlue;
             this.btCloseCurrentTab.Location = new System.Drawing.Point(265, 62);
             this.btCloseCurrentTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btCloseCurrentTab.Name = "btCloseCurrentTab";
-            this.btCloseCurrentTab.Size = new System.Drawing.Size(180, 46);
+            this.btCloseCurrentTab.Size = new System.Drawing.Size(180, 58);
             this.btCloseCurrentTab.TabIndex = 1;
             this.btCloseCurrentTab.Text = "Close Current Tab";
             this.btCloseCurrentTab.Click += new System.EventHandler(this.guna2Button2_Click);

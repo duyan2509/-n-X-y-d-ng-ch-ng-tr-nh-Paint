@@ -45,7 +45,8 @@
             this.btYes.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btYes.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btYes.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btYes.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btYes.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(215)))));
+            this.btYes.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btYes.ForeColor = System.Drawing.Color.White;
             this.btYes.Location = new System.Drawing.Point(57, 112);
             this.btYes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -62,8 +63,9 @@
             this.btNo.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btNo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btNo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btNo.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btNo.ForeColor = System.Drawing.Color.White;
+            this.btNo.FillColor = System.Drawing.Color.White;
+            this.btNo.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btNo.ForeColor = System.Drawing.Color.DodgerBlue;
             this.btNo.Location = new System.Drawing.Point(280, 31);
             this.btNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btNo.Name = "btNo";
@@ -86,7 +88,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Blue;
+            this.label1.ForeColor = System.Drawing.Color.DodgerBlue;
             this.label1.Location = new System.Drawing.Point(67, 33);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
