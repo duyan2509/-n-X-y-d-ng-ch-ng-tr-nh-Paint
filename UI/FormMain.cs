@@ -8,6 +8,8 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
+using Guna.UI2.WinForms;
+
 namespace UI
 {
 
@@ -16,7 +18,9 @@ namespace UI
 
         private Rectangle normalBounds;
         private List<DrawObject> a = new List<DrawObject>();// mỗi  tab 1 phần tử
+        private Guna2Button selectButton;
         public Pen resizePen { get; set; }
+        
         public FormMain()
         {
             InitializeComponent();
@@ -30,11 +34,9 @@ namespace UI
             initDrawObject();
             initialPictureBox();
             initialPanel();
-            //tcMain.BackColor=Color.FromArgb(0, 120, 215);
             tcMain.StateNormal.Back.Color1= Color.FromArgb(0, 120, 215,255);
             tcMain.StateNormal.Tab.Back.Color1= Color.FromArgb(0, 120, 215, 255);
             tcMain.StateNormal.Tab.Border.Color1= Color.FromArgb(0, 120, 215, 255);
-            //tcMain.StateSelected.Tab.Border.Color1 = Color.White;
         }
 
 
@@ -255,11 +257,23 @@ namespace UI
         private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
+            Image clipboardImage = Clipboard.GetImage();
+            if (clipboardImage == null) return;
+
+            foreach (Guna2Button button in a[tmp].buttons)
+            {
+                button.BorderThickness = 0;
+                button.Refresh();
+            }
+            selectButton.BorderThickness = 2;
+            selectButton.Refresh();
+
             a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
             a[tmp].iBitmap++;
             a[tmp].index = 4;
             a[tmp].isSelect = true;
             a[tmp].currShape = new Paste();
+            a[tmp].currResize = new Paste();
             a[tmp].Paint = true;
             a[tmp].pictureBox.Refresh();
             a[tmp].Paint = false;
@@ -276,10 +290,11 @@ namespace UI
                 a[tmp].resizeIndex = 0;
                 a[tmp].index = 18;
                 a[tmp].G.FillRectangle(Brushes.White, a[tmp].khung);
-                a[tmp].pictureBox.Refresh();
                 a[tmp].khung = new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0);
+                a[tmp].pictureBox.Refresh();
                 a[tmp].index = 17;
                 a[tmp].resizeIndex = 17;
+                a[tmp].isResize = false;
             }
         }
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -415,6 +430,7 @@ namespace UI
             a[tmp].isSelect = false;
             int w = (int)(1.2 * a[tmp].pictureBox.Width);
             int h = (int)(1.2 * a[tmp].pictureBox.Height);
+            a[tmp].Pen.Width = (float)(a[tmp].Pen.Width * 1.2);
             if (w <2000 && h <2000)
             {
                 a[tmp].pictureBox.Size = new Size(w, h);
@@ -429,7 +445,6 @@ namespace UI
                 a[tmp].bm = newBitmap;
                 a[tmp].pictureBox.Image = a[tmp].bm;
                 a[tmp].G = Graphics.FromImage(a[tmp].bm);
-                MessageBox.Show(a[tmp].isResize.ToString());
                 a[tmp].pictureBox.Refresh();
             }
         }
@@ -439,6 +454,7 @@ namespace UI
             a[tmp].isSelect = false;
             int w = (int)(0.8 * a[tmp].pictureBox.Width);
             int h = (int)(0.8 * a[tmp].pictureBox.Height);
+            a[tmp].Pen.Width= (float)(a[tmp].Pen.Width* 0.8);
             if (w > 300 && h > 300)
             {
                 a[tmp].pictureBox.Size = new Size(w, h);
@@ -465,7 +481,7 @@ namespace UI
             int h = a[tmp].sizeBitmap.Height;
             a[tmp].pictureBox.Size = new Size(w, h);
             Image originalImage = a[tmp].pictureBox.Image;
-
+            a[tmp].Pen.Width = a[tmp].oPen.Width;
             Bitmap newBitmap = new Bitmap(w, h);
             using (Graphics g = Graphics.FromImage(newBitmap))
             {

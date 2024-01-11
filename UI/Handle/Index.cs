@@ -7,6 +7,7 @@ namespace UI
 {
     public partial class FormMain : Form
     {
+        
         private void handleClickPenButton(object sender, EventArgs e)
         {
             if (sender is Guna2Button clickedButton)
@@ -348,6 +349,9 @@ namespace UI
             }
             if (a[tmp].index==1&&clickedItem.Text == "1px")
                 a[tmp].Pen.Width = 1f;
+            a[tmp].oPen.Width = a[tmp].Pen.Width;
+            a[tmp].pictureBox.Refresh();
+
         }
         private void handleClickBrushButton(object sender, EventArgs e)
         {
@@ -398,6 +402,7 @@ namespace UI
                 a[tmp].Pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             if (clickedItem.Text == "Dot")
                 a[tmp].Pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+            a[tmp].pictureBox.Refresh();
         }
     }
 }

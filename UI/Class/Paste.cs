@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace UI
                 g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
                 g.DrawImage(clipboardImage, aa.khung);
             }
+
         }
         public override void Paint_Resize(ref Graphics g, DrawObject aa)
         {
@@ -37,15 +39,13 @@ namespace UI
         {
             aa.isResize = false;
             Image clipboardImage = Clipboard.GetImage();
-            if (clipboardImage != null)
-            {
-                aa.G.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                aa.G.DrawImage(clipboardImage, aa.khung);
-                aa.pictureBox.Refresh();
-                aa.dragHandle = -1;
-                aa.khung = new Rectangle(aa.pictureBox.Top, 0, 0, 0);
-                aa.Paint = false;
-            }
+            aa.G.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            aa.G.DrawImage(clipboardImage, aa.khung);
+            aa.pictureBox.Refresh();
+            aa.dragHandle = -1;
+            aa.khung = new Rectangle(aa.pictureBox.Top, 0, 0, 0);
+            aa.currShape = new Select();
+            aa.index = 17;
         }
     }
 }

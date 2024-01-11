@@ -18,6 +18,7 @@ namespace UI
     public class DrawObject
     {
         public Pen Pen { get; set; }
+        public Pen oPen { get; set; }
         public bool Paint { get; set; }
         public Point px { get; set; }
         public Point py { get; set; }

@@ -119,7 +119,7 @@
             this.tcMain.Size = new System.Drawing.Size(897, 496);
             this.tcMain.StateNormal.BorderEdge.Color1 = System.Drawing.Color.White;
             this.tcMain.StateNormal.BorderEdge.Color2 = System.Drawing.Color.White;
-            this.tcMain.StateNormal.RibbonTab.TabDraw.BackColor1 = System.Drawing.Color.White;
+            this.tcMain.StateNormal.RibbonTab.TabDraw.BackColor1 = System.Drawing.Color.Transparent;
             this.tcMain.StateNormal.Tab.Back.Color1 = System.Drawing.SystemColors.HotTrack;
             this.tcMain.StateNormal.Tab.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Solid;
             this.tcMain.StateSelected.RibbonTab.TabDraw.BackColor1 = System.Drawing.Color.SteelBlue;
@@ -177,7 +177,7 @@
             this.btSuccess.ForeColor = System.Drawing.Color.Transparent;
             this.btSuccess.Image = global::UI.Properties.Resources.icons8_check_48;
             this.btSuccess.ImageSize = new System.Drawing.Size(50, 50);
-            this.btSuccess.Location = new System.Drawing.Point(811, 458);
+            this.btSuccess.Location = new System.Drawing.Point(809, 444);
             this.btSuccess.Name = "btSuccess";
             this.btSuccess.Size = new System.Drawing.Size(25, 25);
             this.btSuccess.TabIndex = 0;
@@ -276,7 +276,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(9, 6);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(105, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(103, 28);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuStrip1_MouseDown_1);

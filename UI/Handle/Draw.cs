@@ -92,12 +92,6 @@ namespace UI
         private void handleMouseMove(object sender, MouseEventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
-            //if ((a[tmp].index==1 ||a[tmp].index==15)&&e.Button == MouseButtons.Right)
-            //{
-            //    checkFirstDraw = true;
-            //    a[tmp].pictureBox.Refresh();
-            //    return;
-            //}
             if (e.Button == MouseButtons.Left)
             {
                 if (tmp < a.Count)
@@ -183,7 +177,7 @@ namespace UI
                 return;
             if (tmp < a.Count)
             {
-                if (a[tmp].index == 6)
+                if (a[tmp].index == 6 && a[tmp].isResize==false)
                 {
                     //fill
                     a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
@@ -217,7 +211,7 @@ namespace UI
                             checkODK = 1;
                         }
                     }
-                    if (checkODK == 0 && !a[tmp].khung.IsEmpty && !a[tmp].khung.Contains(e.Location) && a[tmp].index != 6 && a[tmp].currResize != null)
+                    if (checkODK == 0 && !a[tmp].khung.IsEmpty && !a[tmp].khung.Contains(e.Location)&& a[tmp].currResize != null)
                     {
                         a[tmp].currResize.VeChinhThuc(a[tmp]);
                         a[tmp].isText = !a[tmp].isText;

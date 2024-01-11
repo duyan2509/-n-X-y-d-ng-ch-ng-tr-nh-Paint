@@ -23,6 +23,7 @@ namespace UI
             DrawObject tmp = new DrawObject();
             tmp.Pen = new Pen(Color.Black,3f);
             tmp.Pen.StartCap = LineCap.Round;
+            tmp.oPen = new Pen(Color.Black, 3f);
             tmp.Eraser = new Pen(Color.White, 3f);
             tmp.Eraser.StartCap = LineCap.Round;
             tmp.py = new Point(0, 0);
@@ -363,7 +364,7 @@ namespace UI
             colorPanel.Controls.Add(pickColorButton);
 
             //Button Select
-            Guna2Button selectButton = new Guna2Button();
+            selectButton = new Guna2Button();
             selectButton.Size = new Size(35, 35);
             selectButton.Location = new Point(10, 15);
             selectButton.FillColor = Color.FromArgb(203, 213, 224);
@@ -520,6 +521,7 @@ namespace UI
             a[tmp].text.StateActive.Border.Width = 0;
             a[tmp].text.Hide();
             a[tmp].pictureBox.Controls.Add(a[tmp].text);
+           
             tcMain.SelectedPage.Controls.Add(a[tmp].backGround);
         }
 
