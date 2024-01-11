@@ -282,6 +282,9 @@ namespace UI
                 a[tmp].isSelect = false;
 
                 // Create ToolStripMenuItems for different sizes
+                ToolStripMenuItem pen = new ToolStripMenuItem();
+                pen.DisplayStyle = ToolStripItemDisplayStyle.Text;
+                pen.Text = "1px";
                 ToolStripMenuItem smallSizeItem = new ToolStripMenuItem();
                 smallSizeItem.DisplayStyle = ToolStripItemDisplayStyle.Text;
                 smallSizeItem.Text = "3px";
@@ -291,18 +294,35 @@ namespace UI
                 ToolStripMenuItem largeSizeItem = new ToolStripMenuItem();
                 largeSizeItem.DisplayStyle = ToolStripItemDisplayStyle.Text;
                 largeSizeItem.Text = "8px";
-
+                ToolStripMenuItem erase1 = new ToolStripMenuItem();
+                erase1.DisplayStyle = ToolStripItemDisplayStyle.Text;
+                erase1.Text = "15px";
+                ToolStripMenuItem erase2 = new ToolStripMenuItem();
+                erase2.DisplayStyle = ToolStripItemDisplayStyle.Text;
+                erase2.Text = "20px";
 
                 // Add event handlers for menu item clicks
                 smallSizeItem.Click += SizeMenuItem_Click;
                 mediumSizeItem.Click += SizeMenuItem_Click;
                 largeSizeItem.Click += SizeMenuItem_Click;
-
+                if (a[tmp].index == 1)
+                {
+                    pen.Click += SizeMenuItem_Click;
+                    sizeMenu.Items.Add(pen);
+                }
                 // Add the ToolStripMenuItems to the dropdown menu
                 sizeMenu.Items.Add(smallSizeItem);
                 sizeMenu.Items.Add(mediumSizeItem);
                 sizeMenu.Items.Add(largeSizeItem);
+                if (a[tmp].index == 15)
+                {
+                    erase1.Click += SizeMenuItem_Click;
+                    erase2.Click+=  SizeMenuItem_Click;
+                    sizeMenu.Items.Add(erase1);
+                    sizeMenu.Items.Add(erase2);
+                }
 
+                
                 // Show the context menu at the button's location
                 sizeMenu.Show(clickedButton, new Point(-15, clickedButton.Height));
 
@@ -314,11 +334,20 @@ namespace UI
             int tmp = tcMain.SelectedIndex;
             ToolStripMenuItem clickedItem = (ToolStripMenuItem)sender;
             if (clickedItem.Text == "3px")
-                a[tmp].Pen = new Pen(a[tmp].Pen.Color, 3f);
+                a[tmp].Pen.Width = 3f;
             if (clickedItem.Text == "5px")
-                a[tmp].Pen = new Pen(a[tmp].Pen.Color, 5f);
+                a[tmp].Pen.Width = 5f;
             if (clickedItem.Text == "8px")
-                a[tmp].Pen = new Pen(a[tmp].Pen.Color, 8f);
+                a[tmp].Pen.Width = 8f;
+            if (a[tmp].index==15)
+            {
+                if(clickedItem.Text == "15px")
+                    a[tmp].Eraser.Width = 15f;
+                if (clickedItem.Text == "20px")
+                    a[tmp].Eraser.Width = 15f;
+            }
+            if (a[tmp].index==1&&clickedItem.Text == "1px")
+                a[tmp].Pen.Width = 1f;
         }
         private void handleClickBrushButton(object sender, EventArgs e)
         {
@@ -327,6 +356,7 @@ namespace UI
                 int tmp = tcMain.SelectedIndex;
                 a[tmp].isSelect = false;
                 ContextMenuStrip brushMenu = new ContextMenuStrip();
+                
 
                 // Create ToolStripMenuItems for different sizes
                 ToolStripMenuItem brush1Item = new ToolStripMenuItem(Properties.Resources.icons8_horizontal_line_50);
@@ -339,19 +369,20 @@ namespace UI
                 brush2Item.Text = "Dash";
                 brush3Item.DisplayStyle = ToolStripItemDisplayStyle.ImageAndText;
                 brush3Item.Text = "Dot";
-
-
+                
+                
 
                 // Add event handlers for menu item clicks
                 brush1Item.Click += BrushMenuItem_Click;
                 brush2Item.Click += BrushMenuItem_Click;
                 brush3Item.Click += BrushMenuItem_Click;
 
+               
                 // Add the ToolStripMenuItems to the dropdown menu
                 brushMenu.Items.Add(brush1Item);
                 brushMenu.Items.Add(brush2Item);
                 brushMenu.Items.Add(brush3Item);
-
+                
                 // Show the context menu at the button's location
                 brushMenu.Show(clickedButton, new Point(-15, clickedButton.Height));
             }

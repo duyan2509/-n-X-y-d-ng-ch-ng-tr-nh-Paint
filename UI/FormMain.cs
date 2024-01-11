@@ -30,7 +30,11 @@ namespace UI
             initDrawObject();
             initialPictureBox();
             initialPanel();
-            tcMain.BackColor=Color.FromArgb(0, 120, 215);
+            //tcMain.BackColor=Color.FromArgb(0, 120, 215);
+            tcMain.StateNormal.Back.Color1= Color.FromArgb(0, 120, 215,255);
+            tcMain.StateNormal.Tab.Back.Color1= Color.FromArgb(0, 120, 215, 255);
+            tcMain.StateNormal.Tab.Border.Color1= Color.FromArgb(0, 120, 215, 255);
+            //tcMain.StateSelected.Tab.Border.Color1 = Color.White;
         }
 
 
@@ -132,14 +136,15 @@ namespace UI
             ButtonSpecAny buttonX = new ButtonSpecAny();
             buttonX.Type = PaletteButtonSpecStyle.Close;
             buttonX.UniqueName = "btClose" + kryptonPage.Text;
-
+            
 
             buttonX.Click += (s, args) =>
             {
-                int tmp = tcMain.SelectedIndex;
+                int tmp;
                 if (s is ButtonSpecAny closeButton)
                 {
                     KryptonPage pageToRemove = tcMain.Pages.FirstOrDefault(page => page.ButtonSpecs.Contains(closeButton));
+                    tmp=tcMain.Pages.IndexOf(pageToRemove);
                     if (pageToRemove != null)
                     {
                         if (!a[tmp].isClear)
@@ -171,21 +176,22 @@ namespace UI
         {
             if (sender is ButtonSpecAny closeButton)
             {
-                int tmp = tcMain.SelectedIndex;
-                if(tmp>=0  && tmp<a.Count)
+                int tmp;
+                KryptonPage pageToRemove = tcMain.Pages.FirstOrDefault(page => page.ButtonSpecs.Contains(closeButton));
+                tmp = tcMain.Pages.IndexOf(pageToRemove);
+                if (pageToRemove != null)
                 {
                     if (!a[tmp].isClear)
                     {
                         Save sv = new Save(tmp);
                         sv.ShowDialog();
-                        if (sv.save==1)
+                        if (sv.save == 1)
                             Save();
                         else if (sv.save == -1)
                             return;
                     }
                     tcMain.Pages.RemoveAt(tmp);
                     a.RemoveAt(tmp);
-
                 }
             }
         }
@@ -298,6 +304,7 @@ namespace UI
                         a[tmp].bm = (Bitmap)Image.FromStream(m);
                         a[tmp].pictureBox.Image = a[tmp].bm;
                         a[tmp].G = Graphics.FromImage(a[tmp].bm);
+                        a[tmp].khung=new Rectangle(a[tmp].pictureBox.Top,0,0,0);
                         a[tmp].pictureBox.Refresh();
                         a[tmp].sizeBitmap = new Size(a[tmp].pictureBox.Width, a[tmp].pictureBox.Height);
                         a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));

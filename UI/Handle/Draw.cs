@@ -16,6 +16,7 @@ namespace UI
             
             if (tmp < a.Count)
             {
+                
                 Graphics g = e.Graphics;
                 if (a[tmp].index != 1 && a[tmp].index != 15)
                 {
@@ -91,7 +92,12 @@ namespace UI
         private void handleMouseMove(object sender, MouseEventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
-
+            //if ((a[tmp].index==1 ||a[tmp].index==15)&&e.Button == MouseButtons.Right)
+            //{
+            //    checkFirstDraw = true;
+            //    a[tmp].pictureBox.Refresh();
+            //    return;
+            //}
             if (e.Button == MouseButtons.Left)
             {
                 if (tmp < a.Count)
@@ -173,6 +179,8 @@ namespace UI
         private void handleMouseDown(object sender, MouseEventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
+            if (e.Button == MouseButtons.Right)
+                return;
             if (tmp < a.Count)
             {
                 if (a[tmp].index == 6)

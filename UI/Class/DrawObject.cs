@@ -45,7 +45,7 @@ namespace UI
         public Rectangle khungCu { get; set; }
         public int dragHandle = -1;
         public Point dragPoint { get; set; }
-        public Rectangle khung { get; set; }
+        public Rectangle khung { get; set; }    
         public KryptonRichTextBox text = new KryptonRichTextBox();
         public bool isText  { get; set; }
         public string filePath { get; set; }

@@ -92,6 +92,7 @@
             // 
             // tcMain
             // 
+            this.tcMain.AllowPageReorder = false;
             this.tcMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -116,6 +117,17 @@
             this.tcMain.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
             this.tcMain.SelectedIndex = 0;
             this.tcMain.Size = new System.Drawing.Size(897, 496);
+            this.tcMain.StateNormal.BorderEdge.Color1 = System.Drawing.Color.White;
+            this.tcMain.StateNormal.BorderEdge.Color2 = System.Drawing.Color.White;
+            this.tcMain.StateNormal.RibbonTab.TabDraw.BackColor1 = System.Drawing.Color.White;
+            this.tcMain.StateNormal.Tab.Back.Color1 = System.Drawing.SystemColors.HotTrack;
+            this.tcMain.StateNormal.Tab.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Solid;
+            this.tcMain.StateSelected.RibbonTab.TabDraw.BackColor1 = System.Drawing.Color.SteelBlue;
+            this.tcMain.StateSelected.RibbonTab.TabDraw.TextColor = System.Drawing.Color.White;
+            this.tcMain.StateSelected.Tab.Back.Color1 = System.Drawing.SystemColors.Window;
+            this.tcMain.StateSelected.Tab.Back.Color2 = System.Drawing.Color.White;
+            this.tcMain.StateSelected.Tab.Back.ColorAlign = ComponentFactory.Krypton.Toolkit.PaletteRectangleAlign.Control;
+            this.tcMain.StateSelected.Tab.Back.ColorStyle = ComponentFactory.Krypton.Toolkit.PaletteColorStyle.Solid;
             this.tcMain.TabIndex = 0;
             this.tcMain.Text = "kryptonNavigator1";
             this.tcMain.SelectedPageChanged += new System.EventHandler(this.tcMain_SelectedPageChanged);
@@ -145,6 +157,7 @@
             // 
             // btClose1
             // 
+            this.btClose1.ColorMap = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btClose1.Type = ComponentFactory.Krypton.Toolkit.PaletteButtonSpecStyle.Close;
             this.btClose1.UniqueName = "31A147EECA5F43286FA9B6E033F7570B";
             this.btClose1.Click += new System.EventHandler(this.btClose1_Click);
@@ -172,10 +185,12 @@
             // fileName
             // 
             this.fileName.AcceptsTab = true;
+            this.fileName.AccessibleName = "";
             this.fileName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.fileName.AutoRoundedCorners = true;
             this.fileName.BackColor = System.Drawing.Color.Transparent;
-            this.fileName.BorderRadius = 10;
+            this.fileName.BorderRadius = 14;
             this.fileName.BorderThickness = 0;
             this.fileName.Cursor = System.Windows.Forms.Cursors.Default;
             this.fileName.DefaultText = "";
@@ -188,11 +203,12 @@
             this.fileName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.fileName.ForeColor = System.Drawing.Color.Black;
             this.fileName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.fileName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.fileName.Location = new System.Drawing.Point(215, 6);
             this.fileName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.fileName.Name = "fileName";
             this.fileName.PasswordChar = '\0';
-            this.fileName.PlaceholderText = "";
+            this.fileName.PlaceholderText = "File Name";
             this.fileName.ReadOnly = true;
             this.fileName.SelectedText = "";
             this.fileName.Size = new System.Drawing.Size(418, 30);

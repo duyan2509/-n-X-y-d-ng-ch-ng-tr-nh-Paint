@@ -22,7 +22,9 @@ namespace UI
         {
             DrawObject tmp = new DrawObject();
             tmp.Pen = new Pen(Color.Black,3f);
-            tmp.Eraser = new Pen(Color.White, 10);
+            tmp.Pen.StartCap = LineCap.Round;
+            tmp.Eraser = new Pen(Color.White, 3f);
+            tmp.Eraser.StartCap = LineCap.Round;
             tmp.py = new Point(0, 0);
             tmp.px = new Point(0, 0);
             tmp.Paint = false;
@@ -515,7 +517,6 @@ namespace UI
 
             a[tmp].text.ForeColor = Color.Black;
             a[tmp].text.StateActive.Back.Color1 = Color.White;
-            a[tmp].text.StateActive.Back.Color1 = Color.Transparent;
             a[tmp].text.StateActive.Border.Width = 0;
             a[tmp].text.Hide();
             a[tmp].pictureBox.Controls.Add(a[tmp].text);
