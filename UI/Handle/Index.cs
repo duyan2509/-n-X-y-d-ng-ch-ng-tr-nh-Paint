@@ -25,7 +25,6 @@ namespace UI
                         button.Refresh();
                     }
                     clickedButton.BorderThickness = 2;
-
                 }
             }
         }
@@ -47,7 +46,7 @@ namespace UI
 
                     // Tăng BorderThickness của button được click lên một giá trị nào đó
                     clickedButton.BorderThickness = 2;
-
+                    panel1.Hide();
                 }
             }
         }
@@ -66,7 +65,7 @@ namespace UI
                         button.Refresh();
                     }
                     clickedButton.BorderThickness = 2;
-
+                    panel1.Hide();
                 }
             }
         }
@@ -108,7 +107,7 @@ namespace UI
                         button.Refresh();
                     }
                     clickedButton.BorderThickness = 2;
-
+                    panel1.Hide();
                 }
             }
         }
@@ -129,7 +128,7 @@ namespace UI
                         button.Refresh();
                     }
                     clickedButton.BorderThickness = 2;
-
+                    panel1.Hide();
                 }
             }
         }
@@ -150,7 +149,7 @@ namespace UI
                         button.Refresh();
                     }
                     clickedButton.BorderThickness = 2;
-
+                    panel1.Hide();
                 }
             }
         }
@@ -170,7 +169,7 @@ namespace UI
                         button.Refresh();
                     }
                     clickedButton.BorderThickness = 2;
-
+                    panel1.Hide();
                 }
             }
         }
@@ -190,7 +189,7 @@ namespace UI
                         button.Refresh();
                     }
                     clickedButton.BorderThickness = 2;
-
+                    panel1.Hide();
                 }
             }
         }
@@ -210,7 +209,7 @@ namespace UI
                         button.Refresh();
                     }
                     clickedButton.BorderThickness = 2;
-
+                    panel1.Hide();
                 }
             }
         }
@@ -231,7 +230,7 @@ namespace UI
                         button.Refresh();
                     }
                     clickedButton.BorderThickness = 2;
-
+                    panel1.Hide();
                 }
             }
         }
@@ -251,7 +250,7 @@ namespace UI
                         button.Refresh();
                     }
                     clickedButton.BorderThickness = 2;
-
+                    panel1.Hide();
                 }
             }
         }
@@ -272,7 +271,7 @@ namespace UI
                         button.Refresh();
                     }
                     clickedButton.BorderThickness = 2;
-
+                    panel1.Hide();
                 }
             }
         }

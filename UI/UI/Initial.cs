@@ -532,6 +532,8 @@ namespace UI
 
 
             // khởi tạo bảng fontDialog
+            panel1.BackColor = Color.FromArgb(0, 120, 215);
+            //panel1.FillColor = Color.FromArgb(94, 148, 255, 255);
             panel1.Hide();
             InstalledFontCollection installedFonts = new InstalledFontCollection();
             System.Drawing.FontFamily[] fontFamilies = installedFonts.Families;
