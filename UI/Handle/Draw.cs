@@ -211,10 +211,9 @@ namespace UI
                             checkODK = 1;
                         }
                     }
-                    if (checkODK == 0 && !a[tmp].khung.IsEmpty && !a[tmp].khung.Contains(e.Location)&& a[tmp].currResize != null)
+                    if (checkODK == 0 && !a[tmp].khung.IsEmpty && !a[tmp].khung.Contains(e.Location) && a[tmp].currResize != null)
                     {
                         a[tmp].currResize.VeChinhThuc(a[tmp]);
-                        a[tmp].isText = !a[tmp].isText;
                         a[tmp].isClear = false;
                         a[tmp].listBitmap[a[tmp].listBitmap.Count - 1] = new Bitmap(a[tmp].pictureBox.Image);
                     }

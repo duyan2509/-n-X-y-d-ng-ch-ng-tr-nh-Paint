@@ -37,6 +37,8 @@ namespace UI
             tcMain.StateNormal.Back.Color1= Color.FromArgb(0, 120, 215,255);
             tcMain.StateNormal.Tab.Back.Color1= Color.FromArgb(0, 120, 215, 255);
             tcMain.StateNormal.Tab.Border.Color1= Color.FromArgb(0, 120, 215, 255);
+            guna2ComboBox1.SelectedIndexChanged += guna2ComboBox1_SelectedIndexChanged;
+            guna2ComboBox2.SelectedIndexChanged += guna2ComboBox2_SelectedIndexChanged;
         }
 
 
@@ -514,6 +516,30 @@ namespace UI
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dlgPrint.ShowDialog();
+        }
+
+        private void guna2ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            // Use the stored font size
+            int size = Convert.ToInt32(guna2ComboBox2.Text);
+            // Set the font of textBoxReference using the stored font name and size
+            a[tmp].text.Font = new Font(guna2ComboBox1.Text, size, FontStyle.Regular);
+        }
+
+        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int tmp = tcMain.SelectedIndex;
+            string selectedFontName = guna2ComboBox1.SelectedItem as string;
+
+            if (!string.IsNullOrEmpty(selectedFontName))
+            {
+                // Perform actions with the selected font name
+                Font selectedFont = new Font(selectedFontName, Convert.ToInt32(guna2ComboBox2.Text), FontStyle.Regular);
+                // Set the font of textBoxReference
+                a[tmp].text.Font = selectedFont;
+
+            }
         }
     }
 }

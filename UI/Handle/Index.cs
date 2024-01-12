@@ -8,6 +8,7 @@ namespace UI
     public partial class FormMain : Form
     {
         
+
         private void handleClickPenButton(object sender, EventArgs e)
         {
             if (sender is Guna2Button clickedButton)
@@ -17,6 +18,7 @@ namespace UI
                 {
                     a[tmp].index = 1;
                     a[tmp].isSelect = false;
+                    panel1.Hide();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -74,11 +76,12 @@ namespace UI
             {
                 int tmp = tcMain.SelectedIndex;
                 if (tmp < a.Count)
-                {
+                {   
                     a[tmp].index = 16;
                     a[tmp].isText = true;
                     a[tmp].isSelect = false;
                     a[tmp].currShape = new Text();
+                    panel1.Show();
                     foreach (Guna2Button button in a[tmp].buttons)
                     {
                         button.BorderThickness = 0;
@@ -116,7 +119,7 @@ namespace UI
             {
                 int tmp = tcMain.SelectedIndex;
                 if (tmp < a.Count)
-                {
+                {   
                     a[tmp].index = 5;
                     a[tmp].isSelect = true;
                     a[tmp].currShape = new Line();
@@ -259,7 +262,6 @@ namespace UI
                 int tmp = tcMain.SelectedIndex;
                 if (tmp < a.Count)
                 {
-
                     a[tmp].index = 17;
                     a[tmp].currShape = new Select();
                     a[tmp].isSelect = false;

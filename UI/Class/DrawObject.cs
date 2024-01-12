@@ -54,7 +54,6 @@ namespace UI
         public List <Guna2Button> buttons { get; set; }
         public HinhVe currShape { get; set; }
         public HinhVe currResize { get; set; }
-
         public bool isSelect {  get; set; }
     }
 }

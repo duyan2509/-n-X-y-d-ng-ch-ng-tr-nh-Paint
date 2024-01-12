@@ -29,7 +29,6 @@ C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\bin\Debug\ComponentFactory.Kry
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\bin\Debug\ComponentFactory.Krypton.Workspace.pdb
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.csproj.AssemblyReference.cache
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.csproj.SuggestedBindingRedirects.cache
-C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.Form1.resources
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.Properties.Resources.resources
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.csproj.GenerateResource.cache
 C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.csproj.CoreCompileInputs.cache
@@ -103,3 +102,4 @@ G:\hoc\Lap trinh truc quan\Github-temp\DoAnPaint\UI\obj\Debug\UI.Save.resources
 G:\hoc\Lap trinh truc quan\Github-temp2\DoAnPaint\UI\obj\Debug\UI.Close.resources
 G:\hoc\Lap trinh truc quan\Github-temp2\DoAnPaint\UI\obj\Debug\UI.Save.resources
 C:\Users\Admin\source\repos\DoAnPaint\UI\obj\Debug\UI.FormMain.resources
+C:\Users\admin\Documents\Github\Test\DoAnPaint\UI\obj\Debug\UI.FormMain.resources

@@ -13,6 +13,7 @@ using Pen = System.Drawing.Pen;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using UI;
+using System.Drawing.Text;
 
 namespace UI
 {
@@ -519,10 +520,29 @@ namespace UI
             a[tmp].text.ForeColor = Color.Black;
             a[tmp].text.StateActive.Back.Color1 = Color.White;
             a[tmp].text.StateActive.Border.Width = 0;
+            a[tmp].text.Font = new Font(".VnArial", 12, FontStyle.Regular);
             a[tmp].text.Hide();
             a[tmp].pictureBox.Controls.Add(a[tmp].text);
-           
             tcMain.SelectedPage.Controls.Add(a[tmp].backGround);
+
+
+            // khởi tạo bảng fontDialog
+            panel1.Hide();
+            InstalledFontCollection installedFonts = new InstalledFontCollection();
+            System.Drawing.FontFamily[] fontFamilies = installedFonts.Families;
+
+            foreach (System.Drawing.FontFamily fontFamily in fontFamilies)
+            {
+                guna2ComboBox1.Items.Add(fontFamily.Name);
+            }
+            
+            // Set the default font
+            string defaultFont = ".VnArial";
+            if (guna2ComboBox1.Items.Contains(defaultFont))
+            {
+                guna2ComboBox1.SelectedItem = defaultFont;
+            }
+            guna2ComboBox2.Text = "12";
         }
 
        
