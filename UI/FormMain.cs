@@ -322,6 +322,8 @@ namespace UI
                         a[tmp].pictureBox.Image = a[tmp].bm;
                         a[tmp].G = Graphics.FromImage(a[tmp].bm);
                         a[tmp].khung=new Rectangle(a[tmp].pictureBox.Top,0,0,0);
+                        a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
+
                         a[tmp].pictureBox.Refresh();
                         a[tmp].sizeBitmap = new Size(a[tmp].pictureBox.Width, a[tmp].pictureBox.Height);
                         a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
@@ -401,8 +403,14 @@ namespace UI
         private void tcMain_SelectedPageChanged(object sender, EventArgs e)
         {
             int tmp = tcMain.SelectedIndex;
-            if(tmp>=0 && tmp<a.Count)
+            if (tmp >= 0 && tmp < a.Count)
+            {
                 fileName.Text = a[tmp].fileName;
+                a[tmp].backGround.Width = this.Width - 263;
+                a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
+
+            }
+
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -447,6 +455,8 @@ namespace UI
                 a[tmp].bm = newBitmap;
                 a[tmp].pictureBox.Image = a[tmp].bm;
                 a[tmp].G = Graphics.FromImage(a[tmp].bm);
+                a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
+
                 a[tmp].pictureBox.Refresh();
             }
         }
@@ -471,6 +481,8 @@ namespace UI
                 a[tmp].bm = newBitmap;
                 a[tmp].pictureBox.Image = a[tmp].bm;
                 a[tmp].G = Graphics.FromImage(a[tmp].bm);
+                a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
+
                 if (!a[tmp].khung.Equals(new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0)))
                     a[tmp].pictureBox.Refresh();
             }
@@ -493,6 +505,8 @@ namespace UI
             a[tmp].bm = newBitmap;
             a[tmp].pictureBox.Image = a[tmp].bm;
             a[tmp].G = Graphics.FromImage(a[tmp].bm);
+            a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);
+
             if (!a[tmp].khung.Equals(new Rectangle(a[tmp].pictureBox.Top, 0, 0, 0)))
                 a[tmp].pictureBox.Refresh();
         }
@@ -541,6 +555,18 @@ namespace UI
                 a[tmp].text.Font = selectedFont;
                 a[tmp].text.SelectionFont = selectedFont;
                 
+            }
+        }
+
+        private void FormMain_SizeChanged(object sender, EventArgs e)
+        {
+            int i = tcMain.SelectedIndex;
+            if (i >= 0)
+            {
+                a[i].backGround.Dock = DockStyle.Right;
+                a[i].backGround.Width = this.Width - 263;
+                a[i].backGround.BackColor =  Color.FromArgb(243, 243, 243);
+                a[i].pictureBox.Location = new Point((a[i].backGround.Width - a[i].pictureBox.Width) / 2, Math.Abs(this.Height - a[i].pictureBox.Height) / 2);
             }
         }
     }

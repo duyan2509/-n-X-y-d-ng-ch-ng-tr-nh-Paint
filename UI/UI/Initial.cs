@@ -474,17 +474,17 @@ namespace UI
             a[tmp].pictureBox.Invalidate();
             a[tmp].sizeBitmap = new Size(a[tmp].pictureBox.Width, a[tmp].pictureBox.Height);
             a[tmp].listBitmap.Add(new Bitmap(a[tmp].pictureBox.Image));
-            this.SizeChanged += (sender, e) =>
-            {
-                int i = tcMain.SelectedIndex;
-                if (i >= 0)
-                {
-                    a[i].backGround.Dock = DockStyle.Right;
-                    a[i].backGround.Width = this.Width - 270;
-                    a[i].backGround.BackColor = Color.FromArgb(243, 243, 243);
-                    a[i].pictureBox.Location = new Point((a[i].backGround.Width - a[i].pictureBox.Width) / 2, Math.Abs(this.Height - a[i].pictureBox.Height) / 2);
-                }
-            };
+            //this.SizeChanged += (sender, e) =>
+            //{
+            //    int i = tcMain.SelectedIndex;
+            //    if (i >= 0)
+            //    {
+            //        a[i].backGround.Dock = DockStyle.Right;
+            //        a[i].backGround.Width = this.Width - 270;
+            //        a[i].backGround.BackColor = Color.FromArgb(243, 243, 243);
+            //        a[i].pictureBox.Location = new Point((a[i].backGround.Width - a[i].pictureBox.Width) / 2, Math.Abs(this.Height - a[i].pictureBox.Height) / 2);
+            //    }
+            //};
 
             a[tmp].backGround.Controls.Add(a[tmp].pictureBox);
             a[tmp].pictureBox.Location = new Point((a[tmp].backGround.Width - a[tmp].pictureBox.Width) / 2, Math.Abs(this.Height - a[tmp].pictureBox.Height) / 2);

@@ -36,8 +36,9 @@
             this.btAdd = new ComponentFactory.Krypton.Navigator.ButtonSpecNavigator();
             this.kryptonPage1 = new ComponentFactory.Krypton.Navigator.KryptonPage();
             this.btClose1 = new ComponentFactory.Krypton.Toolkit.ButtonSpecAny();
-            this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.btSuccess = new Guna.UI2.WinForms.Guna2Button();
             this.fileName = new Guna.UI2.WinForms.Guna2TextBox();
             this.pnTitleBar = new System.Windows.Forms.Panel();
@@ -62,15 +63,14 @@
             this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.dlgColor = new System.Windows.Forms.ColorDialog();
             this.dlgPrint = new System.Windows.Forms.PrintDialog();
-            this.panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.pnContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tcMain)).BeginInit();
             this.tcMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPage1)).BeginInit();
             this.kryptonPage1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.pnTitleBar.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnContainer
@@ -167,6 +167,38 @@
             this.btClose1.UniqueName = "31A147EECA5F43286FA9B6E033F7570B";
             this.btClose1.Click += new System.EventHandler(this.btClose1_Click);
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel1.AutoRoundedCorners = true;
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BorderRadius = 21;
+            this.panel1.Controls.Add(this.guna2ComboBox1);
+            this.panel1.Controls.Add(this.guna2ComboBox2);
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.panel1.ForeColor = System.Drawing.Color.Transparent;
+            this.panel1.Location = new System.Drawing.Point(335, 7);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(375, 44);
+            this.panel1.TabIndex = 2;
+            // 
+            // guna2ComboBox1
+            // 
+            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox1.BorderRadius = 10;
+            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox1.IntegralHeight = false;
+            this.guna2ComboBox1.ItemHeight = 30;
+            this.guna2ComboBox1.Location = new System.Drawing.Point(12, 3);
+            this.guna2ComboBox1.Name = "guna2ComboBox1";
+            this.guna2ComboBox1.Size = new System.Drawing.Size(248, 36);
+            this.guna2ComboBox1.TabIndex = 0;
+            // 
             // guna2ComboBox2
             // 
             this.guna2ComboBox2.BackColor = System.Drawing.Color.Transparent;
@@ -203,23 +235,6 @@
             this.guna2ComboBox2.Name = "guna2ComboBox2";
             this.guna2ComboBox2.Size = new System.Drawing.Size(87, 36);
             this.guna2ComboBox2.TabIndex = 1;
-            // 
-            // guna2ComboBox1
-            // 
-            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox1.BorderRadius = 10;
-            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox1.IntegralHeight = false;
-            this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(12, 3);
-            this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(248, 36);
-            this.guna2ComboBox1.TabIndex = 0;
             // 
             // btSuccess
             // 
@@ -484,21 +499,6 @@
             // 
             this.dlgPrint.UseEXDialog = true;
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel1.AutoRoundedCorners = true;
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BorderRadius = 21;
-            this.panel1.Controls.Add(this.guna2ComboBox1);
-            this.panel1.Controls.Add(this.guna2ComboBox2);
-            this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.panel1.ForeColor = System.Drawing.Color.Transparent;
-            this.panel1.Location = new System.Drawing.Point(335, 7);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(375, 44);
-            this.panel1.TabIndex = 2;
-            // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -509,17 +509,18 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMain";
             this.Text = "Form1";
+            this.SizeChanged += new System.EventHandler(this.FormMain_SizeChanged);
             this.pnContainer.ResumeLayout(false);
             this.pnContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tcMain)).EndInit();
             this.tcMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPage1)).EndInit();
             this.kryptonPage1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.pnTitleBar.ResumeLayout(false);
             this.pnTitleBar.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
