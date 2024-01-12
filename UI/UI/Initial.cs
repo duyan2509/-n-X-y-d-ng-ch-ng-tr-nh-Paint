@@ -309,6 +309,8 @@ namespace UI
                 {
                     int stt = tcMain.SelectedIndex;
                     a[stt].Pen.Color = Color.Yellow;
+                    a[stt].text.SelectionColor = Color.Yellow;
+
                     pickingButton.FillColor=a[stt].Pen.Color;
                     if (a[stt].isResize)
                         a[stt].pictureBox.Refresh();
@@ -330,6 +332,7 @@ namespace UI
                 {
                     int stt = tcMain.SelectedIndex;
                     a[stt].Pen.Color = Color.Red;
+                    a[stt].text.SelectionColor = Color.Red;
                     pickingButton.FillColor = a[stt].Pen.Color;
                     if (a[stt].isResize)
                         a[stt].pictureBox.Refresh();
@@ -353,6 +356,7 @@ namespace UI
                     dlgColor.ShowDialog();
                     int stt = tcMain.SelectedIndex;
                     a[stt].Pen.Color = dlgColor.Color;
+                    a[stt].text.SelectionColor = dlgColor.Color;
                     pickingButton.FillColor=a[stt].Pen.Color;
                     if (a[stt].isResize)
                         a[stt].pictureBox.Refresh();

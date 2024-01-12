@@ -65,6 +65,7 @@ namespace UI
             aa.text.Hide();
             aa.text.Text = "";
             aa.text.SelectionFont = font;
+            aa.text.SelectionColor = aa.Pen.Color;
 
         }
     }

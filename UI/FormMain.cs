@@ -540,7 +540,7 @@ namespace UI
                 // Set the font of textBoxReference
                 a[tmp].text.Font = selectedFont;
                 a[tmp].text.SelectionFont = selectedFont;
-
+                
             }
         }
     }
