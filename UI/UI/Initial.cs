@@ -520,6 +520,7 @@ namespace UI
             a[tmp].text.ForeColor = Color.Black;
             a[tmp].text.StateActive.Back.Color1 = Color.White;
             a[tmp].text.StateActive.Border.Width = 0;
+            a[tmp].text.SelectionFont = new Font(".VnArial", 12, FontStyle.Regular);
             a[tmp].text.Font = new Font(".VnArial", 12, FontStyle.Regular);
             a[tmp].text.Hide();
             a[tmp].pictureBox.Controls.Add(a[tmp].text);

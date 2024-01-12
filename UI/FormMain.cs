@@ -525,6 +525,7 @@ namespace UI
             int size = Convert.ToInt32(guna2ComboBox2.Text);
             // Set the font of textBoxReference using the stored font name and size
             a[tmp].text.Font = new Font(guna2ComboBox1.Text, size, FontStyle.Regular);
+            a[tmp].text.SelectionFont = new Font(guna2ComboBox1.Text, size, FontStyle.Regular);
         }
 
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -538,6 +539,7 @@ namespace UI
                 Font selectedFont = new Font(selectedFontName, Convert.ToInt32(guna2ComboBox2.Text), FontStyle.Regular);
                 // Set the font of textBoxReference
                 a[tmp].text.Font = selectedFont;
+                a[tmp].text.SelectionFont = selectedFont;
 
             }
         }

@@ -50,10 +50,10 @@ namespace UI
             }
 
             int y = aa.khung.Y + 8;
-
+            SolidBrush customBrush = new SolidBrush(aa.Pen.Color);
             foreach (string line in linesToDraw)
             {
-                aa.G.DrawString(line, font, aa.brush, new PointF(aa.khung.X + 8, y));
+                aa.G.DrawString(line, font, customBrush, new PointF(aa.khung.X + 8, y));
                 y += (int)font.GetHeight() + 2;
             }
 
@@ -64,6 +64,7 @@ namespace UI
             aa.khung = new Rectangle(aa.pictureBox.Top, 0, 0, 0);
             aa.text.Hide();
             aa.text.Text = "";
+            aa.text.SelectionFont = font;
 
         }
     }
