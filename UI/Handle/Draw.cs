@@ -237,7 +237,7 @@ namespace UI
                     if (a[tmp].index == 16 && a[tmp].isText)
                     {
                         // tạo khung cho text
-                        a[tmp].khung = new Rectangle(e.X, e.Y, 160, 47);
+                        a[tmp].khung = new Rectangle(e.X, e.Y, 160, 67);
                         a[tmp].text.Show();
                     }
 
